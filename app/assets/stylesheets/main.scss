@@ -9,22 +9,38 @@ body {
   background-color: $background-gray;
 }
 
-h1 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   position: "relative";
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+h1 {
+  font-size: 64px;
+  letter-spacing: 4px;
 }
 
 h2 {
-  position: "relative";
+  font-size: 36px;
 }
 
 h3 {
-  position: "relative";
+  font-size: 30px;
 }
 
 h4 {
-  position: "relative";
+  font-size: 24px;
 }
 
 h5 {
-  position: "relative";
+  font-size: 18px;
+}
+
+h6 {
+  font-size: 14px;
 }

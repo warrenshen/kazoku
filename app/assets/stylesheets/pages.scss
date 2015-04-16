@@ -5,16 +5,30 @@
 @import "colors";
 
 .header {
-  position: relative;
+  position: absolute;
+  z-index: 9;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 48px;
-  border-bottom: 1px solid;
-  border-color: $border-gray;
-  background-color: $white;
+  text-align: right;
 }
 
-.header-brand {
+.header-login {
+  display: inline-block;
+  vertical-align: middle;
   position: relative;
+  padding: 6px;
+  margin-right: 6px;
+  color: $white;
+  font-family: "Montserrat";
+
+  &:hover {
+    border: 1px solid;
+    border-color: $white;
+    border-radius: 2px;
+    cursor: pointer;
+  }
 }
 
 .home-banner {

@@ -24,9 +24,7 @@
   font-family: "Montserrat";
 
   &:hover {
-    border: 1px solid;
-    border-color: $white;
-    border-radius: 2px;
+    text-decoration: underline;
     cursor: pointer;
   }
 }
@@ -63,6 +61,7 @@
   position: relative;
   z-index: 3;
   padding: 36px;
+  cursor: default;
 }
 
 .home-banner-title {

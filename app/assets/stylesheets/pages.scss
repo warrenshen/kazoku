@@ -18,23 +18,45 @@
 }
 
 .home-banner {
-  display: inline-block;
-  vertical-align: middle;
   position: relative;
   width: 100%;
-  height: 812px;
+  height: 724px;
   text-align: center;
   overflow: hidden;
 }
 
+.home-banner-fade {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  opacity: 0.125;
+}
+
 .home-banner-image {
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
   width: 100%;
 }
 
+.home-banner-content {
+  position: relative;
+  z-index: 3;
+}
+
+.home-banner-title {
+  position: relative;
+  color: $white;
+  font-family: "Questrial";
+}
+
 .vertical-anchor {
+  content: '';
   display: inline-block;
   vertical-align: middle;
   position: relative;

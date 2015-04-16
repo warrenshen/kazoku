@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
   devise_for :people
-  root 'pages#home'
-  get 'home' => 'pages#home'
+  root "pages#home"
+  get "home" => "pages#home"
 
   resources :persons, only: [:index]
 

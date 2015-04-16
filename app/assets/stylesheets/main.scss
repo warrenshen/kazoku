@@ -1,15 +1,46 @@
+@import "colors";
+
 body {
   position: "relative";
   min-width: 100vw;
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  background-color: $background-gray;
 }
 
 h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+h6 {
   position: "relative";
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+h1 {
+  font-size: 64px;
+  letter-spacing: 4px;
+}
+
+h2 {
+  font-size: 36px;
+}
+
+h3 {
+  font-size: 30px;
+}
+
+h4 {
+  font-size: 24px;
+}
+
+h5 {
+  font-size: 18px;
+}
+
+h6 {
+  font-size: 14px;
 }

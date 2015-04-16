@@ -2,14 +2,88 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "colors";
+
 .header {
-  position: relative;
+  position: absolute;
+  z-index: 9;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 48px;
-  background-color: #66CCCC;
+  text-align: right;
 }
 
-.header-brand {
+.header-login {
+  display: inline-block;
+  vertical-align: middle;
   position: relative;
-  color: #FFFFFF;
+  padding: 6px;
+  margin-right: 6px;
+  color: $white;
+  font-family: "Montserrat";
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+.home-banner {
+  position: relative;
+  width: 100%;
+  height: 724px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.home-banner-fade {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 90, 95, 0.2);
+}
+
+.home-banner-image {
+  position: absolute;
+  z-index: 1;
+  top: -144px;
+  left: 0;
+  width: 100%;
+}
+
+.home-banner-content {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  z-index: 3;
+  padding: 36px;
+  cursor: default;
+}
+
+.home-banner-title {
+  position: relative;
+  color: $white;
+  font-family: "Montserrat";
+  line-height: 72px;
+}
+
+.home-banner-subtitle {
+  position: relative;
+  width: 412px;
+  color: $white;
+  font-weight: 400;
+  font-family: "Montserrat";
+  line-height: 24px;
+}
+
+.vertical-anchor {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  height: 100%;
 }

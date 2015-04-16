@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
   devise_for :people
+
   root "pages#home"
   get "home" => "pages#home"
 
-  resources :persons, only: [:index]
+  resources :people, controller: "persons", only: [:index, :show, :new, :create]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

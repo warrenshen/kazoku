@@ -21,7 +21,7 @@ var Persons = React.createClass({
   }
 });
 
-$(function() {
+$(document).on("page:change", function() {
   if ($("#persons").length > 0) {
     React.render(
       <Persons />,

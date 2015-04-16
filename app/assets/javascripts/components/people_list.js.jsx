@@ -1,4 +1,4 @@
-var Persons = React.createClass({
+var PeopleList = React.createClass({
   // handleSubmit: function(e) {
   //   e.preventDefault();
   //   var author = React.findDOMNode(this.refs.author).value.trim();
@@ -17,15 +17,6 @@ var Persons = React.createClass({
         <input type="text" placeholder="Say something..." ref="text" />
         <input type="submit" value="Post" />
       </form>
-    );
-  }
-});
-
-$(document).on("page:change", function() {
-  if ($("#persons").length > 0) {
-    React.render(
-      <Persons />,
-      document.getElementById("persons")
     );
   }
 });

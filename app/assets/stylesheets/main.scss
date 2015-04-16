@@ -1,9 +1,12 @@
+@import "colors";
+
 body {
   position: "relative";
   min-width: 100vw;
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  background-color: $background-gray;
 }
 
 h1,

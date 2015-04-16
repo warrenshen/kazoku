@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 ###
 gem 'devise'
+gem 'react-rails'
+gem 'showdown-rails'
 ###
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

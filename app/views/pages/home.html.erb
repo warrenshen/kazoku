@@ -1,7 +1,4 @@
-<div class="header">
-  <div class="vertical-anchor"></div>
-  <%= link_to "Signup/Login", new_person_path, class: "header-login-button", method: "get" %>
-</div>
+<%= react_component("Header", {loginPath: new_person_path}) %>
 <div class="home-banner">
   <div class="home-banner-fade"></div>
   <img class="home-banner-image" src="http://www.urbanalli.com/blog/wp-content/uploads/2012/10/donovan13.jpg"/>

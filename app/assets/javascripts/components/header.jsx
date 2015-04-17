@@ -18,10 +18,18 @@ var Header = React.createClass({
     });
     return (
       <div className={headerClass}>
-        <div className="vertical-anchor"></div>
-        <a className="header-login-button" href={this.props.loginPath}>
-          Signup/Login
-        </a>
+        <div className="header-left">
+          <div className="vertical-anchor"></div>
+          <a className="header-brand-text">
+            Kazoku
+          </a>
+        </div>
+        <div className="header-right">
+          <div className="vertical-anchor"></div>
+          <a className="header-login-button" href={this.props.loginPath}>
+            Signup/Login
+          </a>
+        </div>
       </div>
     );
   }

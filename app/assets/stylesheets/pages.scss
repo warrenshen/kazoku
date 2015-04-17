@@ -18,14 +18,43 @@
   background-color: $coral;
 }
 
+.header-left {
+  display: inline-block;
+  position: "relative";
+  width: 50%;
+  height: 100%;
+  text-align: left;
+}
+
+.header-right {
+  display: inline-block;
+  position: "relative";
+  width: 50%;
+  height: 100%;
+  text-align: right;
+}
+
+.header-brand-text {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  margin-left: 12px;
+  color: $white;
+  font-size: 18px;
+  font-family: "Montserrat";
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 .header-login-button {
   display: inline-block;
   vertical-align: middle;
   position: relative;
-  padding: 6px;
-  margin-right: 6px;
+  margin-right: 12px;
   color: $white;
-  font-size: 16px;
+  font-size: 14px;
   font-family: "Montserrat";
   text-decoration: none;
 

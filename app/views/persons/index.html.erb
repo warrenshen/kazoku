@@ -1,11 +1,2 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>kazoku</title>
-  </head>
-
-  <body>
-    <%= react_component("PeopleList", {}) %>
-
-  </body>
-</html>
+<%= react_component("Header", {loginPath: new_person_path, isColored: true}) %>
+<%= react_component("PeopleList", {}) %>

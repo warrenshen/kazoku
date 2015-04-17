@@ -15,7 +15,9 @@
 }
 
 .header-colored {
-  background-color: $coral;
+  border-bottom: 1px solid;
+  border-color: $border-gray;
+  background-color: $white;
 }
 
 .header-left {
@@ -34,7 +36,7 @@
   text-align: right;
 }
 
-.header-brand-text {
+.header-brand {
   display: inline-block;
   vertical-align: middle;
   position: relative;
@@ -44,11 +46,12 @@
   font-family: "Montserrat";
 
   &:hover {
+    text-decoration: underline;
     cursor: pointer;
   }
 }
 
-.header-login-button {
+.header-login {
   display: inline-block;
   vertical-align: middle;
   position: relative;
@@ -121,4 +124,8 @@
   vertical-align: middle;
   position: relative;
   height: 100%;
+}
+
+.primary-color {
+  color: $coral;
 }

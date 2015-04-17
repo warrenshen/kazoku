@@ -1,80 +1,4 @@
-// Place all the styles related to the pages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 @import "colors";
-
-.header {
-  position: absolute;
-  z-index: 9;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 48px;
-  text-align: right;
-}
-
-.header-colored {
-  border-bottom: 1px solid;
-  border-color: $border-gray;
-  background-color: $white;
-}
-
-.header-left {
-  display: inline-block;
-  position: "relative";
-  width: 50%;
-  height: 100%;
-  text-align: left;
-}
-
-.header-right {
-  display: inline-block;
-  position: "relative";
-  width: 50%;
-  height: 100%;
-  text-align: right;
-}
-
-.header-brand {
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
-  margin-left: 12px;
-  color: $white;
-  font-size: 18px;
-  font-family: "Montserrat";
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-    cursor: pointer;
-  }
-}
-
-.header-brand-colored {
-  color: $coral;
-}
-
-.header-login {
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
-  margin-right: 12px;
-  color: $white;
-  font-size: 14px;
-  font-family: "Montserrat";
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-    cursor: pointer;
-  }
-}
-
-.header-login-colored {
-  color: $coral;
-}
 
 .home-banner {
   position: relative;
@@ -125,12 +49,4 @@
   font-weight: 400;
   font-family: "Montserrat";
   line-height: 24px;
-}
-
-.vertical-anchor {
-  content: '';
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
-  height: 100%;
 }

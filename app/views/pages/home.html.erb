@@ -24,15 +24,11 @@
   <div class="home-actions">
     <div class="home-action">
       <img class="home-action-image" src="http://www.ruinart.com/img/content/articles/13_Portrait%20HVDS%20-%20HD.jpg"/>
-      <h2 class="home-action-clickable">
-        People
-      </h2>
+      <%= react_component("Clickable", {path: people_path, style: "home-action-clickable", content: "People"}) %>
     </div>
     <div class="home-action">
       <img class="home-action-image" src="http://www.vlblog.net/blogimage/anwan01.jpg"/>
-      <h2 class="home-action-content">
-        Families
-      </h2>
+      <%= react_component("Clickable", {path: families_path, style: "home-action-clickable", content: "Families"}) %>
     </div>
   </div>
 </section>

@@ -38,7 +38,6 @@
 .home-banner-title {
   position: relative;
   color: $white;
-  line-height: 72px;
 }
 
 .home-banner-subtitle {
@@ -91,6 +90,11 @@
   position: relative;
   font-size: 36px;
   letter-spacing: 2px;
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 }
 
 .login-banner {

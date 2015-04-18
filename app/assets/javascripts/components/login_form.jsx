@@ -8,8 +8,8 @@ var LoginForm = React.createClass({
     submitPath:  "",
   },
 
-  initialState: {
-    shouldShowLogin: true,
+  getInitialState: function() {
+    return {shouldShowLogin: true};
   },
 
   sendRequest: function(arguments) {
@@ -17,7 +17,7 @@ var LoginForm = React.createClass({
     request.open("post", this.props.submitPath);
     request.setRequestHeader("Content-Type", "application/json");
     request.send(JSON.stringify(arguments));
-  }
+  },
 
   attemptLogin: function(event) {
     var email = React.findDOMNode(this.refs.email).value;
@@ -36,6 +36,10 @@ var LoginForm = React.createClass({
       email: email,
       password: password,
     });
+  },
+
+  toggleForm: function() {
+    this.setState({shouldShowLogin: !this.state.shouldShowLogin});
   },
 
   renderLoginForm: function() {
@@ -61,6 +65,16 @@ var LoginForm = React.createClass({
           onClick={this.attemptLogin}>
           Log in
         </a>
+        <div className="login-form-section">
+          <span className="login-form-label">
+            or,
+          </span>
+          <a
+            className="login-form-toggle"
+            onClick={this.toggleForm}>
+            sign in
+          </a>
+        </div>
       </form>
     );
   },
@@ -100,6 +114,16 @@ var LoginForm = React.createClass({
           onClick={this.attemptSignup}>
           Sign up
         </a>
+        <div className="login-form-section">
+          <span className="login-form-label">
+            or,
+          </span>
+          <a
+            className="login-form-toggle"
+            onClick={this.toggleForm}>
+            log in
+          </a>
+        </div>
       </form>
     );
   },

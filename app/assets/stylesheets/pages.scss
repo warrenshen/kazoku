@@ -108,6 +108,7 @@
   display: inline-block;
   position: relative;
   padding: 6px 12px;
+  margin: auto;
   border: 1px solid;
   border-color: $ash;
   border-radius: 2px;
@@ -115,6 +116,26 @@
   &:hover {
     color: $coral;
     border-color: $coral;
+    cursor: pointer;
+  }
+}
+
+.login-form-section {
+  position: relative;
+  margin-top: 24px;
+}
+
+.login-form-label {
+  position: relative;
+  padding-right: 6px;
+}
+
+.login-form-toggle {
+  display: inline-block;
+  position: relative;
+
+  &:hover {
+    text-decoration: underline;
     cursor: pointer;
   }
 }

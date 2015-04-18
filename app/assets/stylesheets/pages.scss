@@ -50,3 +50,37 @@
   font-family: "Montserrat";
   line-height: 24px;
 }
+
+.login-banner {
+  position: relative;
+  width: 100%;
+  background-color: $white;
+}
+
+.login-banner-content {
+  position: relative;
+  width: 356px;
+  padding: 64px;
+  margin: auto;
+  text-align: center;
+}
+
+.login-banner-title {
+  position: relative;
+}
+
+.login-banner-subtitle {
+  position: relative;
+}
+
+.login-form {
+  position: relative;
+  width: 356;
+  margin: auto;
+  background-color: $white;
+  text-align: center;
+}
+
+.login-form-input {
+
+}

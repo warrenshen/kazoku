@@ -55,12 +55,17 @@
   display: inline-block;
   vertical-align: middle;
   position: relative;
+  padding: 6px 12px;
   margin-right: 12px;
   color: $white;
-  font-size: 16px;
+  border-bottom: 1px solid;
+  border-color: $red;
+  border-radius: 2px;
+  background-color: $coral;
+  font-size: 14px;
 
   &:hover {
-    text-decoration: underline;
+    background-color: $pink;
     cursor: pointer;
   }
 }

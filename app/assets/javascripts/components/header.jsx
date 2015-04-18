@@ -1,15 +1,17 @@
 var Header = React.createClass({
 
   propTypes: {
-    homePath:  React.PropTypes.string.isRequired,
-    loginPath: React.PropTypes.string.isRequired,
-    isColored: React.PropTypes.bool.isRequired,
+    currentPerson: React.PropTypes.object.isRequired,
+    homePath:      React.PropTypes.string.isRequired,
+    loginPath:     React.PropTypes.string.isRequired,
+    isColored:     React.PropTypes.bool.isRequired,
   },
 
   defaultProps: {
-    homePath:  "",
-    loginPath: "",
-    isColored: true,
+    currentPerson: null,
+    homePath:      "",
+    loginPath:     "",
+    isColored:     true,
   },
 
   render: function() {
@@ -26,6 +28,7 @@ var Header = React.createClass({
       "header-login": true,
       "header-login-colored": this.props.isColored,
     });
+    console.log(this.props.currentPerson);
     return (
       <div className={headerClass}>
         <div className="header-left">

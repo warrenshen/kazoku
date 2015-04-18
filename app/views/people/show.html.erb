@@ -1,2 +1,8 @@
 <%= react_component("Header", {homePath: root_path, loginPath: login_path, isColored: true}) %>
-<span>sup homie g thang</span>
+<section class="person-banner">
+  <div class="person-banner-content">
+    <h2 class="person-banner-name">
+      <%= @person.first_name + " " + @person.last_name %>
+    </h2>
+  </div>
+</section>

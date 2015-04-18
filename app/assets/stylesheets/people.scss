@@ -1,0 +1,19 @@
+@import "colors";
+
+.person-banner {
+  position: relative;
+  width: 100%;
+  background-color: $white;
+}
+
+.person-banner-content {
+  position: relative;
+  width: 356px;
+  padding: 64px;
+  margin: auto;
+  text-align: center;
+}
+
+.person-banner-name {
+  position: relative;
+}

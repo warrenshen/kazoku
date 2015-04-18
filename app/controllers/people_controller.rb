@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-  load_resource param_method: :person_params, only: [:create]
+  load_and_authorize_resource param_method: :person_params, only: [:create]
 
   def index
     @people = Person.all
@@ -21,7 +21,6 @@ class PeopleController < ApplicationController
 
   def person_params
     params.require(:person).permit(
-      :id,
       :first_name,
       :last_name,
       :email,

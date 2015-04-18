@@ -18,6 +18,7 @@ var LoginForm = React.createClass({
     var request = new XMLHttpRequest();
     request.open("post", path);
     request.setRequestHeader("Content-Type", "application/json");
+    request.setRequestHeader("X-CSRF-Token", $('meta[name="csrf-token"]').attr('content'));
     request.send(JSON.stringify(arguments));
   },
 
@@ -36,10 +37,12 @@ var LoginForm = React.createClass({
     var email = React.findDOMNode(this.refs.email).value;
     var password = React.findDOMNode(this.refs.password).value;
     this.sendRequest(this.props.signupPath, {
-      first_name: first_name,
-      last_name: last_name,
-      email: email,
-      password: password,
+      person: {
+        first_name: first_name,
+        last_name: last_name,
+        email: email,
+        password: password,
+      },
     });
   },
 
@@ -77,7 +80,7 @@ var LoginForm = React.createClass({
           <a
             className="login-form-toggle"
             onClick={this.toggleForm}>
-            sign in
+            sign up
           </a>
         </div>
       </form>

@@ -56,16 +56,34 @@
   padding: 48px 0;
 }
 
-.home-index-actions {
+.home-actions {
   position: relative;
-  width: 712px;
-  padding: 36px;
+  padding: 48px 0;
   margin: auto;
   text-align: center;
 }
 
-.home-index-action {
+.home-actions-headings {
+  position: relative;
+  width: 456px;
+  margin: auto;
+  text-align: center;
+}
+
+.home-action {
   display: inline-block;
+  position: relative;
+  padding: 0 36px;
+}
+
+.home-action-image {
+  position: relative;
+  width: 456px;
+  height: 300px;
+  margin-bottom: 12px;
+}
+
+.home-action-content {
   position: relative;
 }
 

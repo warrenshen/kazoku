@@ -20,32 +20,38 @@ h6 {
   color: $ash;
   font-family: "Montserrat";
   font-weight: 400;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 
 h1 {
   font-size: 64px;
   letter-spacing: 4px;
+  line-height: 72px;
 }
 
 h2 {
   font-size: 36px;
+  line-height: 48px;
 }
 
 h3 {
   font-size: 30px;
+  line-height: 36px;
 }
 
 h4 {
   font-size: 24px;
+  line-height: 30px;
 }
 
 h5 {
   font-size: 18px;
+  line-height: 24px;
 }
 
 h6 {
   font-size: 14px;
+  line-height: 28px;
 }
 
 a,
@@ -56,6 +62,7 @@ input {
   font-size: 14px;
   font-family: "Montserrat";
   font-weight: 400;
+  text-decoration: none;
 }
 
 input[type=text],

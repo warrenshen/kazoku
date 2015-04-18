@@ -1,22 +1,32 @@
 var PeopleList = React.createClass({
-  // handleSubmit: function(e) {
-  //   e.preventDefault();
-  //   var author = React.findDOMNode(this.refs.author).value.trim();
-  //   var text = React.findDOMNode(this.refs.text).value.trim();
-  //   if (!text || !author) {
-  //     return;
-  //   }
-  //   this.props.onCommentSubmit({author: author, text: text});
-  //   React.findDOMNode(this.refs.author).value = '';
-  //   React.findDOMNode(this.refs.text).value = '';
-  // },
+
+  propTypes: {
+    people: React.PropTypes.array.isRequired,
+  },
+
+  defaultProps: {
+    people: [],
+  },
+
+  renderPerson: function(person) {
+    return (
+      <div className="person-block" key={person.id}>
+        <h3 className="person-block-name">
+          {person.first_name + " " + person.last_name}
+        </h3>
+      </div>
+    );
+  },
+
+  renderPeople: function() {
+    return this.props.people.map(this.renderPerson);
+  },
+
   render: function() {
     return (
-      <form className="commentForm">
-        <input type="text" placeholder="Your name" ref="author" />
-        <input type="text" placeholder="Say something..." ref="text" />
-        <input type="submit" value="Post" />
-      </form>
+      <div className="people-list">
+        {this.renderPeople()}
+      </div>
     );
   }
 });

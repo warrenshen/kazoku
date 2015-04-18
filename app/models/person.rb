@@ -27,6 +27,11 @@ class Person < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   ##################################################
+  # Associations
+  ##################################################
+  belongs_to :family
+
+  ##################################################
   # Validations
   ##################################################
   validates :first_name, presence: true

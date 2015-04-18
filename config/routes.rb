@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     controllers: { sessions: "people/sessions" }
 
   resources :people, only: [:create, :index, :show]
+  resources :families, only: [:index]
+  resources :events, only: [:index]
 
   # Example resource route with options:
   #   resources :products do

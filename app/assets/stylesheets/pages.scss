@@ -38,7 +38,6 @@
 .home-banner-title {
   position: relative;
   color: $white;
-  line-height: 72px;
 }
 
 .home-banner-subtitle {
@@ -50,6 +49,54 @@
   line-height: 24px;
 }
 
+.home-section {
+  position: relative;
+  width: 100%;
+  padding: 48px 0;
+}
+
+.home-actions {
+  position: relative;
+  padding: 48px 0;
+  margin: auto;
+  text-align: center;
+}
+
+.home-actions-headings {
+  position: relative;
+  width: 712px;
+  margin: auto;
+  text-align: center;
+}
+
+.home-actions-heading {
+  position: relative;
+}
+
+.home-action {
+  display: inline-block;
+  position: relative;
+  padding: 0 18px;
+}
+
+.home-action-image {
+  position: relative;
+  width: 456px;
+  height: 300px;
+  margin-bottom: 12px;
+}
+
+.home-action-clickable {
+  position: relative;
+  font-size: 36px;
+  letter-spacing: 2px;
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
 .login-banner {
   position: relative;
   width: 100%;
@@ -58,9 +105,8 @@
 
 .login-banner-content {
   position: relative;
-  width: 356px;
-  padding: 64px;
-  margin: auto;
+  width: 100%;
+  padding: 64px 0;
   text-align: center;
 }
 

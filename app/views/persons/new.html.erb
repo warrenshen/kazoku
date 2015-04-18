@@ -1,5 +1,5 @@
 <%= react_component("Header", {homePath: root_path, loginPath: new_person_path, isColored: true}) %>
-<div class="login-banner">
+<section class="login-banner">
   <div class="login-banner-content">
     <h2 class="login-banner-title">
       Join Kazoku
@@ -8,4 +8,7 @@
       Fun with family awaits.
     </h5>
   </div>
-</div>
+</section>
+<section class="login-section">
+  <%= react_component("LoginForm", {submitPath: person_session_path}) %>
+</section>

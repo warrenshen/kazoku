@@ -38,7 +38,6 @@
 .home-banner-title {
   position: relative;
   color: $white;
-  font-family: "Montserrat";
   line-height: 72px;
 }
 
@@ -73,14 +72,21 @@
   position: relative;
 }
 
+.login-section {
+  position: relative;
+  width: 100%;
+}
+
 .login-form {
   position: relative;
-  width: 356;
+  width: 356px;
+  padding: 24px;
   margin: auto;
   background-color: $white;
   text-align: center;
 }
 
 .login-form-input {
-
+  position: relative;
+  outline: none;
 }

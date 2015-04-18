@@ -75,7 +75,7 @@
 .login-section {
   position: relative;
   width: 100%;
-  padding: 24px 0;
+  padding: 48px 0;
 }
 
 .login-form {
@@ -83,8 +83,8 @@
   width: 356px;
   padding: 36px;
   margin: auto;
-  // border: 1px solid;
-  // border-color: $border-gray;
+  border: 1px solid;
+  border-color: $border-gray;
   border-radius: 2px;
   background-color: $white;
   text-align: center;

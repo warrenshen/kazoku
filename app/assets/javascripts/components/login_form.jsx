@@ -12,8 +12,9 @@ var LoginForm = React.createClass({
     var email = React.findDOMNode(this.refs.email).value;
     var password = React.findDOMNode(this.refs.password).value;
     var request = new XMLHttpRequest();
-    console.log(this.props.submitPath);
     request.open("post", this.props.submitPath);
+    request.setRequestHeader("Content-Type", "application/json");
+    request.send(JSON.stringify({email: email, password: password}));
   },
 
   render: function() {

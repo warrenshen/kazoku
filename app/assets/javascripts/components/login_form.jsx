@@ -1,20 +1,22 @@
 var LoginForm = React.createClass({
 
   propTypes: {
-    submitPath: React.PropTypes.string.isRequired,
+    loginPath: React.PropTypes.string.isRequired,
+    signupPath: React.PropTypes.string.isRequired,
   },
 
   defaultProps: {
-    submitPath:  "",
+    loginPath:  "",
+    signupPath: "",
   },
 
   getInitialState: function() {
     return {shouldShowLogin: true};
   },
 
-  sendRequest: function(arguments) {
+  sendRequest: function(path, arguments) {
     var request = new XMLHttpRequest();
-    request.open("post", this.props.submitPath);
+    request.open("post", path);
     request.setRequestHeader("Content-Type", "application/json");
     request.send(JSON.stringify(arguments));
   },
@@ -22,7 +24,10 @@ var LoginForm = React.createClass({
   attemptLogin: function(event) {
     var email = React.findDOMNode(this.refs.email).value;
     var password = React.findDOMNode(this.refs.password).value;
-    this.sendRequest({email: email, password: password});
+    this.sendRequest(this.props.loginPath, {
+      email: email,
+      password: password,
+    });
   },
 
   attemptSignup: function(event) {
@@ -30,9 +35,9 @@ var LoginForm = React.createClass({
     var last_name = React.findDOMNode(this.refs.last_name).value;
     var email = React.findDOMNode(this.refs.email).value;
     var password = React.findDOMNode(this.refs.password).value;
-    this.sendRequest({
-      first_name: first,
-      last_name: last,
+    this.sendRequest(this.props.signupPath, {
+      first_name: first_name,
+      last_name: last_name,
       email: email,
       password: password,
     });
@@ -52,13 +57,13 @@ var LoginForm = React.createClass({
           className="login-form-input"
           ref="email"
           type="text"
-          placeholder="email">
+          placeholder="Email">
         </input>
         <input
           className="login-form-input"
           ref="password"
           type="password"
-          placeholder="password">
+          placeholder="Password">
         </input>
         <a
           className="login-form-submit"
@@ -89,25 +94,25 @@ var LoginForm = React.createClass({
           className="login-form-input"
           ref="first_name"
           type="text"
-          placeholder="first name">
+          placeholder="First name">
         </input>
         <input
           className="login-form-input"
           ref="last_name"
           type="text"
-          placeholder="last name">
+          placeholder="Last name">
         </input>
         <input
           className="login-form-input"
           ref="email"
           type="text"
-          placeholder="email">
+          placeholder="Email">
         </input>
         <input
           className="login-form-input"
           ref="password"
           type="password"
-          placeholder="password">
+          placeholder="Password">
         </input>
         <a
           className="login-form-submit"

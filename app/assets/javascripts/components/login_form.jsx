@@ -15,8 +15,15 @@ var LoginForm = React.createClass({
         <input
           className="login-form-input"
           ref="email"
-          placeholder="email"></input>
-        <input className="login-form-input" ref="password"></input>
+          type="text"
+          placeholder="email">
+        </input>
+        <input
+          className="login-form-input"
+          ref="password"
+          type="password"
+          placeholder="password">
+        </input>
         <a className="login-form-submit">Log in</a>
       </form>
     );

@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
 
   root "pages#home"
-  get "home" => "pages#home"
+  get "login" => "people#new"
 
   devise_for :people,
     skip: [:registrations, :passwords],
     controllers: { sessions: "people/sessions" }
 
-  resources :people, only: [:index, :show, :new, :create]
+  resources :people, only: [:index, :show]
 
   # Example resource route with options:
   #   resources :products do

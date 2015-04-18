@@ -75,18 +75,48 @@
 .login-section {
   position: relative;
   width: 100%;
+  padding: 24px 0;
 }
 
 .login-form {
   position: relative;
   width: 356px;
-  padding: 24px;
+  padding: 36px;
   margin: auto;
+  // border: 1px solid;
+  // border-color: $border-gray;
+  border-radius: 2px;
   background-color: $white;
   text-align: center;
 }
 
-.login-form-input {
+.login-form-title {
+  display: inline-block;
   position: relative;
+  margin-bottom: 24px;
+}
+
+.login-form-input {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding: 6px;
+  margin-bottom: 24px;
   outline: none;
+  box-sizing: border-box;
+}
+
+.login-form-submit {
+  display: inline-block;
+  position: relative;
+  padding: 6px 12px;
+  border: 1px solid;
+  border-color: $ash;
+  border-radius: 2px;
+
+  &:hover {
+    color: $coral;
+    border-color: $coral;
+    cursor: pointer;
+  }
 }

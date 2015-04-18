@@ -11,9 +11,13 @@ var LoginForm = React.createClass({
   render: function() {
     return (
       <form className="login-form">
-        <input className="login-form-input" ref="email"></input>
+        <h3 className="login-form-title">Login</h3>
+        <input
+          className="login-form-input"
+          ref="email"
+          placeholder="email"></input>
         <input className="login-form-input" ref="password"></input>
-        <button className="login-form-submit">Log in</button>
+        <a className="login-form-submit">Log in</a>
       </form>
     );
   }

@@ -6,10 +6,9 @@ class People::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    super
+  end
 
   # DELETE /resource/sign_out
   # def destroy
@@ -22,4 +21,5 @@ class People::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.for(:sign_in) << :attribute
   # end
+
 end

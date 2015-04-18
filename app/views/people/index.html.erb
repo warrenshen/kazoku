@@ -1,2 +1,14 @@
 <%= react_component("Header", {homePath: root_path, loginPath: login_path, isColored: true}) %>
-<%= react_component("PeopleList", {people: @people}) %>
+<section class="people-banner">
+  <div class="people-banner-content">
+    <h2 class="people-banner-title">
+      People on Kazoku
+    </h2>
+    <h5 class="people-banner-subtitle">
+      Where do you belong?
+    </h5>
+  </div>
+</section>
+<section class="people-section">
+  <%= react_component("PeopleList", {people: @people}) %>
+</section>

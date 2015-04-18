@@ -1,11 +1,36 @@
 @import "colors";
 
-.people-section {
+.people-banner {
+  position: relative;
+  width: 100%;
+  background-color: $white;
+}
+
+.people-banner-content {
+  position: relative;
+  width: 100%;
+  padding: 64px 0;
+  text-align: center;
+}
+
+.people-banner-title {
   position: relative;
 }
 
-.person-section {
+.people-banner-subtitle {
   position: relative;
+}
+
+.people-section {
+  position: relative;
+  width: 100%;
+  padding: 48px 0;
+}
+
+.people-list {
+  position: relative;
+  width: 100%;
+  text-align: center;
 }
 
 .person-banner {
@@ -16,9 +41,8 @@
 
 .person-banner-content {
   position: relative;
-  width: 356px;
-  padding: 64px;
-  margin: auto;
+  width: 100%;
+  padding: 64px 0;
   text-align: center;
 }
 

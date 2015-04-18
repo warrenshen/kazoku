@@ -40,7 +40,6 @@
   margin-left: 12px;
   color: $white;
   font-size: 18px;
-  font-family: "Montserrat";
   text-decoration: none;
 
   &:hover {
@@ -60,7 +59,6 @@
   margin-right: 12px;
   color: $white;
   font-size: 16px;
-  font-family: "Montserrat";
   text-decoration: none;
 
   &:hover {
@@ -77,4 +75,20 @@
   position: relative;
   width: 100%;
   background-color: $white;
+}
+
+.login-banner-content {
+  position: relative;
+  width: 356px;
+  padding: 64px;
+  margin: auto;
+  text-align: center;
+}
+
+.login-banner-title {
+  position: relative;
+}
+
+.login-banner-subtitle {
+  position: relative;
 }

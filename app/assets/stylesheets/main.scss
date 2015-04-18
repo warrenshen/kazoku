@@ -17,6 +17,9 @@ h5,
 h6 {
   position: "relative";
   margin: 0;
+  color: $ash;
+  font-family: "Montserrat";
+  font-weight: 400;
   letter-spacing: 1px;
 }
 
@@ -43,6 +46,13 @@ h5 {
 
 h6 {
   font-size: 14px;
+}
+
+a,
+li,
+span {
+  font-family: "Montserrat";
+  font-weight: 400;
 }
 
 .vertical-anchor {

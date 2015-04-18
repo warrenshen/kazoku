@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ###
 gem 'devise'
+gem 'cancancan', '~> 1.10'
 gem 'react-rails'
 gem 'showdown-rails'
 ###

@@ -1,20 +1,13 @@
 Rails.application.routes.draw do
 
-  devise_for :people
-
   root "pages#home"
-  get "home" => "pages#home"
+  get "login" => "people#new"
 
-  resources :people, controller: "persons", only: [:index, :show, :new, :create]
+  devise_for :people,
+    skip: [:registrations, :passwords],
+    controllers: { sessions: "people/sessions" }
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  resources :people, only: [:create, :index, :show]
 
   # Example resource route with options:
   #   resources :products do

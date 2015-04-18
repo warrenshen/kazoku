@@ -65,9 +65,13 @@
 
 .home-actions-headings {
   position: relative;
-  width: 456px;
+  width: 712px;
   margin: auto;
   text-align: center;
+}
+
+.home-actions-heading {
+  position: relative;
 }
 
 .home-action {
@@ -83,8 +87,10 @@
   margin-bottom: 12px;
 }
 
-.home-action-content {
+.home-action-clickable {
   position: relative;
+  font-size: 36px;
+  letter-spacing: 2px;
 }
 
 .login-banner {

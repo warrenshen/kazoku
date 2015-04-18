@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     skip: [:registrations, :passwords],
     controllers: { sessions: "people/sessions" }
 
-  resources :people, only: [:index, :show]
+  resources :people, only: [:create, :index, :show]
 
   # Example resource route with options:
   #   resources :products do

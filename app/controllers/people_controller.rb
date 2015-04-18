@@ -11,7 +11,7 @@ class PeopleController < ApplicationController
 
   def create
     if @person.save
-      sign_in(@person)
+      sign_in(:person, @person)
       redirect_to person_path(@person)
     else
       redirect_to root_path

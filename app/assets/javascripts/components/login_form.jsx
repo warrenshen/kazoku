@@ -16,6 +16,12 @@ var LoginForm = React.createClass({
 
   sendRequest: function(path, arguments) {
     var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+      if (request.readyState === 4 && request.status === 200) {
+        // TODO(Warren): Is this the best way to do this?
+        window.location = request.responseURL;
+      }
+    };
     request.open("post", path);
     request.setRequestHeader("Content-Type", "application/json");
     request.setRequestHeader("X-CSRF-Token", $('meta[name="csrf-token"]').attr('content'));

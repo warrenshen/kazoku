@@ -2,6 +2,7 @@ var Header = React.createClass({
 
   propTypes: {
     currentPerson: React.PropTypes.object.isRequired,
+    personPath:    React.PropTypes.string.isRequired,
     homePath:      React.PropTypes.string.isRequired,
     loginPath:     React.PropTypes.string.isRequired,
     isColored:     React.PropTypes.bool.isRequired,
@@ -15,22 +16,18 @@ var Header = React.createClass({
   },
 
   renderProfile: function() {
-    var merge = React.addons.classSet;
-    var loginClass = merge({
-      "header-login": true,
-      "header-login-colored": this.props.isColored,
-    });
     if (this.props.currentPerson === null) {
       return (
-        <a className={loginClass} href={this.props.loginPath}>
-          Signup/Login
-        </a>
+        <Clickable
+          style={"general-button"}
+          path={this.props.loginPath}
+          content={"Login/Signup"} />
       );
     } else {
       return (
         <Clickable
-          style={loginClass}
-          path={this.props.homePath}
+          style={"general-button"}
+          path={this.props.personPath}
           content={"Your Profile"} />
       );
     }

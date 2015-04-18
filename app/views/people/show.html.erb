@@ -1,4 +1,4 @@
-<%= react_component("Header", {homePath: root_path, loginPath: login_path, isColored: true}) %>
+<%= react_component("Header", {currentPerson: current_person, homePath: root_path, loginPath: login_path, personPath: person_path(current_person), isColored: false}) %>
 <section class="person-banner">
   <div class="person-banner-content">
     <h2 class="person-banner-name">

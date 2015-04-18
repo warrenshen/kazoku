@@ -85,6 +85,25 @@ textarea:focus {
   box-shadow: 0 0 2px $coral;
 }
 
+.general-button {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  padding: 6px 12px;
+  margin-right: 12px;
+  color: $white;
+  border-bottom: 1px solid;
+  border-color: $red;
+  border-radius: 2px;
+  background-color: $coral;
+  font-size: 14px;
+
+  &:hover {
+    background-color: $pink;
+    cursor: pointer;
+  }
+}
+
 .vertical-anchor {
   content: '';
   display: inline-block;

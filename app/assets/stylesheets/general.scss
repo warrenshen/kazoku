@@ -11,6 +11,7 @@
 }
 
 .header-colored {
+  position: relative;
   border-bottom: 1px solid;
   border-color: $border-gray;
   background-color: $white;
@@ -58,7 +59,7 @@
   position: relative;
   margin-right: 12px;
   color: $white;
-  font-size: 14px;
+  font-size: 16px;
   font-family: "Montserrat";
   text-decoration: none;
 
@@ -70,4 +71,10 @@
 
 .header-login-colored {
   color: $coral;
+}
+
+.login-banner {
+  position: relative;
+  width: 100%;
+  background-color: $white;
 }

@@ -13,7 +13,14 @@
 class Family < ActiveRecord::Base
 
   ##################################################
+  # Associations
+  ##################################################
+  belongs_to :event
+
+  ##################################################
   # Validations
   ##################################################
+  validates :name, presence: true
+  validates :size, presence: true
 
 end

@@ -11,4 +11,17 @@
 #
 
 class Event < ActiveRecord::Base
+
+  ##################################################
+  # Associations
+  ##################################################
+  has_one :event
+
+  ##################################################
+  # Validations
+  ##################################################
+  validates :name,        presence: true
+  validates :description, presence: true
+  validates :date,        presence: true
+
 end

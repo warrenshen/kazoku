@@ -12,17 +12,30 @@ var LoginForm = React.createClass({
     shouldShowLogin: true,
   },
 
-  attemptLogin: function(event) {
-    var email = React.findDOMNode(this.refs.email).value;
-    var password = React.findDOMNode(this.refs.password).value;
+  sendRequest: function(arguments) {
     var request = new XMLHttpRequest();
     request.open("post", this.props.submitPath);
     request.setRequestHeader("Content-Type", "application/json");
-    request.send(JSON.stringify({email: email, password: password}));
+    request.send(JSON.stringify(arguments));
+  }
+
+  attemptLogin: function(event) {
+    var email = React.findDOMNode(this.refs.email).value;
+    var password = React.findDOMNode(this.refs.password).value;
+    this.sendRequest({email: email, password: password});
   },
 
   attemptSignup: function(event) {
-
+    var first_name = React.findDOMNode(this.refs.first_name).value;
+    var last_name = React.findDOMNode(this.refs.last_name).value;
+    var email = React.findDOMNode(this.refs.email).value;
+    var password = React.findDOMNode(this.refs.password).value;
+    this.sendRequest({
+      first_name: first,
+      last_name: last,
+      email: email,
+      password: password,
+    });
   },
 
   renderLoginForm: function() {
@@ -56,8 +69,20 @@ var LoginForm = React.createClass({
     return (
       <form className="login-form">
         <h3 className="login-form-title">
-          Login
+          Signup
         </h3>
+        <input
+          className="login-form-input"
+          ref="first_name"
+          type="text"
+          placeholder="first name">
+        </input>
+        <input
+          className="login-form-input"
+          ref="last_name"
+          type="text"
+          placeholder="last name">
+        </input>
         <input
           className="login-form-input"
           ref="email"
@@ -73,7 +98,7 @@ var LoginForm = React.createClass({
         <a
           className="login-form-submit"
           onClick={this.attemptSignup}>
-          Log in
+          Sign up
         </a>
       </form>
     );

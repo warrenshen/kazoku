@@ -44,3 +44,11 @@ h5 {
 h6 {
   font-size: 14px;
 }
+
+.vertical-anchor {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  height: 100%;
+}

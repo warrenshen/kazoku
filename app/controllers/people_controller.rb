@@ -12,8 +12,9 @@ class PeopleController < ApplicationController
   def create
     if @person.save
       sign_in(@person)
+      redirect_to person_path(@person)
     else
-      puts "error error error"
+      redirect_to root_path
     end
   end
 

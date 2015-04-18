@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   root "pages#home"
   get "home" => "pages#home"
 
-  devise_for :people, controllers: {
-    sessions: "people/sessions"
-  }
+  devise_for :people,
+    skip: [:registrations, :passwords],
+    controllers: { sessions: "people/sessions" }
 
   resources :people, only: [:index, :show, :new, :create]
 

@@ -22,6 +22,5 @@ class Family < ActiveRecord::Base
   # Validations
   ##################################################
   validates :name, presence: true
-  # validates :size, presence: true
 
 end

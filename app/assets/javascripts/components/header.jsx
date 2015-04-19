@@ -23,7 +23,7 @@ var Header = React.createClass({
 
   attemptLogout: function(event) {
     var email = this.props.currentPerson.email;
-    this.sendRequest(Routes.people.signout, {
+    this.sendRequest(Routes.people.logout, {
       email: email,
     });
   },

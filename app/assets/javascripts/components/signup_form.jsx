@@ -1,15 +1,5 @@
 var SignupForm = React.createClass({
 
-  propTypes: {
-    loginPath:    React.PropTypes.string.isRequired,
-    signupRemote: React.PropTypes.string.isRequired,
-  },
-
-  defaultProps: {
-    loginPath:  "",
-    signupRemote: "",
-  },
-
   getInitialState: function() {
     return {shouldShowLogin: true};
   },
@@ -31,7 +21,7 @@ var SignupForm = React.createClass({
     var email = React.findDOMNode(this.refs.email).value;
     var password = React.findDOMNode(this.refs.password).value;
     var image_url = React.findDOMNode(this.refs.image_url).value;
-    this.sendRequest(this.props.signupRemote, {
+    this.sendRequest(Routes.people.index, {
       person: {
         first_name: first_name,
         last_name: last_name,
@@ -88,7 +78,7 @@ var SignupForm = React.createClass({
             or,
           </span>
           <Clickable
-            path={this.props.loginPath}
+            path={Routes.pages.login}
             style={"login-form-toggle"}
             content={"log in"} />
         </div>

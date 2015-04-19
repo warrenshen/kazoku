@@ -18,6 +18,7 @@
 #  last_sign_in_ip        :string
 #  created_at             :datetime
 #  updated_at             :datetime
+#  image_url              :string           default(""), not null
 #
 
 class Person < ActiveRecord::Base
@@ -37,5 +38,6 @@ class Person < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name,  presence: true
   validates :email,      presence: true
+  validates :image_url,  presence: true
 
 end

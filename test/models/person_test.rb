@@ -18,6 +18,7 @@
 #  last_sign_in_ip        :string
 #  created_at             :datetime
 #  updated_at             :datetime
+#  image_url              :string           default(""), not null
 #
 
 require 'test_helper'

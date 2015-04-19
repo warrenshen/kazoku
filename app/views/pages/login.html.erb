@@ -1,0 +1,14 @@
+<%= react_component("Header", {currentPerson: current_person, homePath: root_path, loginPath: login_path, personPath: person_path(current_person), isColored: true}) %>
+<section class="login-banner">
+  <div class="login-banner-content">
+    <h2 class="login-banner-title">
+      Enter Kazoku
+    </h2>
+    <h5 class="login-banner-subtitle">
+      Fun with family awaits.
+    </h5>
+  </div>
+</section>
+<section class="login-section">
+  <%= react_component("LoginForm", {signupPath: signup_path, loginRemote: person_session_path}) %>
+</section>

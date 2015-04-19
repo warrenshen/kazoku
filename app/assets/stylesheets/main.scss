@@ -7,6 +7,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: $background-gray;
+  text-rendering: optimizelegibility;
 }
 
 h1,
@@ -90,9 +91,9 @@ textarea:focus {
   vertical-align: middle;
   position: relative;
   padding: 6px 12px;
-  margin: 0 12px;
+  margin-right: 12px;
   color: $white;
-  border-bottom: 1px solid;
+  border-bottom: 2px solid;
   border-color: $red;
   border-radius: 2px;
   background-color: $coral;

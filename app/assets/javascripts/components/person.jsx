@@ -1,10 +1,12 @@
 var Person = React.createClass({
   propTypes: {
-    person: React.PropTypes.object.isRequired,
+    currentPerson: React.PropTypes.object.isRequired,
+    person:        React.PropTypes.object.isRequired,
   },
 
   defaultProps:{
-    person: null,
+    currentPerson: null,
+    person:        null,
   },
 
   renderName: function() {
@@ -19,6 +21,23 @@ var Person = React.createClass({
     }
   },
 
+  renderOptions: function() {
+    if (this.props.currentPerson.id === this.props.person.id) {
+      return (
+        <div className="person-banner-options">
+          <Clickable
+            style={"general-button"}
+            path={Routes.pages.login}
+            content={"Join a family"} />
+          <Clickable
+            style={"general-button"}
+            path={Routes.pages.login}
+            content={"Create an event"} />
+        </div>
+      );
+    }
+  },
+
   render: function() {
     return (
       <div className="person-banner-content">
@@ -26,6 +45,7 @@ var Person = React.createClass({
           {this.renderName()}
         </h2>
         {this.renderImage()}
+        {this.renderOptions()}
       </div>
     );
   }

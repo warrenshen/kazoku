@@ -8,6 +8,7 @@ var Routes = {
 
   people: {
     index: "/people",
+    signout: "/people/sign_out"
   },
 
   families: {

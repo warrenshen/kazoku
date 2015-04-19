@@ -1,4 +1,11 @@
 <%= react_component("Header", {currentPerson: current_person, isColored: true}) %>
 <section class="general-banner">
-  <%= react_component("Person", {currentPerson: current_person, person: @person}) %>
+  <div class="general-banner-content">
+    <h2 class="general-banner-title">
+      Create/Join a Family
+    </h2>
+    <h5 class="general-banner-subtitle">
+      Families create and attend events together.
+    </h5>
+  </div>
 </section>

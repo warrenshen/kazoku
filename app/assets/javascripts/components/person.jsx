@@ -22,9 +22,9 @@ var Person = React.createClass({
   render: function() {
     return (
       <div className="person-block">
-        <h2 className="person-block-name">
+        <h3 className="person-block-name">
           {this.renderName()}
-        </h2>
+        </h3>
         {this.renderImage()}
       </div>
     );

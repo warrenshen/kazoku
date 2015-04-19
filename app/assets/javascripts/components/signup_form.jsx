@@ -89,8 +89,8 @@ var SignupForm = React.createClass({
           </span>
           <Clickable
             path={this.props.loginPath}
-            style="login-form-toggle"
-            content="log in" />
+            style={"login-form-toggle"}
+            content={"log in"} />
         </div>
       </form>
     );

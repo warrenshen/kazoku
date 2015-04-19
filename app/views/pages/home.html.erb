@@ -1,4 +1,11 @@
-<%= react_component("Header", {currentPerson: current_person, homePath: root_path, loginPath: login_path, personPath: person_path(current_person), isColored: false}) %>
+<%= react_component(
+  "Header",
+  { currentPerson: current_person,
+    homePath: root_path,
+    loginPath: login_path,
+    logoutRemote: destroy_person_session_path,
+    isColored: false
+  }) %>
 <section class="home-banner">
   <div class="home-banner-fade"></div>
   <img class="home-banner-image" src="http://www.urbanalli.com/blog/wp-content/uploads/2012/10/donovan13.jpg"/>

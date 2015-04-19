@@ -15,8 +15,10 @@ var LoginForm = React.createClass({
     var email = React.findDOMNode(this.refs.email).value;
     var password = React.findDOMNode(this.refs.password).value;
     this.sendRequest(Routes.people.login, {
-      email: email,
-      password: password,
+      session: {
+        email: email,
+        password: password,
+      }
     });
   },
 

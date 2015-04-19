@@ -28,7 +28,7 @@ var SignupForm = React.createClass({
         email: email,
         password: password,
         image_url: image_url,
-      },
+      }
     });
   },
 

@@ -17,8 +17,7 @@ var LoginForm = React.createClass({
   sendRequest: function(path, arguments) {
     var request = new XMLHttpRequest();
     request.onload = function() {
-      console.log(request);
-      // window.location = request.responseURL;
+      window.location = request.response;
     };
     request.open("post", path);
     request.setRequestHeader("Content-Type", "application/json");

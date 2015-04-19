@@ -1,8 +1,4 @@
 <%= react_component("Header", {currentPerson: current_person, isColored: true}) %>
-<section class="person-banner">
-  <div class="person-banner-content">
-    <h2 class="person-banner-name">
-      <%= @person.first_name + " " + @person.last_name %>
-    </h2>
-  </div>
+<section class="general-banner">
+  <%= react_component("Person", {currentPerson: current_person, person: @person}) %>
 </section>

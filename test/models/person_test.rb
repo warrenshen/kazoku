@@ -5,7 +5,6 @@
 #  id                     :integer          not null, primary key
 #  first_name             :string           default(""), not null
 #  last_name              :string           default(""), not null
-#  birthday               :date
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  reset_password_token   :string
@@ -19,6 +18,7 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  image_url              :string           default(""), not null
+#  family_id              :integer
 #
 
 require 'test_helper'

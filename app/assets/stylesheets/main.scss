@@ -7,6 +7,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: $background-gray;
+  text-rendering: optimizelegibility;
 }
 
 h1,
@@ -69,7 +70,7 @@ input[type=text],
 input[type=password],
 textarea {
   border: 1px solid;
-  border-color: $gray;
+  border-color: $input-gray;
   outline: none;
   box-sizing: border-box;
   -webkit-transition: all 0.30s ease-in-out;
@@ -90,9 +91,9 @@ textarea:focus {
   vertical-align: middle;
   position: relative;
   padding: 6px 12px;
-  margin: 0 12px;
+  margin-right: 12px;
   color: $white;
-  border-bottom: 1px solid;
+  border-bottom: 2px solid;
   border-color: $red;
   border-radius: 2px;
   background-color: $coral;

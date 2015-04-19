@@ -1,32 +1,5 @@
 @import "colors";
 
-.people-banner {
-  position: relative;
-  width: 100%;
-  background-color: $white;
-}
-
-.people-banner-content {
-  position: relative;
-  width: 100%;
-  padding: 64px 0;
-  text-align: center;
-}
-
-.people-banner-title {
-  position: relative;
-}
-
-.people-banner-subtitle {
-  position: relative;
-}
-
-.people-section {
-  position: relative;
-  width: 100%;
-  padding: 48px 0;
-}
-
 .people-list {
   position: relative;
   width: 100%;
@@ -41,19 +14,18 @@
   position: relative
 }
 
-.person-banner {
+.person-banner-image {
   position: relative;
-  width: 100%;
-  background-color: $white;
+  width: 312px;
+  height: 312px;
+  border: 6px solid;
+  border-color: $white;
+  border-radius: 156px;
+  margin-top: 24px;
+  box-shadow: 0 0 1px $gray;
 }
 
-.person-banner-content {
+.person-banner-options {
   position: relative;
-  width: 100%;
-  padding: 64px 0;
-  text-align: center;
-}
-
-.person-banner-name {
-  position: relative;
+  margin-top: 24px;
 }

@@ -73,6 +73,7 @@ var Header = React.createClass({
       "header-brand": true,
       "header-brand-colored": this.props.isColored,
     });
+    console.log(Routes);
     return (
       <div className={headerClass}>
         <div className="header-left">

@@ -35,7 +35,7 @@ var Header = React.createClass({
       });
       return (
         <a
-          className={brandClass}
+          className="general-button"
           onClick={this.attemptLogout}>
           Logout
         </a>

@@ -49,3 +49,24 @@
 .header-brand-colored {
   color: $coral;
 }
+
+.general-banner {
+  position: relative;
+  width: 100%;
+  padding: 64px 0;
+  background-color: $white;
+}
+
+.general-banner-content {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.general-banner-title {
+  position: relative;
+}
+
+.general-banner-subtitle {
+  position: relative;
+}

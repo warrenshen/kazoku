@@ -40,8 +40,8 @@ var Person = React.createClass({
 
   render: function() {
     return (
-      <div className="person-banner-content">
-        <h2 className="person-banner-name">
+      <div className="general-banner-content">
+        <h2 className="general-banner-title">
           {this.renderName()}
         </h2>
         {this.renderImage()}

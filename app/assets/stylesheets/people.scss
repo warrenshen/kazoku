@@ -1,26 +1,5 @@
 @import "colors";
 
-.people-banner {
-  position: relative;
-  width: 100%;
-  background-color: $white;
-}
-
-.people-banner-content {
-  position: relative;
-  width: 100%;
-  padding: 64px 0;
-  text-align: center;
-}
-
-.people-banner-title {
-  position: relative;
-}
-
-.people-banner-subtitle {
-  position: relative;
-}
-
 .people-section {
   position: relative;
   width: 100%;
@@ -39,23 +18,6 @@
 
 .person-block-name {
   position: relative
-}
-
-.person-banner {
-  position: relative;
-  width: 100%;
-  background-color: $white;
-}
-
-.person-banner-content {
-  position: relative;
-  width: 100%;
-  padding: 64px 0;
-  text-align: center;
-}
-
-.person-banner-name {
-  position: relative;
 }
 
 .person-banner-image {

@@ -14,15 +14,15 @@ var Person = React.createClass({
 
   renderImage: function() {
     var person = this.props.person;
-    if (person.image_url.length()) {
-      return <img className="person-image" src={person.image_url} />
+    if (person.image_url.length) {
+      return <img className="person-banner-image" src={person.image_url} />
     }
   },
 
   render: function() {
     return (
-      <div className="person-container">
-        <h2 className="person-name">
+      <div className="person-banner-content">
+        <h2 className="person-banner-name">
           {this.renderName()}
         </h2>
         {this.renderImage()}

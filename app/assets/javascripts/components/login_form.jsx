@@ -24,34 +24,34 @@ var LoginForm = React.createClass({
 
   render: function() {
     return (
-      <form className="login-form">
-        <h3 className="login-form-title">
+      <form className="general-form">
+        <h3 className="general-form-title">
           Login
         </h3>
         <input
-          className="login-form-input"
+          className="general-form-input"
           ref="email"
           type="text"
           placeholder="Email">
         </input>
         <input
-          className="login-form-input"
+          className="general-form-input"
           ref="password"
           type="password"
           placeholder="Password">
         </input>
         <a
-          className="login-form-submit"
+          className="general-form-submit"
           onClick={this.attemptLogin}>
           Log in
         </a>
-        <div className="login-form-section">
-          <span className="login-form-label">
+        <div className="general-form-section">
+          <span className="general-form-label">
             or,
           </span>
           <Clickable
             path={Routes.pages.signup}
-            style={"login-form-toggle"}
+            style={"general-form-toggle"}
             content={"sign up"} />
         </div>
       </form>

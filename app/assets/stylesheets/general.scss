@@ -76,3 +76,65 @@
   width: 100%;
   padding: 48px 0;
 }
+
+.general-form {
+  position: relative;
+  width: 356px;
+  padding: 36px;
+  margin: auto;
+  border: 1px solid;
+  border-color: $border-gray;
+  border-radius: 2px;
+  background-color: $white;
+  text-align: center;
+}
+
+.general-form-title {
+  display: inline-block;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.general-form-input {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding: 6px;
+  margin-bottom: 24px;
+}
+
+.general-form-submit {
+  display: inline-block;
+  position: relative;
+  padding: 6px 12px;
+  margin: auto;
+  border: 1px solid;
+  border-color: $ash;
+  border-radius: 2px;
+
+  &:hover {
+    color: $coral;
+    border-color: $coral;
+    cursor: pointer;
+  }
+}
+
+.general-form-section {
+  position: relative;
+  margin-top: 24px;
+}
+
+.general-form-label {
+  position: relative;
+  padding-right: 6px;
+}
+
+.general-form-toggle {
+  display: inline-block;
+  position: relative;
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}

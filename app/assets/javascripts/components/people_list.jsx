@@ -10,11 +10,7 @@ var PeopleList = React.createClass({
 
   renderPerson: function(person) {
     return (
-      <div className="person-block" key={person.id}>
-        <h3 className="person-block-name">
-          {person.first_name + " " + person.last_name}
-        </h3>
-      </div>
+      <Person key={person.id} person={person} />
     );
   },
 

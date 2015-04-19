@@ -10,6 +10,7 @@ var Header = React.createClass({
 
   defaultProps: {
     currentPerson: null,
+    personPath:    "",
     homePath:      "",
     loginPath:     "",
     isColored:     true,

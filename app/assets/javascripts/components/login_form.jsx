@@ -17,7 +17,8 @@ var LoginForm = React.createClass({
   sendRequest: function(path, arguments) {
     var request = new XMLHttpRequest();
     request.onload = function() {
-      window.location = request.responseURL;
+      console.log(request);
+      // window.location = request.responseURL;
     };
     request.open("post", path);
     request.setRequestHeader("Content-Type", "application/json");
@@ -39,12 +40,14 @@ var LoginForm = React.createClass({
     var last_name = React.findDOMNode(this.refs.last_name).value;
     var email = React.findDOMNode(this.refs.email).value;
     var password = React.findDOMNode(this.refs.password).value;
+    var image_url = React.findDOMNode(this.refs.image_url).value;
     this.sendRequest(this.props.signupPath, {
       person: {
         first_name: first_name,
         last_name: last_name,
         email: email,
         password: password,
+        image_url: image_url,
       },
     });
   },
@@ -119,6 +122,12 @@ var LoginForm = React.createClass({
           ref="password"
           type="password"
           placeholder="Password">
+        </input>
+        <input
+          className="login-form-input"
+          ref="image_url"
+          type="text"
+          placeholder="Image link">
         </input>
         <a
           className="login-form-submit"

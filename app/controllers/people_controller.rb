@@ -12,9 +12,9 @@ class PeopleController < ApplicationController
   def create
     if @person.save
       sign_in(:person, @person)
-      redirect_to person_path(@person)
+      render json: person_path(@person)
     else
-      redirect_to root_path
+      render json: root_path
     end
   end
 
@@ -27,6 +27,7 @@ class PeopleController < ApplicationController
       :last_name,
       :email,
       :password,
+      :image_url,
     )
   end
 

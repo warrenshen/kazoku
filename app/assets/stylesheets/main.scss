@@ -69,7 +69,7 @@ input[type=text],
 input[type=password],
 textarea {
   border: 1px solid;
-  border-color: $gray;
+  border-color: $input-gray;
   outline: none;
   box-sizing: border-box;
   -webkit-transition: all 0.30s ease-in-out;

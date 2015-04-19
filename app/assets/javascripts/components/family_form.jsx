@@ -1,37 +1,30 @@
 var FamilyForm = React.createClass({
 
+  propTypes: {
+    currentPerson: React.PropTypes.object.isRequired,
+  },
+
+  defaultProps: {
+    currentPerson: null,
+  },
+
   render: function() {
     return (
-      <form className="login-form">
-        <h3 className="login-form-title">
-          Login
+      <form className="general-form">
+        <h3 className="general-form-title">
+          Create Family
         </h3>
         <input
-          className="login-form-input"
-          ref="email"
+          className="general-form-input"
+          ref="name"
           type="text"
-          placeholder="Email">
-        </input>
-        <input
-          className="login-form-input"
-          ref="password"
-          type="password"
-          placeholder="Password">
+          placeholder="Family name">
         </input>
         <a
-          className="login-form-submit"
-          onClick={this.attemptLogin}>
-          Log in
+          className="general-form-submit"
+          onClick={this.attemptCreate}>
+          Create family
         </a>
-        <div className="login-form-section">
-          <span className="login-form-label">
-            or,
-          </span>
-          <Clickable
-            path={Routes.pages.signup}
-            style={"login-form-toggle"}
-            content={"sign up"} />
-        </div>
       </form>
     );
   }

@@ -1,14 +1,6 @@
 class PeopleController < ApplicationController
   load_and_authorize_resource param_method: :person_params, only: [:create]
 
-  def index
-    @people = Person.all
-  end
-
-  def show
-    @person = Person.find(params[:id])
-  end
-
   def create
     if @person.save
       sign_in(:person, @person)
@@ -16,6 +8,14 @@ class PeopleController < ApplicationController
     else
       render json: root_path
     end
+  end
+
+  def index
+    @people = Person.all
+  end
+
+  def show
+    @person = Person.find(params[:id])
   end
 
   private

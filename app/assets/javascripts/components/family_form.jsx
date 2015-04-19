@@ -8,6 +8,26 @@ var FamilyForm = React.createClass({
     currentPerson: null,
   },
 
+  sendRequest: function(path, arguments) {
+    var request = new XMLHttpRequest();
+    request.onload = function() {
+      window.location = request.response;
+    };
+    request.open("post", path);
+    request.setRequestHeader("Content-Type", "application/json");
+    request.setRequestHeader("X-CSRF-Token", $('meta[name="csrf-token"]').attr('content'));
+    request.send(JSON.stringify(arguments));
+  },
+
+  attemptCreate: function(event) {
+    var name = React.findDOMNode(this.refs.name).value;
+    this.sendRequest(Routes.families.index, {
+      family: {
+        name: name,
+      }
+    });
+  },
+
   render: function() {
     return (
       <form className="general-form">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150419042146) do
+ActiveRecord::Schema.define(version: 20150419212149) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name",        default: "", null: false
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20150419042146) do
 
   create_table "families", force: :cascade do |t|
     t.string   "name",       default: "", null: false
-    t.integer  "size",       default: 0,  null: false
     t.integer  "event_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
@@ -45,6 +44,7 @@ ActiveRecord::Schema.define(version: 20150419042146) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_url",              default: "", null: false
+    t.integer  "family_id"
   end
 
   add_index "people", ["email"], name: "index_people_on_email", unique: true

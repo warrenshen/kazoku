@@ -1,15 +1,5 @@
 var LoginForm = React.createClass({
 
-  propTypes: {
-    signupPath:  React.PropTypes.string.isRequired,
-    loginRemote: React.PropTypes.string.isRequired,
-  },
-
-  defaultProps: {
-    signupPath:  "",
-    loginRemote: "",
-  },
-
   sendRequest: function(path, arguments) {
     var request = new XMLHttpRequest();
     request.onload = function() {
@@ -24,9 +14,11 @@ var LoginForm = React.createClass({
   attemptLogin: function(event) {
     var email = React.findDOMNode(this.refs.email).value;
     var password = React.findDOMNode(this.refs.password).value;
-    this.sendRequest(this.props.loginRemote, {
-      email: email,
-      password: password,
+    this.sendRequest(Routes.people.login, {
+      session: {
+        email: email,
+        password: password,
+      }
     });
   },
 
@@ -58,9 +50,9 @@ var LoginForm = React.createClass({
             or,
           </span>
           <Clickable
-            path={this.props.signupPath}
-            style="login-form-toggle"
-            content="sign up" />
+            path={Routes.pages.signup}
+            style={"login-form-toggle"}
+            content={"sign up"} />
         </div>
       </form>
     );

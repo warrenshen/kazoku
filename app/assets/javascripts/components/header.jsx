@@ -23,9 +23,7 @@ var Header = React.createClass({
 
   attemptLogout: function(event) {
     var email = this.props.currentPerson.email;
-    this.sendRequest(Routes.people.logout, {
-      email: email,
-    });
+    this.sendRequest(Routes.people.logout, {});
   },
 
   renderLogout: function() {
@@ -73,7 +71,6 @@ var Header = React.createClass({
       "header-brand": true,
       "header-brand-colored": this.props.isColored,
     });
-    console.log(Routes);
     return (
       <div className={headerClass}>
         <div className="header-left">

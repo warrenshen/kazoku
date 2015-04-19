@@ -40,18 +40,17 @@ var LoginForm = React.createClass({
           type="password"
           placeholder="Password">
         </input>
-        <a
-          className="general-form-submit"
-          onClick={this.attemptLogin}>
-          Log in
-        </a>
+        <Clickable
+          action={this.attemptLogin}
+          style={"general-form-submit"}
+          content={"Log in"} />
         <div className="general-form-section">
           <span className="general-form-label">
             or,
           </span>
           <Clickable
-            style={"general-form-toggle"}
             path={Routes.pages.signup}
+            style={"general-form-toggle"}
             content={"sign up"} />
         </div>
       </form>

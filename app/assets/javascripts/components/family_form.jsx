@@ -40,11 +40,10 @@ var FamilyForm = React.createClass({
           type="text"
           placeholder="Family name">
         </input>
-        <a
-          className="general-form-submit"
-          onClick={this.attemptCreate}>
-          Create family
-        </a>
+        <Clickable
+          action={this.attemptCreate}
+          style={"general-form-submit"}
+          content={"Create family"} />
       </form>
     );
   }

@@ -34,11 +34,10 @@ var Header = React.createClass({
         "header-brand-colored": this.props.isColored,
       });
       return (
-        <a
-          className="general-button"
-          onClick={this.attemptLogout}>
-          Logout
-        </a>
+        <Clickable
+          action={this.attemptLogout}
+          style={"general-button"}
+          content={"Logout"} />
       );
     }
   },
@@ -75,9 +74,10 @@ var Header = React.createClass({
       <div className={headerClass}>
         <div className="header-left">
           <div className="vertical-anchor"></div>
-          <a className={brandClass} href={Routes.pages.home}>
-            Kazoku
-          </a>
+          <Clickable
+            path={Routes.pages.home}
+            style={brandClass}
+            content={"Kazoku"} />
         </div>
         <div className="header-right">
           <div className="vertical-anchor"></div>

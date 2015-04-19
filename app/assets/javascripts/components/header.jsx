@@ -47,15 +47,15 @@ var Header = React.createClass({
     if (this.props.currentPerson === null) {
       return (
         <Clickable
-          style={"general-button"}
           path={Routes.pages.login}
+          style={"general-button"}
           content={"Login/Signup"} />
       );
     } else {
       return (
         <Clickable
-          style={"general-button"}
           path={Routes.people.index + "/" + this.props.currentPerson.id}
+          style={"general-button"}
           content={"Your Profile"} />
       );
     }

@@ -26,12 +26,12 @@ var Profile = React.createClass({
       return (
         <div className="profile-banner-options">
           <Clickable
-            style={"general-button"}
             path={Routes.families.new}
+            style={"general-button"}
             content={"Create a family"} />
           <Clickable
-            style={"general-button"}
             path={Routes.pages.login}
+            style={"general-button"}
             content={"Create an event"} />
         </div>
       );

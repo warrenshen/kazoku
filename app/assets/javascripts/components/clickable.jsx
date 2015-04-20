@@ -18,7 +18,6 @@ var Clickable = React.createClass({
 
   handleClick: function() {
     event.stopPropagation();
-    console.log(this.props.path);
     if (this.props.path !== "") {
       window.location = this.props.path;
     } else if (this.props.action !== null) {

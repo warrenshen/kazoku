@@ -1,11 +1,12 @@
 var Person = React.createClass({
+
   propTypes: {
     person: React.PropTypes.object.isRequired,
   },
 
   getDefaultProps: function() {
     return {
-      person: null,
+      person: {},
     };
   },
 

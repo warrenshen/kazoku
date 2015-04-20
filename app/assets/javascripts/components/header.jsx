@@ -7,7 +7,7 @@ var Header = React.createClass({
 
   getDefaultProps: function() {
     return {
-      currentPerson: null,
+      currentPerson: {},
       isColored:     true,
     };
   },

@@ -20,7 +20,7 @@ class PeopleController < ApplicationController
 
   def update
     if @person.update_attributes(family_id: params[:person][:family_id])
-      render json: person_path(@person)
+      render json: family_path(@person.family)
     else
       render json: root_path
     end

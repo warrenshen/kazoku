@@ -1,1 +1,4 @@
 <%= react_component("Header", {currentPerson: current_person, isColored: true}) %>
+<section class="general-banner">
+  <%= react_component("FamilyProfile", {currentPerson: current_person, family: @family}) %>
+</section>

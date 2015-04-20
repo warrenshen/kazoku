@@ -15,7 +15,7 @@ var Family = React.createClass({
   sendRequest: function(path, arguments) {
     var request = new XMLHttpRequest();
     request.onload = function() {
-      // window.location = request.response;
+      window.location = request.response;
     };
     request.open("put", path);
     request.setRequestHeader("Content-Type", "application/json");

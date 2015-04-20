@@ -1,4 +1,5 @@
-var Profile = React.createClass({
+var PersonProfile = React.createClass({
+
   propTypes: {
     currentPerson: React.PropTypes.object,
     person:        React.PropTypes.object.isRequired,
@@ -35,7 +36,7 @@ var Profile = React.createClass({
     var currentPerson = this.props.currentPerson;
     if (currentPerson !== null && currentPerson.id === this.props.person.id) {
       return (
-        <div className="profile-banner-options">
+        <div className="general-banner-options">
           <Clickable
             path={Routes.families.new}
             style={"general-button"}

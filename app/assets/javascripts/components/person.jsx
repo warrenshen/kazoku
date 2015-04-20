@@ -25,9 +25,10 @@ var Person = React.createClass({
   render: function() {
     return (
       <div className="person-block">
-        <h3 className="person-block-name">
-          {this.renderName()}
-        </h3>
+        <Clickable
+          path={Routes.people.index + "/" + this.props.person.id}
+          style="person-block-name"
+          content={this.renderName()} />
         {this.renderImage()}
       </div>
     );

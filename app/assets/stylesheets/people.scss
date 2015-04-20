@@ -21,7 +21,15 @@
 }
 
 .person-block-name {
-  position: relative
+  display: block;
+  position: relative;
+  font-size: 36px;
+  letter-spacing: 2px;
+  line-height: 48px;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .person-block-image {

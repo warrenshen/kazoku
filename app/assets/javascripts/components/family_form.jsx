@@ -34,7 +34,7 @@ var FamilyForm = React.createClass({
     return (
       <form className="general-form">
         <h3 className="general-form-title">
-          Create Family
+          Create a Family
         </h3>
         <input
           className="general-form-input"
@@ -46,6 +46,15 @@ var FamilyForm = React.createClass({
           action={this.attemptCreate}
           style={"general-form-submit"}
           content={"Create family"} />
+        <div className="general-form-section">
+          <span className="general-form-label">
+            or,
+          </span>
+          <Clickable
+            path={Routes.families.index}
+            style={"general-form-toggle"}
+            content={"join one"} />
+        </div>
       </form>
     );
   }

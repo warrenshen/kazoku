@@ -15,8 +15,7 @@ var Header = React.createClass({
   sendRequest: function(path, arguments) {
     var request = new XMLHttpRequest();
     request.onload = function() {
-      console.log(request);
-      // window.location = request.response;
+      window.location = request.response;
     };
     request.open("delete", path);
     request.setRequestHeader("Content-Type", "application/json");

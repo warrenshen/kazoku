@@ -22,7 +22,7 @@ var PeopleList = React.createClass({
 
   render: function() {
     return (
-      <div className="people-list">
+      <div className="general-list">
         {this.renderPeople()}
       </div>
     );

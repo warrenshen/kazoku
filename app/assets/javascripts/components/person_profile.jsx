@@ -18,7 +18,7 @@ var PersonProfile = React.createClass({
   },
 
   renderFamily: function() {
-    if (this.props.person.family_name.length) {
+    if (this.props.person.family_name) {
       return this.props.person.family_name;
     } else {
       return "(none)";

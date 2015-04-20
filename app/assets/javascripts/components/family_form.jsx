@@ -1,7 +1,7 @@
 var FamilyForm = React.createClass({
 
   propTypes: {
-    currentPerson: React.PropTypes.object.isRequired,
+    currentPerson: React.PropTypes.object,
   },
 
   getDefaultProps: function() {

@@ -44,13 +44,13 @@ class Person < ActiveRecord::Base
   ##################################################
   # Callbacks
   ##################################################
-  before_save :set_family_name
+  before_validation :set_family_name
 
   ##################################################
   # Methods
   ##################################################
   def set_family_name
-    family_name = family.name unless !family.exists
+    self.family_name = family.name unless family_id.nil?
   end
 
 end

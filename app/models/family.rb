@@ -24,4 +24,16 @@ class Family < ActiveRecord::Base
   ##################################################
   validates :name, presence: true, uniqueness: true
 
+  ##################################################
+  # Callbacks
+  ##################################################
+  before_validation :set_size
+
+  ##################################################
+  # Methods
+  ##################################################
+  def set_size
+    self.size = people.count
+  end
+
 end

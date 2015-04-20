@@ -1,6 +1,6 @@
 var Profile = React.createClass({
   propTypes: {
-    currentPerson: React.PropTypes.object.isRequired,
+    currentPerson: React.PropTypes.object,
     person:        React.PropTypes.object.isRequired,
   },
 
@@ -16,6 +16,14 @@ var Profile = React.createClass({
     return person.first_name + " " + person.last_name;
   },
 
+  renderFamily: function() {
+    if (this.props.person.family_name.length) {
+      return this.props.person.family_name;
+    } else {
+      return "(none)";
+    }
+  },
+
   renderImage: function() {
     var person = this.props.person;
     if (person.image_url.length) {
@@ -24,7 +32,8 @@ var Profile = React.createClass({
   },
 
   renderOptions: function() {
-    if (this.props.currentPerson.id === this.props.person.id) {
+    var currentPerson = this.props.currentPerson;
+    if (currentPerson !== null && currentPerson.id === this.props.person.id) {
       return (
         <div className="profile-banner-options">
           <Clickable
@@ -46,6 +55,9 @@ var Profile = React.createClass({
         <h2 className="general-banner-title">
           {this.renderName()}
         </h2>
+        <h5 className="general-banner-title">
+          Family: {this.renderFamily()}
+        </h5>
         {this.renderImage()}
         {this.renderOptions()}
       </div>

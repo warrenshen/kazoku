@@ -71,10 +71,32 @@
   position: relative;
 }
 
+.general-banner-options {
+  position: relative;
+  margin-top: 24px;
+}
+
 .general-section {
   position: relative;
   width: 100%;
   padding: 48px 0;
+}
+
+.general-section-headings {
+  position: relative;
+  width: 100%;
+  padding-bottom: 24px;
+  text-align: center;
+}
+
+.general-section-title {
+  position: relative;
+}
+
+.general-list {
+  position: relative;
+  width: 100%;
+  text-align: center;
 }
 
 .general-form {

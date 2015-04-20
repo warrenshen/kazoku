@@ -1,11 +1,13 @@
 var FamilyForm = React.createClass({
 
   propTypes: {
-    currentPerson: React.PropTypes.object.isRequired,
+    currentPerson: React.PropTypes.object,
   },
 
-  defaultProps: {
-    currentPerson: null,
+  getDefaultProps: function() {
+    return {
+      currentPerson: null,
+    };
   },
 
   sendRequest: function(path, arguments) {
@@ -32,7 +34,7 @@ var FamilyForm = React.createClass({
     return (
       <form className="general-form">
         <h3 className="general-form-title">
-          Create Family
+          Create a Family
         </h3>
         <input
           className="general-form-input"
@@ -40,11 +42,19 @@ var FamilyForm = React.createClass({
           type="text"
           placeholder="Family name">
         </input>
-        <a
-          className="general-form-submit"
-          onClick={this.attemptCreate}>
-          Create family
-        </a>
+        <Clickable
+          action={this.attemptCreate}
+          style={"general-form-submit"}
+          content={"Create family"} />
+        <div className="general-form-section">
+          <span className="general-form-label">
+            or,
+          </span>
+          <Clickable
+            path={Routes.families.index}
+            style={"general-form-toggle"}
+            content={"join one"} />
+        </div>
       </form>
     );
   }

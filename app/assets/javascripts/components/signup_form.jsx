@@ -1,9 +1,5 @@
 var SignupForm = React.createClass({
 
-  getInitialState: function() {
-    return {shouldShowLogin: true};
-  },
-
   sendRequest: function(path, arguments) {
     var request = new XMLHttpRequest();
     request.onload = function() {
@@ -68,11 +64,10 @@ var SignupForm = React.createClass({
           type="text"
           placeholder="Image link">
         </input>
-        <a
-          className="general-form-submit"
-          onClick={this.attemptSignup}>
-          Sign up
-        </a>
+        <Clickable
+          action={this.attemptSignup}
+          style={"general-form-submit"}
+          content={"Sign up"} />
         <div className="general-form-section">
           <span className="general-form-label">
             or,

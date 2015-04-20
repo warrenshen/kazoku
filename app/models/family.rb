@@ -7,6 +7,7 @@
 #  event_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  size       :integer          default("0"), not null
 #
 
 class Family < ActiveRecord::Base
@@ -21,6 +22,18 @@ class Family < ActiveRecord::Base
   ##################################################
   # Validations
   ##################################################
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
+
+  ##################################################
+  # Callbacks
+  ##################################################
+  before_validation :set_size
+
+  ##################################################
+  # Methods
+  ##################################################
+  def size
+    people.size
+  end
 
 end

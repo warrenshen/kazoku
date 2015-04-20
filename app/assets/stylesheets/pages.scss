@@ -32,7 +32,6 @@
   position: relative;
   z-index: 3;
   padding: 36px;
-  cursor: default;
 }
 
 .home-banner-title {
@@ -70,7 +69,7 @@
 .home-action {
   display: inline-block;
   position: relative;
-  padding: 0 18px;
+  padding: 0 24px;
 }
 
 .home-action-image {
@@ -78,9 +77,14 @@
   width: 456px;
   height: 300px;
   margin-bottom: 12px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .home-action-clickable {
+  display: block;
   position: relative;
   font-size: 36px;
   letter-spacing: 2px;

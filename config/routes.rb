@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     skip: [:registrations, :passwords],
     controllers: { sessions: "people/sessions" }
 
-  resources :people,   only: [:create, :index, :show]
+  resources :people,   only: [:create, :index, :show, :update]
   resources :families, only: [:new, :create, :index, :show]
   resources :events,   only: [:new, :create, :index, :show]
 

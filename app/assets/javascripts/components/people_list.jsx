@@ -4,17 +4,15 @@ var PeopleList = React.createClass({
     people: React.PropTypes.array.isRequired,
   },
 
-  defaultProps: {
-    people: [],
+  getDefaultProps: function() {
+    return {
+      people: [],
+    };
   },
 
   renderPerson: function(person) {
     return (
-      <div className="person-block" key={person.id}>
-        <h3 className="person-block-name">
-          {person.first_name + " " + person.last_name}
-        </h3>
-      </div>
+      <Person key={person.id} person={person} />
     );
   },
 
@@ -24,7 +22,7 @@ var PeopleList = React.createClass({
 
   render: function() {
     return (
-      <div className="people-list">
+      <div className="general-list">
         {this.renderPeople()}
       </div>
     );

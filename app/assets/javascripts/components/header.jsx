@@ -1,13 +1,15 @@
 var Header = React.createClass({
 
   propTypes: {
-    currentPerson: React.PropTypes.object.isRequired,
+    currentPerson: React.PropTypes.object,
     isColored:     React.PropTypes.bool.isRequired,
   },
 
-  defaultProps: {
-    currentPerson: null,
-    isColored:     true,
+  getDefaultProps: function() {
+    return {
+      currentPerson: null,
+      isColored:     true,
+    };
   },
 
   sendRequest: function(path, arguments) {
@@ -28,17 +30,11 @@ var Header = React.createClass({
 
   renderLogout: function() {
     if (this.props.currentPerson !== null) {
-      var merge = React.addons.classSet;
-      var brandClass = merge({
-        "header-brand": true,
-        "header-brand-colored": this.props.isColored,
-      });
       return (
-        <a
-          className="general-button"
-          onClick={this.attemptLogout}>
-          Logout
-        </a>
+        <Clickable
+          action={this.attemptLogout}
+          style={"general-button"}
+          content={"Logout"} />
       );
     }
   },
@@ -47,15 +43,15 @@ var Header = React.createClass({
     if (this.props.currentPerson === null) {
       return (
         <Clickable
-          style={"general-button"}
           path={Routes.pages.login}
+          style={"general-button"}
           content={"Login/Signup"} />
       );
     } else {
       return (
         <Clickable
-          style={"general-button"}
           path={Routes.people.index + "/" + this.props.currentPerson.id}
+          style={"general-button"}
           content={"Your Profile"} />
       );
     }
@@ -75,9 +71,10 @@ var Header = React.createClass({
       <div className={headerClass}>
         <div className="header-left">
           <div className="vertical-anchor"></div>
-          <a className={brandClass} href={Routes.pages.home}>
-            Kazoku
-          </a>
+          <Clickable
+            path={Routes.pages.home}
+            style={brandClass}
+            content={"Kazoku"} />
         </div>
         <div className="header-right">
           <div className="vertical-anchor"></div>

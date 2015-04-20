@@ -1,5 +1,7 @@
 class PeopleController < ApplicationController
-  load_and_authorize_resource param_method: :person_params, only: [:create]
+  load_and_authorize_resource param_method: :person_params, only: [:create, :update]
+
+  respond_to :json
 
   def create
     if @person.save
@@ -15,7 +17,15 @@ class PeopleController < ApplicationController
   end
 
   def show
-    @person = Person.find(params[:id])
+    @person = Person.find(params[:id]).as_json(include: :family)
+  end
+
+  def update
+    if @person.update_attributes(family_id: params[:person][:family_id])
+      render json: family_path(@person.family)
+    else
+      render json: root_path
+    end
   end
 
   private
@@ -28,6 +38,7 @@ class PeopleController < ApplicationController
       :email,
       :password,
       :image_url,
+      :family_id,
     )
   end
 

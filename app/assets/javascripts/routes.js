@@ -14,6 +14,7 @@ var Routes = {
 
   families: {
     index: "/families",
+    new: "/families/new",
   },
 
   events: {

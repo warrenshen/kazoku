@@ -1,1 +1,14 @@
 <%= react_component("Header", {currentPerson: current_person, isColored: true}) %>
+<section class="general-banner">
+  <div class="general-banner-content">
+    <h2 class="general-banner-title">
+      Families on Kazoku
+    </h2>
+    <h5 class="general-banner-subtitle">
+      Do you belong to one of these?
+    </h5>
+  </div>
+</section>
+<section class="general-section">
+  <%= react_component("FamiliesList", {currentPerson: current_person, families: @families}) %>
+</section>

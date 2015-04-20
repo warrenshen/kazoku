@@ -5,7 +5,7 @@ var Clickable = React.createClass({
     path:    React.PropTypes.string,
     style:   React.PropTypes.string.isRequired,
     content: React.PropTypes.string.isRequired,
-    source:  React.PropTypes.string.isRequired,
+    source:  React.PropTypes.string,
   },
 
   getDefaultProps: function() {

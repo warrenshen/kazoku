@@ -77,9 +77,14 @@
   width: 456px;
   height: 300px;
   margin-bottom: 12px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .home-action-clickable {
+  display: block;
   position: relative;
   font-size: 36px;
   letter-spacing: 2px;

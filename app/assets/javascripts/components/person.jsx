@@ -18,7 +18,12 @@ var Person = React.createClass({
   renderImage: function() {
     var person = this.props.person;
     if (person.image_url.length) {
-      return <img className="person-block-image" src={person.image_url} />
+      return (
+        <Clickable
+          path={Routes.people.index + "/" + this.props.person.id}
+          style={"person-block-image"}
+          source={person.image_url} />
+      );
     }
   },
 
@@ -27,7 +32,7 @@ var Person = React.createClass({
       <div className="person-block">
         <Clickable
           path={Routes.people.index + "/" + this.props.person.id}
-          style="person-block-name"
+          style={"person-block-name"}
           content={this.renderName()} />
         {this.renderImage()}
       </div>

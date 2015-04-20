@@ -1,0 +1,12 @@
+.family-block {
+  position: relative;
+  margin-top: 36px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.family-block-name {
+  position: relative
+}

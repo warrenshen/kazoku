@@ -2,3 +2,11 @@
 <section class="general-banner">
   <%= react_component("FamilyProfile", {currentPerson: current_person, family: @family}) %>
 </section>
+<section class="general-section">
+  <div class="general-section-headings">
+    <h2 class="general-section-title">
+      Family Members
+    </h2>
+  </div>
+  <%= react_component("PeopleList", {people: @members}) %>
+</section>

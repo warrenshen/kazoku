@@ -1,9 +1,5 @@
 var SignupForm = React.createClass({
 
-  getInitialState: function() {
-    return {shouldShowLogin: true};
-  },
-
   sendRequest: function(path, arguments) {
     var request = new XMLHttpRequest();
     request.onload = function() {

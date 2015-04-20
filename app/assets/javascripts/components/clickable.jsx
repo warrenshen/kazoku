@@ -7,18 +7,21 @@ var Clickable = React.createClass({
     content: React.PropTypes.string.isRequired,
   },
 
-  defaultProps: {
-    action:  null,
-    path:    "",
-    style:   "",
-    content: "",
+  getDefaultProps: function() {
+    return {
+      action:  null,
+      path:    "",
+      style:   "",
+      content: "",
+    };
   },
 
   handleClick: function() {
     event.stopPropagation();
+    console.log(this.props.path);
     if (this.props.path !== "") {
       window.location = this.props.path;
-    } else if (this.props.action !== undefined && this.props.action !== null) {
+    } else if (this.props.action !== null) {
       this.props.action();
     }
   },

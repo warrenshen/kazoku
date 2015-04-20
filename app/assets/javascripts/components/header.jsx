@@ -5,15 +5,18 @@ var Header = React.createClass({
     isColored:     React.PropTypes.bool.isRequired,
   },
 
-  defaultProps: {
-    currentPerson: null,
-    isColored:     true,
+  getDefaultProps: function() {
+    return {
+      currentPerson: null,
+      isColored:     true,
+    };
   },
 
   sendRequest: function(path, arguments) {
     var request = new XMLHttpRequest();
     request.onload = function() {
-      window.location = request.response;
+      console.log(request);
+      // window.location = request.response;
     };
     request.open("delete", path);
     request.setRequestHeader("Content-Type", "application/json");

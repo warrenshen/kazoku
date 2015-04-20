@@ -4,8 +4,10 @@ var FamilyForm = React.createClass({
     currentPerson: React.PropTypes.object.isRequired,
   },
 
-  defaultProps: {
-    currentPerson: null,
+  getDefaultProps: function() {
+    return {
+      currentPerson: null,
+    };
   },
 
   sendRequest: function(path, arguments) {

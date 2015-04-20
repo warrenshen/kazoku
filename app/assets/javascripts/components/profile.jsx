@@ -4,9 +4,11 @@ var Profile = React.createClass({
     person:        React.PropTypes.object.isRequired,
   },
 
-  defaultProps:{
-    currentPerson: null,
-    person:        null,
+  getDefaultProps: function() {
+    return {
+      currentPerson: null,
+      person:        null,
+    };
   },
 
   renderName: function() {

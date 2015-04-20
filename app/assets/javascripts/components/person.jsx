@@ -3,8 +3,10 @@ var Person = React.createClass({
     person: React.PropTypes.object.isRequired,
   },
 
-  defaultProps: {
-    person: null,
+  getDefaultProps: function() {
+    return {
+      person: null,
+    };
   },
 
   renderName: function() {

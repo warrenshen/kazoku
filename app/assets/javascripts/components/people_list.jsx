@@ -4,8 +4,10 @@ var PeopleList = React.createClass({
     people: React.PropTypes.array.isRequired,
   },
 
-  defaultProps: {
-    people: [],
+  getDefaultProps: function() {
+    return {
+      people: [],
+    };
   },
 
   renderPerson: function(person) {

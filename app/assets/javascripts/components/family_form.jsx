@@ -6,7 +6,7 @@ var FamilyForm = React.createClass({
 
   getDefaultProps: function() {
     return {
-      currentPerson: {},
+      currentPerson: null,
     };
   },
 

@@ -6,8 +6,8 @@ var Profile = React.createClass({
 
   getDefaultProps: function() {
     return {
-      currentPerson: {},
-      person:        {},
+      currentPerson: null,
+      person:        null,
     };
   },
 

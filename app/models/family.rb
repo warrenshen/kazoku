@@ -32,8 +32,8 @@ class Family < ActiveRecord::Base
   ##################################################
   # Methods
   ##################################################
-  def set_size
-    self.size = people.count
+  def size
+    people.size
   end
 
 end

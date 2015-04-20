@@ -7,7 +7,7 @@ var Header = React.createClass({
 
   getDefaultProps: function() {
     return {
-      currentPerson: {},
+      currentPerson: null,
       isColored:     true,
     };
   },
@@ -30,11 +30,6 @@ var Header = React.createClass({
 
   renderLogout: function() {
     if (this.props.currentPerson !== null) {
-      var merge = React.addons.classSet;
-      var brandClass = merge({
-        "header-brand": true,
-        "header-brand-colored": this.props.isColored,
-      });
       return (
         <Clickable
           action={this.attemptLogout}

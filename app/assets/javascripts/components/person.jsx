@@ -6,7 +6,7 @@ var Person = React.createClass({
 
   getDefaultProps: function() {
     return {
-      person: {},
+      person: null,
     };
   },
 

@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-  load_and_authorize_resource param_method: :person_params, only: [:create]
+  load_and_authorize_resource param_method: :person_params, only: [:create, :update]
 
   def create
     if @person.save
@@ -18,6 +18,14 @@ class PeopleController < ApplicationController
     @person = Person.find(params[:id])
   end
 
+  def update
+    if @person.update_attributes(family_id: params[:person][:family_id])
+      render json: person_path(@person)
+    else
+      render json: root_path
+    end
+  end
+
   private
 
   def person_params
@@ -28,6 +36,7 @@ class PeopleController < ApplicationController
       :email,
       :password,
       :image_url,
+      :family_id,
     )
   end
 

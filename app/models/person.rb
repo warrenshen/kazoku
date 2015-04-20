@@ -19,6 +19,7 @@
 #  updated_at             :datetime
 #  image_url              :string           default(""), not null
 #  family_id              :integer
+#  family_name            :string           default(""), not null
 #
 
 class Person < ActiveRecord::Base
@@ -39,5 +40,17 @@ class Person < ActiveRecord::Base
   validates :last_name,  presence: true
   validates :email,      presence: true, uniqueness: true
   validates :image_url,  presence: true, uniqueness: true
+
+  ##################################################
+  # Callbacks
+  ##################################################
+  before_save :set_family_name
+
+  ##################################################
+  # Methods
+  ##################################################
+  def set_family_name
+    family_name = family.name unless !family.exists
+  end
 
 end

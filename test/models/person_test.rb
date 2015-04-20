@@ -19,6 +19,7 @@
 #  updated_at             :datetime
 #  image_url              :string           default(""), not null
 #  family_id              :integer
+#  family_name            :string           default(""), not null
 #
 
 require 'test_helper'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150419212149) do
+ActiveRecord::Schema.define(version: 20150420053408) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name",        default: "", null: false
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20150419212149) do
     t.integer  "event_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.integer  "size",       default: 0,  null: false
   end
 
   create_table "people", force: :cascade do |t|
@@ -45,6 +46,7 @@ ActiveRecord::Schema.define(version: 20150419212149) do
     t.datetime "updated_at"
     t.string   "image_url",              default: "", null: false
     t.integer  "family_id"
+    t.string   "family_name",            default: "", null: false
   end
 
   add_index "people", ["email"], name: "index_people_on_email", unique: true

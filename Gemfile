@@ -5,7 +5,6 @@ gem 'devise'
 gem 'cancancan', '~> 1.10'
 gem 'react-rails'
 gem 'showdown-rails'
-gem 'active_model_serializers'
 ###
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

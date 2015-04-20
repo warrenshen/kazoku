@@ -8,7 +8,15 @@
 }
 
 .family-block-name {
+  display: block;
   position: relative;
+  font-size: 36px;
+  letter-spacing: 2px;
+  line-height: 48px;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .family-block-size {

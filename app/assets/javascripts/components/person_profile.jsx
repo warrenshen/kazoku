@@ -56,9 +56,15 @@ var PersonProfile = React.createClass({
         <h2 className="general-banner-title">
           {this.renderName()}
         </h2>
-        <h5 className="general-banner-title">
-          Family: {this.renderFamily()}
-        </h5>
+        <div className="profile-banner-family">
+          <h5 className="profile-banner-subtitle">
+            Family:
+          </h5>
+          <Clickable
+            path={Routes.families.index + "/" + this.props.person.family.id}
+            style={"profile-banner-subtitle"}
+            content={this.props.person.family.name} />
+        </div>
         {this.renderImage()}
         {this.renderOptions()}
       </div>

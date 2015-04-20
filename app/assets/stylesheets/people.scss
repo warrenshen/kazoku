@@ -1,5 +1,23 @@
 @import "colors";
 
+.profile-banner-family {
+  position: relative;
+  padding-top: 6px;
+}
+
+.profile-banner-subtitle {
+  display: inline-block;
+  position: relative;
+  padding-left: 6px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  line-height: 24px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .profile-banner-image {
   position: relative;
   width: 312px;

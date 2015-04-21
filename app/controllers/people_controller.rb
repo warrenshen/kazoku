@@ -1,8 +1,6 @@
 class PeopleController < ApplicationController
   load_and_authorize_resource param_method: :person_params, only: [:create, :update]
 
-  respond_to :json
-
   def create
     if @person.save
       sign_in(:person, @person)

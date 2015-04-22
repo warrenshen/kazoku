@@ -12,7 +12,7 @@ var FamilyMembers = React.createClass({
 
   render: function() {
     return (
-      <PeopleList people={this.props.family.people} />
+      <UsersList users={this.props.family.users} />
     );
   }
 });

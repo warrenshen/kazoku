@@ -28,7 +28,7 @@ class Family < ActiveRecord::Base
   # Methods
   ##################################################
   def size
-    people.size
+    users.size
   end
 
 end

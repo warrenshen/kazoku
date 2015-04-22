@@ -15,7 +15,7 @@ class FamiliesController < ApplicationController
   end
 
   def show
-    @family = Family.find(params[:id]).as_json(include: :people)
+    @family = Family.find(params[:id]).as_json(include: :users)
   end
 
   private

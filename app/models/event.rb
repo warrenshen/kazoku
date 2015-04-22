@@ -15,7 +15,8 @@ class Event < ActiveRecord::Base
   ##################################################
   # Associations
   ##################################################
-  # has_one :family
+  has_many :family_events
+  has_many :families, through: :family_events
 
   ##################################################
   # Validations

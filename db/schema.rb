@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422070608) do
+ActiveRecord::Schema.define(version: 20150422221234) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name",        default: "", null: false
@@ -23,11 +23,20 @@ ActiveRecord::Schema.define(version: 20150422070608) do
 
   create_table "families", force: :cascade do |t|
     t.string   "name",       default: "", null: false
-    t.integer  "event_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.integer  "size",       default: 0,  null: false
   end
+
+  create_table "family_events", force: :cascade do |t|
+    t.integer  "family_id"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "family_events", ["event_id"], name: "index_family_events_on_event_id"
+  add_index "family_events", ["family_id"], name: "index_family_events_on_family_id"
 
 # Could not dump table "users" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass

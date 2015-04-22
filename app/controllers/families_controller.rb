@@ -1,5 +1,6 @@
 class FamiliesController < ApplicationController
   load_and_authorize_resource param_method: :family_params, only: [:create]
+  skip_before_filter :authenticate_user, only: [:index, :show]
 
   def create
     if @family.save

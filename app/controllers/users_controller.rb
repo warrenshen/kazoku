@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   load_resource param_method: :user_params, only: [:create, :update]
+  skip_before_filter :authenticate_user, except: [:update]
 
   def create
     if @user.save

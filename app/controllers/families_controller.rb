@@ -3,7 +3,7 @@ class FamiliesController < ApplicationController
 
   def create
     if @family.save
-      current_person.update(family_id: @family.id)
+      current_user.update(family_id: @family.id)
       render json: family_path(@family)
     else
       render json: root_path

@@ -1,5 +1,5 @@
-class UserController < ApplicationController
-  # load_and_authorize_resource param_method: :person_params, only: [:create, :update]
+class UsersController < ApplicationController
+  # load_and_authorize_resource param_method: :user_params, only: [:create, :update]
 
   def create
     if @user.save
@@ -28,7 +28,7 @@ class UserController < ApplicationController
 
   private
 
-  def person_params
+  def user_params
     params.require(:user).permit(
       :id,
       :first_name,

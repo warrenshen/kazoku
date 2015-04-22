@@ -7,8 +7,8 @@ var FamilyProfile = React.createClass({
 
   getDefaultProps: function() {
     return {
-      currentPerson: null,
-      family:        null,
+      currentUser: null,
+      family:      null,
     };
   },
 

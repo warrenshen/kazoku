@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # load_and_authorize_resource param_method: :user_params, only: [:create, :update]
+  load_resource param_method: :user_params, only: [:create, :update]
 
   def create
     if @user.save
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @users = User.find(params[:id]).as_json(include: :family)
+    @user = User.find(params[:id]).as_json(include: :family)
   end
 
   def update

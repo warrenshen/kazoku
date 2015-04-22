@@ -18,6 +18,8 @@
 #  last_sign_in_ip        :string
 #  created_at             :datetime
 #  updated_at             :datetime
+#  family_id              :integer
+#  is_admin               :bool             default("f")
 #
 
 require 'test_helper'

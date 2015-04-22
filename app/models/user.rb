@@ -18,6 +18,8 @@
 #  last_sign_in_ip        :string
 #  created_at             :datetime
 #  updated_at             :datetime
+#  family_id              :integer
+#  is_admin               :bool             default("f")
 #
 
 class User < ActiveRecord::Base
@@ -42,13 +44,13 @@ class User < ActiveRecord::Base
   ##################################################
   # Callbacks
   ##################################################
-  before_validation :set_family_name
+  # before_validation :set_family_name
 
   ##################################################
   # Methods
   ##################################################
-  def set_family_name
-    self.family_name = family.name unless family_id.nil?
-  end
+  # def set_family_name
+  #   self.family_name = family.name unless family_id.nil?
+  # end
 
 end

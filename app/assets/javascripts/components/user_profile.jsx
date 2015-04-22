@@ -18,10 +18,20 @@ var UserProfile = React.createClass({
   },
 
   renderFamily: function() {
-    if (this.props.user.family_name) {
-      return this.props.user.family_name;
+    console.log(this.props.user);
+    if (this.props.user.family) {
+      return (
+        <Clickable
+          path={Routes.families.index + "/" + this.props.user.family.id}
+          style={"profile-banner-subtitle"}
+          content={this.props.user.family.name} />
+      );
     } else {
-      return "(none)";
+      return (
+        <h5 className="profile-banner-label">
+          (none)
+        </h5>
+      );
     }
   },
 
@@ -33,8 +43,8 @@ var UserProfile = React.createClass({
   },
 
   renderOptions: function() {
-    var currentuser = this.props.currentuser;
-    if (currentuser !== null && currentuser.id === this.props.user.id) {
+    var currentUser = this.props.currentUser;
+    if (currentUser !== null && currentUser.id === this.props.user.id) {
       return (
         <div className="general-banner-options">
           <Clickable
@@ -57,13 +67,10 @@ var UserProfile = React.createClass({
           {this.renderName()}
         </h2>
         <div className="profile-banner-family">
-          <h5 className="profile-banner-subtitle">
+          <h5 className="profile-banner-label">
             Family:
           </h5>
-          <Clickable
-            path={Routes.families.index + "/" + this.props.user.family.id}
-            style={"profile-banner-subtitle"}
-            content={this.props.user.family.name} />
+          {this.renderFamily()}
         </div>
         {this.renderImage()}
         {this.renderOptions()}

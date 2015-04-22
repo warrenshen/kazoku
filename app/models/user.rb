@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   # Methods
   ##################################################
   # def set_family_name
-  #   self.family_name = family.name unless family_id.nil?
+  #   self.family_name = family.try(:name)
   # end
 
 end

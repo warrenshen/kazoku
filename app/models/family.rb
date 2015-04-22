@@ -15,7 +15,7 @@ class Family < ActiveRecord::Base
   # Associations
   ##################################################
   has_many :users
-  has_many :family_events
+  has_many :family_events, dependent: :destroy
   has_many :events, through: :family_events
 
   ##################################################

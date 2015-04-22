@@ -20,6 +20,7 @@
 #  image_url              :string           default(""), not null
 #  family_id              :integer
 #  family_name            :string           default(""), not null
+#  is_admin               :bool             default("f")
 #
 
 require 'test_helper'

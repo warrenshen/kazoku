@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150420053408) do
+ActiveRecord::Schema.define(version: 20150422062319) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name",        default: "", null: false
@@ -29,9 +29,13 @@ ActiveRecord::Schema.define(version: 20150420053408) do
     t.integer  "size",       default: 0,  null: false
   end
 
-  create_table "people", force: :cascade do |t|
+# Could not dump table "people" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
+
+  create_table "users", force: :cascade do |t|
     t.string   "first_name",             default: "", null: false
     t.string   "last_name",              default: "", null: false
+    t.string   "image_url",              default: "", null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -44,12 +48,9 @@ ActiveRecord::Schema.define(version: 20150420053408) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image_url",              default: "", null: false
-    t.integer  "family_id"
-    t.string   "family_name",            default: "", null: false
   end
 
-  add_index "people", ["email"], name: "index_people_on_email", unique: true
-  add_index "people", ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

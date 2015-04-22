@@ -1,40 +1,40 @@
-var PersonProfile = React.createClass({
+var userProfile = React.createClass({
 
   propTypes: {
-    currentPerson: React.PropTypes.object,
-    person:        React.PropTypes.object.isRequired,
+    currentUser: React.PropTypes.object,
+    user:        React.PropTypes.object.isRequired,
   },
 
   getDefaultProps: function() {
     return {
-      currentPerson: null,
-      person:        null,
+      currentUser: null,
+      user:      null,
     };
   },
 
   renderName: function() {
-    var person = this.props.person;
-    return person.first_name + " " + person.last_name;
+    var user = this.props.user;
+    return user.first_name + " " + user.last_name;
   },
 
   renderFamily: function() {
-    if (this.props.person.family_name) {
-      return this.props.person.family_name;
+    if (this.props.user.family_name) {
+      return this.props.user.family_name;
     } else {
       return "(none)";
     }
   },
 
   renderImage: function() {
-    var person = this.props.person;
-    if (person.image_url.length) {
-      return <img className="profile-banner-image" src={person.image_url} />
+    var user = this.props.user;
+    if (user.image_url.length) {
+      return <img className="profile-banner-image" src={user.image_url} />
     }
   },
 
   renderOptions: function() {
-    var currentPerson = this.props.currentPerson;
-    if (currentPerson !== null && currentPerson.id === this.props.person.id) {
+    var currentuser = this.props.currentuser;
+    if (currentuser !== null && currentuser.id === this.props.user.id) {
       return (
         <div className="general-banner-options">
           <Clickable
@@ -61,9 +61,9 @@ var PersonProfile = React.createClass({
             Family:
           </h5>
           <Clickable
-            path={Routes.families.index + "/" + this.props.person.family.id}
+            path={Routes.families.index + "/" + this.props.user.family.id}
             style={"profile-banner-subtitle"}
-            content={this.props.person.family.name} />
+            content={this.props.user.family.name} />
         </div>
         {this.renderImage()}
         {this.renderOptions()}

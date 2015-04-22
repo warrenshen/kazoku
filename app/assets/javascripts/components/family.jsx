@@ -1,14 +1,14 @@
 var Family = React.createClass({
 
   propTypes: {
-    currentPerson: React.PropTypes.object,
-    family:        React.PropTypes.object.isRequired,
+    currentUser: React.PropTypes.object,
+    family:      React.PropTypes.object.isRequired,
   },
 
   getDefaultProps: function() {
     return {
-      currentPerson: null,
-      family:        null,
+      currentUser: null,
+      family:      null,
     };
   },
 
@@ -24,17 +24,17 @@ var Family = React.createClass({
   },
 
   attemptJoin: function(event) {
-    var putPath = Routes.users.index + "/" + this.props.currentPerson.id;
+    var putPath = Routes.users.index + "/" + this.props.currentUser.id;
     this.sendRequest(putPath, {
-      person: {
-        id: this.props.currentPerson.id,
+      user: {
+        id: this.props.currentUser.id,
         family_id: this.props.family.id,
       }
     });
   },
 
   renderJoin: function() {
-    if (this.props.currentPerson !== null) {
+    if (this.props.currentUser !== null) {
       return (
         <Clickable
           action={this.attemptJoin}

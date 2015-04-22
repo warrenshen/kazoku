@@ -6,10 +6,10 @@ var Routes = {
     signup: "/signup",
   },
 
-  people: {
-    index: "/people",
-    login: "/people/sign_in",
-    logout: "/people/sign_out",
+  users: {
+    index: "/users",
+    login: "/users/sign_in",
+    logout: "/users/sign_out",
   },
 
   families: {

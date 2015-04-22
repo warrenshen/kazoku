@@ -24,7 +24,7 @@ var Family = React.createClass({
   },
 
   attemptJoin: function(event) {
-    var putPath = Routes.people.index + "/" + this.props.currentPerson.id;
+    var putPath = Routes.users.index + "/" + this.props.currentPerson.id;
     this.sendRequest(putPath, {
       person: {
         id: this.props.currentPerson.id,

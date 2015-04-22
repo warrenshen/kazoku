@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   get "login" => "pages#login"
   get "signup" => "pages#signup"
 
-  devise_for :people,
+  devise_for :users,
     skip: [:registrations, :passwords],
-    controllers: { sessions: "people/sessions" }
+    controllers: { sessions: "users/sessions" }
 
-  resources :people,   only: [:create, :index, :show, :update]
+  resources :users,    only: [:create, :index, :show, :update]
   resources :families, only: [:new, :create, :index, :show]
   resources :events,   only: [:new, :create, :index, :show]
 

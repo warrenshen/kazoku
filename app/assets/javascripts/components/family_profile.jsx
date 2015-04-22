@@ -1,20 +1,20 @@
 var FamilyProfile = React.createClass({
 
   propTypes: {
-    currentPerson: React.PropTypes.object,
-    family:        React.PropTypes.object.isRequired,
+    currentUser: React.PropTypes.object,
+    family:      React.PropTypes.object.isRequired,
   },
 
   getDefaultProps: function() {
     return {
-      currentPerson: null,
-      family:        null,
+      currentUser: null,
+      family:      null,
     };
   },
 
   renderOptions: function() {
-    var currentPerson = this.props.currentPerson;
-    if (currentPerson !== null && currentPerson.family_id === this.props.family.id) {
+    var currentUser = this.props.currentUser;
+    if (currentUser !== null && currentUser.family_id === this.props.family.id) {
       return (
         <div className="general-banner-options">
           <Clickable

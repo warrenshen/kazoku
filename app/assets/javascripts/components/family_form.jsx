@@ -1,15 +1,5 @@
 var FamilyForm = React.createClass({
 
-  propTypes: {
-    currentPerson: React.PropTypes.object,
-  },
-
-  getDefaultProps: function() {
-    return {
-      currentPerson: null,
-    };
-  },
-
   sendRequest: function(path, arguments) {
     var request = new XMLHttpRequest();
     request.onload = function() {

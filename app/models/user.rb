@@ -1,10 +1,11 @@
 # == Schema Information
 #
-# Table name: people
+# Table name: users
 #
 #  id                     :integer          not null, primary key
 #  first_name             :string           default(""), not null
 #  last_name              :string           default(""), not null
+#  image_url              :string           default(""), not null
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  reset_password_token   :string
@@ -17,12 +18,11 @@
 #  last_sign_in_ip        :string
 #  created_at             :datetime
 #  updated_at             :datetime
-#  image_url              :string           default(""), not null
 #  family_id              :integer
-#  family_name            :string           default(""), not null
+#  is_admin               :bool             default("f")
 #
 
-class Person < ActiveRecord::Base
+class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -44,13 +44,13 @@ class Person < ActiveRecord::Base
   ##################################################
   # Callbacks
   ##################################################
-  before_validation :set_family_name
+  # before_validation :set_family_name
 
   ##################################################
   # Methods
   ##################################################
-  def set_family_name
-    self.family_name = family.name unless family_id.nil?
-  end
+  # def set_family_name
+  #   self.family_name = family.name unless family_id.nil?
+  # end
 
 end

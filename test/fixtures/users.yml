@@ -1,10 +1,11 @@
 # == Schema Information
 #
-# Table name: people
+# Table name: users
 #
 #  id                     :integer          not null, primary key
 #  first_name             :string           default(""), not null
 #  last_name              :string           default(""), not null
+#  image_url              :string           default(""), not null
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  reset_password_token   :string
@@ -17,15 +18,18 @@
 #  last_sign_in_ip        :string
 #  created_at             :datetime
 #  updated_at             :datetime
-#  image_url              :string           default(""), not null
 #  family_id              :integer
-#  family_name            :string           default(""), not null
+#  is_admin               :bool             default("f")
 #
 
-require 'test_helper'
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-class PersonTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
-end
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+#  column: value

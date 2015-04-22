@@ -1,4 +1,4 @@
-<%= react_component("Header", {currentPerson: current_person, isColored: true}) %>
+<%= react_component("Header", {currentUser: current_user, isColored: true}) %>
 <section class="general-banner">
   <div class="general-banner-content">
     <h2 class="general-banner-title">
@@ -10,5 +10,5 @@
   </div>
 </section>
 <section class="general-section">
-  <%= react_component("FamiliesList", {currentPerson: current_person, families: @families}) %>
+  <%= react_component("FamiliesList", {currentUser: current_user, families: @families}) %>
 </section>

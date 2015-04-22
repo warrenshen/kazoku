@@ -3,8 +3,10 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :null_session
 
-  def current_user
-    current_person
+  before_filter :authenticate_user!
+
+  def authenticate_user!
+    redirect_to login_path unless user_signed_in?
   end
 
 end

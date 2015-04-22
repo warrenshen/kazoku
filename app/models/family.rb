@@ -15,9 +15,9 @@ class Family < ActiveRecord::Base
   ##################################################
   # Associations
   ##################################################
-  belongs_to :event
+  # belongs_to :event
 
-  has_many :people
+  has_many :users
 
   ##################################################
   # Validations
@@ -25,15 +25,10 @@ class Family < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
 
   ##################################################
-  # Callbacks
-  ##################################################
-  before_validation :set_size
-
-  ##################################################
   # Methods
   ##################################################
   def size
-    people.size
+    users.size
   end
 
 end

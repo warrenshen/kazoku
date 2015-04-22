@@ -1,11 +1,11 @@
-class DeviseCreatePeople < ActiveRecord::Migration
+class DeviseCreateUsers < ActiveRecord::Migration
   def change
-    create_table(:people) do |t|
+    create_table(:users) do |t|
 
       ## Custom
       t.string :first_name, null: false, default: ""
       t.string :last_name,  null: false, default: ""
-      t.date   :birthday
+      t.string :image_url,  null: false, default: ""
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""
@@ -40,9 +40,9 @@ class DeviseCreatePeople < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :people, :email,                unique: true
-    add_index :people, :reset_password_token, unique: true
-    # add_index :people, :confirmation_token,   unique: true
-    # add_index :people, :unlock_token,         unique: true
+    add_index :users, :email,                unique: true
+    add_index :users, :reset_password_token, unique: true
+    # add_index :users, :confirmation_token,   unique: true
+    # add_index :users, :unlock_token,         unique: true
   end
 end

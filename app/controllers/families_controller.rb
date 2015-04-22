@@ -1,9 +1,10 @@
 class FamiliesController < ApplicationController
   load_and_authorize_resource param_method: :family_params, only: [:create]
+  skip_before_filter :authenticate_user!, only: [:index, :show]
 
   def create
     if @family.save
-      current_person.update(family_id: @family.id)
+      current_user.update(family_id: @family.id)
       render json: family_path(@family)
     else
       render json: root_path
@@ -15,7 +16,7 @@ class FamiliesController < ApplicationController
   end
 
   def show
-    @family = Family.find(params[:id]).as_json(include: :people)
+    @family = Family.find(params[:id]).as_json(include: :users)
   end
 
   private

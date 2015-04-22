@@ -1,14 +1,14 @@
 var Header = React.createClass({
 
   propTypes: {
-    currentPerson: React.PropTypes.object,
-    isColored:     React.PropTypes.bool.isRequired,
+    currentUser: React.PropTypes.object,
+    isColored:   React.PropTypes.bool.isRequired,
   },
 
   getDefaultProps: function() {
     return {
-      currentPerson: null,
-      isColored:     true,
+      currentUser: null,
+      isColored:   true,
     };
   },
 
@@ -24,12 +24,12 @@ var Header = React.createClass({
   },
 
   attemptLogout: function(event) {
-    var email = this.props.currentPerson.email;
-    this.sendRequest(Routes.people.logout, {});
+    var email = this.props.currentUser.email;
+    this.sendRequest(Routes.users.logout, {});
   },
 
   renderLogout: function() {
-    if (this.props.currentPerson !== null) {
+    if (this.props.currentUser !== null) {
       return (
         <Clickable
           action={this.attemptLogout}
@@ -40,7 +40,7 @@ var Header = React.createClass({
   },
 
   renderProfile: function() {
-    if (this.props.currentPerson === null) {
+    if (this.props.currentUser === null) {
       return (
         <Clickable
           path={Routes.pages.login}
@@ -50,7 +50,7 @@ var Header = React.createClass({
     } else {
       return (
         <Clickable
-          path={Routes.people.index + "/" + this.props.currentPerson.id}
+          path={Routes.users.index + "/" + this.props.currentUser.id}
           style={"general-button"}
           content={"Your Profile"} />
       );

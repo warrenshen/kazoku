@@ -1,13 +1,13 @@
 var FamiliesList = React.createClass({
 
   propTypes: {
-    currentPerson: React.PropTypes.object,
+    currentUser: React.PropTypes.object,
     families: React.PropTypes.array.isRequired,
   },
 
   getDefaultProps: function() {
     return {
-      currentPerson: null,
+      currentUser: null,
       families: [],
     };
   },
@@ -16,7 +16,7 @@ var FamiliesList = React.createClass({
     return (
       <Family
         key={family.id}
-        currentPerson={this.props.currentPerson}
+        currentUser={this.props.currentUser}
         family={family} />
     );
   },

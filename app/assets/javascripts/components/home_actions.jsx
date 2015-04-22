@@ -15,11 +15,11 @@ var HomeActions = React.createClass({
         </div>
         <div className="home-action">
           <Clickable
-            path={Routes.users.index}
+            path={Routes.families.index}
             style={"home-action-image"}
             source={"http://www.vlblog.net/blogimage/anwan01.jpg"} />
           <Clickable
-            path={Routes.users.index}
+            path={Routes.families.index}
             style={"home-action-clickable"}
             content={"Families"} />
         </div>

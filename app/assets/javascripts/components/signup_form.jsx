@@ -18,7 +18,7 @@ var SignupForm = React.createClass({
     var password = React.findDOMNode(this.refs.password).value;
     var image_url = React.findDOMNode(this.refs.image_url).value;
     this.sendRequest(Routes.users.index, {
-      person: {
+      user: {
         first_name: first_name,
         last_name: last_name,
         email: email,

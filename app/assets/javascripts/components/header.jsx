@@ -25,7 +25,7 @@ var Header = React.createClass({
 
   attemptLogout: function(event) {
     var email = this.props.currentUser.email;
-    this.sendRequest(Routes.people.logout, {});
+    this.sendRequest(Routes.users.logout, {});
   },
 
   renderLogout: function() {
@@ -50,7 +50,7 @@ var Header = React.createClass({
     } else {
       return (
         <Clickable
-          path={Routes.people.index + "/" + this.props.currentUser.id}
+          path={Routes.users.index + "/" + this.props.currentUser.id}
           style={"general-button"}
           content={"Your Profile"} />
       );

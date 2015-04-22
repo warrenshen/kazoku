@@ -1,4 +1,4 @@
-<%= react_component("Header", {currentUser: current_user, isColored: false}) %>
+<%= react_component("Header", {currentUser: current_user, isColored: true}) %>
 <section class="general-banner">
-  <%= react_component("userProfile", {currentUser: current_user, user: @user}) %>
+  <%= react_component("UserProfile", {currentUser: current_user, user: @user}) %>
 </section>

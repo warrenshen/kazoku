@@ -14,7 +14,7 @@ var LoginForm = React.createClass({
   attemptLogin: function(event) {
     var email = React.findDOMNode(this.refs.email).value;
     var password = React.findDOMNode(this.refs.password).value;
-    this.sendRequest(Routes.people.login, {
+    this.sendRequest(Routes.users.login, {
       session: {
         email: email,
         password: password,

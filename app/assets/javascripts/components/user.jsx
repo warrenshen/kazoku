@@ -20,7 +20,7 @@ var User = React.createClass({
     if (user.image_url.length) {
       return (
         <Clickable
-          path={Routes.people.index + "/" + this.props.user.id}
+          path={Routes.users.index + "/" + this.props.user.id}
           style={"user-block-image"}
           source={user.image_url} />
       );
@@ -31,7 +31,7 @@ var User = React.createClass({
     return (
       <div className="user-block">
         <Clickable
-          path={Routes.people.index + "/" + this.props.user.id}
+          path={Routes.users.index + "/" + this.props.user.id}
           style={"user-block-name"}
           content={this.renderName()} />
         {this.renderImage()}

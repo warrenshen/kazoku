@@ -8,5 +8,5 @@ events_params = [
 
 events_params.each do |event_params|
   new_event = Event.create(event_params)
-  puts "Created event: #{new_school.name}."
+  puts "Created event: #{new_event.name}."
 end

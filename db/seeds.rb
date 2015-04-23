@@ -5,7 +5,6 @@ def load_from_folder(folder)
   end
 end
 
-puts "Seeding."
 if Rails.env.development?
   load_from_folder("development")
 end

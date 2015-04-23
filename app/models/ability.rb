@@ -13,7 +13,8 @@ class Ability
     elsif user.new_record?
         can [:create, :read], :all
     else
-        can [:create, :read, :update], :all
+        can [:create, :read], :all
+        can :update, User, user_id: user.id
     end
   end
 

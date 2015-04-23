@@ -1,5 +1,5 @@
 class FamiliesController < ApplicationController
-  load_and_authorize_resource param_method: :family_params, only: [:create]
+  load_and_authorize_resource param_method: :family_params
   skip_before_filter :authenticate_user!, only: [:index, :show]
 
   def create
@@ -27,4 +27,5 @@ class FamiliesController < ApplicationController
       :name,
     )
   end
+
 end

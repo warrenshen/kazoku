@@ -12,9 +12,12 @@ class Ability
         can :manage, :all
     elsif user.new_record?
         can [:create, :read], :all
+        cannot [:create, :read], :FamilyEvent
     else
         can [:create, :read], :all
         can :update, User, user_id: user.id
+        cannot :read, :FamilyEvent
+        can :read, :FamilyEvent, family_id: user.family.try(:id)
     end
   end
 

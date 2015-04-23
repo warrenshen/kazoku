@@ -21,5 +21,6 @@ users_params = [
 
 users_params.each do |user_params|
   new_user = User.create(user_params)
+  new_user.update(password: "password")
   puts "Created user: #{new_user.first_name}"
 end

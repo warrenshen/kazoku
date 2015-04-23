@@ -39,7 +39,4 @@ ActiveRecord::Schema.define(version: 20150422222725) do
   add_index "family_events", ["event_id"], name: "index_family_events_on_event_id"
   add_index "family_events", ["family_id"], name: "index_family_events_on_family_id"
 
-# Could not dump table "users" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
-
 end

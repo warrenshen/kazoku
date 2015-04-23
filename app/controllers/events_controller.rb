@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   skip_before_filter :authenticate_user!
 
   def index
-    @events = Event.all.as_json(include: :family)
+    @events = Event.all.as_json(include: :families)
   end
 
 end

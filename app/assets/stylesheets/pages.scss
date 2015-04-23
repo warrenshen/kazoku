@@ -72,15 +72,24 @@
   padding: 0 24px;
 }
 
-.home-action-image {
+.home-action-frame {
   position: relative;
-  width: 456px;
-  height: 300px;
-  margin-bottom: 12px;
+  width: 396px;
+  height: 312px;
+  text-align: center;
+  overflow: hidden;
 
   &:hover {
     cursor: pointer;
   }
+}
+
+.home-action-image {
+  position: absolute;
+  top: 0;
+  left: -12.5%;
+  height: 312px;
+  margin-bottom: 24px;
 }
 
 .home-action-clickable {

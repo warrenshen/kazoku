@@ -6,6 +6,8 @@
 #  first_name             :string           default(""), not null
 #  last_name              :string           default(""), not null
 #  image_url              :string           default(""), not null
+#  is_admin               :boolean          default("f"), not null
+#  family_id              :integer
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  reset_password_token   :string
@@ -18,8 +20,6 @@
 #  last_sign_in_ip        :string
 #  created_at             :datetime
 #  updated_at             :datetime
-#  family_id              :integer
-#  is_admin               :bool             default("f")
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

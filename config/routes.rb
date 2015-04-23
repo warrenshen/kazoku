@@ -8,9 +8,15 @@ Rails.application.routes.draw do
     skip: [:registrations, :passwords],
     controllers: { sessions: "users/sessions" }
 
-  resources :users,    only: [:create, :index, :show, :update]
-  resources :families, only: [:new, :create, :index, :show]
-  resources :events,   only: [:new, :create, :index, :show]
+  resources :events, only: [:create, :index, :new, :show]
+
+  resources :families, only: [:create, :index, :new, :show] do
+    scope module: :families do
+      resources :family_events, only: [:create, :index, :show]
+    end
+  end
+
+  resources :users, only: [:create, :index, :show, :update]
 
   # Example resource route with options:
   #   resources :products do

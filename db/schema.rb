@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422070608) do
+ActiveRecord::Schema.define(version: 20150423044905) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name",        default: "", null: false
     t.string   "description", default: "", null: false
+    t.string   "image_url",   default: "", null: false
     t.date     "date"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
@@ -23,13 +24,43 @@ ActiveRecord::Schema.define(version: 20150422070608) do
 
   create_table "families", force: :cascade do |t|
     t.string   "name",       default: "", null: false
-    t.integer  "event_id"
+    t.integer  "size",       default: 0,  null: false
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
-    t.integer  "size",       default: 0,  null: false
   end
 
-# Could not dump table "users" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "family_events", force: :cascade do |t|
+    t.integer  "family_id"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "family_events", ["event_id"], name: "index_family_events_on_event_id"
+  add_index "family_events", ["family_id"], name: "index_family_events_on_family_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "first_name",             default: "",    null: false
+    t.string   "last_name",              default: "",    null: false
+    t.string   "image_url",              default: "",    null: false
+    t.boolean  "is_admin",               default: false, null: false
+    t.integer  "family_id"
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,     null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["family_id"], name: "index_users_on_family_id"
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

@@ -5,9 +5,9 @@ class FamiliesController < ApplicationController
   def create
     if @family.save
       current_user.update(family_id: @family.id)
-      render json: family_path(@family)
+      render json: @family
     else
-      render json: root_path
+      api_error_response(@family)
     end
   end
 

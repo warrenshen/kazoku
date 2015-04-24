@@ -13,8 +13,12 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def destroy
-    sign_out(current_user)
-    render json: root_path
+    @user = User.find(params[:id])
+    if sign_out(@user)
+      render json: @user
+    else
+      render api_error_response(current_user)
+    end
   end
 
   private

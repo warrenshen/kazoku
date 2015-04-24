@@ -1,23 +1,12 @@
 var SignupForm = React.createClass({
 
-  sendRequest: function(path, arguments) {
-    var request = new XMLHttpRequest();
-    request.onload = function() {
-      window.location = request.response;
-    };
-    request.open("post", path);
-    request.setRequestHeader("Content-Type", "application/json");
-    request.setRequestHeader("X-CSRF-Token", $('meta[name="csrf-token"]').attr('content'));
-    request.send(JSON.stringify(arguments));
-  },
-
   attemptSignup: function(event) {
     var first_name = React.findDOMNode(this.refs.first_name).value;
     var last_name = React.findDOMNode(this.refs.last_name).value;
     var email = React.findDOMNode(this.refs.email).value;
     var password = React.findDOMNode(this.refs.password).value;
     var image_url = React.findDOMNode(this.refs.image_url).value;
-    this.sendRequest(Routes.users.index, {
+    var request = Requester.send("post", Routes.users.index, {
       user: {
         first_name: first_name,
         last_name: last_name,
@@ -26,6 +15,14 @@ var SignupForm = React.createClass({
         image_url: image_url,
       }
     });
+    request.onload = function() {
+      var response = JSON.parse(request.response);
+      if (response.id) {
+        window.location = Routes.users.index + "/" + response.id;
+      } else {
+        console.log("api_error_response");
+      }
+    }
   },
 
   render: function() {

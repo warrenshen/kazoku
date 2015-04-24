@@ -17,7 +17,7 @@ var FamilyProfile = React.createClass({
     var family = this.props.family;
     if (currentUser !== null && currentUser.family_id === family.id) {
       return (
-        <div className="general-banner-options">
+        <div className="general-banner-actions">
           <Clickable
             path={Routes.events.index}
             style={"general-button"}

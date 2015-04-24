@@ -42,7 +42,7 @@ var UserProfile = React.createClass({
   },
 
   renderFamilyButton: function() {
-    if (this.props.user.family.id === null) {
+    if (this.props.user.family_id === null) {
       return (
         <Clickable
           path={Routes.families.new}
@@ -56,7 +56,7 @@ var UserProfile = React.createClass({
     var currentUser = this.props.currentUser;
     if (currentUser !== null && currentUser.id === this.props.user.id) {
       return (
-        <div className="general-banner-options">
+        <div className="general-banner-actions">
           {this.renderFamilyButton()}
           <Clickable
             path={Routes.pages.login}

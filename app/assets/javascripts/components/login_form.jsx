@@ -11,12 +11,10 @@ var LoginForm = React.createClass({
     });
     request.onload = function() {
       var response = JSON.parse(request.response);
-      debugger
       if (response.id) {
-        console.log(response.id);
         window.location = Routes.users.index + "/" + response.id;
       } else {
-        console.log("incorrect credentials");
+        console.log("api_error_response");
       }
     }
   },

@@ -23,7 +23,7 @@ var EventsList = React.createClass({
   render: function() {
     return (
       <div className="general-list">
-        {this.renderEvents()};
+        {this.renderEvents()}
       </div>
     );
   }

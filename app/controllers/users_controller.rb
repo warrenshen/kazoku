@@ -5,9 +5,9 @@ class UsersController < ApplicationController
   def create
     if @user.save
       sign_in(:user, @user)
-      render json: user_path(@user)
+      render json: @user
     else
-      render json: root_path
+      api_error_response(@user)
     end
   end
 
@@ -21,9 +21,9 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(family_id: params[:user][:family_id])
-      render json: family_path(@user.family)
+      render json: @user
     else
-      render json: root_path
+      api_error_response(@user)
     end
   end
 

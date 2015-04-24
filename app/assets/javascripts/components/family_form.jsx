@@ -1,23 +1,20 @@
 var FamilyForm = React.createClass({
 
-  sendRequest: function(path, arguments) {
-    var request = new XMLHttpRequest();
-    request.onload = function() {
-      window.location = request.response;
-    };
-    request.open("post", path);
-    request.setRequestHeader("Content-Type", "application/json");
-    request.setRequestHeader("X-CSRF-Token", $('meta[name="csrf-token"]').attr('content'));
-    request.send(JSON.stringify(arguments));
-  },
-
   attemptCreate: function(event) {
     var name = React.findDOMNode(this.refs.name).value;
-    this.sendRequest(Routes.families.index, {
+    var request = Requester.send("post", Routes.families.index, {
       family: {
         name: name,
       }
     });
+    request.onload = function() {
+      var response = JSON.parse(request.response);
+      if (response.id) {
+        window.location = Routes.families.index + "/" + response.id;
+      } else {
+        console.log("api_error_response");
+      }
+    }
   },
 
   render: function() {

@@ -14,13 +14,14 @@ var FamilyProfile = React.createClass({
 
   renderOptions: function() {
     var currentUser = this.props.currentUser;
-    if (currentUser !== null && currentUser.family_id === this.props.family.id) {
+    var family = this.props.family;
+    if (currentUser !== null && currentUser.family_id === family.id) {
       return (
-        <div className="general-banner-options">
+        <div className="general-banner-actions">
           <Clickable
-            path={Routes.families.new}
+            path={Routes.events.index}
             style={"general-button"}
-            content={"Create an event"} />
+            content={"Create a family event"} />
         </div>
       );
     }

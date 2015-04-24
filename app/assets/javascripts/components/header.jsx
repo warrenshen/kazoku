@@ -12,20 +12,20 @@ var Header = React.createClass({
     };
   },
 
-  sendRequest: function(path, arguments) {
-    var request = new XMLHttpRequest();
-    request.onload = function() {
-      window.location = request.response;
-    };
-    request.open("delete", path);
-    request.setRequestHeader("Content-Type", "application/json");
-    request.setRequestHeader("X-CSRF-Token", $('meta[name="csrf-token"]').attr('content'));
-    request.send(JSON.stringify(arguments));
-  },
-
   attemptLogout: function(event) {
     var email = this.props.currentUser.email;
-    this.sendRequest(Routes.users.logout, {});
+    var request = Requester.send("delete", Routes.users.logout, {
+      id: this.props.currentUser.id,
+    });
+    request.onload = function() {
+      var response = JSON.parse(request.response);
+      console.log(response)
+      if (response.id) {
+        window.location = Routes.pages.home;
+      } else {
+        console.log("api_error_response");
+      }
+    }
   },
 
   renderLogout: function() {

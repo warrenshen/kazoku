@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
     redirect_to login_path unless user_signed_in?
   end
 
+  def api_error_response(object=nil, message=nil, status=400)
+    render json: ApiError.new(object, message), status: status
+  end
+
 end

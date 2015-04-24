@@ -23,6 +23,8 @@ var Event = React.createClass({
   },
 
   render: function() {
+    console.log(this.props.event.image_url);
+    console.log(this.props.event.date);
     return (
       <div className="event-block">
         <Clickable

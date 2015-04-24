@@ -17,7 +17,7 @@ var UserProfile = React.createClass({
     return user.first_name + " " + user.last_name;
   },
 
-renderFamily: function() {
+  renderFamilyName: function() {
     if (this.props.user.family) {
       return (
         <Clickable
@@ -41,15 +41,23 @@ renderFamily: function() {
     }
   },
 
+  renderFamilyButton: function() {
+    if (this.props.user.family.id === null) {
+      return (
+        <Clickable
+          path={Routes.families.new}
+          style={"general-button"}
+          content={"Create a family"} />
+      );
+    }
+  },
+
   renderOptions: function() {
     var currentUser = this.props.currentUser;
     if (currentUser !== null && currentUser.id === this.props.user.id) {
       return (
         <div className="general-banner-options">
-          <Clickable
-            path={Routes.families.new}
-            style={"general-button"}
-            content={"Create a family"} />
+          {this.renderFamilyButton()}
           <Clickable
             path={Routes.pages.login}
             style={"general-button"}
@@ -62,6 +70,7 @@ renderFamily: function() {
   render: function() {
     return (
       <div className="general-banner-content">
+        {this.renderImage()}
         <h2 className="general-banner-title">
           {this.renderName()}
         </h2>
@@ -69,9 +78,8 @@ renderFamily: function() {
           <h5 className="profile-banner-label">
             Family:
           </h5>
-          {this.renderFamily()}
+          {this.renderFamilyName()}
         </div>
-        {this.renderImage()}
         {this.renderOptions()}
       </div>
     );

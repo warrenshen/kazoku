@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(family_id: params[:user][:family_id])
       render json: @user
     else
-      render json: root_path
+      api_error_response(@user)
     end
   end
 

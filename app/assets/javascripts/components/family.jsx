@@ -20,9 +20,6 @@ var Family = React.createClass({
         family_id: this.props.family.id,
       }
     });
-    request.onload = function() {
-      console.log(request);
-    }
   },
 
   attemptLeave: function(event) {
@@ -33,9 +30,6 @@ var Family = React.createClass({
         family_id: null,
       }
     });
-    request.onload = function() {
-      console.log(request);
-    }
   },
 
   renderJoinButton: function() {

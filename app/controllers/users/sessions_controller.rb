@@ -6,9 +6,9 @@ class Users::SessionsController < Devise::SessionsController
     @user = User.find_by(email: params[:session][:email])
     if !@user.nil? && @user.valid_password?(params[:session][:password])
       sign_in(@user)
-      render json: user_path(@user)
+      render json: @user
     else
-      render json: login_path
+      api_error_response(@user)
     end
   end
 

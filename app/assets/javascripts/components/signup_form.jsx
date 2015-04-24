@@ -38,6 +38,7 @@ var SignupForm = React.createClass({
           className="general-form-input"
           ref="first_name"
           type="text"
+          autoFocus="true"
           placeholder="First name">
         </input>
         <input

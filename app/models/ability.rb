@@ -15,7 +15,7 @@ class Ability
         cannot [:create, :read], :FamilyEvent
     else
         can [:create, :read], :all
-        can :update, User, user_id: user.id
+        can :update, User, id: user.id
         cannot :read, :FamilyEvent
         can :read, :FamilyEvent, family_id: user.family.try(:id)
     end

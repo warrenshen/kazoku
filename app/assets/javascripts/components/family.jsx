@@ -12,34 +12,61 @@ var Family = React.createClass({
     };
   },
 
-  sendRequest: function(path, arguments) {
-    var request = new XMLHttpRequest();
-    request.onload = function() {
-      window.location = request.response;
-    };
-    request.open("put", path);
-    request.setRequestHeader("Content-Type", "application/json");
-    request.setRequestHeader("X-CSRF-Token", $('meta[name="csrf-token"]').attr('content'));
-    request.send(JSON.stringify(arguments));
-  },
-
   attemptJoin: function(event) {
-    var putPath = Routes.users.index + "/" + this.props.currentUser.id;
-    this.sendRequest(putPath, {
+    var path = Routes.users.index + "/" + this.props.currentUser.id;
+    var request = Requester.send("put", path, {
       user: {
         id: this.props.currentUser.id,
         family_id: this.props.family.id,
       }
     });
+    request.onload = function() {
+      console.log(request);
+    }
   },
 
-  renderJoin: function() {
-    if (this.props.currentUser !== null) {
+  attemptLeave: function(event) {
+    var path = Routes.users.index + "/" + this.props.currentUser.id;
+    var request = Requester.send("put", path, {
+      user: {
+        id: this.props.currentUser.id,
+        family_id: null,
+      }
+    });
+    request.onload = function() {
+      console.log(request);
+    }
+  },
+
+  renderJoinButton: function() {
+    if (this.props.currentUser.family_id !== this.props.family.id) {
       return (
         <Clickable
           action={this.attemptJoin}
           style={"general-button"}
           content={"Join family"} />
+      );
+    }
+  },
+
+  renderLeaveButton: function() {
+    if (this.props.currentUser.family_id === this.props.family.id) {
+      return (
+        <Clickable
+          action={this.attemptLeave}
+          style={"general-button"}
+          content={"Leave family"} />
+      );
+    }
+  },
+
+  renderActions: function() {
+    if (this.props.currentUser !== null) {
+      return (
+        <div className="family-block-options">
+          {this.renderJoinButton()}
+          {this.renderLeaveButton()}
+        </div>
       );
     }
   },
@@ -52,9 +79,9 @@ var Family = React.createClass({
           style={"family-block-name"}
           content={this.props.family.name} />
         <h5 className="family-block-size">
-          {this.props.family.size}
+          {"Member count: " + this.props.family.size}
         </h5>
-        {this.renderJoin()}
+        {this.renderActions()}
       </div>
     );
   }

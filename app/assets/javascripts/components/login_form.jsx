@@ -32,6 +32,7 @@ var LoginForm = React.createClass({
           className="general-form-input"
           ref="email"
           type="text"
+          autoFocus="true"
           placeholder="Email">
         </input>
         <input

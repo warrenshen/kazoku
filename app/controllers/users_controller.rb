@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(family_id: params[:user][:family_id])
-      render json: family_path(@user.family)
+      render json: @user
     else
       render json: root_path
     end

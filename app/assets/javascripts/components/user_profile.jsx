@@ -52,7 +52,7 @@ var UserProfile = React.createClass({
     }
   },
 
-  renderOptions: function() {
+  renderActions: function() {
     var currentUser = this.props.currentUser;
     if (currentUser !== null && currentUser.id === this.props.user.id) {
       return (
@@ -80,7 +80,7 @@ var UserProfile = React.createClass({
           </h5>
           {this.renderFamilyName()}
         </div>
-        {this.renderOptions()}
+        {this.renderActions()}
       </div>
     );
   }

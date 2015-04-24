@@ -10,6 +10,11 @@ var Event = React.createClass({
     };
   },
 
+  renderDate: function() {
+    var date = new Date(this.props.event.date);
+    return Dater.monthWithDate(date);
+  },
+
   renderImage: function() {
     var event = this.props.event;
     if (event.image_url.length) {
@@ -23,14 +28,13 @@ var Event = React.createClass({
   },
 
   render: function() {
-    console.log(this.props.event.image_url);
-    console.log(this.props.event.date);
     return (
       <div className="event-block">
         <Clickable
           path={Routes.events.index + "/" + this.props.event.id}
           style={"event-block-name"}
           content={this.props.event.name} />
+        {this.renderDate()}
         {this.renderImage()}
       </div>
     );

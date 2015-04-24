@@ -17,8 +17,7 @@ var UserProfile = React.createClass({
     return user.first_name + " " + user.last_name;
   },
 
-  renderFamily: function() {
-    console.log(this.props.user);
+renderFamily: function() {
     if (this.props.user.family) {
       return (
         <Clickable
@@ -29,7 +28,7 @@ var UserProfile = React.createClass({
     } else {
       return (
         <h5 className="profile-banner-label">
-          (none)
+          &nbsp;(none)
         </h5>
       );
     }

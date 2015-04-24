@@ -30,11 +30,12 @@ var User = React.createClass({
   render: function() {
     return (
       <div className="user-block">
+        <div className="vertical-anchor"></div>
+        {this.renderImage()}
         <Clickable
           path={Routes.users.index + "/" + this.props.user.id}
           style={"user-block-name"}
           content={this.renderName()} />
-        {this.renderImage()}
       </div>
     );
   }

@@ -12,7 +12,11 @@ var Event = React.createClass({
 
   renderDate: function() {
     var date = new Date(this.props.event.date);
-    return Dater.monthWithDate(date);
+    return (
+      <h5>
+        {Dater.monthWithDate(date)}
+      </h5>
+    );
   },
 
   renderImage: function() {

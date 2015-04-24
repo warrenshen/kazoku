@@ -18,6 +18,7 @@ var Dater = {
   },
 
   monthWithDate: function(date) {
-    return this.months()[date.getMonth()] + " " + date.getDay();
+    var month = this.months()[date.getMonth()];
+    return month + " " + date.getDay();
   }
 }

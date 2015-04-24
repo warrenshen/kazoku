@@ -1,0 +1,31 @@
+.event-block {
+  position: relative;
+  margin-top: 36px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.event-block-name {
+  display: block;
+  position: relative;
+  font-size: 30px;
+  letter-spacing: 2px;
+  line-height: 48px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.event-block-image {
+  position: relative;
+  width: 172px;
+  height: 172px;
+  margin-top: 24px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

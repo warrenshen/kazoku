@@ -4,10 +4,22 @@ var Event = React.createClass({
     event: React.PropTypes.object.isRequired,
   },
 
-  getDefaultProps: {
+  getDefaultProps: function() {
     return {
       event: null,
     };
+  },
+
+  renderImage: function() {
+    var event = this.props.event;
+    if (event.image_url.length) {
+      return (
+        <Clickable
+          path={Routes.users.index + "/" + this.props.event.id}
+          style={"event-block-image"}
+          source={event.image_url} />
+      );
+    }
   },
 
   render: function() {
@@ -16,7 +28,8 @@ var Event = React.createClass({
         <Clickable
           path={Routes.events.index + "/" + this.props.event.id}
           style={"event-block-name"}
-          content={this.event.name} />
+          content={this.props.event.name} />
+        {this.renderImage()}
       </div>
     );
   }

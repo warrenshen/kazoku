@@ -1,4 +1,5 @@
 class Users::SessionsController < Devise::SessionsController
+  # load_and_authorize_resource param_method: :session_params
   skip_before_filter :authenticate_user!, only: [:create]
 
   def create
@@ -14,6 +15,15 @@ class Users::SessionsController < Devise::SessionsController
   def destroy
     sign_out(current_user)
     render json: root_path
+  end
+
+  private
+
+  def session_params
+    params.require(:session).permit(
+      :email,
+      :password,
+    )
   end
 
 end

@@ -2,7 +2,7 @@ users_params = [
   {
     first_name: "Warren",
     last_name: "Sterling",
-    email: "warrenshen@berkeley.edu",
+    email: "warrensterling@berkeley.edu",
     image_url: "https://avatars3.githubusercontent.com/u/8787796?v=3&s=460",
   },
   {

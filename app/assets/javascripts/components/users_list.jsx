@@ -10,6 +10,16 @@ var UsersList = React.createClass({
     };
   },
 
+  attemptSearch: function(event) {
+    var query = React.findDOMNode(this.refs.query).value;
+    var request = Requester.send("get", Routes.users.search, {
+      q: query
+    });
+    request.onload = function() {
+      console.log(request);
+    }
+  },
+
   renderUser: function(user) {
     return (
       <User key={user.id} user={user} />
@@ -23,6 +33,13 @@ var UsersList = React.createClass({
   render: function() {
     return (
       <div className="general-list">
+        <input
+          className="user-search-input"
+          ref="query"
+          type="text"
+          placeholder="search"
+          onChange={this.attemptSearch}>
+        </input>
         {this.renderUsers()}
       </div>
     );

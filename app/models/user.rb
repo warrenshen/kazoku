@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
   # Associations
   ##################################################
   belongs_to :family
+  has_many :family_events, through: :family
 
   ##################################################
   # Validations

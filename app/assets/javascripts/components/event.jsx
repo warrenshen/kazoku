@@ -38,10 +38,12 @@ var Event = React.createClass({
   },
 
   renderData: function() {
-    var date = new Date(this.props.event.date);
+    var event = this.props.event;
+    var date = new Date(event.date);
+    var content = ", " + event.families_count + " attending"
     return (
       <h5>
-        {Dater.monthWithDate(date)}
+        {Dater.monthWithDate(date) + content}
       </h5>
     );
   },

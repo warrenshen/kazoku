@@ -33,13 +33,13 @@ class FamilyEvent < ActiveRecord::Base
   # Methods
   ##################################################
   def increment_counter_caches
-    event.increment!(:families_count)
-    family.increment!(:events_count)
+    event.increment(:families_count)
+    family.increment(:events_count)
   end
 
   def decrement_counter_caches
-    event.decrement!(:families_count)
-    family.decrement!(:events_count)
+    event.decrement(:families_count)
+    family.decrement(:events_count)
   end
 
 end

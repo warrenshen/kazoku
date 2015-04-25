@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update_attributes(family_id: params[:user][:family_id])
+    if @user.update(family_id: params[:user][:family_id])
       render json: @user
     else
       api_error_response(@user)

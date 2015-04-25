@@ -11,22 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150423044905) do
+ActiveRecord::Schema.define(version: 20150425183720) do
 
   create_table "events", force: :cascade do |t|
-    t.string   "name",        default: "", null: false
-    t.string   "description", default: "", null: false
-    t.string   "image_url",   default: "", null: false
+    t.string   "name",           default: "", null: false
+    t.string   "description",    default: "", null: false
+    t.string   "image_url",      default: "", null: false
     t.date     "date"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "families_count", default: 0,  null: false
   end
 
   create_table "families", force: :cascade do |t|
-    t.string   "name",       default: "", null: false
-    t.integer  "size",       default: 0,  null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "name",         default: "", null: false
+    t.integer  "size",         default: 0,  null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "events_count", default: 0,  null: false
   end
 
   create_table "family_events", force: :cascade do |t|

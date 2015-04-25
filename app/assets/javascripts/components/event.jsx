@@ -37,7 +37,7 @@ var Event = React.createClass({
     }
   },
 
-  renderDate: function() {
+  renderData: function() {
     var date = new Date(this.props.event.date);
     return (
       <h5>
@@ -74,7 +74,7 @@ var Event = React.createClass({
           path={Routes.events.index + "/" + this.props.event.id}
           style={"event-block-name"}
           content={this.props.event.name} />
-        {this.renderDate()}
+        {this.renderData()}
         {this.renderActions()}
       </div>
     );

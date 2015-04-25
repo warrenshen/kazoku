@@ -2,11 +2,12 @@
 #
 # Table name: families
 #
-#  id         :integer          not null, primary key
-#  name       :string           default(""), not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  size       :integer          default("0"), not null
+#  id           :integer          not null, primary key
+#  name         :string           default(""), not null
+#  size         :integer          default("0"), not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  events_count :integer          default("0"), not null
 #
 
 class Family < ActiveRecord::Base

@@ -8,7 +8,7 @@ var FamiliesList = React.createClass({
   getDefaultProps: function() {
     return {
       currentUser: null,
-      families: [],
+      families:    [],
     };
   },
 

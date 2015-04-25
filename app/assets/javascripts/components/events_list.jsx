@@ -1,18 +1,23 @@
 var EventsList = React.createClass({
 
   propTypes: {
+    currentUser: React.PropTypes.object,
     events: React.PropTypes.array.isRequired,
   },
 
   getDefaultProps: function() {
     return {
-      events: [],
+      currentUser: null,
+      events:      [],
     };
   },
 
   renderEvent: function(event) {
     return (
-      <Event key={event.id} event={event} />
+      <Event
+        key={event.id}
+        currentUser={this.props.currentUser}
+        event={event} />
     );
   },
 

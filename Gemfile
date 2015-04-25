@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
 
 ###
-gem 'cancancan', '~> 1.10'
+gem "active_model_serializers"
+gem 'cancancan'
 gem 'devise'
-gem "pg", "0.17.1"
-gem "pg_search", "0.7.9"
+gem "pg"
+gem "pg_search"
 gem 'react-rails'
 gem 'showdown-rails'
 ###

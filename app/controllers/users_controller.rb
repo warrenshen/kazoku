@@ -5,27 +5,28 @@ class UsersController < ApplicationController
   def create
     if @user.save
       sign_in(:user, @user)
-      render json: @user
+      render json: @user, serializer: UserSerializer
     else
       api_error_response(@user)
     end
   end
 
   def index
-    @users = User.all
+    render json: @users, each_serializer: UserSerializer
   end
 
   def search
-    render json: User.search(params[:q])
+    @users = User.search(params[:q])
+    render json: @users, each_serializer: UserSerializer
   end
 
   def show
-    @user = User.find(params[:id]).as_json(include: :family)
+    render json: @user, serializer: UserSerializer
   end
 
   def update
     if @user.update(family_id: params[:user][:family_id])
-      render json: @user
+      render json: @user, serializer: UserSerializer
     else
       api_error_response(@user)
     end

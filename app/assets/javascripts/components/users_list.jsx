@@ -52,7 +52,7 @@ var UsersList = React.createClass({
           className="user-search-input"
           ref="query"
           type="text"
-          placeholder="search"
+          placeholder="Search"
           onChange={this.attemptSearch}>
         </input>
         {this.renderUsers()}

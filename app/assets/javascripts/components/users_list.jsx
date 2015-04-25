@@ -14,16 +14,20 @@ var UsersList = React.createClass({
     return {
       users: null,
     }
-  }
+  },
 
   attemptSearch: function(event) {
     var query = React.findDOMNode(this.refs.query).value;
     var path = Routes.users.search + "?q=" + query;
     var request = Requester.send("get", path, {});
+    var self = this;
     request.onload = function() {
       var results = JSON.parse(request.response);
-      console.log(results);
-      this.setState({users: results});
+      if (results.length === 0) {
+        self.setState({users: null});
+      } else {
+        self.setState({users: results});
+      }
     };
   },
 

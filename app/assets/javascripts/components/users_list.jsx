@@ -12,12 +12,11 @@ var UsersList = React.createClass({
 
   attemptSearch: function(event) {
     var query = React.findDOMNode(this.refs.query).value;
-    var request = Requester.send("get", Routes.users.search, {
-      q: query
-    });
+    var path = Routes.users.search + "?q=" + query;
+    var request = Requester.send("get", path, {});
     request.onload = function() {
-      console.log(request);
-    }
+      console.log(request.response);
+    };
   },
 
   renderUser: function(user) {

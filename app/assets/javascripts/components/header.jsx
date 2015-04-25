@@ -25,7 +25,7 @@ var Header = React.createClass({
       } else {
         console.log("api_error_response");
       }
-    }
+    };
   },
 
   renderLogout: function() {

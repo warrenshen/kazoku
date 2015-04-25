@@ -23,5 +23,6 @@ var Routes = {
     index: "/users",
     login: "/users/sign_in",
     logout: "/users/sign_out",
+    search: "users/search"
   }
 };

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource param_method: :user_params
+  load_and_authorize_resource param_method: :user_params, except: [:search]
   skip_before_filter :authenticate_user!, except: [:update]
 
   def create
@@ -13,6 +13,10 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+  end
+
+  def search
+    render json: User.search(params[:q])
   end
 
   def show

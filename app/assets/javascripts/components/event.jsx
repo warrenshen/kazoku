@@ -22,7 +22,7 @@ var Event = React.createClass({
     });
     request.onload = function() {
       console.log("Created family event");
-    }
+    };
   },
 
   renderImage: function() {

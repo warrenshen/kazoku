@@ -18,7 +18,11 @@ Rails.application.routes.draw do
 
   resources :family_events, only: [:create]
 
-  resources :users, only: [:create, :index, :show, :update]
+  resources :users, only: [:create, :index, :show, :update] do
+    collection do
+      get "search"
+    end
+  end
 
   # Example resource route with options:
   #   resources :products do

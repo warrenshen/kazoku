@@ -10,12 +10,20 @@ var UsersList = React.createClass({
     };
   },
 
+  getInitialState: function() {
+    return {
+      users: null,
+    }
+  }
+
   attemptSearch: function(event) {
     var query = React.findDOMNode(this.refs.query).value;
     var path = Routes.users.search + "?q=" + query;
     var request = Requester.send("get", path, {});
     request.onload = function() {
-      console.log(request.response);
+      var results = JSON.parse(request.response);
+      console.log(results);
+      this.setState({users: results});
     };
   },
 
@@ -26,7 +34,11 @@ var UsersList = React.createClass({
   },
 
   renderUsers: function() {
-    return this.props.users.map(this.renderUser);
+    if (this.state.users !== null) {
+      return this.state.users.map(this.renderUser);
+    } else {
+      return this.props.users.map(this.renderUser);
+    }
   },
 
   render: function() {

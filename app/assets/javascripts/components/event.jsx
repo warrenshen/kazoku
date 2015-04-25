@@ -13,7 +13,7 @@ var Event = React.createClass({
   },
 
   attemptCreate: function(event) {
-    var path = Routes.family_events.index;
+    var path = Routes.familyEvents.index;
     var request = Requester.send("post", path, {
       family_event: {
         family_id: this.props.currentUser.family_id,

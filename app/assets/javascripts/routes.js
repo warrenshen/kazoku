@@ -9,6 +9,10 @@ var Routes = {
     new: "/families/new",
   },
 
+  familyEvents: {
+    index: "/family_events",
+  },
+
   pages: {
     home: "/",
     login: "/login",

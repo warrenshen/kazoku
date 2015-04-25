@@ -12,9 +12,11 @@ Rails.application.routes.draw do
 
   resources :families, only: [:create, :index, :new, :show] do
     scope module: :families do
-      resources :family_events, only: [:create, :index, :show]
+      resources :family_events, only: [:index, :show]
     end
   end
+
+  resources :family_events, only: [:create]
 
   resources :users, only: [:create, :index, :show, :update]
 

@@ -34,12 +34,12 @@ var Event = React.createClass({
   render: function() {
     return (
       <div className="event-block">
+        {this.renderImage()}
         <Clickable
           path={Routes.events.index + "/" + this.props.event.id}
           style={"event-block-name"}
           content={this.props.event.name} />
         {this.renderDate()}
-        {this.renderImage()}
       </div>
     );
   }

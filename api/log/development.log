@@ -1,0 +1,130 @@
+
+
+Started GET "/" for ::1 at 2015-04-25 21:22:56 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PagesController#home as HTML
+  Rendered pages/home.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 3130ms (Views: 3128.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/events.self-35384f9c865f85aac1e5652010748d88995808bcb600d374e9c9c741e7de1e23.css?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/colors.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/main.self-acfb5ddeb2e4ff19a454ec6fa4c613c9f5294e7e2cee1d3bfabadc1302607e78.css?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/families.self-543ea406a647ee879933e2cc7467a87ed1e06fad87610abf12785ca0ace78505.css?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/pages.self-f1d7282aaf0aa42c092bba9ec56341a828dbd896eb57d32207510df25623317a.css?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/general.self-1b88605b448833ebc9cbcc14415e089cd7b8afc68c1e7ceb1b1a6eb8b824fb01.css?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/users.self-59ffba31e0e4b6e1b0628ae1ecf7fb555eb2797e9ea6e66e09b5604ad9201903.css?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/family_events.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/application.self-c4991312985bccd133f1f21ab2f6a5d0129a8416a91037313b14f05d7d2e7dde.css?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/react.self-54d02a73cf68f1cb4e6f6b5c642451ac581cc16e3f52b355a9162c38c406250a.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/react_ujs.self-9e59229b64f3630c4c2a3811ede5c049c720faf2cb91112e255eead642284727.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/components/clickable.self-d6de46bc63ea66eb4473b59665d3c70d0c868cce1672788f8709570838a4f3cf.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/components/event.self-692a69f786cd100fb5d820eec96d4b0f1c0465e4310f381bbee9a586211d6e1b.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/components/events_list.self-89a9c8c34841b48ea94b22e730b31c6325c04581b33dfa44b9dd2d1ff9d46e8a.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/components/families_list.self-4e02caf0607ceed1ef242c711664b894314201a0780c92967bb686a9aec29083.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/components/family.self-deef181c862f9710fde96411fd9408b6f797a55d5e4a9adc2d6253ef766474dd.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/components/family_form.self-4591b99ef57e4843cec81844e14c944117163c6c5432bacd63ba19b91d601ba4.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/components/family_members.self-2ea4eb6ba11a836a5b1d7edcdec420677ed46fc8a5979751d1eec03bc08d04c4.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/components/family_profile.self-c51b987cfeb0260eba64909697500377e21ae7b00b8366dfa6ac0a645ac04033.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/components/header.self-c0619111a268d3974043b24d0ea8fb4c01017329d5504a75f68d219db40f0386.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/components/home_page.self-f0af6f9059b245806fef8f14fd6a4335edf21f6c356955cd738d65b499e2b134.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/components/login_form.self-9f2a5b279021cab5ceaf53391f628ff3bea822ea5680b3f4fe74a97a0e504590.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/components/people_page.self-74c8cbec4263b8c470e0cf47e7343e6e821643b883177e018b5602d853062fb7.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/components/signup_form.self-a96a4b0f4b25c159cfcce2169900e40a36eeb702baae0f5b4e43d1508974620b.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/components/user.self-acf496ade8b5254ee3c4dacf4001c2c0e96c7f1a4b76653d0c533de29c870410.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/components/user_profile.self-361d00d0ce0b52ff040c16789e32207a4b9c3ee60feec06a9b60689534c29d17.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/components/users_list.self-cdce5a4c4969f50d96c0401bbc06d022c22943695feab47f3b639f1574a1ffa5.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/components.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/underscore.self-b84a7a5ac0e8afc4f176b95606590bfc56044eeae9286097bdee013a6909fde5.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/backbone.self-c15a1434f7014905a310bd60a4d86beccfb115f5d5ba878928943f26cac243f4.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/backbone_rails_sync.self-10794f21385720f9df87418f571a5b023fc411f7e1a8be74fd92cef1f79b1c24.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/backbone_datalink.self-0740aa5c768603aa7bf25bb0c5454e8d1e44f973443badba84a35f60b1355ec7.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/backbone/kazoku.self-4f037607d7e74162f998bb6d3c30548af11d913ce7eaee02909b6cb62b29ba8d.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/backbone/constants/api_routes.self-c8a0f44b430d73cdbcb1c2f4a242369bb0a17a93e8428d07dcda8bf1ea537e0c.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/backbone/models/family.self-07768d2b222a34bcacac6de0a8ad64ad55da39ab015f8beabea67451b4756f3c.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/backbone/routers/router.self-a8a3dda43ffd743a39a320d340d09a154013a3d750910e9c9ad892c24937c3eb.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/dater.self-b99ba67ba44cef1b9d615ceb4765d36c9b12d10f36ca3f5d846aac1ff894a13e.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/requester.self-4afe17952d5ac1ff0e2c79eb3c105256780ec24cdd643d62e4507f10ba425b6d.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700
+
+
+Started GET "/assets/application.self-7c44b34571f9c6f50024ec815db695a00182b9937b48d97c4ac1515ab6b385a0.js?body=1" for ::1 at 2015-04-25 21:23:00 -0700

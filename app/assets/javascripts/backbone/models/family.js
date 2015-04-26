@@ -1,7 +1,8 @@
 Kazoku.Models.Family = Backbone.Model.extend({
 
   defaults: {
-    name: "PHC Boys",
+    id: null,
+    name: "",
     size: 0,
   }
 });

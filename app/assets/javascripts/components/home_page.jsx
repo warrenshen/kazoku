@@ -1,10 +1,5 @@
 var HomePage = React.createClass({
 
-  componentDidMount: function() {
-    var person = new Kazoku.Models.User({id: 1});
-    person.request({});
-  },
-
   renderBanner: function() {
     return (
       <section className="home-banner">

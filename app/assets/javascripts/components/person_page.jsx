@@ -18,14 +18,7 @@ var PersonPage = React.createClass({
 
   componentDidMount: function() {
     var person = new Kazoku.Models.User({id: this.props.id});
-    person.fetch({
-      success: function() {
-        console.log("success!");
-      },
-      error: function() {
-        console.log("error!");
-      }
-    });
+    person.request({});
   },
 
   render: function() {

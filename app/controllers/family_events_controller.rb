@@ -1,12 +1,12 @@
-class Families::FamilyEventsController < ApplicationController
+class FamilyEventsController < ApplicationController
   load_and_authorize_resource param_method: :family_event_params
-  skip_before_filter :authenticate_user!, only: [:index]
 
-  def index
-
-  end
-
-  def show
+  def create
+    if @family_event.save
+      render json: @family_event
+    else
+      api_error_response(@family_event)
+    end
   end
 
   private

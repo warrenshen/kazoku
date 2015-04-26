@@ -11,22 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150423044905) do
+ActiveRecord::Schema.define(version: 20150426000903) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "events", force: :cascade do |t|
-    t.string   "name",        default: "", null: false
-    t.string   "description", default: "", null: false
-    t.string   "image_url",   default: "", null: false
+    t.string   "name",           default: "", null: false
+    t.string   "description",    default: "", null: false
+    t.string   "image_url",      default: "", null: false
     t.date     "date"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "families_count", default: 0,  null: false
   end
 
   create_table "families", force: :cascade do |t|
-    t.string   "name",       default: "", null: false
-    t.integer  "size",       default: 0,  null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "name",         default: "", null: false
+    t.integer  "size",         default: 0,  null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "events_count", default: 0,  null: false
   end
 
   create_table "family_events", force: :cascade do |t|
@@ -36,8 +41,8 @@ ActiveRecord::Schema.define(version: 20150423044905) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "family_events", ["event_id"], name: "index_family_events_on_event_id"
-  add_index "family_events", ["family_id"], name: "index_family_events_on_family_id"
+  add_index "family_events", ["event_id"], name: "index_family_events_on_event_id", using: :btree
+  add_index "family_events", ["family_id"], name: "index_family_events_on_family_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name",             default: "",    null: false
@@ -57,10 +62,11 @@ ActiveRecord::Schema.define(version: 20150423044905) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "family_name",            default: "",    null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["family_id"], name: "index_users_on_family_id"
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["family_id"], name: "index_users_on_family_id", using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

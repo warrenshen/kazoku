@@ -34,7 +34,10 @@ var FamilyProfile = React.createClass({
           {this.props.family.name}
         </h2>
         <h5 className="general-banner-title">
-          {"Member count: " + this.props.family.size}
+          {"Members: " + this.props.family.size}
+        </h5>
+        <h5 className="general-banner-title">
+          {"Events: " + this.props.family.events_count}
         </h5>
         {this.renderOptions()}
       </div>

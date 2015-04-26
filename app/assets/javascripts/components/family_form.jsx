@@ -14,7 +14,7 @@ var FamilyForm = React.createClass({
       } else {
         console.log("api_error_response");
       }
-    }
+    };
   },
 
   render: function() {

@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
   # Associations
   ##################################################
   belongs_to :family
+  has_many :family_events, through: :family
 
   ##################################################
   # Validations
@@ -44,13 +45,21 @@ class User < ActiveRecord::Base
   ##################################################
   # Callbacks
   ##################################################
-  # before_validation :set_family_name
+  before_validation :set_family_name
 
   ##################################################
   # Methods
   ##################################################
-  # def set_family_name
-  #   self.family_name = family.try(:name)
-  # end
+  def set_family_name
+    self.family_name = family.try(:name)
+  end
+
+  ##################################################
+  # Search
+  ##################################################
+  include PgSearch
+  pg_search_scope :search,
+                  against: [[:first_name, "A"], [:last_name, "B"]],
+                  using: { tsearch: { prefix: true, normalization: 2 } }
 
 end

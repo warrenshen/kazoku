@@ -5,17 +5,18 @@ class FamiliesController < ApplicationController
   def create
     if @family.save
       current_user.update(family_id: @family.id)
-      render json: @family
+      render json: @family, serializer: FamilySerializer
     else
       api_error_response(@family)
     end
   end
 
   def index
-    @families = Family.all
+
   end
 
   def show
+    # Cannot use default cancancan's @family because need to include users.
     @family = Family.find(params[:id]).as_json(include: :users)
   end
 

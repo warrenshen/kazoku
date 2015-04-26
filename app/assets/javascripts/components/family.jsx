@@ -1,7 +1,7 @@
 var Family = React.createClass({
 
   propTypes: {
-    currentUser: React.PropTypes.object,
+    currentUser: React.PropTypes.object.isRequired,
     family:      React.PropTypes.object.isRequired,
   },
 

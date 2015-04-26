@@ -1,7 +1,7 @@
 var UserProfile = React.createClass({
 
   propTypes: {
-    currentUser: React.PropTypes.object,
+    currentUser: React.PropTypes.object.isRequired,
     user:        React.PropTypes.object.isRequired,
   },
 

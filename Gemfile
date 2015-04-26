@@ -6,9 +6,9 @@ gem 'cancancan'
 gem 'devise'
 gem "pg"
 gem "pg_search"
-gem 'react-rails'
+# gem "rails-api"
 gem 'rails-backbone'
-gem 'showdown-rails'
+gem 'react-rails'
 gem 'underscore-rails'
 ###
 

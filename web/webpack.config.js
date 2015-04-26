@@ -4,7 +4,7 @@ module.exports = {
   entry: [
     "webpack-dev-server/client?http://localhost:3333",
     "webpack/hot/dev-server",
-    "./app.jsx"
+    __dirname + "/app/app.jsx"
   ],
   output: {
     path: __dirname + "/build",

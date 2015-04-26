@@ -1,0 +1,84 @@
+  [1m[36m (123.1ms)[0m  [1mDROP DATABASE IF EXISTS "kazoku"[0m
+  [1m[35m (237.6ms)[0m  CREATE DATABASE "kazoku" ENCODING = 'unicode'
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (4.8ms)[0m  CREATE TABLE "events" ("id" serial primary key, "name" character varying DEFAULT '' NOT NULL, "description" character varying DEFAULT '' NOT NULL, "image_url" character varying DEFAULT '' NOT NULL, "date" date, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "families_count" integer DEFAULT 0 NOT NULL) 
+  [1m[36m (3.3ms)[0m  [1mCREATE TABLE "families" ("id" serial primary key, "name" character varying DEFAULT '' NOT NULL, "size" integer DEFAULT 0 NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "events_count" integer DEFAULT 0 NOT NULL) [0m
+  [1m[35m (2.9ms)[0m  CREATE TABLE "family_events" ("id" serial primary key, "family_id" integer, "event_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (1.1ms)[0m  [1mCREATE  INDEX  "index_family_events_on_event_id" ON "family_events" USING btree ("event_id")[0m
+  [1m[35m (2.4ms)[0m  CREATE  INDEX  "index_family_events_on_family_id" ON "family_events" USING btree ("family_id")
+  [1m[36m (3.9ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying DEFAULT '' NOT NULL, "last_name" character varying DEFAULT '' NOT NULL, "image_url" character varying DEFAULT '' NOT NULL, "is_admin" boolean DEFAULT 'f' NOT NULL, "family_id" integer, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying, "last_sign_in_ip" character varying, "created_at" timestamp, "updated_at" timestamp, "family_name" character varying DEFAULT '' NOT NULL) [0m
+  [1m[35m (2.4ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")
+  [1m[36m (1.3ms)[0m  [1mCREATE  INDEX  "index_users_on_family_id" ON "users" USING btree ("family_id")[0m
+  [1m[35m (1.8ms)[0m  CREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")
+  [1m[36m (1.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.4ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150426000903')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150423044556')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150423044632')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150423044716')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150423044905')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150425183720')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFamily Exists (0.7ms)[0m  SELECT  1 AS one FROM "families" WHERE "families"."name" = 'PHC Boys' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "families" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "PHC Boys"], ["created_at", "2015-04-26 04:52:00.905319"], ["updated_at", "2015-04-26 04:52:00.905319"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.8ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'altonzheng@berkeley.edu' LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'altonzheng@berkeley.edu' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."image_url" = 'https://avatars2.githubusercontent.com/u/1298214?v=3&s=460' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'altonzheng@berkeley.edu' LIMIT 1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'altonzheng@berkeley.edu' LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."image_url" = 'https://avatars2.githubusercontent.com/u/1298214?v=3&s=460' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "image_url", "family_name", "family_id", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["first_name", "Alton"], ["last_name", "Zheng"], ["email", "altonzheng@berkeley.edu"], ["image_url", "https://avatars2.githubusercontent.com/u/1298214?v=3&s=460"], ["family_name", "PHC Boys"], ["family_id", 1], ["encrypted_password", "$2a$10$75lca3T8uEhRYMZlMdZBvO8m.ehQp/dzn8csfy/q3NacRvlMcMvKC"], ["created_at", "2015-04-26 04:52:01.037128"], ["updated_at", "2015-04-26 04:52:01.037128"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'byronzhang@berkeley.edu' LIMIT 1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'byronzhang@berkeley.edu' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."image_url" = 'https://avatars1.githubusercontent.com/u/4009333?v=3&s=460' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'byronzhang@berkeley.edu' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'byronzhang@berkeley.edu' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."image_url" = 'https://avatars1.githubusercontent.com/u/4009333?v=3&s=460' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "email", "image_url", "family_name", "family_id", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Byron"], ["last_name", "Zhang"], ["email", "byronzhang@berkeley.edu"], ["image_url", "https://avatars1.githubusercontent.com/u/4009333?v=3&s=460"], ["family_name", "PHC Boys"], ["family_id", 1], ["encrypted_password", "$2a$10$6Do2.Nv9Irb63OuwpCQKN.LKOXZY6HnRIBL1pBMmMDqQusAOYoQNq"], ["created_at", "2015-04-26 04:52:01.120128"], ["updated_at", "2015-04-26 04:52:01.120128"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'danielli@berkeley.edu' LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'danielli@berkeley.edu' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."image_url" = 'https://avatars0.githubusercontent.com/u/5432430?v=3&s=460' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'danielli@berkeley.edu' LIMIT 1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'danielli@berkeley.edu' LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."image_url" = 'https://avatars0.githubusercontent.com/u/5432430?v=3&s=460' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "image_url", "family_name", "family_id", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["first_name", "Daniel"], ["last_name", "Li"], ["email", "danielli@berkeley.edu"], ["image_url", "https://avatars0.githubusercontent.com/u/5432430?v=3&s=460"], ["family_name", "PHC Boys"], ["family_id", 1], ["encrypted_password", "$2a$10$n9W1kOWPA/sZBJbnqfQGPulAhL19ETGkl2AwblsFEUJZ1ZnWYcWZC"], ["created_at", "2015-04-26 04:52:01.198420"], ["updated_at", "2015-04-26 04:52:01.198420"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'tonywu@berkeley.edu' LIMIT 1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'tonywu@berkeley.edu' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."image_url" = 'https://scontent-sjc.xx.fbcdn.net/hphotos-xpa1/t31.0-8/10507102_10152460803547761_2396203646451225979_o.jpg' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.5ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'tonywu@berkeley.edu' LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'tonywu@berkeley.edu' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."image_url" = 'https://scontent-sjc.xx.fbcdn.net/hphotos-xpa1/t31.0-8/10507102_10152460803547761_2396203646451225979_o.jpg' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "email", "image_url", "family_name", "family_id", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Tony"], ["last_name", "Wu"], ["email", "tonywu@berkeley.edu"], ["image_url", "https://scontent-sjc.xx.fbcdn.net/hphotos-xpa1/t31.0-8/10507102_10152460803547761_2396203646451225979_o.jpg"], ["family_name", "PHC Boys"], ["family_id", 1], ["encrypted_password", "$2a$10$DY4ITr0pDEqaU8LuxadvO.fcINv8NgSGhhpc9mrGuBFXfLUXc/6q2"], ["created_at", "2015-04-26 04:52:01.278066"], ["updated_at", "2015-04-26 04:52:01.278066"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'warrensterling@berkeley.edu' LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'warrensterling@berkeley.edu' LIMIT 1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."image_url" = 'https://avatars3.githubusercontent.com/u/8787796?v=3&s=460' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'warrensterling@berkeley.edu' LIMIT 1[0m
+  [1m[35mUser Exists (0.5ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'warrensterling@berkeley.edu' LIMIT 1
+  [1m[36mUser Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."image_url" = 'https://avatars3.githubusercontent.com/u/8787796?v=3&s=460' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "image_url", "family_name", "family_id", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["first_name", "Warren"], ["last_name", "Sterling"], ["email", "warrensterling@berkeley.edu"], ["image_url", "https://avatars3.githubusercontent.com/u/8787796?v=3&s=460"], ["family_name", "PHC Boys"], ["family_id", 1], ["encrypted_password", "$2a$10$YFIT5EC6eo7OZH4PQE0a3.UuBEWOiFb0cC5t6a5HCZKIiSlu8rF7O"], ["created_at", "2015-04-26 04:52:01.362108"], ["updated_at", "2015-04-26 04:52:01.362108"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "events" ("name", "description", "image_url", "date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Coachella"], ["description", "The annual Valley Music and Arts Festival."], ["image_url", "http://cdn2.hellogiggles.com/wp-content/uploads/2015/04/09/Bassnectar_Live_at_Coachella_Wknd_2.jpg"], ["date", "2015-04-10"], ["created_at", "2015-04-26 04:52:01.372695"], ["updated_at", "2015-04-26 04:52:01.372695"]]
+  [1m[35m (0.4ms)[0m  COMMIT

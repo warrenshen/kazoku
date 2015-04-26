@@ -1,5 +1,20 @@
 var HomePage = React.createClass({
 
+  componentDidMount: function() {
+    var person = new Kazoku.Models.User({id: 1});
+    person.fetch({
+      success: function() {
+        console.log(person);
+      },
+      error: function() {
+        console.log("error!");
+      },
+      onload: function() {
+        console.log("change!");
+      }
+    });
+  },
+
   renderBanner: function() {
     return (
       <section className="home-banner">

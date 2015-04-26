@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    # render json: @user, serializer: UserSerializer
+    render json: @user, serializer: UserSerializer
   end
 
   def update

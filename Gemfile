@@ -7,9 +7,6 @@ gem 'devise'
 gem "pg"
 gem "pg_search"
 # gem "rails-api"
-gem 'rails-backbone'
-gem 'react-rails'
-gem 'underscore-rails'
 ###
 
 # Use sqlite3 as the database for Active Record

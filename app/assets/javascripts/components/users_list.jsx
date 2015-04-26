@@ -23,10 +23,10 @@ var UsersList = React.createClass({
     var self = this;
     request.onload = function() {
       var results = JSON.parse(request.response);
-      if (results.length === 0) {
+      if (results.users.length === 0) {
         self.setState({users: null});
       } else {
-        self.setState({users: results});
+        self.setState({users: results.users});
       }
     };
   },

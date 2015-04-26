@@ -43,6 +43,18 @@ class User < ActiveRecord::Base
   validates :image_url,  presence: true, uniqueness: true
 
   ##################################################
+  # Callbacks
+  ##################################################
+  before_validation :set_family_name
+
+  ##################################################
+  # Methods
+  ##################################################
+  def set_family_name
+    self.family_name = family.try(:name)
+  end
+
+  ##################################################
   # Search
   ##################################################
   include PgSearch

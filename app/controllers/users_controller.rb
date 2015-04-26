@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    render json: @users, each_serializer: UserSerializer
+    # render json: @users, each_serializer: UserSerializer
   end
 
   def search
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    render json: @user, serializer: UserSerializer
+    # render json: @user, serializer: UserSerializer
   end
 
   def update

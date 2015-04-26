@@ -8,7 +8,7 @@ var UserProfile = React.createClass({
   getDefaultProps: function() {
     return {
       currentUser: null,
-      user:      null,
+      user:        null,
     };
   },
 
@@ -18,12 +18,13 @@ var UserProfile = React.createClass({
   },
 
   renderFamilyName: function() {
-    if (this.props.user.family) {
+    console.log(this.props.user.family_name);
+    if (this.props.user.family_name) {
       return (
         <Clickable
-          path={Routes.families.index + "/" + this.props.user.family.id}
+          path={Routes.families.index + "/" + this.props.user.family_id}
           style={"profile-banner-subtitle"}
-          content={this.props.user.family.name} />
+          content={this.props.user.family_name} />
       );
     } else {
       return (

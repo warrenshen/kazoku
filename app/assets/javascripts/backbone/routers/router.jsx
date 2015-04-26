@@ -2,6 +2,7 @@ Kazoku.Routers.Router = Backbone.Router.extend({
 
   routes: {
     "": "home",
+    "people": "people",
   },
 
   home: function() {
@@ -9,9 +10,14 @@ Kazoku.Routers.Router = Backbone.Router.extend({
       <HomePage />,
       document.getElementById("anchor")
     );
-  }
+  },
 
+  people: function() {
+    React.render(
+
+    );
+  }
 });
 
-var router = new Kazoku.Routers.Router();
+new Kazoku.Routers.Router();
 Backbone.history.start();

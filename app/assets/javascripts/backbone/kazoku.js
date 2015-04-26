@@ -5,18 +5,9 @@
 //= require_tree ./views
 //= require_tree ./routers
 
-window.Kazoku = {
-  Models: {},
+var global = window;
+global.Kazoku = {
   Collections: {},
+  Models: {},
   Routers: {},
-  Views: {},
 }
-
-Kazoku.Models.Family = Backbone.Model.extend({
-
-  defaults: {
-    name: "PHC Boys",
-    size: 0,
-  }
-
-});

@@ -1,4 +1,4 @@
-var Routes = {
+var ApiRoutes = {
 
   events: {
     index: "/events",

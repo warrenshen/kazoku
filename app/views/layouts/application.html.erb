@@ -3,11 +3,11 @@
   <head>
     <title>kazoku</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <link href='http://fonts.googleapis.com/css?family=Questrial|Montserrat' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <%= yield %>
+    <div id="anchor"></div>
+    <%= javascript_include_tag 'application' %>
   </body>
 </html>

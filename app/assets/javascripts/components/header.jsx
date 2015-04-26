@@ -14,14 +14,14 @@ var Header = React.createClass({
 
   attemptLogout: function(event) {
     var email = this.props.currentUser.email;
-    var request = Requester.send("delete", Routes.users.logout, {
+    var request = Requester.send("delete", ApiRoutes.users.logout, {
       id: this.props.currentUser.id,
     });
     request.onload = function() {
       var response = JSON.parse(request.response);
       console.log(response)
       if (response.id) {
-        window.location = Routes.pages.home;
+        window.location = ApiRoutes.pages.home;
       } else {
         console.log("api_error_response");
       }
@@ -43,14 +43,14 @@ var Header = React.createClass({
     if (this.props.currentUser === null) {
       return (
         <Clickable
-          path={Routes.pages.login}
+          path={ApiRoutes.pages.login}
           style={"general-button"}
           content={"Login/Signup"} />
       );
     } else {
       return (
         <Clickable
-          path={Routes.users.index + "/" + this.props.currentUser.id}
+          path={ApiRoutes.users.index + "/" + this.props.currentUser.id}
           style={"general-button"}
           content={"Your Profile"} />
       );
@@ -72,7 +72,7 @@ var Header = React.createClass({
         <div className="header-left">
           <div className="vertical-anchor"></div>
           <Clickable
-            path={Routes.pages.home}
+            path={ApiRoutes.pages.home}
             style={brandClass}
             content={"Kazoku"} />
         </div>

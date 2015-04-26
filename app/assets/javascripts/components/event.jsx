@@ -1,7 +1,7 @@
 var Event = React.createClass({
 
   propTypes: {
-    currentUser: React.PropTypes.object,
+    currentUser: React.PropTypes.object.isRequired,
     event:       React.PropTypes.object.isRequired,
   },
 

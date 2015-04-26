@@ -1,7 +1,7 @@
 var Header = React.createClass({
 
   propTypes: {
-    currentUser: React.PropTypes.object,
+    currentUser: React.PropTypes.object.isRequired,
     isColored:   React.PropTypes.bool.isRequired,
   },
 

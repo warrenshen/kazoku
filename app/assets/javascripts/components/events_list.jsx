@@ -1,7 +1,7 @@
 var EventsList = React.createClass({
 
   propTypes: {
-    currentUser: React.PropTypes.object,
+    currentUser: React.PropTypes.object.isRequired,
     events: React.PropTypes.array.isRequired,
   },
 

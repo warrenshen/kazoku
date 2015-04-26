@@ -23,7 +23,7 @@ Kazoku.Routers.Router = Backbone.Router.extend({
   user: function(id) {
     console.log(id);
     React.render(
-
+      <PersonPage />,
       document.getElementById("anchor")
     );
   }

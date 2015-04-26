@@ -11,7 +11,8 @@ module.exports = {
     filename: "bundle.js",
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
   ],
   resolve: {
     extensions: ["", ".js"]

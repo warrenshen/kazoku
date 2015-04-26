@@ -6,10 +6,9 @@ Kazoku.Routers.Router = Backbone.Router.extend({
 
   home: function() {
     React.render(
-      <HomeActions />,
-      document.getElementById("root")
+      <HomePage />,
+      document.getElementById("anchor")
     );
-    console.log("rendering home");
   }
 
 });

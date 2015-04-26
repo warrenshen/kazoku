@@ -43,6 +43,14 @@ class User < ActiveRecord::Base
   validates :image_url,  presence: true, uniqueness: true
 
   ##################################################
+  # Search
+  ##################################################
+  include PgSearch
+  pg_search_scope :search,
+                  against: [[:first_name, "A"], [:last_name, "B"]],
+                  using: { tsearch: { prefix: true, normalization: 2 } }
+
+  ##################################################
   # Callbacks
   ##################################################
   before_validation :set_family_name
@@ -50,16 +58,10 @@ class User < ActiveRecord::Base
   ##################################################
   # Methods
   ##################################################
+  private
+
   def set_family_name
     self.family_name = family.try(:name)
   end
-
-  ##################################################
-  # Search
-  ##################################################
-  include PgSearch
-  pg_search_scope :search,
-                  against: [[:first_name, "A"], [:last_name, "B"]],
-                  using: { tsearch: { prefix: true, normalization: 2 } }
 
 end

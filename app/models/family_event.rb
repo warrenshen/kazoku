@@ -32,6 +32,8 @@ class FamilyEvent < ActiveRecord::Base
   ##################################################
   # Methods
   ##################################################
+  private
+
   def increment_counter_caches
     event.increment(:families_count)
     family.increment(:events_count)

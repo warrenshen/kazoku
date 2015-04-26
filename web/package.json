@@ -1,12 +1,13 @@
 {
   "name": "kazoku",
+  "private": true,
   "version": "1.0.0",
-  "description": "",
+  "description": "kazoku js client",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "warrenshen",
   "license": "ISC",
   "devDependencies": {
     "gulp": "^3.8.11",

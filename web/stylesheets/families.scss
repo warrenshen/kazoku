@@ -1,0 +1,29 @@
+.family-block {
+  position: relative;
+  margin-top: 36px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.family-block-name {
+  display: block;
+  position: relative;
+  font-size: 30px;
+  letter-spacing: 2px;
+  line-height: 48px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.family-block-size {
+  position: relative;
+}
+
+.family-block-options {
+  position: relative;
+  margin-top: 12px;
+}

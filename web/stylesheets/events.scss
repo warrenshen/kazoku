@@ -1,0 +1,44 @@
+@import "colors";
+
+.event-block {
+  position: relative;
+  margin-top: 36px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.event-block-name {
+  display: block;
+  position: relative;
+  font-size: 24px;
+  letter-spacing: 2px;
+  line-height: 48px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.event-block-date {
+  position: relative;
+}
+
+.event-block-image {
+  width: 172px;
+  height: 172px;
+  border: 4px solid;
+  border-color: $pink;
+  border-radius: 86px;
+  box-shadow: 0 0 1px $coral;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.event-block-options {
+  position: relative;
+  margin-top: 12px;
+}

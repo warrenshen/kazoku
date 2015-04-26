@@ -1,4 +1,5 @@
 //= require_self
+//= require_tree ./constants
 //= require_tree ./templates
 //= require_tree ./models
 //= require_tree ./views
@@ -19,21 +20,3 @@ Kazoku.Models.Family = Backbone.Model.extend({
   }
 
 });
-
-Kazoku.Routers.Pages = Backbone.Router.extend({
-
-  routes: {
-    "": "home",
-  },
-
-  home: function() {
-    React.render(
-      <HomeActions />,
-      document.body
-    );
-  }
-
-});
-
-var router = new Kazoku.Routers.Pages();
-Backbone.history.start();

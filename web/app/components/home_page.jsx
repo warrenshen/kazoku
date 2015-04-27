@@ -1,7 +1,10 @@
 import React from "react";
+import Component from "../component.jsx";
+
+import Header from "./header.jsx";
 
 
-class HomePage extends React.Component {
+class HomePage extends Component {
 
   renderBanner() {
     return (

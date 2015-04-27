@@ -1,19 +1,8 @@
 import React from "react";
+import Component from "../component.jsx";
 
 
-class Header extends React.Component {
-
-  propTypes: {
-    currentUser: React.PropTypes.object.isRequired,
-    isColored:   React.PropTypes.bool.isRequired,
-  }
-
-  getDefaultProps() {
-    return {
-      currentUser: null,
-      isColored:   true,
-    };
-  }
+class Header extends Component {
 
   attemptLogout(event) {
     var email = this.props.currentUser.email;
@@ -87,6 +76,16 @@ class Header extends React.Component {
       </div>
     );
   }
+}
+
+Header.propTypes = {
+  currentUser: React.PropTypes.object.isRequired,
+  isColored:   React.PropTypes.bool.isRequired,
+}
+
+Header.defaultProps = {
+  currentUser: null,
+  isColored:   true,
 }
 
 

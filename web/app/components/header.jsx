@@ -1,4 +1,5 @@
 import React from "react";
+import Classer from "classnames";
 import Component from "../component.jsx";
 
 import Clickable from "./clickable.jsx";
@@ -56,16 +57,14 @@ class Header extends Component {
   // {this.renderLogout()}
   // {this.renderProfile()}
   render() {
-    // var merge = React.addons.classSet;
-    // var headerClass = merge({
-    //   "header": true,
-    //   "header-colored": this.props.isColored,
-    // });
-    // var brandClass = merge({
-    //   "header-brand": true,
-    //   "header-brand-colored": this.props.isColored,
-    // });
-    var headerClass = "header";
+    var headerClass = Classer(
+      {"header": true},
+      {"header-colored": this.props.isColored}
+    );
+    var brandClass = Classer(
+      {"header-brand": true},
+      {"header-brand-colored": this.props.isColored}
+    );
     var brandClass = "header-brand";
     return (
       <div className={headerClass}>

@@ -3,23 +3,25 @@ import Component from "../component.jsx";
 
 import Clickable from "./clickable.jsx";
 
+import Routes from "../constants/routes.js";
+
 
 class Header extends Component {
 
   attemptLogout(event) {
-    var email = this.props.currentUser.email;
-    var request = Requester.send("delete", ApiRoutes.users.logout, {
-      id: this.props.currentUser.id,
-    });
-    request.onload = function() {
-      var response = JSON.parse(request.response);
-      console.log(response)
-      if (response.id) {
-        window.location = ApiRoutes.pages.home;
-      } else {
-        console.log("api_error_response");
-      }
-    };
+    // var email = this.props.currentUser.email;
+    // var request = Requester.send("delete", ApiRoutes.users.logout, {
+    //   id: this.props.currentUser.id,
+    // });
+    // request.onload = function() {
+    //   var response = JSON.parse(request.response);
+    //   console.log(response)
+    //   if (response.id) {
+    //     window.location = ApiRoutes.pages.home;
+    //   } else {
+    //     console.log("api_error_response");
+    //   }
+    // };
   }
 
   renderLogout() {
@@ -37,14 +39,14 @@ class Header extends Component {
     if (this.props.currentUser === null) {
       return (
         <Clickable
-          path={ApiRoutes.pages.login}
+          path={Routes.pages.login}
           style={"general-button"}
           content={"Login/Signup"} />
       );
     } else {
       return (
         <Clickable
-          path={ApiRoutes.users.index + "/" + this.props.currentUser.id}
+          path={Routes.users.index + "/" + this.props.currentUser.id}
           style={"general-button"}
           content={"Your Profile"} />
       );
@@ -70,7 +72,7 @@ class Header extends Component {
         <div className="header-left">
           <div className="vertical-anchor"></div>
           <Clickable
-            path={ApiRoutes.pages.home}
+            path={Routes.pages.home}
             style={brandClass}
               content={"Kazoku"} />
         </div>

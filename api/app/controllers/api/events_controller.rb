@@ -1,9 +1,18 @@
-class EventsController < ApplicationController
+class Api::EventsController < ApplicationController
   load_and_authorize_resource param_method: :event_params
   skip_before_filter :authenticate_user!
 
+  def create
+
+  end
+
   def index
-    @events = Event.all.as_json(include: :families)
+    # TODO: Add each_serializer for events!
+    render :json @events
+  end
+
+  def show
+
   end
 
   private

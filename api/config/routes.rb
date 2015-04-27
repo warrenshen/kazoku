@@ -6,13 +6,17 @@ Rails.application.routes.draw do
       skip: [:registrations, :passwords],
       controllers: { sessions: "api/users/sessions" }
 
-    resources :events, only: [:create]
+    resources :events, only: [:create, :index, :show]
 
-    resources :families, only: [:create]
+    resources :families, only: [:create, :index, :show] do
+      scope module: :families do
+        resources :family_events, only: [:index, :show]
+      end
+    end
 
     resources :family_events, only: [:create]
 
-    resources :users, only: [:create, :update] do
+    resources :users, only: [:create, :index, :show, :update] do
       collection do
         get "search"
       end

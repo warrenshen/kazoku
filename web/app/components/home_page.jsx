@@ -80,13 +80,12 @@ class HomePage extends React.Component {
     );
   }
 
-  // <Header user={null} isColored={false} />
   // {this.renderBanner()}
   // {this.renderContent()}
   render() {
     return (
       <div className = "general-page">
-
+        <Header user={null} isColored={false} />
       </div>
     );
   }

@@ -1,18 +1,21 @@
-var Header = React.createClass({
+import React from "react";
+
+
+class Header extends React.Component {
 
   propTypes: {
     currentUser: React.PropTypes.object.isRequired,
     isColored:   React.PropTypes.bool.isRequired,
-  },
+  }
 
-  getDefaultProps: function() {
+  getDefaultProps() {
     return {
       currentUser: null,
       isColored:   true,
     };
-  },
+  }
 
-  attemptLogout: function(event) {
+  attemptLogout(event) {
     var email = this.props.currentUser.email;
     var request = Requester.send("delete", ApiRoutes.users.logout, {
       id: this.props.currentUser.id,
@@ -26,9 +29,9 @@ var Header = React.createClass({
         console.log("api_error_response");
       }
     };
-  },
+  }
 
-  renderLogout: function() {
+  renderLogout() {
     if (this.props.currentUser !== null) {
       return (
         <Clickable
@@ -37,9 +40,9 @@ var Header = React.createClass({
           content={"Logout"} />
       );
     }
-  },
+  }
 
-  renderProfile: function() {
+  renderProfile() {
     if (this.props.currentUser === null) {
       return (
         <Clickable
@@ -55,9 +58,9 @@ var Header = React.createClass({
           content={"Your Profile"} />
       );
     }
-  },
+  }
 
-  render: function() {
+  render() {
     var merge = React.addons.classSet;
     var headerClass = merge({
       "header": true,
@@ -84,4 +87,7 @@ var Header = React.createClass({
       </div>
     );
   }
-});
+}
+
+
+module.exports = Header;

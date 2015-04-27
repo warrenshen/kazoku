@@ -20,7 +20,7 @@
     "node-sass": "^2.1.1",
     "react": "^0.13.2",
     "react-hot-loader": "^1.2.5",
-    "sass-loader": "^0.6.0",
+    "sass-loader": "^0.4.2",
     "style-loader": "^0.12.0",
     "webpack": "^1.8.10",
     "webpack-dev-server": "^1.8.2"

@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Api::UsersController < ApplicationController
   load_and_authorize_resource param_method: :user_params, except: [:search]
   skip_before_filter :authenticate_user!, except: [:update]
 
@@ -12,10 +12,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    respond_to do |format|
-      format.html
-      format.json { render json: @users, each_serializer: UserSerializer }
-    end
+    render json: @users, each_serializer: UserSerializer
   end
 
   def search
@@ -24,10 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    respond_to do |format|
-      format.html
-      format.json { render json: @user, serializer: UserSerializer }
-    end
+    render json: @user, serializer: UserSerializer
   end
 
   def update

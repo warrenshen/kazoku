@@ -1,4 +1,4 @@
-class FamiliesController < ApplicationController
+class Api::FamiliesController < ApplicationController
   load_and_authorize_resource param_method: :family_params
   skip_before_filter :authenticate_user!, only: [:index, :show]
 
@@ -12,12 +12,11 @@ class FamiliesController < ApplicationController
   end
 
   def index
-
+    render json: @families, each_serializer: FamilySerializer
   end
 
   def show
-    # Cannot use default cancancan's @family because need to include users.
-    @family = Family.find(params[:id]).as_json(include: :users)
+    render json: @family, serializer: FamilySerializer
   end
 
   private

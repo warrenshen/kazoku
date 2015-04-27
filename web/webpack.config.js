@@ -14,13 +14,11 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
-  resolve: {
-    extensions: ["", ".js"]
-  },
   module: {
     loaders: [
       { test: /\.jsx$/, exclude: /node_modules/, loader: "react-hot-loader!babel-loader" },
-      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
+      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
+      { test: /\.scss$/, exclude: /node_modules/, loader: "style!css!sass" },
     ]
   }
 }

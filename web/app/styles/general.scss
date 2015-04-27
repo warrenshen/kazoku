@@ -1,0 +1,76 @@
+@import "colors";
+
+.general-banner {
+  position: relative;
+  width: 100%;
+  padding: 64px 0;
+  background-color: $white;
+}
+
+.general-banner-content {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.general-banner-title {
+  position: relative;
+}
+
+.general-banner-subtitle {
+  position: relative;
+}
+
+.general-banner-actions {
+  position: relative;
+  margin-top: 12px;
+}
+
+.general-section {
+  position: relative;
+  width: 100%;
+  padding: 48px 0;
+}
+
+.general-section-headings {
+  position: relative;
+  width: 100%;
+  padding-bottom: 24px;
+  text-align: center;
+}
+
+.general-section-title {
+  position: relative;
+}
+
+.general-list {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.general-block {
+  position: relative;
+  margin-top: 36px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.general-block-name {
+  display: block;
+  position: relative;
+  font-size: 24px;
+  letter-spacing: 2px;
+  line-height: 48px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.general-block-options {
+  position: relative;
+  margin-top: 12px;
+}

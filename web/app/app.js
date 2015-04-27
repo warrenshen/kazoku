@@ -1,5 +1,10 @@
 import Backbone from "backbone";
-import Router from "./routers/router";
+import Router from "./routers/router.js";
+
+import "./styles/main.scss";
+import "./styles/general.scss";
+import "./styles/specific.scss";
+import "./styles/pages.scss";
 
 
 class Kazoku {

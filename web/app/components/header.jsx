@@ -1,6 +1,8 @@
 import React from "react";
 import Component from "../component.jsx";
 
+import Clickable from "./clickable.jsx";
+
 
 class Header extends Component {
 
@@ -49,10 +51,6 @@ class Header extends Component {
     }
   }
 
-  // <Clickable
-  //   path={ApiRoutes.pages.home}
-  //   style={brandClass}
-  //   content={"Kazoku"} />
   // {this.renderLogout()}
   // {this.renderProfile()}
   render() {
@@ -71,10 +69,10 @@ class Header extends Component {
       <div className={headerClass}>
         <div className="header-left">
           <div className="vertical-anchor"></div>
-
-
-
-
+          <Clickable
+            path={ApiRoutes.pages.home}
+            style={brandClass}
+              content={"Kazoku"} />
         </div>
         <div className="header-right">
           <div className="vertical-anchor"></div>

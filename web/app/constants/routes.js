@@ -1,4 +1,4 @@
-var ApiRoutes = {
+module.exports = {
 
   events: {
     index: "/events",
@@ -21,8 +21,5 @@ var ApiRoutes = {
 
   users: {
     index: "/users",
-    login: "/users/sign_in",
-    logout: "/users/sign_out",
-    search: "/users/search"
   }
 };

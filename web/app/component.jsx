@@ -5,10 +5,10 @@ class Component extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = setInitialState();
+    this.state = this.state();
   }
 
-  setInitialState() {
+  state() {
     return {};
   }
 

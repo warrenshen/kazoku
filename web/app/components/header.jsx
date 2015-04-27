@@ -49,29 +49,37 @@ class Header extends Component {
     }
   }
 
+  // <Clickable
+  //   path={ApiRoutes.pages.home}
+  //   style={brandClass}
+  //   content={"Kazoku"} />
+  // {this.renderLogout()}
+  // {this.renderProfile()}
   render() {
-    var merge = React.addons.classSet;
-    var headerClass = merge({
-      "header": true,
-      "header-colored": this.props.isColored,
-    });
-    var brandClass = merge({
-      "header-brand": true,
-      "header-brand-colored": this.props.isColored,
-    });
+    // var merge = React.addons.classSet;
+    // var headerClass = merge({
+    //   "header": true,
+    //   "header-colored": this.props.isColored,
+    // });
+    // var brandClass = merge({
+    //   "header-brand": true,
+    //   "header-brand-colored": this.props.isColored,
+    // });
+    var headerClass = "header";
+    var brandClass = "header-brand";
     return (
       <div className={headerClass}>
         <div className="header-left">
           <div className="vertical-anchor"></div>
-          <Clickable
-            path={ApiRoutes.pages.home}
-            style={brandClass}
-            content={"Kazoku"} />
+
+
+
+
         </div>
         <div className="header-right">
           <div className="vertical-anchor"></div>
-          {this.renderLogout()}
-          {this.renderProfile()}
+
+
         </div>
       </div>
     );

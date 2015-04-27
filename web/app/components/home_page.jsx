@@ -1,6 +1,9 @@
-var HomePage = React.createClass({
+import React from "react";
 
-  renderBanner: function() {
+
+class HomePage extends React.Component {
+
+  renderBanner() {
     return (
       <section className="home-banner">
         <div className="home-banner-fade"></div>
@@ -16,9 +19,9 @@ var HomePage = React.createClass({
         </div>
       </section>
     );
-  },
+  }
 
-  renderActions: function() {
+  renderActions() {
     return (
       <div className="home-actions">
         <div className="home-action">
@@ -59,9 +62,9 @@ var HomePage = React.createClass({
         </div>
       </div>
     );
-  },
+  }
 
-  renderContent: function() {
+  renderContent() {
     return (
       <section className="general-section">
         <div className="home-actions-headings">
@@ -75,15 +78,19 @@ var HomePage = React.createClass({
         {this.renderActions()}
       </section>
     );
-  },
+  }
 
-  render: function() {
+  // <Header user={null} isColored={false} />
+  // {this.renderBanner()}
+  // {this.renderContent()}
+  render() {
     return (
       <div className = "general-page">
-        <Header user={null} isColored={false} />
-        {this.renderBanner()}
-        {this.renderContent()}
+
       </div>
     );
   }
-});
+}
+
+
+module.exports = HomePage;

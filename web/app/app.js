@@ -3,6 +3,8 @@ import Router from "./routers/router";
 
 import "./styles/main.scss";
 import "./styles/general.scss";
+import "./styles/specific.scss";
+import "./styles/pages.scss";
 
 
 class Kazoku {

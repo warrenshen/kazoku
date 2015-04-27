@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::API
   before_filter :authenticate_user!
 
+  respond_to :json
+
   def authenticate_user!
     redirect_to login_path unless user_signed_in?
   end

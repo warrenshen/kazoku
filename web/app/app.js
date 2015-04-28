@@ -12,13 +12,10 @@ class Kazoku {
   constructor(router) {
     this.Collections = [];
     this.Models = [];
-    this.Router = new router();
-    Backbone.history.start({pushState: true});
+    this.Router = router;
+    Backbone.history.start({ pushState: true });
   }
 }
 
-var App = new Kazoku(Router);
-window.App = App;
 
-
-module.exports = App;
+module.exports = new App(Router);

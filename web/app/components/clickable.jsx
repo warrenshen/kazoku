@@ -1,6 +1,8 @@
 import React from "react";
 import Component from "../component.jsx";
 
+import Router from "./routers/router.js";
+
 
 class Clickable extends Component {
 
@@ -9,7 +11,7 @@ class Clickable extends Component {
     event.stopPropagation();
     if (this.props.route !== "") {
       // TODO: Figure out a way to do this without global scope.
-      App.Router.navigate(this.props.route, true);
+      Router.navigate(this.props.route, true);
     } else if (this.props.action !== null) {
       this.props.action();
     }

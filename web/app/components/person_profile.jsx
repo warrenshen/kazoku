@@ -1,30 +1,25 @@
-var UserProfile = React.createClass({
+import React from "react";
+import Component from "../component.jsx";
 
-  propTypes: {
-    currentUser: React.PropTypes.object.isRequired,
-    user:        React.PropTypes.object.isRequired,
-  },
+import Clickable from "./clickable.jsx";
 
-  getDefaultProps: function() {
-    return {
-      currentUser: null,
-      user:        null,
-    };
-  },
+import Routes from "../constants/routes.js";
+
+
+class PersonProfile extends Component {
 
   renderName: function() {
-    var user = this.props.user;
-    return user.first_name + " " + user.last_name;
-  },
+    var person = this.props.person;
+    return person.first_name + " " + person.last_name;
+  }
 
-  renderFamilyName: function() {
-    console.log(this.props.user.family_name);
-    if (this.props.user.family_name) {
+  renderFamilyName {
+    if (this.props.person.family_name) {
       return (
         <Clickable
-          route={Routes.families.index + "/" + this.props.user.family_id}
+          route={Routes.families.index + "/" + this.props.person.family_id}
           style={"profile-banner-subtitle"}
-          content={this.props.user.family_name} />
+          content={this.props.person.family_name} />
       );
     } else {
       return (
@@ -33,17 +28,17 @@ var UserProfile = React.createClass({
         </h5>
       );
     }
-  },
+  }
 
-  renderImage: function() {
-    var user = this.props.user;
-    if (user.image_url.length) {
-      return <img className="profile-banner-image" src={user.image_url} />
+  renderImage {
+    var person = this.props.person;
+    if (person.image_url.length) {
+      return <img className="profile-banner-image" src={person.image_url} />
     }
-  },
+  }
 
-  renderFamilyButton: function() {
-    if (this.props.user.family_id === null) {
+  renderFamilyButton {
+    if (this.props.person.family_id === null) {
       return (
         <Clickable
           route={Routes.families.new}
@@ -51,11 +46,11 @@ var UserProfile = React.createClass({
           content={"Create a family"} />
       );
     }
-  },
+  }
 
-  renderActions: function() {
-    var currentUser = this.props.currentUser;
-    if (currentUser !== null && currentUser.id === this.props.user.id) {
+  renderActions {
+    var user = this.props.user;
+    if (user !== null && user.id === this.props.person.id) {
       return (
         <div className="general-banner-actions">
           {this.renderFamilyButton()}
@@ -66,9 +61,9 @@ var UserProfile = React.createClass({
         </div>
       );
     }
-  },
+  }
 
-  render: function() {
+  render {
     return (
       <div className="general-banner-content">
         {this.renderImage()}
@@ -85,4 +80,17 @@ var UserProfile = React.createClass({
       </div>
     );
   }
-});
+}
+
+PersonProfile.propTypes = {
+  user:   React.PropTypes.object.isRequired,
+  person: React.PropTypes.object.isRequired,
+}
+
+PersonProfile.defaultProps: = {
+  user:   null,
+  person: null,
+}
+
+
+module.exports = PersonProfile;

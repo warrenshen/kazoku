@@ -7,6 +7,7 @@ class Clickable extends Component {
   handleClick() {
     event.stopPropagation();
     if (this.props.path !== "") {
+      event.preventDefault();
       // TODO: Figure out a way to do this without global scope.
       App.Router.navigate(this.props.path, true);
     } else if (this.props.action !== null) {

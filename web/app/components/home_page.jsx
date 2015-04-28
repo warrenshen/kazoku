@@ -33,12 +33,12 @@ class HomePage extends Component {
         <div className="home-action">
           <div className="home-action-frame">
             <Clickable
-              path={Routes.users.index}
+              path={Routes.people.index}
               style={"home-action-image"}
               source={"http://www.ruinart.com/img/content/articles/13_Portrait%20HVDS%20-%20HD.jpg"} />
           </div>
           <Clickable
-            path={Routes.users.index}
+            path={Routes.people.index}
             style={"home-action-clickable"}
             content={"People"} />
         </div>

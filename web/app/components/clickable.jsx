@@ -19,7 +19,7 @@ class Clickable extends Component {
         <a
           className={this.props.style}
           href={this.props.path}
-          onClick={this.handleClick}>
+          onClick={this.handleClick.bind(this)}>
           {this.props.content}
         </a>
       );
@@ -28,7 +28,7 @@ class Clickable extends Component {
         <img
           className={this.props.style}
           src={this.props.source}
-          onClick={this.handleClick} />
+          onClick={this.handleClick.bind(this)} />
       );
     }
   }

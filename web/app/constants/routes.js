@@ -19,7 +19,7 @@ module.exports = {
     signup: "/signup",
   },
 
-  users: {
-    index: "/users",
+  people: {
+    index: "/people",
   }
 };

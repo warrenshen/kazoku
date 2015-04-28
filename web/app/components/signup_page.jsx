@@ -7,6 +7,7 @@ import Header from "./header.jsx";
 import Routes from "../constants/routes.js";
 
 import Store from "../stores/people_store.js";
+import Actions from "../actions/actions.js";
 
 
 class SignupPage extends Component {
@@ -31,6 +32,10 @@ class SignupPage extends Component {
 
   _onChange() {
     this.setState(this.getAllPeople());
+  }
+
+  attemptCreate(event) {
+
   }
 
   renderBanner() {

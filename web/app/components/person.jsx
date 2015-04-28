@@ -8,12 +8,12 @@ import Routes from "../constants/routes.js";
 
 class Person extends Component {
 
-  renderName: function() {
+  renderName() {
     var person = this.props.person;
     return person.first_name + " " + person.last_name;
   }
 
-  renderImage: function() {
+  renderImage() {
     var person = this.props.person;
     if (person.image_url.length) {
       return (
@@ -25,7 +25,7 @@ class Person extends Component {
     }
   }
 
-  render: function() {
+  render() {
     return (
       <div className="user-block">
         {this.renderImage()}

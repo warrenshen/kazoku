@@ -39,7 +39,7 @@ class PeopleList extends Component {
     } else {
       return this.props.people.map(this.renderPerson, this);
     }
-  },
+  }
 
   render() {
     return (

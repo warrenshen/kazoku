@@ -2,6 +2,8 @@ import Backbone from "backbone";
 import React from "react";
 
 import HomePage from "../components/home_page.jsx";
+import LoginPage from "../components/login_page.jsx";
+import SignupPage from "../components/signup_page.jsx";
 import PeoplePage from "../components/people_page.jsx";
 import PersonPage from "../components/person_page.jsx";
 
@@ -27,14 +29,14 @@ class Router extends Backbone.Router {
 
   login() {
     React.render(
-      <HomePage />,
+      <LoginPage />,
       document.body
     );
   }
 
   signup() {
     React.render(
-      < />,
+      <SignupPage />,
       document.body
     );
   }

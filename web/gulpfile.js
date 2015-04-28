@@ -1,14 +1,15 @@
 var gulp = require("gulp");
-var webpack = require('webpack');
-var server = require('webpack-dev-server');
-var config = require('./webpack.config');
+var webpack = require("webpack");
+var server = require("webpack-dev-server");
+var config = require("./webpack.config");
 
 gulp.task("serve", function() {
   new server(webpack(config), {
     hot: true,
+    quiet: false,
+    historyApiFallback: true,
     stats: { colors: true, progress: true },
-  })
-  .listen(3333, "localhost", function (err, result) {
+  }).listen(3333, "localhost", function (err, result) {
     if (err) {
       console.log(err);
     } else {

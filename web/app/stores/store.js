@@ -2,8 +2,8 @@ import Events from "events";
 
 import Dispatcher from "../dispatcher.js";
 
-// var EventEmitter = require('events').EventEmitter;
 // var TodoConstants = require('../constants/TodoConstants');
+
 
 var CHANGE_EVENT = "change";
 
@@ -50,7 +50,7 @@ Dispatcher.register(function(payload) {
   var action = payload.action;
   var attributes = action.attributes;
 
-  switch(action.actionType) {
+  switch(action.type) {
     case "create":
       store.create(attributes);
       store.emitChange();

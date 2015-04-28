@@ -5,14 +5,14 @@ class Actions {
 
   create(attributes) {
     Dispatcher.handleViewAction({
-      actionType: "create",
+      type: "create",
       attributes: attributes,
     });
   }
 
   destroy(id) {
     Dispatcher.handleViewAction({
-      actionType: "destroy",
+      type: "destroy",
       id: id,
     });
   }

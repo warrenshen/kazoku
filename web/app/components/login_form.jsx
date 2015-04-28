@@ -1,25 +1,33 @@
-var LoginForm = React.createClass({
+import React from "react";
+import Component from "../component.jsx";
 
-  attemptLogin: function(event) {
-    var email = React.findDOMNode(this.refs.email).value;
-    var password = React.findDOMNode(this.refs.password).value;
-    var request = Requester.send("post", Routes.users.login, {
-      session: {
-        email: email,
-        password: password,
-      }
-    });
-    request.onload = function() {
-      var response = JSON.parse(request.response);
-      if (response.id) {
-        window.location = Routes.users.index + "/" + response.id;
-      } else {
-        console.log("api_error_response");
-      }
-    };
-  },
+import Clickable from "./clickable.jsx";
 
-  render: function() {
+import Routes from "../constants/routes.js";
+
+
+class LoginForm extends Component {
+
+  attemptLogin(event) {
+    // var email = React.findDOMNode(this.refs.email).value;
+    // var password = React.findDOMNode(this.refs.password).value;
+    // var request = Requester.send("post", Routes.users.login, {
+    //   session: {
+    //     email: email,
+    //     password: password,
+    //   }
+    // });
+    // request.onload = function() {
+    //   var response = JSON.parse(request.response);
+    //   if (response.id) {
+    //     window.location = Routes.users.index + "/" + response.id;
+    //   } else {
+    //     console.log("api_error_response");
+    //   }
+    // };
+  }
+
+  render() {
     return (
       <form className="general-form">
         <h3 className="general-form-title">
@@ -39,7 +47,7 @@ var LoginForm = React.createClass({
           placeholder="Password">
         </input>
         <Clickable
-          action={this.attemptLogin}
+          action={this.attemptLogin.bind(this)}
           style={"general-form-submit"}
           content={"Log in"} />
         <div className="general-form-section">
@@ -54,4 +62,7 @@ var LoginForm = React.createClass({
       </form>
     );
   }
-});
+}
+
+
+module.exports = LoginForm;

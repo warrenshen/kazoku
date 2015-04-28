@@ -1,21 +1,17 @@
-var FamilyProfile = React.createClass({
+import React from "react";
+import Component from "../component.jsx";
 
-  propTypes: {
-    currentUser: React.PropTypes.object.isRequired,
-    family:      React.PropTypes.object.isRequired,
-  },
+import Clickable from "./clickable.jsx";
 
-  getDefaultProps: function() {
-    return {
-      currentUser: null,
-      family:      null,
-    };
-  },
+import Routes from "../constants/routes.js";
 
-  renderOptions: function() {
-    var currentUser = this.props.currentUser;
+
+class FamilyProfile extends Component {
+
+  renderOptions() {
+    var user = this.props.user;
     var family = this.props.family;
-    if (currentUser !== null && currentUser.family_id === family.id) {
+    if (user !== null && user.family_id === family.id) {
       return (
         <div className="general-banner-actions">
           <Clickable
@@ -25,9 +21,9 @@ var FamilyProfile = React.createClass({
         </div>
       );
     }
-  },
+  }
 
-  render: function() {
+  render() {
     return (
       <div className="general-banner-content">
         <h2 className="general-banner-title">
@@ -43,4 +39,17 @@ var FamilyProfile = React.createClass({
       </div>
     );
   }
-});
+}
+
+FamilyProfile.propTypes = {
+  user:   React.PropTypes.object.isRequired,
+  family: React.PropTypes.object.isRequired,
+}
+
+FamilyProfile.defaultProps = {
+  user:   null,
+  family: null,
+}
+
+
+module.exports = FamilyProfile;

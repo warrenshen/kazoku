@@ -1,6 +1,14 @@
-var FamilyForm = React.createClass({
+import React from "react";
+import Component from "../component.jsx";
 
-  attemptCreate: function(event) {
+import Clickable from "./clickable.jsx";
+
+import Routes from "../constants/routes.js";
+
+
+class FamilyForm extends Component {
+
+  attemptCreate(event) {
     var name = React.findDOMNode(this.refs.name).value;
     var request = Requester.send("post", Routes.families.index, {
       family: {
@@ -15,9 +23,9 @@ var FamilyForm = React.createClass({
         console.log("api_error_response");
       }
     };
-  },
+  }
 
-  render: function() {
+  render() {
     return (
       <form className="general-form">
         <h3 className="general-form-title">
@@ -30,7 +38,7 @@ var FamilyForm = React.createClass({
           placeholder="Family name">
         </input>
         <Clickable
-          action={this.attemptCreate}
+          action={this.attemptCreate.bind(this)}
           style={"general-form-submit"}
           content={"Create family"} />
         <div className="general-form-section">
@@ -45,4 +53,7 @@ var FamilyForm = React.createClass({
       </form>
     );
   }
-});
+}
+
+
+module.exports = FamilyForm;

@@ -9,31 +9,6 @@ import Routes from "../constants/routes.js";
 
 class SignupPage extends Component {
 
-  attemptSignup(event) {
-    // var first_name = React.findDOMNode(this.refs.first_name).value;
-    // var last_name = React.findDOMNode(this.refs.last_name).value;
-    // var email = React.findDOMNode(this.refs.email).value;
-    // var password = React.findDOMNode(this.refs.password).value;
-    // var image_url = React.findDOMNode(this.refs.image_url).value;
-    // var request = Requester.send("post", Routes.users.index, {
-    //   user: {
-    //     first_name: first_name,
-    //     last_name: last_name,
-    //     email: email,
-    //     password: password,
-    //     image_url: image_url,
-    //   }
-    // });
-    // request.onload = function() {
-    //   var response = JSON.parse(request.response);
-    //   if (response.id) {
-    //     window.location = Routes.users.index + "/" + response.id;
-    //   } else {
-    //     console.log("api_error_response");
-    //   }
-    // };
-  }
-
   renderBanner() {
     return (
       <section className="general-banner">

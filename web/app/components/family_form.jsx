@@ -38,7 +38,7 @@ var FamilyForm = React.createClass({
             or,
           </span>
           <Clickable
-            path={Routes.families.index}
+            route={Routes.families.index}
             style={"general-form-toggle"}
             content={"join one"} />
         </div>

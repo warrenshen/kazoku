@@ -49,14 +49,14 @@ class Header extends Component {
     if (this.props.currentUser === null) {
       return (
         <Clickable
-          path={Routes.pages.login}
+          route={Routes.pages.login}
           style={"general-button"}
           content={"Login/Signup"} />
       );
     } else {
       return (
         <Clickable
-          path={Routes.users.index + "/" + this.props.currentUser.id}
+          route={Routes.users.index + "/" + this.props.currentUser.id}
           style={"general-button"}
           content={"Your Profile"} />
       );
@@ -77,7 +77,7 @@ class Header extends Component {
         <div className="header-left">
           <div className="vertical-anchor"></div>
           <Clickable
-            path={Routes.pages.home}
+            route={Routes.pages.home}
             style={brandClass}
               content={"Kazoku"} />
         </div>

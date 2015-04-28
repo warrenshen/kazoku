@@ -22,7 +22,7 @@ var UserProfile = React.createClass({
     if (this.props.user.family_name) {
       return (
         <Clickable
-          path={Routes.families.index + "/" + this.props.user.family_id}
+          route={Routes.families.index + "/" + this.props.user.family_id}
           style={"profile-banner-subtitle"}
           content={this.props.user.family_name} />
       );
@@ -46,7 +46,7 @@ var UserProfile = React.createClass({
     if (this.props.user.family_id === null) {
       return (
         <Clickable
-          path={Routes.families.new}
+          route={Routes.families.new}
           style={"general-button"}
           content={"Create a family"} />
       );
@@ -60,7 +60,7 @@ var UserProfile = React.createClass({
         <div className="general-banner-actions">
           {this.renderFamilyButton()}
           <Clickable
-            path={Routes.pages.login}
+            route={Routes.pages.login}
             style={"general-button"}
             content={"Create an event"} />
         </div>

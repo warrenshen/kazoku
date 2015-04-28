@@ -69,7 +69,7 @@ var Family = React.createClass({
     return (
       <div className="family-block">
         <Clickable
-          path={Routes.families.index + "/" + this.props.family.id}
+          route={Routes.families.index + "/" + this.props.family.id}
           style={"family-block-name"}
           content={this.props.family.name} />
         <h5 className="family-block-size">

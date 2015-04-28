@@ -47,7 +47,7 @@ var LoginForm = React.createClass({
             or,
           </span>
           <Clickable
-            path={Routes.pages.signup}
+            route={Routes.pages.signup}
             style={"general-form-toggle"}
             content={"sign up"} />
         </div>

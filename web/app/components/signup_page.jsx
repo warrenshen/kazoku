@@ -6,14 +6,14 @@ import Header from "./header.jsx";
 
 import Routes from "../constants/routes.js";
 
-import PeopleStore from "../stores/people_store.js";
+import Store from "../stores/people_store.js";
 
 
 class SignupPage extends Component {
 
   getAllPeople() {
     return {
-      people: PeopleStore.getAll(),
+      people: Store.getAll(),
     }
   }
 
@@ -22,11 +22,11 @@ class SignupPage extends Component {
   }
 
   componentDidMount() {
-    PeopleStore.addChangeListener(this._onChange);
+    Store.addChangeListener(this._onChange);
   }
 
   componentWillUnmount() {
-    PeopleStore.removeChangeListener(this._onChange);
+    Store.removeChangeListener(this._onChange);
   }
 
   _onChange() {

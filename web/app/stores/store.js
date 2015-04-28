@@ -6,25 +6,28 @@ import Dispatcher from "../dispatcher.js";
 // var TodoConstants = require('../constants/TodoConstants');
 
 var CHANGE_EVENT = "change";
-var _people = {};
 
-class PeopleStore extends Events.EventEmitter {
+class Store extends Events.EventEmitter {
 
-  getAll() {
-    return _people;
+  constructor() {
+    super();
+    this._all = {};
   }
 
-  create(text) {
-    // Using the current timestamp in place of a real id.
-    var id = Date.now();
-    _people[id] = {
-      id: id,
-      text: text,
+  getAll() {
+    return this._all;
+  }
+
+  create(attributes) {
+    this._all[attibutes.id] = {
+      id: attributes.id,
+      first_name: attributes.first_name,
+      last_name: attributes.last_name,
     };
   }
 
   destroy(id) {
-    delete _todos[id];
+    delete this._all[id];
   }
 
   emitChange() {
@@ -44,17 +47,17 @@ class PeopleStore extends Events.EventEmitter {
 
 Dispatcher.register(function(payload) {
   var action = payload.action;
-  var text = action.text.trim();
+  var attributes = action.attribtues;
 
   switch(action.actionType) {
     case "create":
-      PeopleStore.create(text);
-      PeopleStore.emitChange();
+      Store.create(attributes);
+      Store.emitChange();
       break;
 
     case "destroy":
-      PeopleStore.destroy(action.id);
-      PeopleStore.emitChange();
+      Store.destroy(action.id);
+      Store.emitChange();
       break;
   }
 
@@ -63,4 +66,4 @@ Dispatcher.register(function(payload) {
 });
 
 
-module.exports = new PeopleStore();
+module.exports = new Store();

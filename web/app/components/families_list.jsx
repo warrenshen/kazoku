@@ -34,10 +34,8 @@ FamiliesList.propTypes = {
 }
 
 FamiliesList.defaultProps = {
-  return {
-    user:     null,
-    families: [],
-  };
+  user:     null,
+  families: [],
 }
 
 

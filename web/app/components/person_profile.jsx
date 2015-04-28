@@ -8,7 +8,7 @@ import Routes from "../constants/routes.js";
 
 class PersonProfile extends Component {
 
-  renderName: function() {
+  renderName() {
     var person = this.props.person;
     return person.first_name + " " + person.last_name;
   }

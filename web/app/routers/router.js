@@ -11,6 +11,8 @@ class Router extends Backbone.Router {
   routes() {
     return {
       "": "home",
+      "login": "login",
+      "signup": "signup",
       "people": "people",
       "people/:id": "person",
     };
@@ -19,6 +21,20 @@ class Router extends Backbone.Router {
   home() {
     React.render(
       <HomePage />,
+      document.body
+    );
+  }
+
+  login() {
+    React.render(
+      <HomePage />,
+      document.body
+    );
+  }
+
+  signup() {
+    React.render(
+      < />,
       document.body
     );
   }

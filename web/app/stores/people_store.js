@@ -63,4 +63,4 @@ Dispatcher.register(function(payload) {
 });
 
 
-module.exports = PeopleStore;
+module.exports = new PeopleStore();

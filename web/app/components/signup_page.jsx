@@ -6,8 +6,32 @@ import Header from "./header.jsx";
 
 import Routes from "../constants/routes.js";
 
+import PeopleStore from "../stores/people_store.js";
+
 
 class SignupPage extends Component {
+
+  getAllPeople() {
+    return {
+      people: PeopleStore.getAll(),
+    }
+  }
+
+  getDefaultState() {
+    return this.getAllPeople();
+  }
+
+  componentDidMount() {
+    PeopleStore.addChangeListener(this._onChange);
+  }
+
+  componentWillUnmount() {
+    PeopleStore.removeChangeListener(this._onChange);
+  }
+
+  _onChange() {
+    this.setState(this.getAllPeople());
+  }
 
   renderBanner() {
     return (
@@ -63,7 +87,7 @@ class SignupPage extends Component {
             placeholder="Image link">
           </input>
           <Clickable
-            action={this.attemptSignup.bind(this)}
+            action={null}
             style={"general-form-submit"}
             content={"Sign up"} />
           <div className="general-form-section">
@@ -81,6 +105,7 @@ class SignupPage extends Component {
   }
 
   render() {
+    console.log(this.state.people);
     return (
       <div className="general-page">
         <Header user={null} isColored={true} />

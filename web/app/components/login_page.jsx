@@ -45,7 +45,7 @@ class LoginPage extends Component {
             placeholder="Password">
           </input>
           <Clickable
-            action={this.attemptLogin.bind(this)}
+            action={null}
             style={"general-form-submit"}
             content={"Log in"} />
           <div className="general-form-section">

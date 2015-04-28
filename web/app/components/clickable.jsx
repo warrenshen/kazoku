@@ -7,7 +7,8 @@ class Clickable extends Component {
   handleClick() {
     event.stopPropagation();
     if (this.props.path !== "") {
-      window.location = this.props.path;
+      // TODO: Figure out a way to do this without global scope.
+      App.Router.navigate(this.props.path, true);
     } else if (this.props.action !== null) {
       this.props.action();
     }

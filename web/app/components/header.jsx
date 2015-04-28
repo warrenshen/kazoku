@@ -63,8 +63,6 @@ class Header extends Component {
     }
   }
 
-  // {this.renderLogout()}
-  // {this.renderProfile()}
   render() {
     var headerClass = Classer(
       {"header": true},
@@ -74,7 +72,6 @@ class Header extends Component {
       {"header-brand": true},
       {"header-brand-colored": this.props.isColored}
     );
-    var brandClass = "header-brand";
     return (
       <div className={headerClass}>
         <div className="header-left">
@@ -86,8 +83,8 @@ class Header extends Component {
         </div>
         <div className="header-right">
           <div className="vertical-anchor"></div>
-
-
+            {this.renderLogout()}
+            {this.renderProfile()}
         </div>
       </div>
     );

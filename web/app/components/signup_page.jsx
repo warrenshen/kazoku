@@ -36,12 +36,12 @@ class SignupPage extends Component {
 
   renderBanner() {
     return (
-      <section class="general-banner">
-        <div class="general-banner-content">
-          <h2 class="general-banner-title">
+      <section className="general-banner">
+        <div className="general-banner-content">
+          <h2 className="general-banner-title">
             Join Kazoku
           </h2>
-          <h5 class="general-banner-subtitle">
+          <h5 className="general-banner-subtitle">
             Fun with family awaits.
           </h5>
         </div>
@@ -51,7 +51,7 @@ class SignupPage extends Component {
 
   renderForm() {
     return (
-      <section class="general-section">
+      <section className="general-section">
         <form className="general-form">
           <h3 className="general-form-title">
             Signup
@@ -107,7 +107,7 @@ class SignupPage extends Component {
 
   render() {
     return (
-      <div className = "general-page">
+      <div className="general-page">
         <Header user={null} isColored={true} />
         {this.renderBanner()}
         {this.renderForm()}

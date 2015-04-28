@@ -9,25 +9,6 @@ import Routes from "../constants/routes.js";
 
 class LoginPage extends Component {
 
-  attemptLogin(event) {
-    // var email = React.findDOMNode(this.refs.email).value;
-    // var password = React.findDOMNode(this.refs.password).value;
-    // var request = Requester.send("post", Routes.users.login, {
-    //   session: {
-    //     email: email,
-    //     password: password,
-    //   }
-    // });
-    // request.onload = function() {
-    //   var response = JSON.parse(request.response);
-    //   if (response.id) {
-    //     window.location = Routes.users.index + "/" + response.id;
-    //   } else {
-    //     console.log("api_error_response");
-    //   }
-    // };
-  }
-
   renderBanner() {
     return (
       <section className="general-banner">
@@ -64,7 +45,7 @@ class LoginPage extends Component {
             placeholder="Password">
           </input>
           <Clickable
-            action={this.attemptLogin.bind(this)}
+            action={null}
             style={"general-form-submit"}
             content={"Log in"} />
           <div className="general-form-section">

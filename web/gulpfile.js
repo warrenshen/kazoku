@@ -13,7 +13,7 @@ gulp.task("serve", function() {
     if (err) {
       console.log(err);
     } else {
-      console.log("Listening at localhost:3333");
+      console.log("Listening at localhost:3333!");
     }
   });
 });

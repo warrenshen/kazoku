@@ -5,9 +5,9 @@ import Component from "../component.jsx";
 class Clickable extends Component {
 
   handleClick() {
+    event.preventDefault();
     event.stopPropagation();
     if (this.props.route !== "") {
-      event.preventDefault();
       // TODO: Figure out a way to do this without global scope.
       App.Router.navigate(this.props.route, true);
     } else if (this.props.action !== null) {

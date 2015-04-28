@@ -19,7 +19,7 @@ class Store extends Events.EventEmitter {
   }
 
   create(attributes) {
-    this._all[attibutes.id] = {
+    this._all[attributes.id] = {
       id: attributes.id,
       first_name: attributes.first_name,
       last_name: attributes.last_name,
@@ -45,19 +45,20 @@ class Store extends Events.EventEmitter {
   }
 }
 
+var store = new Store();
 Dispatcher.register(function(payload) {
   var action = payload.action;
-  var attributes = action.attribtues;
+  var attributes = action.attributes;
 
   switch(action.actionType) {
     case "create":
-      Store.create(attributes);
-      Store.emitChange();
+      store.create(attributes);
+      store.emitChange();
       break;
 
     case "destroy":
-      Store.destroy(action.id);
-      Store.emitChange();
+      store.destroy(action.id);
+      store.emitChange();
       break;
   }
 
@@ -66,4 +67,4 @@ Dispatcher.register(function(payload) {
 });
 
 
-module.exports = new Store();
+module.exports = store;

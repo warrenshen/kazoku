@@ -6,7 +6,7 @@ import Header from "./header.jsx";
 
 import Routes from "../constants/routes.js";
 
-import Store from "../stores/people_store.js";
+import Store from "../stores/store.js";
 import Actions from "../actions/actions.js";
 
 
@@ -23,11 +23,11 @@ class SignupPage extends Component {
   }
 
   componentDidMount() {
-    Store.addChangeListener(this._onChange);
+    Store.addChangeListener(this._onChange.bind(this));
   }
 
   componentWillUnmount() {
-    Store.removeChangeListener(this._onChange);
+    Store.removeChangeListener(this._onChange.bind(this));
   }
 
   _onChange() {
@@ -35,7 +35,16 @@ class SignupPage extends Component {
   }
 
   attemptCreate(event) {
-
+    var firstName = React.findDOMNode(this.refs.first_name).value;
+    var lastName = React.findDOMNode(this.refs.last_name).value;
+    // var email = React.findDOMNode(this.refs.email).value;
+    // var password = React.findDOMNode(this.refs.password).value;
+    // var image_url = React.findDOMNode(this.refs.image_url).value;
+    Actions.create({
+      id: 1,
+      first_name: firstName,
+      last_name: lastName,
+    });
   }
 
   renderBanner() {
@@ -92,7 +101,7 @@ class SignupPage extends Component {
             placeholder="Image link">
           </input>
           <Clickable
-            action={null}
+            action={this.attemptCreate.bind(this)}
             style={"general-form-submit"}
             content={"Sign up"} />
           <div className="general-form-section">

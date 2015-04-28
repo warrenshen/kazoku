@@ -10,15 +10,15 @@ import "./styles/pages.scss";
 class Kazoku {
 
   constructor(router) {
-    this.router = new router();
+    this.Collections = [];
+    this.Models = [];
+    this.Router = new router();
     Backbone.history.start({pushState: true});
   }
-
-  // Collections: {}
-  // Models: {}
 }
 
 var App = new Kazoku(Router);
+window.App = App;
 
 
 module.exports = App;

@@ -6,8 +6,10 @@ class Clickable extends Component {
 
   handleClick() {
     event.stopPropagation();
-    if (this.props.path !== "") {
-      window.location = this.props.path;
+    if (this.props.route !== "") {
+      event.preventDefault();
+      // TODO: Figure out a way to do this without global scope.
+      App.Router.navigate(this.props.route, true);
     } else if (this.props.action !== null) {
       this.props.action();
     }
@@ -18,8 +20,8 @@ class Clickable extends Component {
       return (
         <a
           className={this.props.style}
-          href={this.props.path}
-          onClick={this.handleClick}>
+          href={this.props.route}
+          onClick={this.handleClick.bind(this)}>
           {this.props.content}
         </a>
       );
@@ -28,7 +30,7 @@ class Clickable extends Component {
         <img
           className={this.props.style}
           src={this.props.source}
-          onClick={this.handleClick} />
+          onClick={this.handleClick.bind(this)} />
       );
     }
   }
@@ -36,7 +38,7 @@ class Clickable extends Component {
 
 Clickable.propTypes = {
   action:  React.PropTypes.func,
-  path:    React.PropTypes.string,
+  route:    React.PropTypes.string,
   style:   React.PropTypes.string.isRequired,
   content: React.PropTypes.string.isRequired,
   source:  React.PropTypes.string,
@@ -44,7 +46,7 @@ Clickable.propTypes = {
 
 Clickable.defaultProps = {
   action:  null,
-  path:    "",
+  route:   "",
   style:   "",
   content: "",
   source:  "",

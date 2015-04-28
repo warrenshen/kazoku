@@ -1,27 +1,23 @@
-var PersonPage = React.createClass({
+import React from "react";
+import Component from "../component.jsx";
 
-  propTypes: {
-    id: React.PropTypes.number.isRequired,
-  },
+import Header from "./header.jsx";
 
-  getDefaultProps: function() {
-    return {
-      id: null,
-    };
-  },
 
-  getInitialState: function() {
+class PersonPage extends Component {
+
+  getDefaultState() {
     return {
       person: null,
     };
-  },
+  }
 
-  componentDidMount: function() {
+  componentDidMount() {
     var person = new Kazoku.Models.User({id: this.props.id});
     person.request({});
-  },
+  }
 
-  render: function() {
+  render() {
     return (
       <div className="general-page">
         <Header user={null} isColored={true} />
@@ -31,4 +27,15 @@ var PersonPage = React.createClass({
       </div>
     );
   }
-});
+}
+
+PersonPage.propTypes = {
+  id: React.PropTypes.number.isRequired,
+}
+
+PersonPage.defaultProps = {
+  id: null,
+}
+
+
+module.exports = PersonPage;

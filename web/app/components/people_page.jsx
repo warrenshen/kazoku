@@ -1,6 +1,12 @@
-var PeoplePage = React.createClass({
+import React from "react";
+import Component from "../component.jsx";
 
-  renderBanner: function() {
+import Header from "./header.jsx";
+
+
+class PeoplePage extends Component {
+
+  renderBanner() {
     return (
       <section className="general-banner">
         <div className="general-banner-content">
@@ -13,17 +19,21 @@ var PeoplePage = React.createClass({
         </div>
       </section>
     );
-  },
+  }
 
-  render: function() {
+  // <UsersList users={[]} />
+  render() {
     return (
       <div className="general-page">
         <Header user={null} isColored={true} />
         {this.renderBanner()}
         <section className="general-section">
-          <UsersList users={[]} />
+
         </section>
       </div>
     );
   }
-});
+}
+
+
+module.exports = PeoplePage;

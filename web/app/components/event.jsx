@@ -30,7 +30,7 @@ var Event = React.createClass({
     if (event.image_url.length) {
       return (
         <Clickable
-          path={Routes.users.index + "/" + this.props.event.id}
+          route={Routes.users.index + "/" + this.props.event.id}
           style={"event-block-image"}
           source={event.image_url} />
       );
@@ -73,7 +73,7 @@ var Event = React.createClass({
       <div className="event-block">
         {this.renderImage()}
         <Clickable
-          path={Routes.events.index + "/" + this.props.event.id}
+          route={Routes.events.index + "/" + this.props.event.id}
           style={"event-block-name"}
           content={this.props.event.name} />
         {this.renderData()}

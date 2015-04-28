@@ -5,11 +5,15 @@ class Component extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = this.state();
+    this.state = this.getDefaultState();
   }
 
-  state() {
+  getDefaultState() {
     return {};
+  }
+
+  componentDidMount() {
+
   }
 
   render() {

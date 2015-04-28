@@ -19,7 +19,7 @@ var FamilyProfile = React.createClass({
       return (
         <div className="general-banner-actions">
           <Clickable
-            path={Routes.events.index}
+            route={Routes.events.index}
             style={"general-button"}
             content={"Create a family event"} />
         </div>

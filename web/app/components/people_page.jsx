@@ -2,6 +2,7 @@ import React from "react";
 import Component from "../component.jsx";
 
 import Header from "./header.jsx";
+import PeopleList from "./people_list.jsx";
 
 
 class PeoplePage extends Component {
@@ -21,14 +22,13 @@ class PeoplePage extends Component {
     );
   }
 
-  // <UsersList users={[]} />
   render() {
     return (
       <div className="general-page">
         <Header user={null} isColored={true} />
         {this.renderBanner()}
         <section className="general-section">
-
+          <PeopleList people={[]} />
         </section>
       </div>
     );

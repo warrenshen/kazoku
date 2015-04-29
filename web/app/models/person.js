@@ -16,7 +16,7 @@ class Person extends Backbone.Model {
     return "/users/";
   }
 
-  request(options) {
+  request(options={}) {
     // var self = this;
     // var success = options.success;
     options.success = function(model, response, options) {

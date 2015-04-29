@@ -4,8 +4,15 @@ import Component from "../component.jsx";
 import Header from "./header.jsx";
 import PeopleList from "./people_list.jsx";
 
+import PeopleCollection from "../collections/people_collection.js";
+
 
 class PeoplePage extends Component {
+
+  componentDidMount() {
+    var pc = new PeopleCollection();
+    pc.request(null);
+  }
 
   renderBanner() {
     return (

@@ -14,4 +14,20 @@ class PeopleCollection extends Backbone.Collection {
   url() {
     return ApiRoutes.people.index;
   }
+
+  request(object, options={}) {
+    // var self = this;
+    // var success = options.success;
+    options.success = function(collection, response, options) {
+      console.log(collection);
+    }
+    options.error = function(collection, response, options) {
+      console.log("collection error");
+    }
+    var response = this.fetch(options);
+    return response;
+  }
 }
+
+
+module.exports = PeopleCollection;

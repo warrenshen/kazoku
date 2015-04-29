@@ -14,7 +14,7 @@ module.exports = {
   },
 
   people: {
-    index: "/people",
+    index: "localhost:3000/api/people",
     login: "/people/sign_in",
     logout: "/people/sign_out",
     search: "/people/search",

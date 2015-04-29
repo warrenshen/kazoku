@@ -10,28 +10,29 @@ class Person extends Component {
 
   renderName() {
     var person = this.props.person;
-    return person.first_name + " " + person.last_name;
+    return person.get("first_name") + " " + person.get("last_name");
   }
 
   renderImage() {
     var person = this.props.person;
-    if (person.image_url.length) {
+    var source = person.get("image_url");
+    if (source) {
       return (
         <Clickable
           route={Routes.people.index + "/" + person.id}
-          style={"user-block-image"}
-          source={person.image_url} />
+          style={"person-block-image"}
+          source={source} />
       );
     }
   }
 
   render() {
     return (
-      <div className="user-block">
+      <div className="general-block">
         {this.renderImage()}
         <Clickable
-          route={Routes.people.index + "/" + this.props.person.id}
-          style={"user-block-name"}
+          route={Routes.people.index + "/" + this.props.person.get("id")}
+          style={"general-block-name"}
           content={this.renderName()} />
       </div>
     );

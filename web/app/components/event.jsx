@@ -26,7 +26,7 @@ class Event extends Component {
     if (event.image_url.length) {
       return (
         <Clickable
-          route={Routes.users.index + "/" + this.props.event.id}
+          route={Routes.people.index + "/" + this.props.event.id}
           style={"event-block-image"}
           source={event.image_url} />
       );

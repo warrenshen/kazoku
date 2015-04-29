@@ -15,7 +15,7 @@ class Family < ActiveRecord::Base
   ##################################################
   # Associations
   ##################################################
-  has_many :users
+  has_many :people
   has_many :family_events, dependent: :destroy
   has_many :events, through: :family_events
 
@@ -28,7 +28,7 @@ class Family < ActiveRecord::Base
   # Methods
   ##################################################
   def size
-    users.size
+    people.size
   end
 
 end

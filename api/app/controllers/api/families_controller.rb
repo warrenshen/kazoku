@@ -4,7 +4,7 @@ class Api::FamiliesController < ApplicationController
 
   def create
     if @family.save
-      current_user.update(family_id: @family.id)
+      current_person.update(family_id: @family.id)
       render json: @family, serializer: FamilySerializer
     else
       api_error_response(@family)

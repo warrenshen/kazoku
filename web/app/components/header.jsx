@@ -56,7 +56,7 @@ class Header extends Component {
     } else {
       return (
         <Clickable
-          route={Routes.users.index + "/" + this.props.currentUser.id}
+          route={Routes.people.index + "/" + this.props.currentUser.id}
           style={"general-button"}
           content={"Your Profile"} />
       );

@@ -1,10 +1,36 @@
 class ApplicationController < ActionController::API
+  include CanCan::ControllerAdditions
+  prepend_before_filter :check_cors_request
   before_filter :authenticate_user!
 
   respond_to :json
 
+  def localhost_regex
+    Regexp.new("^https?:\/\/localhost")
+  end
+
+  def check_cors_request
+    origin = request.headers["Origin"]
+    if origin =~ localhost_regex
+      puts
+      headers["Access-Control-Allow-Origin"] = origin
+    end
+  end
+
+  def current_person
+    current_api_person
+  end
+
+  def person_signed_in?
+    api_person_signed_in?
+  end
+
+  def current_ability
+    @current_ability ||= Ability.new(current_person)
+  end
+
   def authenticate_user!
-    unauthorized_response unless user_signed_in?
+    unauthorized_response unless person_signed_in?
   end
 
   def api_error_response(object=nil, message=nil, status=400)

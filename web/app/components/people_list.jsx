@@ -6,12 +6,6 @@ import Person from "./person.jsx";
 
 class PeopleList extends Component {
 
-  getDefaultState() {
-    return {
-      people: null,
-    }
-  }
-
   attemptSearch() {
     // var query = React.findDOMNode(this.refs.query).value;
     // var path = Routes.users.search + "?q=" + query;
@@ -29,23 +23,25 @@ class PeopleList extends Component {
 
   renderPerson(person) {
     return (
-      <Person key={person.id} user={person} />
+      <Person key={person.get("id")} person={person} />
     );
   }
 
   renderPeople() {
-    if (this.state.people !== null) {
-      return this.state.people.map(this.renderPerson, this);
-    } else {
-      return this.props.people.map(this.renderPerson, this);
+    var arr = [];
+    var hash = this.props.people;
+    for(var id in this.props.people) {
+      var person = hash[id];
+      arr.push(person);
     }
+    return arr.map(this.renderPerson, this);
   }
 
   render() {
     return (
       <div className="general-list">
         <input
-          className="user-search-input"
+          className="people-search-input"
           ref="query"
           type="text"
           placeholder="Search"

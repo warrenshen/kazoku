@@ -1,7 +1,7 @@
 families_params = [
   {
     name: "PHC Boys",
-    users: [
+    people: [
       {
         first_name: "Alton",
         last_name: "Zheng",
@@ -37,15 +37,15 @@ families_params = [
 ]
 
 families_params.each do |family_params|
-  users_params = family_params.delete(:users)
+  people_params = family_params.delete(:people)
 
   new_family = Family.create(family_params)
   puts "Created family: #{new_family.name}"
 
-  users_params.each do |user_params|
-    new_user = User.create(user_params)
-    new_user.update(family: new_family, password: "password")
-    puts "Created user: #{new_user.first_name}"
+  people_params.each do |person_params|
+    new_person = Person.create(person_params)
+    new_person.update(family: new_family, password: "password")
+    puts "Created user: #{new_person.first_name}"
   end
 
 end

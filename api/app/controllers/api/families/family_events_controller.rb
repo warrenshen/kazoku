@@ -1,4 +1,4 @@
-class Families::FamilyEventsController < ApplicationController
+class Api::Families::FamilyEventsController < ApplicationController
   load_and_authorize_resource param_method: :family_event_params
   skip_before_filter :authenticate_user!, only: [:index]
 

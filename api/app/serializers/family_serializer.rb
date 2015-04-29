@@ -1,4 +1,4 @@
 class FamilySerializer < ActiveModel::Serializer
   attributes :id, :name, :size, :events_count
-  has_many :users, serializer: UserSerializer
+  has_many :people, serializer: PersonSerializer
 end

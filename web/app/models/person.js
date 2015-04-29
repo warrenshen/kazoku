@@ -31,3 +31,6 @@ class Person extends Backbone.Model {
     return response;
   }
 }
+
+
+module.exports = Person;

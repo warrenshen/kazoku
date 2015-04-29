@@ -1,5 +1,5 @@
 import React from "react";
-import Component from "../component.jsx";
+import ListeningComponent from "../listening_component.jsx";
 
 import Header from "./header.jsx";
 import PeopleList from "./people_list.jsx";
@@ -9,29 +9,20 @@ import PeopleCollection from "../collections/people_collection.js";
 import PeopleStore from "../stores/people_store.js";
 
 
-class PeoplePage extends Component {
+class PeoplePage extends ListeningComponent {
 
-  getDefaultState() {
-    return this.getStoreState();
+  stores() {
+    return [PeopleStore];
+  }
+
+  requestFromStore() {
+    PeopleStore.requestPeople();
   }
 
   getStoreState() {
     return {
       people: PeopleStore.getPeople(),
     }
-  }
-
-  componentDidMount() {
-    PeopleStore.addChangeListener(this._onChange.bind(this));
-    PeopleStore.requestPeople();
-  }
-
-  componentWillUnmount() {
-    PeopleStore.removeChangeListener(this._onChange.bind(this));
-  }
-
-  _onChange() {
-    this.setState(this.getStoreState());
   }
 
   renderBanner() {

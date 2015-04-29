@@ -36,7 +36,6 @@ class PeoplePage extends Component {
   }
 
   renderBanner() {
-    console.log(this.state.people);
     return (
       <section className="general-banner">
         <div className="general-banner-content">
@@ -57,7 +56,7 @@ class PeoplePage extends Component {
         <Header user={null} isColored={true} />
         {this.renderBanner()}
         <section className="general-section">
-          <PeopleList people={[]} />
+          <PeopleList people={this.state.people} />
         </section>
       </div>
     );

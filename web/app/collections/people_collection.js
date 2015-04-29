@@ -32,7 +32,6 @@ class PeopleCollection extends Backbone.Collection {
     var success = options.success;
     options.success = function(collection, response, options) {
       var people = collection.models;
-      console.log(people);
       people.map(function(person) {
         PeopleStore.add(person);
       });

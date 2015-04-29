@@ -119,6 +119,7 @@ class SignupPage extends Component {
   }
 
   render() {
+    console.log(Store);
     console.log(this.state.people);
     return (
       <div className="general-page">

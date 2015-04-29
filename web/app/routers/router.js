@@ -75,4 +75,4 @@ class Router extends Backbone.Router {
 }
 
 
-module.exports = new Router();
+module.exports = Router;

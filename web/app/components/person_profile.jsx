@@ -13,7 +13,7 @@ class PersonProfile extends Component {
     return person.first_name + " " + person.last_name;
   }
 
-  renderFamilyName {
+  renderFamilyName() {
     if (this.props.person.family_name) {
       return (
         <Clickable
@@ -30,14 +30,14 @@ class PersonProfile extends Component {
     }
   }
 
-  renderImage {
+  renderImage() {
     var person = this.props.person;
     if (person.image_url.length) {
       return <img className="profile-banner-image" src={person.image_url} />
     }
   }
 
-  renderFamilyButton {
+  renderFamilyButton() {
     if (this.props.person.family_id === null) {
       return (
         <Clickable
@@ -48,7 +48,7 @@ class PersonProfile extends Component {
     }
   }
 
-  renderActions {
+  renderActions() {
     var user = this.props.user;
     if (user !== null && user.id === this.props.person.id) {
       return (
@@ -63,7 +63,7 @@ class PersonProfile extends Component {
     }
   }
 
-  render {
+  render() {
     return (
       <div className="general-banner-content">
         {this.renderImage()}
@@ -87,7 +87,7 @@ PersonProfile.propTypes = {
   person: React.PropTypes.object.isRequired,
 }
 
-PersonProfile.defaultProps: = {
+PersonProfile.defaultProps = {
   user:   null,
   person: null,
 }

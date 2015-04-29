@@ -1,8 +1,6 @@
 import React from "react";
 import Component from "../component.jsx";
 
-import Router from "./routers/router.js";
-
 
 class Clickable extends Component {
 
@@ -10,7 +8,7 @@ class Clickable extends Component {
     event.preventDefault();
     event.stopPropagation();
     if (this.props.route !== "") {
-      Router.navigate(this.props.route, true);
+      Kazoku.Router.navigate(this.props.route, true);
     } else if (this.props.action !== null) {
       this.props.action();
     }

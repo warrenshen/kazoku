@@ -12,10 +12,11 @@ class Kazoku {
   constructor(router) {
     this.Collections = [];
     this.Models = [];
-    this.Router = router;
+    this.Router = new Router();
     Backbone.history.start({ pushState: true });
   }
 }
 
-
-module.exports = new App(Router);
+var singleton = new Kazoku();
+window.Kazoku = singleton;
+module.exports = singleton;

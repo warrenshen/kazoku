@@ -4,7 +4,7 @@ module.exports = {
   entry: [
     "webpack-dev-server/client?http://localhost:3333",
     "webpack/hot/dev-server",
-    __dirname + "/app/app.js"
+    __dirname + "/app/kazoku.js"
   ],
   output: {
     path: __dirname + "/build",

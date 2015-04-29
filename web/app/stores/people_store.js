@@ -2,7 +2,9 @@ import Events from "events";
 
 import Dispatcher from "../dispatcher.js";
 
+import Person from "../models/person.js";
 // var TodoConstants = require('../constants/TodoConstants');
+import PeopleCollection from "../collections/people_collection.js";
 
 
 var CHANGE_EVENT = "change";
@@ -12,6 +14,43 @@ class PeopleStore extends Events.EventEmitter {
   constructor() {
     super();
     this._all = {};
+    this._collections = {};
+    this.initialize();
+  }
+
+  collections() {
+    return [
+      PeopleCollection,
+    ];
+  }
+
+  initialize() {
+    this.collections().map(function(template) {
+      var collection = new template([], {}, this);
+      this._collections[collection.name] = collection;
+    }.bind(this));
+  }
+
+  requestPerson(id) {
+    var existingObject = this._all[id];
+    if (existingObject === undefined) {
+      var person = new Person({id: id});
+      person.request();
+    } else {
+      return existingObject;
+    }
+  }
+
+  getPerson(id) {
+    return this._all[id];
+  }
+
+  requestPeople() {
+    return this._collections["PeopleCollection"].request();
+  }
+
+  getPeople() {
+    return this._collections["PeopleCollection"].models;
   }
 
   getAll() {
@@ -36,28 +75,14 @@ class PeopleStore extends Events.EventEmitter {
     return this._all[key];
   }
 
-  create(attributes) {
-    this._all[attributes.id] = {
-      id: attributes.id,
-      first_name: attributes.first_name,
-      last_name: attributes.last_name,
-    };
-  }
-
-  destroy(id) {
-    delete this._all[id];
-  }
-
   emitChange() {
     this.emit(CHANGE_EVENT);
   }
 
-  // @param {function} callback
   addChangeListener(callback) {
     this.on(CHANGE_EVENT, callback);
   }
 
-  // @param {function} callback
   removeChangeListener(callback) {
     this.removeListener(CHANGE_EVENT, callback);
   }

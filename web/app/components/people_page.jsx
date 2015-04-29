@@ -11,20 +11,19 @@ import PeopleStore from "../stores/people_store.js";
 
 class PeoplePage extends Component {
 
-  getAllPeople() {
-    return {
-      people: PeopleStore.getAll(),
-    }
+  getDefaultState() {
+    return this.getStoreState();
   }
 
-  getDefaultState() {
-    return this.getAllPeople();
+  getStoreState() {
+    return {
+      people: PeopleStore.getPeople(),
+    }
   }
 
   componentDidMount() {
     PeopleStore.addChangeListener(this._onChange.bind(this));
-    var pc = new PeopleCollection();
-    pc.request(null);
+    PeopleStore.requestPeople();
   }
 
   componentWillUnmount() {
@@ -32,7 +31,7 @@ class PeoplePage extends Component {
   }
 
   _onChange() {
-    this.setState(this.getAllPeople());
+    this.setState(this.getStoreState());
   }
 
   renderBanner() {

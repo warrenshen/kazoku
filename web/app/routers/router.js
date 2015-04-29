@@ -53,8 +53,9 @@ class Router extends Backbone.Router {
   }
 
   person(id) {
+    console.log("rendering person page");
     React.render(
-      <PersonPage id={id} />,
+      <PersonPage id={Number(id)} />,
       document.body
     );
   }
@@ -68,7 +69,7 @@ class Router extends Backbone.Router {
 
   family(id) {
     React.render(
-      <FamilyPage id={id} />,
+      <FamilyPage id={Number(id)} />,
       document.body
     );
   }

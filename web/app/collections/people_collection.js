@@ -4,10 +4,17 @@ import Person from "../models/person.js";
 
 import ApiRoutes from "../constants/api_routes.js";
 
-import PeopleStore from "../stores/people_store.js";
-
 
 class PeopleCollection extends Backbone.Collection {
+
+  constructor(models=[], options={}, store) {
+    super(models, options);
+    this.store = store;
+  }
+
+  get name() {
+    return "PeopleCollection";
+  }
 
   get model() {
     return Person;
@@ -25,21 +32,19 @@ class PeopleCollection extends Backbone.Collection {
     return people;
   }
 
-  request(object, options={}) {
+  request(options={}) {
     var self = this;
-    this.object = object;
-
     var success = options.success;
     options.success = function(collection, response, options) {
       var people = collection.models;
       people.map(function(person) {
-        PeopleStore.add(person);
+        self.store.add(person);
       });
-      PeopleStore.emitChange();
-    }
+      self.store.emitChange();
+    };
     options.error = function(collection, response, options) {
       console.log("collection error");
-    }
+    };
     var response = this.fetch(options);
     return response;
   }

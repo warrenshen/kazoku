@@ -31,7 +31,7 @@ class PeoplePage extends Component {
   }
 
   _onChange() {
-    this.setState(this.getAllPeople());
+    this.setState(this.getStoreState());
   }
 
   renderBanner() {

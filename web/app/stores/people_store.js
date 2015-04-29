@@ -14,6 +14,7 @@ class PeopleStore extends Events.EventEmitter {
     super();
     this._all = {};
     this._collections = {};
+    this.initialize();
   }
 
   collections() {
@@ -23,18 +24,19 @@ class PeopleStore extends Events.EventEmitter {
   }
 
   // TODO: Set up collections here, depending on fixed imports.
-  initializeCollections() {
-    this.collections().map(function(collection) {
-      this._collections["PeopleCollection"] = collection;
+  initialize() {
+    this.collections().map(function(template) {
+      var collection = new template([], {}, this);
+      this._collections[collection.name] = collection;
     }.bind(this));
   }
 
   requestPeople() {
-    // return this._collections["PeopleCollection"].request();
+    return this._collections["PeopleCollection"].request();
   }
 
   getPeople() {
-    // return this._collections["PeopleCollection"].models;
+    return this._collections["PeopleCollection"].models;
   }
 
   getAll() {

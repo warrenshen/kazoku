@@ -3,7 +3,12 @@ import Backbone from "backbone";
 
 class Person extends Backbone.Model {
 
-  defaults() {
+  get key() {
+    console.log(this.get("id"));
+    return this.get("id");
+  }
+
+  get defaults() {
     return {
       id: null,
       first_name: "",
@@ -12,7 +17,7 @@ class Person extends Backbone.Model {
     }
   }
 
-  urlRoot() {
+  get urlRoot() {
     return "/users/";
   }
 

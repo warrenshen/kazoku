@@ -6,15 +6,37 @@ import PeopleList from "./people_list.jsx";
 
 import PeopleCollection from "../collections/people_collection.js";
 
+import PeopleStore from "../stores/people_store.js";
+
 
 class PeoplePage extends Component {
 
+  getAllPeople() {
+    return {
+      people: PeopleStore.getAll(),
+    }
+  }
+
+  getDefaultState() {
+    return this.getAllPeople();
+  }
+
   componentDidMount() {
+    PeopleStore.addChangeListener(this._onChange.bind(this));
     var pc = new PeopleCollection();
     pc.request(null);
   }
 
+  componentWillUnmount() {
+    PeopleStore.removeChangeListener(this._onChange.bind(this));
+  }
+
+  _onChange() {
+    this.setState(this.getAllPeople());
+  }
+
   renderBanner() {
+    console.log(this.state.people);
     return (
       <section className="general-banner">
         <div className="general-banner-content">

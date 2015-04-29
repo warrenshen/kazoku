@@ -22,7 +22,7 @@
 #  updated_at             :datetime
 #
 
-class User < ActiveRecord::Base
+class Person < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -53,15 +53,10 @@ class User < ActiveRecord::Base
   ##################################################
   # Callbacks
   ##################################################
-  before_validation :set_family_name
 
   ##################################################
   # Methods
   ##################################################
   private
-
-  def set_family_name
-    self.family_name = family.try(:name)
-  end
 
 end

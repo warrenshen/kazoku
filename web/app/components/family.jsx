@@ -9,7 +9,7 @@ import Routes from "../constants/routes.js";
 class Family extends Component {
 
   attemptJoin(event) {
-    var path = Routes.users.index + "/" + this.props.currentUser.id;
+    var path = Routes.people.index + "/" + this.props.currentUser.id;
     var request = Requester.send("put", path, {
       user: {
         id: this.props.currentUser.id,
@@ -19,7 +19,7 @@ class Family extends Component {
   }
 
   attemptLeave(event) {
-    var path = Routes.users.index + "/" + this.props.currentUser.id;
+    var path = Routes.people.index + "/" + this.props.currentUser.id;
     var request = Requester.send("put", path, {
       user: {
         id: this.props.currentUser.id,

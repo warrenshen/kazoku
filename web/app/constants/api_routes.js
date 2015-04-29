@@ -13,10 +13,10 @@ module.exports = {
     index: "/family_events",
   },
 
-  users: {
-    index: "/users",
-    login: "/users/sign_in",
-    logout: "/users/sign_out",
-    search: "/users/search",
+  people: {
+    index: "/people",
+    login: "/people/sign_in",
+    logout: "/people/sign_out",
+    search: "/people/search",
   }
 };

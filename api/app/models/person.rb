@@ -1,12 +1,12 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: people
 #
 #  id                     :integer          not null, primary key
 #  first_name             :string           default(""), not null
 #  last_name              :string           default(""), not null
 #  image_url              :string           default(""), not null
-#  is_admin               :boolean          default("f"), not null
+#  is_admin               :boolean          default("false"), not null
 #  family_id              :integer
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null

@@ -1,4 +1,4 @@
-class People::SessionsController < Devise::SessionsController
+class Api::People::SessionsController < Devise::SessionsController
   # load_and_authorize_resource param_method: :session_params
   skip_before_filter :authenticate_user!, only: [:create]
 
@@ -17,7 +17,7 @@ class People::SessionsController < Devise::SessionsController
     if sign_out(@person)
       render json: @person
     else
-      render api_error_response(current_user)
+      render api_error_response(@person)
     end
   end
 

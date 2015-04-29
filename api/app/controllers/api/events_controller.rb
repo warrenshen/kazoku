@@ -8,7 +8,7 @@ class Api::EventsController < ApplicationController
 
   def index
     # TODO: Add each_serializer for events!
-    render :json @events
+    render json: @events
   end
 
   def show

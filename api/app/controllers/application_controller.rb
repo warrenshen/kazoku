@@ -1,7 +1,13 @@
 class ApplicationController < ActionController::API
+  include CanCan::ControllerAdditions
+
   before_filter :authenticate_user!
 
   respond_to :json
+
+  def current_ability
+    @current_ability ||= Ability.new(current_person)
+  end
 
   def authenticate_user!
     unauthorized_response unless user_signed_in?

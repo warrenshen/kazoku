@@ -7,17 +7,6 @@ import PersonProfile from "./person_profile.jsx";
 
 class PersonPage extends Component {
 
-  // getDefaultState() {
-  //   return {
-  //     person: null,
-  //   };
-  // }
-
-  // componentDidMount() {
-  //   var person = new Kazoku.Models.User({id: this.props.id});
-  //   person.request({});
-  // }
-
   render() {
     return (
       <div className="general-page">

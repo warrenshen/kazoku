@@ -9,6 +9,10 @@ import PeopleStore from "../stores/people_store.js";
 
 class PeopleCollection extends Backbone.Collection {
 
+  constructor(models=[], options={}) {
+    super(models, options);
+  }
+
   get model() {
     return Person;
   }
@@ -25,10 +29,8 @@ class PeopleCollection extends Backbone.Collection {
     return people;
   }
 
-  request(object, options={}) {
-    var self = this;
-    this.object = object;
-
+  request(options={}) {
+    // var self = this;
     var success = options.success;
     options.success = function(collection, response, options) {
       var people = collection.models;

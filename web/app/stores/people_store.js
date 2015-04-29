@@ -3,6 +3,7 @@ import Events from "events";
 import Dispatcher from "../dispatcher.js";
 
 // var TodoConstants = require('../constants/TodoConstants');
+import PeopleCollection from "../collections/people_collection.js";
 
 
 var CHANGE_EVENT = "change";
@@ -12,6 +13,28 @@ class PeopleStore extends Events.EventEmitter {
   constructor() {
     super();
     this._all = {};
+    this._collections = {};
+  }
+
+  collections() {
+    return [
+      PeopleCollection,
+    ];
+  }
+
+  // TODO: Set up collections here, depending on fixed imports.
+  initializeCollections() {
+    this.collections().map(function(collection) {
+      this._collections["PeopleCollection"] = collection;
+    }.bind(this));
+  }
+
+  requestPeople() {
+    // return this._collections["PeopleCollection"].request();
+  }
+
+  getPeople() {
+    // return this._collections["PeopleCollection"].models;
   }
 
   getAll() {
@@ -34,18 +57,6 @@ class PeopleStore extends Events.EventEmitter {
     }
 
     return this._all[key];
-  }
-
-  create(attributes) {
-    this._all[attributes.id] = {
-      id: attributes.id,
-      first_name: attributes.first_name,
-      last_name: attributes.last_name,
-    };
-  }
-
-  destroy(id) {
-    delete this._all[id];
   }
 
   emitChange() {

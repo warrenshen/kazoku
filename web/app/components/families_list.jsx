@@ -1,35 +1,42 @@
-var FamiliesList = React.createClass({
+import React from "react";
+import Component from "../component.jsx";
 
-  propTypes: {
-    currentUser: React.PropTypes.object.isRequired,
-    families: React.PropTypes.array.isRequired,
-  },
+import Family from "./family.jsx";
 
-  getDefaultProps: function() {
-    return {
-      currentUser: null,
-      families:    [],
-    };
-  },
 
-  renderFamily: function(family) {
+class FamiliesList extends Component {
+
+  renderFamily(family) {
     return (
       <Family
         key={family.id}
-        currentUser={this.props.currentUser}
+        currentUser={this.props.user}
         family={family} />
     );
-  },
+  }
 
-  renderFamilies: function() {
-    return this.props.families.map(this.renderFamily);
-  },
+  renderFamilies() {
+    return this.props.families.map(this.renderFamily, this);
+  }
 
-  render: function() {
+  render() {
     return (
       <div className="general-list">
         {this.renderFamilies()}
       </div>
     );
   }
-});
+}
+
+FamiliesList.propTypes = {
+  uesr:     React.PropTypes.object.isRequired,
+  families: React.PropTypes.array.isRequired,
+}
+
+FamiliesList.defaultProps = {
+  user:     null,
+  families: [],
+}
+
+
+module.exports = FamiliesList;

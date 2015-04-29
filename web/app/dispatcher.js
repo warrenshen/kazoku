@@ -5,7 +5,7 @@ class Dispatcher extends Flux.Dispatcher {
   handleViewAction(action) {
     this.dispatch({
       source: "VIEW_ACTION",
-      action: action
+      action: action,
     });
   }
 }

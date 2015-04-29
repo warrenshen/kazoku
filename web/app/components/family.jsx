@@ -1,18 +1,14 @@
-var Family = React.createClass({
+import React from "react";
+import Component from "../component.jsx";
 
-  propTypes: {
-    currentUser: React.PropTypes.object.isRequired,
-    family:      React.PropTypes.object.isRequired,
-  },
+import Clickable from "./clickable.jsx";
 
-  getDefaultProps: function() {
-    return {
-      currentUser: null,
-      family:      null,
-    };
-  },
+import Routes from "../constants/routes.js";
 
-  attemptJoin: function(event) {
+
+class Family extends Component {
+
+  attemptJoin(event) {
     var path = Routes.users.index + "/" + this.props.currentUser.id;
     var request = Requester.send("put", path, {
       user: {
@@ -20,9 +16,9 @@ var Family = React.createClass({
         family_id: this.props.family.id,
       }
     });
-  },
+  }
 
-  attemptLeave: function(event) {
+  attemptLeave(event) {
     var path = Routes.users.index + "/" + this.props.currentUser.id;
     var request = Requester.send("put", path, {
       user: {
@@ -30,47 +26,47 @@ var Family = React.createClass({
         family_id: null,
       }
     });
-  },
+  }
 
-  renderJoinButton: function() {
-    if (this.props.currentUser.family_id !== this.props.family.id) {
+  renderJoinButton() {
+    if (this.props.user.family_id !== this.props.family.id) {
       return (
         <Clickable
-          action={this.attemptJoin}
+          action={this.attemptJoin.bind(this)}
           style={"general-button"}
           content={"Join family"} />
       );
     }
-  },
+  }
 
-  renderLeaveButton: function() {
-    if (this.props.currentUser.family_id === this.props.family.id) {
+  renderLeaveButton() {
+    if (this.props.user.family_id === this.props.family.id) {
       return (
         <Clickable
-          action={this.attemptLeave}
+          action={this.attemptLeave.bind(this)}
           style={"general-button"}
           content={"Leave family"} />
       );
     }
-  },
+  }
 
-  renderActions: function() {
-    if (this.props.currentUser !== null) {
+  renderActions() {
+    if (this.props.user !== null) {
       return (
-        <div className="family-block-options">
+        <div className="general-block-options">
           {this.renderJoinButton()}
           {this.renderLeaveButton()}
         </div>
       );
     }
-  },
+  }
 
-  render: function() {
+  render() {
     return (
-      <div className="family-block">
+      <div className="general-block">
         <Clickable
           route={Routes.families.index + "/" + this.props.family.id}
-          style={"family-block-name"}
+          style={"general-block-name"}
           content={this.props.family.name} />
         <h5 className="family-block-size">
           {"Member count: " + this.props.family.size}
@@ -79,4 +75,17 @@ var Family = React.createClass({
       </div>
     );
   }
-});
+}
+
+Family.propTypes = {
+  user:   React.PropTypes.object.isRequired,
+  family: React.PropTypes.object.isRequired,
+}
+
+Family.defaultProps = {
+  user:   null,
+  family: null,
+}
+
+
+module.exports = Family;

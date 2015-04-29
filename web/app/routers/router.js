@@ -6,6 +6,8 @@ import LoginPage from "../components/login_page.jsx";
 import SignupPage from "../components/signup_page.jsx";
 import PeoplePage from "../components/people_page.jsx";
 import PersonPage from "../components/person_page.jsx";
+import FamiliesPage from "../components/families_page.jsx";
+import FamilyPage from "../components/family_page.jsx";
 
 
 class Router extends Backbone.Router {
@@ -17,6 +19,8 @@ class Router extends Backbone.Router {
       "signup": "signup",
       "people": "people",
       "people/:id": "person",
+      "families": "families",
+      "families/:id": "family",
     };
   }
 
@@ -51,6 +55,20 @@ class Router extends Backbone.Router {
   person(id) {
     React.render(
       <PersonPage id={id} />,
+      document.body
+    );
+  }
+
+  families() {
+    React.render(
+      <FamiliesPage />,
+      document.body
+    );
+  }
+
+  family(id) {
+    React.render(
+      <FamilyPage id={id} />,
       document.body
     );
   }

@@ -1,18 +1,14 @@
-var Event = React.createClass({
+import React from "react";
+import Component from "../component.jsx";
 
-  propTypes: {
-    currentUser: React.PropTypes.object.isRequired,
-    event:       React.PropTypes.object.isRequired,
-  },
+import Clickable from "./clickable.jsx";
 
-  getDefaultProps: function() {
-    return {
-      currentUser: null,
-      event:       null,
-    };
-  },
+import Routes from "../constants/routes.js";
 
-  attemptCreate: function(event) {
+
+class Event extends Component {
+
+  attemptCreate() {
     var path = Routes.familyEvents.index;
     var request = Requester.send("post", path, {
       family_event: {
@@ -23,9 +19,9 @@ var Event = React.createClass({
     request.onload = function() {
       console.log("Created family event");
     };
-  },
+  }
 
-  renderImage: function() {
+  renderImage() {
     var event = this.props.event;
     if (event.image_url.length) {
       return (
@@ -35,9 +31,9 @@ var Event = React.createClass({
           source={event.image_url} />
       );
     }
-  },
+  }
 
-  renderData: function() {
+  renderData() {
     var event = this.props.event;
     var date = new Date(event.date);
     var content = ", " + event.families_count + " attending"
@@ -48,7 +44,7 @@ var Event = React.createClass({
     );
   },
 
-  renderCreateButton: function() {
+  renderCreateButton() {
     return (
       <Clickable
         action={this.attemptCreate}
@@ -57,28 +53,42 @@ var Event = React.createClass({
     );
   },
 
-  renderActions: function() {
+  renderActions() {
     var currentUser = this.props.currentUser;
     if (currentUser !== null && currentUser.family_id !== null) {
       return (
-        <div className = "event-block-options">
+        <div className = "general-block-options">
           {this.renderCreateButton()}
         </div>
       )
     }
-  },
+  }
 
-  render: function() {
+  render() {
     return (
-      <div className="event-block">
+      <div className="general-block">
         {this.renderImage()}
         <Clickable
           route={Routes.events.index + "/" + this.props.event.id}
-          style={"event-block-name"}
+          style={"general-block-name"}
           content={this.props.event.name} />
         {this.renderData()}
         {this.renderActions()}
       </div>
     );
   }
-});
+}
+
+
+Event.propTypes = {
+  user:  React.PropTypes.object.isRequired,
+  event: React.PropTypes.object.isRequired,
+}
+
+Event.defaultProps = {
+  user:  null,
+  event: null,
+}
+
+
+module.exports = Event;

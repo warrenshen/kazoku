@@ -8,8 +8,7 @@ class Clickable extends Component {
     event.preventDefault();
     event.stopPropagation();
     if (this.props.route !== "") {
-      // TODO: Figure out a way to do this without global scope.
-      App.Router.navigate(this.props.route, true);
+      Kazoku.Router.navigate(this.props.route, true);
     } else if (this.props.action !== null) {
       this.props.action();
     }
@@ -38,7 +37,7 @@ class Clickable extends Component {
 
 Clickable.propTypes = {
   action:  React.PropTypes.func,
-  route:    React.PropTypes.string,
+  route:   React.PropTypes.string,
   style:   React.PropTypes.string.isRequired,
   content: React.PropTypes.string.isRequired,
   source:  React.PropTypes.string,

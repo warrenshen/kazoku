@@ -1,18 +1,25 @@
-var FamilyMembers = React.createClass({
+import React from "react";
+import Component from "../component.jsx";
 
-  propTypes: {
-    family: React.PropTypes.object.isRequired,
-  },
+import PeopleList from "./people_list.jsx";
 
-  getDefaultProps: function() {
-    return {
-      family: null,
-    };
-  },
 
-  render: function() {
+class FamilyMembers extends Component {
+
+  render() {
     return (
-      <UsersList users={this.props.family.users} />
+      <PeopleList users={this.props.family.users} />
     );
   }
-});
+}
+
+FamilyMembers.propTypes = {
+  family: React.PropTypes.object.isRequired,
+}
+
+FamilyMembers.defaultProps = {
+  family: null,
+}
+
+
+module.exports = FamilyMembers;

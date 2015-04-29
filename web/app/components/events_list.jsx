@@ -1,35 +1,42 @@
-var EventsList = React.createClass({
+import React from "react";
+import Component from "../component.jsx";
 
-  propTypes: {
-    currentUser: React.PropTypes.object.isRequired,
-    events: React.PropTypes.array.isRequired,
-  },
+import Event from "./event.jsx";
 
-  getDefaultProps: function() {
-    return {
-      currentUser: null,
-      events:      [],
-    };
-  },
 
-  renderEvent: function(event) {
+class EventsList extends Component {
+
+  renderEvent(event) {
     return (
       <Event
         key={event.id}
-        currentUser={this.props.currentUser}
+        user={this.props.user}
         event={event} />
     );
-  },
+  }
 
-  renderEvents: function() {
-    return this.props.events.map(this.renderEvent);
-  },
+  renderEvents() {
+    return this.props.events.map(this.renderEvent, this);
+  }
 
-  render: function() {
+  render() {
     return (
       <div className="general-list">
         {this.renderEvents()}
       </div>
     );
   }
-});
+}
+
+EventsList.propTypes: {
+  user:   React.PropTypes.object.isRequired,
+  events: React.PropTypes.array.isRequired,
+},
+
+EventsList.defaultProps = {
+  user:   null,
+  events: [],
+}
+
+
+module.exports = EventsList;

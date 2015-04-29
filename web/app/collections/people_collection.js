@@ -4,8 +4,6 @@ import Person from "../models/person.js";
 
 import ApiRoutes from "../constants/api_routes.js";
 
-// import PeopleStore from "../stores/people_store.js";
-
 
 class PeopleCollection extends Backbone.Collection {
 
@@ -35,15 +33,15 @@ class PeopleCollection extends Backbone.Collection {
   }
 
   request(options={}) {
-    // var self = this;
+    var self = this;
     var success = options.success;
     options.success = function(collection, response, options) {
       var people = collection.models;
       people.map(function(person) {
-        this.store.add(person);
-      }.bind(this));
-      this.store.emitChange();
-    }.bind(this);
+        self.store.add(person);
+      });
+      self.store.emitChange();
+    };
     options.error = function(collection, response, options) {
       console.log("collection error");
     };

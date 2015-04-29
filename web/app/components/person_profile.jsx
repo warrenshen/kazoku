@@ -10,30 +10,31 @@ class PersonProfile extends Component {
 
   renderName() {
     var person = this.props.person;
-    return person.first_name + " " + person.last_name;
+    return person.get("first_name") + " " + person.get("last_name");
   }
 
   renderFamilyName() {
-    if (this.props.person.family_name) {
-      return (
-        <Clickable
-          route={Routes.families.index + "/" + this.props.person.family_id}
-          style={"profile-banner-subtitle"}
-          content={this.props.person.family_name} />
-      );
-    } else {
-      return (
-        <h5 className="profile-banner-label">
-          &nbsp;(none)
-        </h5>
-      );
-    }
+    // if (this.props.person.get("")) {
+    //   return (
+    //     <Clickable
+    //       route={Routes.families.index + "/" + this.props.person.family_id}
+    //       style={"profile-banner-subtitle"}
+    //       content={this.props.person.family_name} />
+    //   );
+    // } else {
+    //   return (
+    //     <h5 className="profile-banner-label">
+    //       &nbsp;(none)
+    //     </h5>
+    //   );
+    // }
   }
 
   renderImage() {
     var person = this.props.person;
-    if (person.image_url.length) {
-      return <img className="profile-banner-image" src={person.image_url} />
+    var source = person.get("image_url");
+    if (source) {
+      return <img className="profile-banner-image" src={source} />
     }
   }
 
@@ -50,7 +51,7 @@ class PersonProfile extends Component {
 
   renderActions() {
     var user = this.props.user;
-    if (user !== null && user.id === this.props.person.id) {
+    if (user !== null && user.id === this.props.person.get("id")) {
       return (
         <div className="general-banner-actions">
           {this.renderFamilyButton()}

@@ -2,6 +2,7 @@ import Events from "events";
 
 import Dispatcher from "../dispatcher.js";
 
+import Person from "../models/person.js";
 // var TodoConstants = require('../constants/TodoConstants');
 import PeopleCollection from "../collections/people_collection.js";
 
@@ -23,12 +24,25 @@ class PeopleStore extends Events.EventEmitter {
     ];
   }
 
-  // TODO: Set up collections here, depending on fixed imports.
   initialize() {
     this.collections().map(function(template) {
       var collection = new template([], {}, this);
       this._collections[collection.name] = collection;
     }.bind(this));
+  }
+
+  requestPerson(id) {
+    var existingObject = this._all[id];
+    if (existingObject === undefined) {
+      var person = new Person({id: id});
+      person.request();
+    } else {
+      return existingObject;
+    }
+  }
+
+  getPerson(id) {
+    return this._all[id];
   }
 
   requestPeople() {
@@ -65,12 +79,10 @@ class PeopleStore extends Events.EventEmitter {
     this.emit(CHANGE_EVENT);
   }
 
-  // @param {function} callback
   addChangeListener(callback) {
     this.on(CHANGE_EVENT, callback);
   }
 
-  // @param {function} callback
   removeChangeListener(callback) {
     this.removeListener(CHANGE_EVENT, callback);
   }

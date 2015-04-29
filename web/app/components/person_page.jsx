@@ -4,15 +4,40 @@ import Component from "../component.jsx";
 import Header from "./header.jsx";
 import PersonProfile from "./person_profile.jsx";
 
+import PeopleStore from "../stores/people_store.js";
+
 
 class PersonPage extends Component {
+
+  getDefaultState() {
+    return this.getStoreState();
+  }
+
+  getStoreState() {
+    return {
+      person: PeopleStore.getPerson(this.props.id),
+    }
+  }
+
+  componentDidMount() {
+    PeopleStore.addChangeListener(this._onChange.bind(this));
+    PeopleStore.requestPerson(this.props.id);
+  }
+
+  componentWillUnmount() {
+    PeopleStore.removeChangeListener(this._onChange.bind(this));
+  }
+
+  _onChange() {
+    this.setState(this.getStoreState());
+  }
 
   render() {
     return (
       <div className="general-page">
         <Header user={null} isColored={true} />
         <section className="general-banner">
-          <PersonProfile user={null} person={null} />
+          <PersonProfile user={null} person={this.state.person} />
         </section>
       </div>
     );
@@ -24,7 +49,7 @@ PersonPage.propTypes = {
 }
 
 PersonPage.defaultProps = {
-  id: null,
+  id: 1,
 }
 
 

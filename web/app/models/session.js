@@ -52,9 +52,9 @@ class Session extends Backbone.Model {
       console.log("request error:");
       console.log(model);
     }
-    var response = this.save(this.createAttributes(), {
-      url: this.createUrl()
-    });
+    options.attrs = this.createAttributes();
+    options.url = this.createUrl();
+    var response = this.sync("create", this, options);
     return response;
   }
 
@@ -65,7 +65,7 @@ class Session extends Backbone.Model {
         email: this.get("email"),
         password: this.get("password"),
       }
-    }
+    };
   }
 
   createUrl() {

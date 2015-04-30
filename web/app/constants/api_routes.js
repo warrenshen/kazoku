@@ -20,7 +20,7 @@ module.exports = {
 
   sessions: {
     me: "http://localhost:3000/api/me",
-    login: "http://localhost:3000/people/sign_in",
-    logout: "http://localhost:3000/people/sign_out",
+    login: "http://localhost:3000/api/people/sign_in",
+    logout: "http://localhost:3000/api/people/sign_out",
   }
 };

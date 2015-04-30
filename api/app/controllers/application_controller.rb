@@ -6,13 +6,12 @@ class ApplicationController < ActionController::API
   respond_to :json
 
   def localhost_regex
-    Regexp.new("^https?:\/\/localhost")
+    Regexp.new("^https?:\/\/localhost:3333")
   end
 
   def check_cors_request
     origin = request.headers["Origin"]
     if origin =~ localhost_regex
-      puts
       headers["Access-Control-Allow-Origin"] = origin
     end
   end

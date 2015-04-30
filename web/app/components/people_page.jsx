@@ -43,6 +43,7 @@ class PeoplePage extends ListeningComponent {
   }
 
   render() {
+    console.log(this.state.session);
     return (
       <div className="general-page">
         <Header user={null} isColored={true} />

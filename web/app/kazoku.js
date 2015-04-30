@@ -17,9 +17,8 @@ class Kazoku {
   }
 }
 
+// TODO: Remove global scoping (currently for navigation purposes).
 var singleton = new Kazoku();
-
-window.Backbone = Backbone;
 window.Kazoku = singleton;
 
 

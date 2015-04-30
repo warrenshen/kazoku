@@ -23,6 +23,7 @@ class Family extends Model {
       }
     ];
   }
+
   get urlRoot() {
     return "/families/";
   }

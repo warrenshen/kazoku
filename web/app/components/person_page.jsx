@@ -35,9 +35,11 @@ class PersonPage extends Component {
   render() {
     return (
       <div className="general-page">
-        <Header user={null} isColored={true} />
+        <Header session={this.state.session} isColored={true} />
         <section className="general-banner">
-          <PersonProfile user={null} person={this.state.person} />
+          <PersonProfile
+            session={this.state.session}
+            person={this.state.person} />
         </section>
       </div>
     );

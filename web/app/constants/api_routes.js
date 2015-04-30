@@ -15,8 +15,12 @@ module.exports = {
 
   people: {
     index: "http://localhost:3000/api/people",
-    login: "/people/sign_in",
-    logout: "/people/sign_out",
     search: "/people/search",
   },
+
+  sessions: {
+    me: "http://localhost:3000/api/me",
+    login: "http://localhost:3000/people/sign_in",
+    logout: "http://localhost:3000/people/sign_out",
+  }
 };

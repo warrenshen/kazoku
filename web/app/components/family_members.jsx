@@ -8,7 +8,7 @@ class FamilyMembers extends Component {
 
   render() {
     return (
-      <PeopleList users={this.props.family.users} />
+      <PeopleList people={this.props.family.get("people")} />
     );
   }
 }

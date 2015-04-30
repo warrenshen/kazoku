@@ -28,13 +28,7 @@ class PeopleList extends Component {
   }
 
   renderPeople() {
-    var arr = [];
-    var hash = this.props.people;
-    for(var id in this.props.people) {
-      var person = hash[id];
-      arr.push(person);
-    }
-    return arr.map(this.renderPerson, this);
+    return this.props.people.map(this.renderPerson, this);
   }
 
   render() {

@@ -5,6 +5,11 @@ import ApiRoutes from "../constants/api_routes.js";
 
 class Session extends Backbone.Model {
 
+  constructor(attributes={}, options={}, store) {
+    super(attributes, options);
+    this.store = store;
+  }
+
   get defaults() {
     return {
       id: null,
@@ -13,18 +18,19 @@ class Session extends Backbone.Model {
   }
 
   get urlRoot() {
-    return ApiRoutes.me;
+    return ApiRoutes.sessions.me;
   }
 
   parse(response, options) {
-    debugger
+    var session = response.session;
+    return session;
   }
 
   request(options={}) {
-    // var self = this;
+    var self = this;
     options.success = function(model, response, options) {
-      console.log("request success:");
-      console.log(model);
+      self.store.add(model);
+      self.store.emitChange();
     }
     options.error = function(model, response, options) {
       console.log("request error:");
@@ -34,3 +40,6 @@ class Session extends Backbone.Model {
     return response;
   }
 }
+
+
+module.exports = Session;

@@ -1,5 +1,5 @@
 class Api::PeopleController < ApplicationController
-  load_and_authorize_resource param_method: :person_params, except: [:search]
+  load_and_authorize_resource param_method: :person_params, except: [:me, :search]
   skip_before_filter :authenticate_user!, except: [:update]
 
   def create
@@ -13,6 +13,10 @@ class Api::PeopleController < ApplicationController
 
   def index
     render json: @people, each_serializer: PersonSerializer
+  end
+
+  def me
+    render json: current_person || Person.new, serializer: SessionSerializer
   end
 
   def search

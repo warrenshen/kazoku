@@ -2,10 +2,12 @@ import Events from "events";
 
 import Dispatcher from "../dispatcher.js";
 
+import Session from "../models/session.js";
+
 
 var CHANGE_EVENT = "change";
 
-class SessionStore extends Events.EventEmiiter {
+class SessionStore extends Events.EventEmitter {
 
   constructor() {
     super();
@@ -13,11 +15,31 @@ class SessionStore extends Events.EventEmiiter {
   }
 
   getSession() {
-    if (_current === null) {
-      var session = new Session();
+    if (this._current === null) {
+      var session = new Session([], {}, this);
       session.request();
     } else {
-      return _current;
+      return this._current;
     }
   }
+
+  add(object, options={}) {
+    this._current = object;
+    return this._current;
+  }
+
+  addChangeListener(callback) {
+    this.on(CHANGE_EVENT, callback);
+  }
+
+  removeChangeListener(callback) {
+    this.removeListener(CHANGE_EVENT, callback);
+  }
+
+  emitChange() {
+    this.emit(CHANGE_EVENT);
+  }
 }
+
+
+module.exports = new SessionStore();

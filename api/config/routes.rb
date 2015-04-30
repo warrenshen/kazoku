@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: "json" } do
 
+    get "me", to: "people#me"
+
     devise_for :people,
       skip: [:registrations, :passwords],
       controllers: { sessions: "api/people/sessions" }

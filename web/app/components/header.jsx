@@ -6,6 +6,8 @@ import Clickable from "./clickable.jsx";
 
 import Routes from "../constants/routes.js";
 
+import Session from "../models/session.js";
+
 
 class Header extends Component {
 
@@ -26,7 +28,8 @@ class Header extends Component {
   }
 
   renderLogout() {
-    if (this.props.session !== null) {
+    var session = this.props.session;
+    if (session.get("id") !== null) {
       return (
         <Clickable
           action={this.attemptLogout}
@@ -37,7 +40,8 @@ class Header extends Component {
   }
 
   renderProfile() {
-    if (this.props.session === null) {
+    var session = this.props.session;
+    if (session.get("id") === null) {
       return (
         <Clickable
           route={Routes.pages.login}
@@ -88,7 +92,7 @@ Header.propTypes = {
 }
 
 Header.defaultProps = {
-  session:   null,
+  session:   new Session(),
   isColored: true,
 }
 

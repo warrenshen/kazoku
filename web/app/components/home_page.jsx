@@ -1,13 +1,25 @@
 import React from "react";
-import Component from "../component.jsx";
+import ListeningComponent from "../listening_component.jsx";
 
 import Clickable from "./clickable.jsx";
 import Header from "./header.jsx";
 
 import Routes from "../constants/routes.js";
 
+import SessionStore from "../stores/session_store.js";
 
-class HomePage extends Component {
+
+class HomePage extends ListeningComponent {
+
+  stores() {
+    return [SessionStore];
+  }
+
+  getStoreState() {
+    return {
+      session: SessionStore.getSession(),
+    }
+  }
 
   renderBanner() {
     return (
@@ -89,7 +101,7 @@ class HomePage extends Component {
   render() {
     return (
       <div className = "general-page">
-        <Header user={null} isColored={false} />
+      <Header session={this.state.session} isColored={false} />
         {this.renderBanner()}
         {this.renderContent()}
       </div>

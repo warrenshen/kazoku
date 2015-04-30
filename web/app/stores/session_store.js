@@ -11,7 +11,7 @@ class SessionStore extends Events.EventEmitter {
 
   constructor() {
     super();
-    this._current = null;
+    this._current = new Session();
   }
 
   getSession() {

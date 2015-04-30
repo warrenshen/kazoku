@@ -24,15 +24,16 @@ class Session extends Backbone.Model {
 
   parse(response, options) {
     var session = response.session;
-    console.log(session);
     return session;
   }
 
   request(options={}) {
     var self = this;
     options.success = function(model, response, options) {
-      self.store.add(model);
-      self.store.emitChange();
+      if (model !== null) {
+        self.store.add(model);
+        self.store.emitChange();
+      }
     }
     options.error = function(model, response, options) {
       console.log("request error:");
@@ -45,7 +46,10 @@ class Session extends Backbone.Model {
   create(options={}) {
     var self = this;
     options.success = function(model, response, options) {
-      self.store.add(model);
+      // TODO: Figure out a way to do this without
+      // instantiating a new session instance.
+      var session = new Session(model.session);
+      self.store.add(session);
       self.store.emitChange();
     }
     options.error = function(model, response, options) {

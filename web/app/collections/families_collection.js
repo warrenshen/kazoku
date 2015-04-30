@@ -25,19 +25,17 @@ class FamiliesCollection extends Backbone.Collection {
   }
 
   parse(response, options) {
-    var families = response.families.map(function(attributes) {
-      var family = new Family(attributes);
-      return family;
-    });
-    return families;
+    return response.families;
   }
 
   request(options={}) {
     var self = this;
     var success = options.success;
     options.success = function(collection, response, options) {
+      debugger
       var models = collection.models;
       models.map(function(model) {
+        debugger
         self.store.add(model);
       });
       self.store.emitChange();

@@ -5,6 +5,11 @@ import Family from "./family.js";
 
 class Person extends Model {
 
+  constructor(attributes={}, options={}, store) {
+    super(attributes, options);
+    debugger
+  }
+
   get defaults() {
     return {
       id: null,
@@ -14,6 +19,10 @@ class Person extends Model {
       family_name: "",
       family_id: null,
     }
+  }
+
+  get relations() {
+    return [];
   }
 
   get urlRoot() {

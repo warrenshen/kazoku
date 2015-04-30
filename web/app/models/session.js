@@ -1,14 +1,9 @@
-import Backbone from "backbone";
+import Model from "../templates/model.js";
 
 import ApiRoutes from "../constants/api_routes.js";
 
 
-class Session extends Backbone.Model {
-
-  constructor(attributes={}, options={}, store) {
-    super(attributes, options);
-    this.store = store;
-  }
+class Session extends Model {
 
   get defaults() {
     return {

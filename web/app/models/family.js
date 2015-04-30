@@ -1,4 +1,4 @@
-import Model from "../model.js";
+import Model from "../templates/model.js";
 
 
 class Family extends Model {

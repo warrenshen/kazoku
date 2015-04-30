@@ -1,5 +1,5 @@
 import React from "react";
-import ListeningComponent from "../listening_component.jsx";
+import ListeningComponent from "../templates/listening_component.jsx";
 
 import Header from "./header.jsx";
 import PeopleList from "./people_list.jsx";

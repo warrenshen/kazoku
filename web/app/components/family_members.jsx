@@ -1,5 +1,5 @@
 import React from "react";
-import Component from "../component.jsx";
+import Component from "../templates/component.jsx";
 
 import PeopleList from "./people_list.jsx";
 

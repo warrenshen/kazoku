@@ -1,5 +1,5 @@
 import React from "react";
-import ListeningComponent from "../listening_component.jsx";
+import ListeningComponent from "../templates/listening_component.jsx";
 
 import Clickable from "./clickable.jsx";
 import Header from "./header.jsx";

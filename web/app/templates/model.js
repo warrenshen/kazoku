@@ -3,6 +3,11 @@ import Backbone from "backbone";
 
 class Model extends Backbone.Model {
 
+  constructor(attributes={}, options={}, store) {
+    super(attributes, options);
+    this.store = store;
+  }
+
   get defaults() {
     return {};
   }

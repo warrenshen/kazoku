@@ -9,15 +9,6 @@ import Routes from "../constants/routes.js";
 
 class Header extends Component {
 
-  // send: function(type, path, arguments) {
-  //   var request = new XMLHttpRequest();
-  //   request.open(type, path);
-  //   request.setRequestHeader("Content-Type", "application/json");
-  //   request.setRequestHeader("X-CSRF-Token", $('meta[name="csrf-token"]').attr('content'));
-  //   request.send(JSON.stringify(arguments));
-  //   return request;
-  // }
-
   attemptLogout(event) {
     // var email = this.props.currentUser.email;
     // var request = Requester.send("delete", ApiRoutes.users.logout, {
@@ -35,7 +26,7 @@ class Header extends Component {
   }
 
   renderLogout() {
-    if (this.props.currentUser !== null) {
+    if (this.props.session !== null) {
       return (
         <Clickable
           action={this.attemptLogout}
@@ -46,7 +37,7 @@ class Header extends Component {
   }
 
   renderProfile() {
-    if (this.props.currentUser === null) {
+    if (this.props.session === null) {
       return (
         <Clickable
           route={Routes.pages.login}
@@ -56,7 +47,7 @@ class Header extends Component {
     } else {
       return (
         <Clickable
-          route={Routes.people.index + "/" + this.props.currentUser.id}
+          route={Routes.people.index + "/" + this.props.session.get("id")}
           style={"general-button"}
           content={"Your Profile"} />
       );
@@ -92,13 +83,13 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  currentUser: React.PropTypes.object.isRequired,
-  isColored:   React.PropTypes.bool.isRequired,
+  session:   React.PropTypes.object.isRequired,
+  isColored: React.PropTypes.bool.isRequired,
 }
 
 Header.defaultProps = {
-  currentUser: null,
-  isColored:   true,
+  session:   null,
+  isColored: true,
 }
 
 

@@ -43,10 +43,9 @@ class PeoplePage extends ListeningComponent {
   }
 
   render() {
-    console.log(this.state.session);
     return (
       <div className="general-page">
-        <Header user={null} isColored={true} />
+        <Header session={this.state.session} isColored={true} />
         {this.renderBanner()}
         <section className="general-section">
           <PeopleList people={this.state.people} />

@@ -16,7 +16,8 @@ class Api::PeopleController < ApplicationController
   end
 
   def me
-    render json: current_person || Person.new, serializer: SessionSerializer
+    puts current_person
+    render json: current_person, serializer: SessionSerializer
   end
 
   def search

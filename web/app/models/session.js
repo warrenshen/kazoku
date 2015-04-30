@@ -24,6 +24,7 @@ class Session extends Backbone.Model {
 
   parse(response, options) {
     var session = response.session;
+    console.log(session);
     return session;
   }
 
@@ -44,7 +45,6 @@ class Session extends Backbone.Model {
   create(options={}) {
     var self = this;
     options.success = function(model, response, options) {
-      debugger
       self.store.add(model);
       self.store.emitChange();
     }

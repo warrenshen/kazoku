@@ -3,6 +3,8 @@ import Component from "../component.jsx";
 
 import Family from "./family.jsx";
 
+import Session from "../models/session.js";
+
 
 class FamiliesList extends Component {
 
@@ -10,7 +12,7 @@ class FamiliesList extends Component {
     return (
       <Family
         key={family.id}
-        currentUser={this.props.user}
+        session={this.props.session}
         family={family} />
     );
   }
@@ -29,12 +31,12 @@ class FamiliesList extends Component {
 }
 
 FamiliesList.propTypes = {
-  uesr:     React.PropTypes.object.isRequired,
+  session:  React.PropTypes.object.isRequired,
   families: React.PropTypes.array.isRequired,
 }
 
 FamiliesList.defaultProps = {
-  user:     null,
+  session:  new Session(),
   families: [],
 }
 

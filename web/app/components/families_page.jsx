@@ -4,17 +4,23 @@ import ListeningComponent from "../listening_component.jsx";
 import Header from "./header.jsx";
 import FamiliesList from "./families_list.jsx";
 
+import FamiliesStore from "../stores/families_store.js";
 import SessionStore from "../stores/session_store.js";
 
 
 class FamiliesPage extends ListeningComponent {
 
   stores() {
-    return [SessionStore];
+    return [FamiliesStore, SessionStore];
+  }
+
+  requestFromStore() {
+    FamiliesStore.requestFamilies();
   }
 
   getStoreState() {
     return {
+      families: FamiliesStore.getFamilies(),
       session: SessionStore.getSession(),
     }
   }
@@ -40,7 +46,9 @@ class FamiliesPage extends ListeningComponent {
         <Header session={this.state.session} isColored={true} />
         {this.renderBanner()}
         <section className="general-section">
-          <FamiliesList families={[]} />
+          <FamiliesList
+            session={this.state.session}
+            families={this.state.families} />
         </section>
       </div>
     );

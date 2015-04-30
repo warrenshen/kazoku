@@ -5,7 +5,7 @@ import Family from "../models/family.js";
 import ApiRoutes from "../constants/api_routes.js";
 
 
-class FamilyCollection extends Backbone.Collection {
+class FamiliesCollection extends Backbone.Collection {
 
   constructor(models=[], options={}, store) {
     super(models, options);
@@ -13,7 +13,7 @@ class FamilyCollection extends Backbone.Collection {
   }
 
   get name() {
-    return "FamilyCollection";
+    return "FamiliesCollection";
   }
 
   get model() {

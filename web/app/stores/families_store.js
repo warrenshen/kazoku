@@ -2,14 +2,14 @@ import Events from "events";
 
 import Dispatcher from "../dispatcher.js";
 
-import Person from "../models/person.js";
+import Family from "../models/family.js";
 // var TodoConstants = require('../constants/TodoConstants');
-import PeopleCollection from "../collections/people_collection.js";
+import FamiliesCollection from "../collections/families_collection.js";
 
 
 var CHANGE_EVENT = "change";
 
-class PeopleStore extends Events.EventEmitter {
+class FamiliesStore extends Events.EventEmitter {
 
   constructor() {
     super();
@@ -20,7 +20,7 @@ class PeopleStore extends Events.EventEmitter {
 
   collections() {
     return [
-      PeopleCollection,
+      FamiliesCollection,
     ];
   }
 
@@ -31,26 +31,26 @@ class PeopleStore extends Events.EventEmitter {
     }.bind(this));
   }
 
-  requestPerson(id) {
+  requestFamily(id) {
     var existingObject = this._all[id];
     if (existingObject === undefined) {
-      // var person = new Person({id: id});
+      // var family = new Family({id: id});
       // person.request();
     } else {
       return existingObject;
     }
   }
 
-  getPerson(id) {
+  getFamily(id) {
     return this._all[id];
   }
 
-  requestPeople() {
-    return this._collections["PeopleCollection"].request();
+  requestFamilies() {
+    return this._collections["FamiliesCollection"].request();
   }
 
-  getPeople() {
-    return this._collections["PeopleCollection"].models;
+  getFamilies() {
+    return this._collections["FamiliesCollection"].models;
   }
 
   getAll() {
@@ -88,26 +88,5 @@ class PeopleStore extends Events.EventEmitter {
   }
 }
 
-// var store = new Store();
-// Dispatcher.register(function(payload) {
-//   var action = payload.action;
-//   var attributes = action.attributes;
 
-//   switch(action.type) {
-//     case "create":
-//       store.create(attributes);
-//       store.emitChange();
-//       break;
-
-//     case "destroy":
-//       store.destroy(action.id);
-//       store.emitChange();
-//       break;
-//   }
-
-//   // Needed by promise in Dispatcher.
-//   return true;
-// });
-
-
-module.exports = new PeopleStore();
+module.exports = new FamiliesStore();

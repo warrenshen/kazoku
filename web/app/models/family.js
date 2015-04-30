@@ -1,7 +1,7 @@
 import Backbone from "backbone";
 
 
-class Person extends Backbone.Model {
+class Family extends Backbone.Model {
 
   get key() {
     return this.get("id");

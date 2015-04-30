@@ -53,7 +53,6 @@ class Router extends Backbone.Router {
   }
 
   person(id) {
-    console.log("rendering person page");
     React.render(
       <PersonPage id={Number(id)} />,
       document.body

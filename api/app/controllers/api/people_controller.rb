@@ -16,7 +16,6 @@ class Api::PeopleController < ApplicationController
   end
 
   def me
-    puts current_person
     render json: current_person, serializer: SessionSerializer
   end
 

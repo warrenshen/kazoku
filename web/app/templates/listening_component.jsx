@@ -33,7 +33,6 @@ class ListeningComponent extends Component {
     super.componentWillUnmount();
     var self = this;
     this.stores().map(function(store) {
-      console.log("unmounting!");
       store.removeChangeListener(self._onChange.bind(self));
     });
   }

@@ -18,5 +18,9 @@ class Kazoku {
 }
 
 var singleton = new Kazoku();
+
+window.Backbone = Backbone;
 window.Kazoku = singleton;
+
+
 module.exports = singleton;

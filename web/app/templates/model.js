@@ -1,7 +1,8 @@
 import Backbone from "backbone";
+import "backbone-relational";
 
 
-class Model extends Backbone.Model {
+class Model extends Backbone.RelationalModel {
 
   constructor(attributes={}, options={}, store) {
     super(attributes, options);
@@ -14,6 +15,10 @@ class Model extends Backbone.Model {
 
   get key() {
     return this.get("id");
+  }
+
+  get relations() {
+    return [];
   }
 
   request(options={}) {

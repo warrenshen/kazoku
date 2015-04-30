@@ -1,5 +1,7 @@
 import Model from "../templates/model.js";
 
+import Person from "./person.js";
+
 
 class Family extends Model {
 
@@ -11,6 +13,15 @@ class Family extends Model {
     }
   }
 
+  get relations() {
+    return [
+      {
+        type: "HasMany",
+        key: "people",
+        relatedModel: Person,
+      }
+    ];
+  }
   get urlRoot() {
     return "/families/";
   }

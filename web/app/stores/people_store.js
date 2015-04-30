@@ -1,34 +1,16 @@
-import Events from "events";
-
-import Dispatcher from "../dispatcher.js";
+import Store from "../templates/store.js";
 
 import Person from "../models/person.js";
 // var TodoConstants = require('../constants/TodoConstants');
 import PeopleCollection from "../collections/people_collection.js";
 
 
-var CHANGE_EVENT = "change";
-
-class PeopleStore extends Events.EventEmitter {
-
-  constructor() {
-    super();
-    this._all = {};
-    this._collections = {};
-    this.initialize();
-  }
+class PeopleStore extends Store {
 
   collections() {
     return [
       PeopleCollection,
     ];
-  }
-
-  initialize() {
-    this.collections().map(function(template) {
-      var collection = new template([], {}, this);
-      this._collections[collection.name] = collection;
-    }.bind(this));
   }
 
   requestPerson(id) {
@@ -53,10 +35,6 @@ class PeopleStore extends Events.EventEmitter {
     return this._collections["PeopleCollection"].models;
   }
 
-  getAll() {
-    return this._all;
-  }
-
   add(object, options={}) {
     var key = object.key;
     var existingObject = this._all[key];
@@ -73,18 +51,6 @@ class PeopleStore extends Events.EventEmitter {
     }
 
     return this._all[key];
-  }
-
-  addChangeListener(callback) {
-    this.on(CHANGE_EVENT, callback);
-  }
-
-  removeChangeListener(callback) {
-    this.removeListener(CHANGE_EVENT, callback);
-  }
-
-  emitChange() {
-    this.emit(CHANGE_EVENT);
   }
 }
 

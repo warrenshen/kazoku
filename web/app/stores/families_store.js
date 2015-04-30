@@ -1,6 +1,4 @@
-import Events from "events";
-
-import Dispatcher from "../dispatcher.js";
+import Store from "../templates/store.js";
 
 import Family from "../models/family.js";
 // var TodoConstants = require('../constants/TodoConstants');
@@ -9,14 +7,7 @@ import FamiliesCollection from "../collections/families_collection.js";
 
 var CHANGE_EVENT = "change";
 
-class FamiliesStore extends Events.EventEmitter {
-
-  constructor() {
-    super();
-    this._all = {};
-    this._collections = {};
-    this.initialize();
-  }
+class FamiliesStore extends Store {
 
   collections() {
     return [

@@ -1,6 +1,6 @@
 import React from "react";
 import Classer from "classnames";
-import Component from "../component.jsx";
+import Component from "../templates/component.jsx";
 
 import Clickable from "./clickable.jsx";
 

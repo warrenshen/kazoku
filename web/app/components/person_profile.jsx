@@ -1,5 +1,5 @@
 import React from "react";
-import Component from "../component.jsx";
+import Component from "../templates/component.jsx";
 
 import Clickable from "./clickable.jsx";
 
@@ -14,20 +14,20 @@ class PersonProfile extends Component {
   }
 
   renderFamilyName() {
-    // if (this.props.person.get("")) {
-    //   return (
-    //     <Clickable
-    //       route={Routes.families.index + "/" + this.props.person.family_id}
-    //       style={"profile-banner-subtitle"}
-    //       content={this.props.person.family_name} />
-    //   );
-    // } else {
-    //   return (
-    //     <h5 className="profile-banner-label">
-    //       &nbsp;(none)
-    //     </h5>
-    //   );
-    // }
+    if (this.props.person.get("family_name")) {
+      return (
+        <Clickable
+          route={Routes.families.index + "/" + this.props.person.family_id}
+          style={"profile-banner-subtitle"}
+          content={this.props.person.get("family_name")} />
+      );
+    } else {
+      return (
+        <h5 className="profile-banner-label">
+          &nbsp;(none)
+        </h5>
+      );
+    }
   }
 
   renderImage() {

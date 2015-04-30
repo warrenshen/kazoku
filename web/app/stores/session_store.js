@@ -1,13 +1,11 @@
-import Events from "events";
-
-import Dispatcher from "../dispatcher.js";
+import Store from "../templates/store.js";
 
 import Session from "../models/session.js";
 
 
 var CHANGE_EVENT = "change";
 
-class SessionStore extends Events.EventEmitter {
+class SessionStore extends Store {
 
   constructor() {
     super();

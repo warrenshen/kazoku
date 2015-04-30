@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20150425183720) do
     t.string   "first_name",             default: "",    null: false
     t.string   "last_name",              default: "",    null: false
     t.string   "image_url",              default: "",    null: false
+    t.string   "family_name",            default: "",    null: false
     t.boolean  "is_admin",               default: false, null: false
     t.integer  "family_id"
     t.string   "email",                  default: "",    null: false

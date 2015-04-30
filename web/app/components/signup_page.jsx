@@ -1,5 +1,5 @@
 import React from "react";
-import Component from "../component.jsx";
+import Component from "../templates/component.jsx";
 
 import Clickable from "./clickable.jsx";
 import Header from "./header.jsx";
@@ -94,8 +94,6 @@ class SignupPage extends Component {
   }
 
   render() {
-    console.log(Store);
-    console.log(this.state.people);
     return (
       <div className="general-page">
         <Header user={null} isColored={true} />

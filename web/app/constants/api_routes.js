@@ -5,8 +5,7 @@ module.exports = {
   },
 
   families: {
-    index: "/families",
-    new: "/families/new",
+    index: "http://localhost:3000/api/families",
   },
 
   familyEvents: {

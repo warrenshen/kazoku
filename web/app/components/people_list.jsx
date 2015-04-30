@@ -1,5 +1,5 @@
 import React from "react";
-import Component from "../component.jsx";
+import Component from "../templates/component.jsx";
 
 import Person from "./person.jsx";
 
@@ -28,13 +28,7 @@ class PeopleList extends Component {
   }
 
   renderPeople() {
-    var arr = [];
-    var hash = this.props.people;
-    for(var id in this.props.people) {
-      var person = hash[id];
-      arr.push(person);
-    }
-    return arr.map(this.renderPerson, this);
+    return this.props.people.map(this.renderPerson, this);
   }
 
   render() {

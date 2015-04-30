@@ -1,31 +1,47 @@
 import React from "react";
-import Component from "../component.jsx";
+import ListeningComponent from "../templates/listening_component.jsx";
 
 import Header from "./header.jsx";
 import FamilyProfile from "./family_profile.jsx";
 import FamilyMembers from "./family_members.jsx";
 
+import FamiliesStore from "../stores/families_store.js";
+import SessionStore from "../stores/session_store.js";
 
-class FamilyPage extends Component {
+
+class FamilyPage extends ListeningComponent {
+
+  stores() {
+    return [FamiliesStore, SessionStore];
+  }
+
+  getStoreState() {
+    return {
+      family: FamiliesStore.getFamily(this.props.id),
+      session: SessionStore.getSession(),
+    }
+  }
 
   renderMembers() {
     return (
-      <section class="general-section">
-        <div class="general-section-headings">
-          <h3 class="general-section-title">
+      <section className="general-section">
+        <div className="general-section-headings">
+          <h3 className="general-section-title">
             Family Members
           </h3>
         </div>
-        <FamilyMembers family={null} />
+        <FamilyMembers family={this.state.family} />
       </section>
     );
   }
   render() {
     return (
       <div className="general-page">
-        <Header user={null} isColored={true} />
+        <Header session={this.props.session} isColored={true} />
         <section className="general-banner">
-          <FamilyProfile user={null} family={null} />
+          <FamilyProfile
+            session={this.state.session}
+            family={this.state.family} />
         </section>
         {this.renderMembers()}
       </div>

@@ -3,10 +3,11 @@ class DeviseCreatePeople < ActiveRecord::Migration
     create_table(:people) do |t|
 
       ## Custom
-      t.string  :first_name, null: false, default: ""
-      t.string  :last_name,  null: false, default: ""
-      t.string  :image_url,  null: false, default: ""
-      t.boolean :is_admin,   null: false, default: false
+      t.string  :first_name,  null: false, default: ""
+      t.string  :last_name,   null: false, default: ""
+      t.string  :image_url,   null: false, default: ""
+      t.string  :family_name, null: false, default: ""
+      t.boolean :is_admin,    null: false, default: false
 
       t.references :family, index: true
 

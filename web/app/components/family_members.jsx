@@ -1,5 +1,5 @@
 import React from "react";
-import Component from "../component.jsx";
+import Component from "../templates/component.jsx";
 
 import PeopleList from "./people_list.jsx";
 
@@ -8,13 +8,15 @@ class FamilyMembers extends Component {
 
   render() {
     return (
-      <PeopleList users={this.props.family.users} />
+      <PeopleList
+        session={this.props.session}
+        people={this.props.family.get("people")} />
     );
   }
 }
 
 FamilyMembers.propTypes = {
-  family: React.PropTypes.object.isRequired,
+  family:  React.PropTypes.object.isRequired,
 }
 
 FamilyMembers.defaultProps = {

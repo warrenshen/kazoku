@@ -1,11 +1,7 @@
-import Backbone from "backbone";
+import Model from "../model.js";
 
 
-class Person extends Backbone.Model {
-
-  get key() {
-    return this.get("id");
-  }
+class Person extends Model {
 
   get defaults() {
     return {
@@ -19,20 +15,6 @@ class Person extends Backbone.Model {
 
   get urlRoot() {
     return "/users/";
-  }
-
-  request(options={}) {
-    // var self = this;
-    options.success = function(model, response, options) {
-      console.log("request success:");
-      console.log(model);
-    }
-    options.error = function(model, response, options) {
-      console.log("request error:");
-      console.log(model);
-    }
-    var response = this.fetch(options);
-    return response;
   }
 }
 

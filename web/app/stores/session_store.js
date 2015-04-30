@@ -16,11 +16,16 @@ class SessionStore extends Events.EventEmitter {
 
   getSession() {
     if (this._current === null) {
-      var session = new Session([], {}, this);
+      var session = new Session({}, {}, this);
       session.request();
     } else {
       return this._current;
     }
+  }
+
+  createSession(attributes) {
+    var session = new Session(attributes, {}, this);
+    session.create();
   }
 
   add(object, options={}) {

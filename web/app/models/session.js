@@ -14,6 +14,7 @@ class Session extends Backbone.Model {
     return {
       id: null,
       email: "",
+      password: "",
     }
   }
 
@@ -38,6 +39,37 @@ class Session extends Backbone.Model {
     }
     var response = this.fetch(options);
     return response;
+  }
+
+  create(options={}) {
+    var self = this;
+    options.success = function(model, response, options) {
+      debugger
+      self.store.add(model);
+      self.store.emitChange();
+    }
+    options.error = function(model, response, options) {
+      console.log("request error:");
+      console.log(model);
+    }
+    var response = this.save(this.createAttributes(), {
+      url: this.createUrl()
+    });
+    return response;
+  }
+
+  createAttributes() {
+    return {
+      session: {
+        id: this.get("id"),
+        email: this.get("email"),
+        password: this.get("password"),
+      }
+    }
+  }
+
+  createUrl() {
+    return ApiRoutes.sessions.login;
   }
 }
 

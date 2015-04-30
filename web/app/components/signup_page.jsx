@@ -6,33 +6,8 @@ import Header from "./header.jsx";
 
 import Routes from "../constants/routes.js";
 
-// import Store from "../stores/store.js";
-// import Actions from "../actions/actions.js";
-
 
 class SignupPage extends Component {
-
-  // getAllPeople() {
-  //   return {
-  //     people: Store.getAll(),
-  //   }
-  // }
-
-  // getDefaultState() {
-  //   return this.getAllPeople();
-  // }
-
-  // componentDidMount() {
-  //   Store.addChangeListener(this._onChange.bind(this));
-  // }
-
-  // componentWillUnmount() {
-  //   Store.removeChangeListener(this._onChange.bind(this));
-  // }
-
-  // _onChange() {
-  //   this.setState(this.getAllPeople());
-  // }
 
   attemptCreate(event) {
     var firstName = React.findDOMNode(this.refs.first_name).value;

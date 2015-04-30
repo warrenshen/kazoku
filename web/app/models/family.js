@@ -10,6 +10,7 @@ class Family extends Model {
       id: null,
       name: "",
       size: 0,
+      events_count: 0,
     }
   }
 

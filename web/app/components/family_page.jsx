@@ -40,7 +40,7 @@ class FamilyPage extends ListeningComponent {
         <Header session={this.props.session} isColored={true} />
         <section className="general-banner">
           <FamilyProfile
-            session={this.props.session}
+            session={this.state.session}
             family={this.state.family} />
         </section>
         {this.renderMembers()}

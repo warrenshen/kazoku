@@ -8,13 +8,15 @@ class FamilyMembers extends Component {
 
   render() {
     return (
-      <PeopleList people={this.props.family.get("people")} />
+      <PeopleList
+        session={this.props.session}
+        people={this.props.family.get("people")} />
     );
   }
 }
 
 FamilyMembers.propTypes = {
-  family: React.PropTypes.object.isRequired,
+  family:  React.PropTypes.object.isRequired,
 }
 
 FamilyMembers.defaultProps = {

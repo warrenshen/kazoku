@@ -27,7 +27,6 @@ class Person extends Component {
   }
 
   render() {
-    console.log(this.props.person);
     return (
       <div className="general-block">
         {this.renderImage()}

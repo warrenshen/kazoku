@@ -5,13 +5,15 @@ import Clickable from "./clickable.jsx";
 
 import Routes from "../constants/routes.js";
 
+import Session from "../models/session.js";
+
 
 class FamilyProfile extends Component {
 
   renderOptions() {
-    var user = this.props.user;
+    var session = this.props.session;
     var family = this.props.family;
-    if (user !== null && user.family_id === family.id) {
+    if (session.get("id") === family.get("id")) {
       return (
         <div className="general-banner-actions">
           <Clickable
@@ -27,13 +29,13 @@ class FamilyProfile extends Component {
     return (
       <div className="general-banner-content">
         <h2 className="general-banner-title">
-          {this.props.family.name}
+          {this.props.family.get("name")}
         </h2>
         <h5 className="general-banner-title">
-          {"Members: " + this.props.family.size}
+          {"Members: " + this.props.family.get("size")}
         </h5>
         <h5 className="general-banner-title">
-          {"Events: " + this.props.family.events_count}
+          {"Events: " + this.props.family.get("events_count")}
         </h5>
         {this.renderOptions()}
       </div>
@@ -42,13 +44,13 @@ class FamilyProfile extends Component {
 }
 
 FamilyProfile.propTypes = {
-  user:   React.PropTypes.object.isRequired,
-  family: React.PropTypes.object.isRequired,
+  session: React.PropTypes.object.isRequired,
+  family:  React.PropTypes.object.isRequired,
 }
 
 FamilyProfile.defaultProps = {
-  user:   null,
-  family: null,
+  session: new Session(),
+  family:  null,
 }
 
 

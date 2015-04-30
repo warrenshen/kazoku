@@ -21,17 +21,19 @@ class ListeningComponent extends Component {
   }
 
   componentDidMount() {
+    super.componentDidMount();
     var self = this;
     this.stores().map(function(store) {
       store.addChangeListener(self._onChange.bind(self));
     });
-    console.log("getting store state");
     this.requestFromStore();
   }
 
   componentWillUnmount() {
+    super.componentWillUnmount();
     var self = this;
     this.stores().map(function(store) {
+      console.log("unmounting!");
       store.removeChangeListener(self._onChange.bind(self));
     });
   }

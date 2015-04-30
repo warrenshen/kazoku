@@ -16,15 +16,6 @@ class Header extends Component {
     // var request = Requester.send("delete", ApiRoutes.users.logout, {
     //   id: this.props.currentUser.id,
     // });
-    // request.onload = function() {
-    //   var response = JSON.parse(request.response);
-    //   console.log(response)
-    //   if (response.id) {
-    //     window.location = ApiRoutes.pages.home;
-    //   } else {
-    //     console.log("api_error_response");
-    //   }
-    // };
   }
 
   renderLogout() {

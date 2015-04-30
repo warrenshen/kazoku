@@ -16,6 +16,10 @@ class Component extends React.Component {
 
   }
 
+  componentWillUnmount() {
+
+  }
+
   render() {
     return <div></div>;
   }

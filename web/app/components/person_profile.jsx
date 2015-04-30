@@ -14,12 +14,13 @@ class PersonProfile extends Component {
   }
 
   renderFamilyName() {
-    if (this.props.person.get("family_name")) {
+    var person = this.props.person;
+    if (person.get("family_name")) {
       return (
         <Clickable
-          route={Routes.families.index + "/" + this.props.person.family_id}
+          route={Routes.families.index + "/" + person.get("family_id")}
           style={"profile-banner-subtitle"}
-          content={this.props.person.get("family_name")} />
+          content={person.get("family_name")} />
       );
     } else {
       return (
@@ -39,7 +40,7 @@ class PersonProfile extends Component {
   }
 
   renderFamilyButton() {
-    if (this.props.person.family_id === null) {
+    if (this.props.person.get("family_id") === null) {
       return (
         <Clickable
           route={Routes.families.new}
@@ -50,8 +51,8 @@ class PersonProfile extends Component {
   }
 
   renderActions() {
-    var user = this.props.user;
-    if (user !== null && user.id === this.props.person.get("id")) {
+    var session = this.props.session;
+    if (session !== null && session.get("id") === this.props.person.get("id")) {
       return (
         <div className="general-banner-actions">
           {this.renderFamilyButton()}
@@ -84,13 +85,13 @@ class PersonProfile extends Component {
 }
 
 PersonProfile.propTypes = {
-  user:   React.PropTypes.object.isRequired,
-  person: React.PropTypes.object.isRequired,
+  session: React.PropTypes.object.isRequired,
+  person:  React.PropTypes.object.isRequired,
 }
 
 PersonProfile.defaultProps = {
-  user:   null,
-  person: null,
+  session: null,
+  person:  null,
 }
 
 

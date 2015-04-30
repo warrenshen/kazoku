@@ -1,5 +1,7 @@
 import Model from "../templates/model.js";
 
+import Family from "./family.js";
+
 
 class Person extends Model {
 
@@ -10,11 +12,12 @@ class Person extends Model {
       last_name: "",
       image_url: "",
       family_name: "",
+      family_id: null,
     }
   }
 
   get urlRoot() {
-    return "/users/";
+    return "/people/";
   }
 }
 

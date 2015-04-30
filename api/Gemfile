@@ -10,6 +10,9 @@ gem 'devise'
 # Database
 gem "pg"
 
+# Requests
+gem "rack-cors", require: "rack/cors"
+
 # Search
 gem "pg_search"
 

@@ -36,9 +36,9 @@ class PeopleCollection extends Backbone.Collection {
     var self = this;
     var success = options.success;
     options.success = function(collection, response, options) {
-      var people = collection.models;
-      people.map(function(person) {
-        self.store.add(person);
+      var models = collection.models;
+      models.map(function(model) {
+        self.store.add(model);
       });
       self.store.emitChange();
     };

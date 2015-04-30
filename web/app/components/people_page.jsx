@@ -1,5 +1,5 @@
 import React from "react";
-import Component from "../component.jsx";
+import ListeningComponent from "../listening_component.jsx";
 
 import Header from "./header.jsx";
 import PeopleList from "./people_list.jsx";
@@ -7,31 +7,24 @@ import PeopleList from "./people_list.jsx";
 import PeopleCollection from "../collections/people_collection.js";
 
 import PeopleStore from "../stores/people_store.js";
+import SessionStore from "../stores/session_store.js";
 
 
-class PeoplePage extends Component {
+class PeoplePage extends ListeningComponent {
 
-  getDefaultState() {
-    return this.getStoreState();
+  stores() {
+    return [PeopleStore, SessionStore];
+  }
+
+  requestFromStore() {
+    PeopleStore.requestPeople();
   }
 
   getStoreState() {
     return {
       people: PeopleStore.getPeople(),
+      session: SessionStore.getSession(),
     }
-  }
-
-  componentDidMount() {
-    PeopleStore.addChangeListener(this._onChange.bind(this));
-    PeopleStore.requestPeople();
-  }
-
-  componentWillUnmount() {
-    PeopleStore.removeChangeListener(this._onChange.bind(this));
-  }
-
-  _onChange() {
-    this.setState(this.getStoreState());
   }
 
   renderBanner() {
@@ -52,7 +45,7 @@ class PeoplePage extends Component {
   render() {
     return (
       <div className="general-page">
-        <Header user={null} isColored={true} />
+        <Header session={this.state.session} isColored={true} />
         {this.renderBanner()}
         <section className="general-section">
           <PeopleList people={this.state.people} />

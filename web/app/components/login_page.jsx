@@ -6,8 +6,19 @@ import Header from "./header.jsx";
 
 import Routes from "../constants/routes.js";
 
+import SessionStore from "../stores/session_store.js";
+
 
 class LoginPage extends Component {
+
+  attemptLogin(event) {
+    var email = React.findDOMNode(this.refs.email).value;
+    var password = React.findDOMNode(this.refs.password).value;
+    SessionStore.createSession({
+      email: email,
+      password: password,
+    });
+  }
 
   renderBanner() {
     return (
@@ -45,7 +56,7 @@ class LoginPage extends Component {
             placeholder="Password">
           </input>
           <Clickable
-            action={null}
+            action={this.attemptLogin.bind(this)}
             style={"general-form-submit"}
             content={"Log in"} />
           <div className="general-form-section">

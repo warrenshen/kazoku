@@ -10,6 +10,7 @@ class Person extends Backbone.Model {
   get defaults() {
     return {
       id: null,
+      email: "",
       first_name: "",
       last_name: "",
       image_url: "",

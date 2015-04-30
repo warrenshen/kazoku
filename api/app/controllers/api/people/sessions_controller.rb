@@ -6,7 +6,7 @@ class Api::People::SessionsController < Devise::SessionsController
     @person = Person.find_by(email: params[:session][:email])
     if !@person.nil? && @person.valid_password?(params[:session][:password])
       sign_in(@person)
-      render json: @person
+      render json: @person, serializer: SessionSerializer
     else
       api_error_response(@person)
     end
@@ -15,9 +15,9 @@ class Api::People::SessionsController < Devise::SessionsController
   def destroy
     @person = Person.find(params[:id])
     if sign_out(@person)
-      render json: @person
+      render json: @person, serializer: SessionSerializer
     else
-      render api_error_response(@person)
+      api_error_response(@person)
     end
   end
 

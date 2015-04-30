@@ -25,6 +25,7 @@ class ListeningComponent extends Component {
     this.stores().map(function(store) {
       store.addChangeListener(self._onChange.bind(self));
     });
+    console.log("getting store state");
     this.requestFromStore();
   }
 

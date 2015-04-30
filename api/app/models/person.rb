@@ -6,6 +6,7 @@
 #  first_name             :string           default(""), not null
 #  last_name              :string           default(""), not null
 #  image_url              :string           default(""), not null
+#  family_name            :string           default(""), not null
 #  is_admin               :boolean          default("false"), not null
 #  family_id              :integer
 #  email                  :string           default(""), not null
@@ -53,10 +54,15 @@ class Person < ActiveRecord::Base
   ##################################################
   # Callbacks
   ##################################################
+  before_validation :set_family_name
 
   ##################################################
   # Methods
   ##################################################
   private
+
+  def set_family_name
+    self.family_name = family.try(:name)
+  end
 
 end

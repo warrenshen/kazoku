@@ -14,7 +14,6 @@ import SessionsStore from "../stores/sessions_store.js";
 class Header extends Component {
 
   attemptLogout(event) {
-    debugger
     SessionsStore.logout();
   }
 

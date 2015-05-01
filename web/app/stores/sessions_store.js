@@ -46,12 +46,13 @@ class SessionsStore extends Store {
     var self = this;
     var options = {};
     options.success = function(response, status, options) {
+      debugger
       Cookies.set("auth_email", "");
       Cookies.set("auth_token", "");
       Cookies.set("session_uuid", "");
       self.emitChange();
-    }
-    return session.destroy(options);
+    };
+    return this._current.destroy(options);
   }
 
   add(model, options={}) {

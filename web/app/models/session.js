@@ -55,7 +55,7 @@ class Session extends Model {
         self.store.add(model);
         self.store.emitChange();
       }
-    }
+    };
     options.error = function(model, response, options) {
       console.log("request error:");
       console.log(model);
@@ -70,24 +70,25 @@ class Session extends Model {
       self.set(response.session);
       self.store.add(self);
       self.store.emitChange();
-    }
+    };
     options.error = function(response, status, options) {
       console.log("create session error:");
       console.log(response);
-    }
+    };
     options.url = this.createUrl;
     var response = this.sync("create", this, options);
     return response;
   }
 
   destroy(options={}) {
+    debugger
     var self = this;
     options.error = function(response, status, options) {
       console.log("destroy session error:");
       console.log(response);
-    }
+    };
     options.url = this.destroyUrl;
-    var response = this.sync("destroy", this, options);
+    var response = this.sync("delete", this, options);
     return response;
   }
 }

@@ -7,7 +7,6 @@ class Person extends Model {
 
   constructor(attributes={}, options={}, store) {
     super(attributes, options);
-    debugger
   }
 
   get defaults() {
@@ -19,6 +18,10 @@ class Person extends Model {
       family_name: "",
       family_id: null,
     }
+  }
+
+  get name() {
+    return "Person";
   }
 
   get relations() {

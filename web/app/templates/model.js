@@ -1,16 +1,21 @@
 import Backbone from "backbone";
 import "backbone-relational";
 
+import Stores from "../stores.js";
+
 
 class Model extends Backbone.RelationalModel {
 
-  constructor(attributes={}, options={}, store) {
+  constructor(attributes={}, options={}) {
     super(attributes, options);
-    this.store = store;
   }
 
   get defaults() {
     return {};
+  }
+
+  get name() {
+    return "Model";
   }
 
   get key() {
@@ -19,6 +24,10 @@ class Model extends Backbone.RelationalModel {
 
   get relations() {
     return [];
+  }
+
+  get store() {
+    return Stores.get(this.name);
   }
 
   request(options={}) {

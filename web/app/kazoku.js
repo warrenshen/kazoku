@@ -1,6 +1,8 @@
 import Backbone from "backbone";
 import Router from "./routers/router.js";
 
+import Stores from "./stores.js";
+
 import "./styles/main.scss";
 import "./styles/general.scss";
 import "./styles/specific.scss";
@@ -9,7 +11,7 @@ import "./styles/pages.scss";
 
 class Kazoku {
 
-  constructor(router) {
+  constructor() {
     this.Collections = [];
     this.Models = [];
     this.Router = new Router();

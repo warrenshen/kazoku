@@ -29,11 +29,12 @@ class Store extends Events.EventEmitter {
   }
 
   initialize() {
+    var self = this;
     StoreDirectory.add(this);
     this.collections().map(function(template) {
-      var collection = new template([], {}, this);
-      this._collections[collection.name] = collection;
-    }.bind(this));
+      var collection = new template([], {}, self);
+      self._collections[collection.name] = collection;
+    });
   }
 
   addChangeListener(callback) {

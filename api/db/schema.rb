@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150425183720) do
+ActiveRecord::Schema.define(version: 20150501060810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,5 +68,17 @@ ActiveRecord::Schema.define(version: 20150425183720) do
   add_index "people", ["email"], name: "index_people_on_email", unique: true, using: :btree
   add_index "people", ["family_id"], name: "index_people_on_family_id", using: :btree
   add_index "people", ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true, using: :btree
+
+  create_table "sessions", force: :cascade do |t|
+    t.boolean  "is_expired",     default: false, null: false
+    t.boolean  "is_logged_in",   default: true,  null: false
+    t.string   "uuid",                           null: false
+    t.datetime "last_active_at"
+    t.integer  "person_id"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "sessions", ["person_id"], name: "index_sessions_on_person_id", using: :btree
 
 end

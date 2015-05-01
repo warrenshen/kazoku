@@ -65,6 +65,7 @@ class Family extends Component {
 
   // {this.renderActions()}
   render() {
+    console.log(this.props.family)
     return (
       <div className="general-block">
         <Clickable

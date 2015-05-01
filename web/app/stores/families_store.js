@@ -15,13 +15,6 @@ class FamiliesStore extends Store {
     ];
   }
 
-  initialize() {
-    this.collections().map(function(template) {
-      var collection = new template([], {}, this);
-      this._collections[collection.name] = collection;
-    }.bind(this));
-  }
-
   requestFamily(id) {
     var existingObject = this._all[id];
     if (existingObject === undefined) {

@@ -39,11 +39,8 @@ class Session < ActiveRecord::Base
     session
   end
 
-  def generate_uuid
-    loop do
-      token = Devise.friendly_token
-      break token unless self.class.unscoped.where(uuid: token).first
-    end
+  def is_valid?
+    !is_expired
   end
 
   private
@@ -56,6 +53,13 @@ class Session < ActiveRecord::Base
 
   def update_properties
     self.last_active_at = Time.now
+  end
+
+  def generate_uuid
+    loop do
+      token = Devise.friendly_token
+      break token unless self.class.unscoped.where(uuid: token).first
+    end
   end
 
 end

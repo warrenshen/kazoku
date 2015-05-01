@@ -1,4 +1,5 @@
 class SessionSerializer < ActiveModel::Serializer
-  attributes :id, :email
+  attributes :id, :uuid, :last_active_at
+
   has_one :person, serializer: PersonSerializer
 end

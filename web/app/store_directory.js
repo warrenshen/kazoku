@@ -8,6 +8,8 @@ class StoreDirectory {
     switch(name) {
       case "Person":
         return this._stores["PeopleStore"];
+      case "Session":
+        return this._stores["SessionsStore"];
     }
   }
 

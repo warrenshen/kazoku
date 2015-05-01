@@ -13,6 +13,10 @@ class Session extends Model {
     }
   }
 
+  get name() {
+    return "Session";
+  }
+
   get urlRoot() {
     return ApiRoutes.sessions.me;
   }
@@ -25,7 +29,7 @@ class Session extends Model {
   request(options={}) {
     var self = this;
     options.success = function(model, response, options) {
-      if (model !== null) {
+      if (response.session !== null) {
         self.store.add(model);
         self.store.emitChange();
       }

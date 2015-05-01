@@ -2,6 +2,8 @@ import Events from "events";
 
 import Dispatcher from "../dispatcher.js";
 
+import StoreDirectory from "../store_directory.js";
+
 
 var CHANGE_EVENT = "change";
 
@@ -12,7 +14,10 @@ class Store extends Events.EventEmitter {
     this._all = {};
     this._current = null;
     this._collections = {};
-    this.initialize();
+  }
+
+  get name() {
+    return "Store";
   }
 
   all() {
@@ -24,6 +29,7 @@ class Store extends Events.EventEmitter {
   }
 
   initialize() {
+    StoreDirectory.add(this);
     this.collections().map(function(template) {
       var collection = new template([], {}, this);
       this._collections[collection.name] = collection;

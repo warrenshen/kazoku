@@ -11,17 +11,24 @@ import "./styles/pages.scss";
 
 class Kazoku {
 
-  constructor() {
+  constructor(stores) {
     this.Collections = [];
     this.Models = [];
     this.Router = new Router();
+    this.initialize(stores);
     Backbone.history.start({ pushState: true });
+  }
+
+  initialize(stores) {
+    stores.map(function(store) {
+      store.initialize();
+    });
   }
 }
 
 // TODO: Remove global scoping (currently for navigation purposes).
-var singleton = new Kazoku();
-window.Kazoku = singleton;
+var App = new Kazoku(Stores);
+window.Kazoku = App;
 
 
-module.exports = singleton;
+module.exports = App;

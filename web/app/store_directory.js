@@ -5,10 +5,10 @@ class StoreDirectory {
   }
 
   get(name) {
-    console.log(name);
+    console.log(this._stores);
     switch(name) {
       case "Person":
-        return this._stores["People"];
+        return this._stores["PeopleStore"];
     }
   }
 

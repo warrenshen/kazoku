@@ -7,6 +7,10 @@ import PeopleCollection from "../collections/people_collection.js";
 
 class PeopleStore extends Store {
 
+  get name() {
+    return "PeopleStore";
+  }
+
   collections() {
     return [
       PeopleCollection,

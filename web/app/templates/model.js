@@ -1,7 +1,7 @@
 import Backbone from "backbone";
 import "backbone-relational";
 
-import Stores from "../stores.js";
+import StoreDirectory from "../store_directory.js";
 
 
 class Model extends Backbone.RelationalModel {
@@ -27,7 +27,7 @@ class Model extends Backbone.RelationalModel {
   }
 
   get store() {
-    return Stores.get(this.name);
+    return StoreDirectory.get(this.name);
   }
 
   request(options={}) {

@@ -27,7 +27,6 @@ class Person extends Component {
   }
 
   render() {
-    debugger
     return (
       <div className="general-block">
         {this.renderImage()}

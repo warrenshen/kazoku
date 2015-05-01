@@ -1,28 +1,8 @@
 class ApplicationController < ActionController::API
   include CanCan::ControllerAdditions
 
-  before_filter :authenticate_user!
-
-  respond_to :json
-
-  def authenticate_user!
-    unauthorized_response unless person_signed_in?
-  end
-
-  def current_person
-    current_api_person
-  end
-
-  def person_signed_in?
-    api_person_signed_in?
-  end
-
   def current_ability
     @current_ability ||= Ability.new(current_person)
-  end
-
-  def current_session
-    puts @current_session
   end
 
   ##################################################

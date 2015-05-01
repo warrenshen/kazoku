@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: "json" } do
 
-    get "me", to: "people#me"
+    get "me", to: "sessions#me"
 
     devise_for :people,
       skip: [:registrations, :passwords],
@@ -21,12 +21,6 @@ Rails.application.routes.draw do
     resources :people, only: [:create, :index, :show, :update] do
       collection do
         get "search"
-      end
-    end
-
-    resources :sessions, only: [] do
-      member do
-        get "me"
       end
     end
   end

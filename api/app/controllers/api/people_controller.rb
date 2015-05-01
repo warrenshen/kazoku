@@ -1,4 +1,4 @@
-class Api::PeopleController < ApplicationController
+class Api::PeopleController < Api::BaseController
   load_and_authorize_resource param_method: :person_params, except: [:me, :search]
   skip_before_filter :authenticate_user!, except: [:update]
 

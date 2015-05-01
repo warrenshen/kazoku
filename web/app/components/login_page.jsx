@@ -14,7 +14,7 @@ class LoginPage extends Component {
   attemptLogin(event) {
     var email = React.findDOMNode(this.refs.email).value;
     var password = React.findDOMNode(this.refs.password).value;
-    SessionsStore.createSession({
+    SessionsStore.login({
       email: email,
       password: password,
     });

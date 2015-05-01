@@ -8,14 +8,14 @@ import Routes from "../constants/routes.js";
 
 import Session from "../models/session.js";
 
+import SessionsStore from "../stores/sessions_store.js";
+
 
 class Header extends Component {
 
   attemptLogout(event) {
-    // var email = this.props.currentUser.email;
-    // var request = Requester.send("delete", ApiRoutes.users.logout, {
-    //   id: this.props.currentUser.id,
-    // });
+    debugger
+    SessionsStore.logout();
   }
 
   renderLogout() {
@@ -23,7 +23,7 @@ class Header extends Component {
     if (session.get("id") !== null) {
       return (
         <Clickable
-          action={this.attemptLogout}
+          action={this.attemptLogout.bind(this)}
           style={"general-button"}
           content={"Logout"} />
       );

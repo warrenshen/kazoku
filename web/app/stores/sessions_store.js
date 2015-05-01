@@ -19,8 +19,8 @@ class SessionsStore extends Store {
     return "SessionsStore";
   }
 
-  getCurrent() {
-    return this._current;
+  collections() {
+    return [];
   }
 
   requestSession() {
@@ -35,11 +35,15 @@ class SessionsStore extends Store {
     }
   }
 
-  createSession(credentials) {
+  login(credentials) {
     var session = new Session();
     var options = {};
     options.attrs = {session: credentials};
     return session.create(options);
+  }
+
+  logout() {
+    return session.destroy();
   }
 
   add(model, options={}) {

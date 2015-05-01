@@ -17,19 +17,15 @@ class PeopleStore extends Store {
     ];
   }
 
-  requestPerson(id) {
-    var existingObject = this._all[id];
-    if (existingObject === undefined) {
-      // var person = new Person({id: id});
-      // person.request();
-    } else {
-      return existingObject;
-    }
-  }
-
-  getPerson(id) {
-    return this._all[id];
-  }
+  // requestPerson(id) {
+  //   var existingObject = this._all[id];
+  //   if (existingObject === undefined) {
+  //     // var person = new Person({id: id});
+  //     // person.request();
+  //   } else {
+  //     return existingObject;
+  //   }
+  // }
 
   requestPeople() {
     return this._collections["PeopleCollection"].request();

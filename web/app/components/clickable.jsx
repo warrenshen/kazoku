@@ -5,9 +5,9 @@ import Component from "../templates/component.jsx";
 class Clickable extends Component {
 
   handleClick() {
-    event.preventDefault();
     event.stopPropagation();
     if (this.props.route !== "") {
+      event.preventDefault();
       Kazoku.Router.navigate(this.props.route, true);
     } else if (this.props.action !== null) {
       this.props.action();

@@ -1,5 +1,5 @@
 import React from "react";
-import Component from "../templates/component.jsx";
+import ListeningComponent from "../templates/listening_component.jsx";
 
 import Header from "./header.jsx";
 import PersonProfile from "./person_profile.jsx";
@@ -7,7 +7,11 @@ import PersonProfile from "./person_profile.jsx";
 import PeopleStore from "../stores/people_store.js";
 
 
-class PersonPage extends Component {
+class PersonPage extends ListeningComponent {
+
+  stores() {
+    return [PeopleStore];
+  }
 
   getDefaultState() {
     return this.getStoreState();
@@ -15,7 +19,7 @@ class PersonPage extends Component {
 
   getStoreState() {
     return {
-      person: PeopleStore.getPerson(this.props.id),
+      person: PeopleStore.getById(this.props.id),
     }
   }
 

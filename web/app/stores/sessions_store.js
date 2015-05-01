@@ -12,8 +12,7 @@ var CHANGE_EVENT = "change";
 class SessionsStore extends Store {
 
   constructor() {
-    super();
-    this._current = new Session();
+    super(new Session());
   }
 
   get name(){
@@ -26,14 +25,13 @@ class SessionsStore extends Store {
 
   requestSession() {
     if (this._current.get("id") === null) {
-      var session = new Session();
       var options = {};
       options.headers = {
         "X-AUTH-EMAIL": Cookies.get("auth_email"),
         "X-AUTH-TOKEN": Cookies.get("auth_token"),
         "X-SESSION-UUID": Cookies.get("session_uuid"),
       };
-      return session.request(options);
+      return this._current.request(options);
     }
   }
 

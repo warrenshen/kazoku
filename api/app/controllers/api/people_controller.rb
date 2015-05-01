@@ -15,10 +15,6 @@ class Api::PeopleController < Api::BaseController
     render json: @people, each_serializer: PersonSerializer
   end
 
-  def me
-    render json: current_person, serializer: SessionSerializer
-  end
-
   def search
     @people = Person.search(params[:q])
     render json: @people, each_serializer: PersonSerializer

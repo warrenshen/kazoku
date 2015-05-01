@@ -1,11 +1,11 @@
 class Api::BaseController < ApplicationController
-  # Parses request headers into params
+  # Parses request headers into params.
   before_filter :parse_headers
-  # Authenticates person from auth_email and auth_token
+  # Authenticates person from auth_email and auth_token.
   before_filter :authenticate_person_from_credentials
-  # Authenticates session from auth_session_uuid
+  # Authenticates session from auth_session_uuid.
   before_filter :authenticate_session_from_uuid
-  # Prevents actions by unauthenticated people (skip when necessary)
+  # Prevents actions by unauthenticated people (skip when necessary).
   before_filter :authenticate_person!
 
   respond_to :json
@@ -34,9 +34,9 @@ class Api::BaseController < ApplicationController
   end
 
   def authenticate_session_from_uuid
-    uuid    = params[:session_uuid].presence
-    session = Session.find_by(uuid: uuid)
-    @current_session = session
+    uuid = params[:session_uuid].presence
+    # Can't use 'current_session' because of conflict with method name.
+    @current_session = Session.find_by(uuid: uuid)
   end
 
   def current_session

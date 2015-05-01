@@ -9,10 +9,10 @@ var CHANGE_EVENT = "change";
 
 class Store extends Events.EventEmitter {
 
-  constructor() {
+  constructor(current=null) {
     super();
     this._all = {};
-    this._current = null;
+    this._current = current;
     this._collections = {};
   }
 

@@ -29,18 +29,13 @@ class Session < ActiveRecord::Base
   # Callbacks
   ##################################################
   before_validation :set_properties, on: :create
-  before_validation :update_properties, except: :create
+  before_validation :update_properties, on: :update
 
   ##################################################
   # Methods
   ##################################################
   def self.create_for_person(person)
     session = Session.create(person: person)
-    session
-  end
-
-  def self.create_for_visitor
-    session = Session.create
     session
   end
 

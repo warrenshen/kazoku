@@ -28,7 +28,7 @@ class Api::BaseController < ApplicationController
   end
 
   def current_session
-    SessionManager.new()
+    SessionManager.new(self, @current_session, current_person)
   end
 
   private

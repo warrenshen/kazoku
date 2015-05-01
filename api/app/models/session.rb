@@ -39,6 +39,11 @@ class Session < ActiveRecord::Base
     session
   end
 
+  def self.create_for_visitor
+    session = Session.create
+    session
+  end
+
   def is_valid?
     !is_expired
   end

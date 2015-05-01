@@ -1,3 +1,5 @@
+import Cookies from "cookies-js";
+
 import Store from "../templates/store.js";
 
 import Session from "../models/session.js";
@@ -12,7 +14,7 @@ class SessionStore extends Store {
     this._current = new Session();
   }
 
-  getSession() {
+  getCurrent() {
     return this._current;
   }
 
@@ -24,18 +26,6 @@ class SessionStore extends Store {
   add(object, options={}) {
     this._current = object;
     return this._current;
-  }
-
-  addChangeListener(callback) {
-    this.on(CHANGE_EVENT, callback);
-  }
-
-  removeChangeListener(callback) {
-    this.removeListener(CHANGE_EVENT, callback);
-  }
-
-  emitChange() {
-    this.emit(CHANGE_EVENT);
   }
 }
 

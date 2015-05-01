@@ -17,7 +17,7 @@ class HomePage extends ListeningComponent {
 
   getStoreState() {
     return {
-      session: SessionStore.getSession(),
+      session: SessionStore.getCurrent(),
     }
   }
 

@@ -23,8 +23,14 @@ class SessionsStore extends Store {
   }
 
   requestSession() {
-    var session = new Session();
-    return session.request();
+    if (this._current.get("id") === null) {
+      var session = new Session();
+      var options = {};
+      options.headers = {
+        "X-SESSION-UUID": Cookies.get("session_uuid"),
+      };
+      return session.request(options);
+    }
   }
 
   createSession(credentials) {
@@ -35,8 +41,8 @@ class SessionsStore extends Store {
   }
 
   add(model, options={}) {
-    // Cookies.set("authentication_token", "");
-    // Cookies.set("email", model.get("person").get("email"));
+    // Cookies.set("auth_token", "");
+    // Cookies.set("auth_email", model.get("person").get("email"));
     Cookies.set("session_uuid", model.get("uuid"));
     console.log(Cookies.get("session_uuid"));
     this._current = model;

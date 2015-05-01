@@ -17,9 +17,19 @@ class Api::BaseController < ApplicationController
     api_person_signed_in?
   end
 
+  def authenticate_person_from_credentials
+    auth_email = params[:auth_email].presence
+    auth_token = params[:auth_token].presence
+    person = Person.find_by(email: auth_email)
+    # Devise.secure_compare mitigates timing attacks.
+    if person && Devise.secure_compare(person.auth_token, auth_token)
+      # Authentication required every request due to `store:false`.
+      sign_in(person, store: false)
+    end
+  end
+
   def authenticate_session_from_uuid
     uuid    = params[:session_uuid].presence
-    puts uuid
     session = Session.find_by(uuid: uuid)
     @current_session = session
   end

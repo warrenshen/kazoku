@@ -35,6 +35,7 @@ class Session extends Model {
 
   parse(response, options) {
     var session = response.session;
+    debugger
     return session;
   }
 

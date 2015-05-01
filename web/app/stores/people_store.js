@@ -7,6 +7,10 @@ import PeopleCollection from "../collections/people_collection.js";
 
 class PeopleStore extends Store {
 
+  get name() {
+    return "PeopleStore";
+  }
+
   collections() {
     return [
       PeopleCollection,
@@ -33,24 +37,6 @@ class PeopleStore extends Store {
 
   getPeople() {
     return this._collections["PeopleCollection"].models;
-  }
-
-  add(object, options={}) {
-    var key = object.key;
-    var existingObject = this._all[key];
-    var shouldEmitChange = options.shouldEmitChange;
-
-    if (existingObject === undefined) {
-      this._all[key] = object;
-    } else {
-      // merge
-    }
-
-    if (shouldEmitChange) {
-      this.emitChange();
-    }
-
-    return this._all[key];
   }
 }
 

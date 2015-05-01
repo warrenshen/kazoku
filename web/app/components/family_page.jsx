@@ -6,19 +6,19 @@ import FamilyProfile from "./family_profile.jsx";
 import FamilyMembers from "./family_members.jsx";
 
 import FamiliesStore from "../stores/families_store.js";
-import SessionStore from "../stores/session_store.js";
+import SessionsStore from "../stores/sessions_store.js";
 
 
 class FamilyPage extends ListeningComponent {
 
   stores() {
-    return [FamiliesStore, SessionStore];
+    return [FamiliesStore, SessionsStore];
   }
 
   getStoreState() {
     return {
       family: FamiliesStore.getFamily(this.props.id),
-      session: SessionStore.getSession(),
+      session: SessionsStore.getCurrent(),
     }
   }
 

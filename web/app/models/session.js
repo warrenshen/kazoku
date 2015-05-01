@@ -1,5 +1,7 @@
 import Model from "../templates/model.js";
 
+import Person from "./person.js";
+
 import ApiRoutes from "../constants/api_routes.js";
 
 
@@ -8,13 +10,33 @@ class Session extends Model {
   get defaults() {
     return {
       id: null,
-      email: "",
-      password: "",
+      auth_email: "",
+      auth_token: "",
+      last_active_at: "",
+      uuid: "",
     }
+  }
+
+  get relations() {
+    return [
+      {
+        type: "HasOne",
+        key: "person",
+        relatedModel: Person,
+      }
+    ];
+  }
+
+  get name() {
+    return "Session";
   }
 
   get urlRoot() {
     return ApiRoutes.sessions.me;
+  }
+
+  createUrl() {
+    return ApiRoutes.sessions.login;
   }
 
   parse(response, options) {
@@ -25,7 +47,7 @@ class Session extends Model {
   request(options={}) {
     var self = this;
     options.success = function(model, response, options) {
-      if (model !== null) {
+      if (response.session !== null) {
         self.store.add(model);
         self.store.emitChange();
       }
@@ -40,35 +62,18 @@ class Session extends Model {
 
   create(options={}) {
     var self = this;
-    options.success = function(model, response, options) {
-      // TODO: Figure out a way to do this without
-      // instantiating a new session instance.
-      var session = new Session(model.session);
-      self.store.add(session);
+    options.success = function(response, status, options) {
+      self.set(response.session);
+      self.store.add(self);
       self.store.emitChange();
     }
-    options.error = function(model, response, options) {
+    options.error = function(response, status, options) {
       console.log("request error:");
-      console.log(model);
+      console.log(response);
     }
-    options.attrs = this.createAttributes();
     options.url = this.createUrl();
     var response = this.sync("create", this, options);
     return response;
-  }
-
-  createAttributes() {
-    return {
-      session: {
-        id: this.get("id"),
-        email: this.get("email"),
-        password: this.get("password"),
-      }
-    };
-  }
-
-  createUrl() {
-    return ApiRoutes.sessions.login;
   }
 }
 

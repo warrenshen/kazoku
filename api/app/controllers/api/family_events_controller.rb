@@ -1,4 +1,4 @@
-class Api::FamilyEventsController < ApplicationController
+class Api::FamilyEventsController < Api::BaseController
   load_and_authorize_resource param_method: :family_event_params
 
   def create

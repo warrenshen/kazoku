@@ -1,6 +1,6 @@
-class Api::FamiliesController < ApplicationController
+class Api::FamiliesController < Api::BaseController
   load_and_authorize_resource param_method: :family_params
-  skip_before_filter :authenticate_user!, only: [:index, :show]
+  skip_before_filter :authenticate_person!, only: [:index, :show]
 
   def create
     if @family.save

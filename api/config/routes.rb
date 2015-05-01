@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: "json" } do
 
-    get "me", to: "people#me"
+    get "me", to: "sessions#me"
 
     devise_for :people,
       skip: [:registrations, :passwords],

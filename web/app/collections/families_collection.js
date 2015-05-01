@@ -24,12 +24,12 @@ class FamiliesCollection extends Backbone.Collection {
     return ApiRoutes.families.index;
   }
 
+  get key() {
+    return "families";
+  }
+
   parse(response, options) {
-    var families = response.families.map(function(attributes) {
-      var family = new Family(attributes);
-      return family;
-    });
-    return families;
+    return response[this.key];
   }
 
   request(options={}) {
@@ -37,9 +37,7 @@ class FamiliesCollection extends Backbone.Collection {
     var success = options.success;
     options.success = function(collection, response, options) {
       var models = collection.models;
-      models.map(function(model) {
-        self.store.add(model);
-      });
+      models.map(function(model) { self.store.add(model); });
       self.store.emitChange();
     };
     options.error = function(collection, response, options) {

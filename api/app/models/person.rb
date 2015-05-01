@@ -21,6 +21,7 @@
 #  last_sign_in_ip        :string
 #  created_at             :datetime
 #  updated_at             :datetime
+#  auth_token             :string           default(""), not null
 #
 
 class Person < ActiveRecord::Base
@@ -44,6 +45,12 @@ class Person < ActiveRecord::Base
   validates :image_url,  presence: true, uniqueness: true
 
   ##################################################
+  # Callbacks
+  ##################################################
+  before_validation :set_auth_token, only: :create
+  before_validation :set_family_name, only: :update
+
+  ##################################################
   # Search
   ##################################################
   include PgSearch
@@ -52,17 +59,23 @@ class Person < ActiveRecord::Base
                   using: { tsearch: { prefix: true, normalization: 2 } }
 
   ##################################################
-  # Callbacks
-  ##################################################
-  before_validation :set_family_name
-
-  ##################################################
   # Methods
   ##################################################
   private
 
+  def set_auth_token
+    self.auth_token = generate_auth_token
+  end
+
   def set_family_name
     self.family_name = family.try(:name)
+  end
+
+  def generate_auth_token
+    loop do
+      token = Devise.friendly_token
+      break token unless self.class.unscoped.where(auth_token: token).first
+    end
   end
 
 end

@@ -5,13 +5,13 @@ import Header from "./header.jsx";
 import FamiliesList from "./families_list.jsx";
 
 import FamiliesStore from "../stores/families_store.js";
-import SessionStore from "../stores/session_store.js";
+import SessionsStore from "../stores/sessions_store.js";
 
 
 class FamiliesPage extends ListeningComponent {
 
   stores() {
-    return [FamiliesStore, SessionStore];
+    return [FamiliesStore, SessionsStore];
   }
 
   requestFromStore() {

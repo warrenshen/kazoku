@@ -6,13 +6,17 @@ import Header from "./header.jsx";
 
 import Routes from "../constants/routes.js";
 
-import SessionStore from "../stores/session_store.js";
+import SessionsStore from "../stores/sessions_store.js";
 
 
 class HomePage extends ListeningComponent {
 
   stores() {
-    return [SessionStore];
+    return [SessionsStore];
+  }
+
+  requestFromStore() {
+    SessionsStore.requestSession();
   }
 
   getStoreState() {

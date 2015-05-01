@@ -7,13 +7,13 @@ import PeopleList from "./people_list.jsx";
 import PeopleCollection from "../collections/people_collection.js";
 
 import PeopleStore from "../stores/people_store.js";
-import SessionStore from "../stores/session_store.js";
+import SessionsStore from "../stores/sessions_store.js";
 
 
 class PeoplePage extends ListeningComponent {
 
   stores() {
-    return [PeopleStore, SessionStore];
+    return [PeopleStore, SessionsStore];
   }
 
   requestFromStore() {

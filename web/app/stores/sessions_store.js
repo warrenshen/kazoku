@@ -43,7 +43,15 @@ class SessionsStore extends Store {
   }
 
   logout() {
-    return session.destroy();
+    var self = this;
+    var options = {};
+    options.success = function(response, status, options) {
+      Cookies.set("auth_email", "");
+      Cookies.set("auth_token", "");
+      Cookies.set("session_uuid", "");
+      self.emitChange();
+    }
+    return session.destroy(options);
   }
 
   add(model, options={}) {

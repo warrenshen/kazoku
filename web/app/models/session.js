@@ -82,10 +82,6 @@ class Session extends Model {
 
   destroy(options={}) {
     var self = this;
-    options.success = function(response, status, options) {
-      debugger
-      self.store.emitChange();
-    }
     options.error = function(response, status, options) {
       console.log("destroy session error:");
       console.log(response);

@@ -35,6 +35,10 @@ class SessionsStore extends Store {
   }
 
   add(model, options={}) {
+    // Cookies.set("authentication_token", "");
+    // Cookies.set("email", model.get("person").get("email"));
+    Cookies.set("session_uuid", model.get("uuid"));
+    console.log(Cookies.get("session_uuid"));
     this._current = model;
     return this._current;
   }

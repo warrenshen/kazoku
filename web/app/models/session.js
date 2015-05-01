@@ -41,6 +41,7 @@ class Session extends Model {
   request(options={}) {
     var self = this;
     options.success = function(model, response, options) {
+      debugger
       if (response.session !== null) {
         self.store.add(model);
         self.store.emitChange();

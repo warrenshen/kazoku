@@ -19,12 +19,9 @@ class Api::BaseController < ApplicationController
 
   def authenticate_session_from_uuid
     uuid    = params[:session_uuid].presence
+    puts uuid
     session = Session.find_by(uuid: uuid)
     @current_session = session
-  end
-
-  def has_current_session?
-    !@current_session.nil
   end
 
   def current_session

@@ -28,7 +28,12 @@ class Api::BaseController < ApplicationController
   end
 
   def current_session
-    SessionManager.new(self, @current_session, current_person)
+    SessionManager.new(@current_session, current_person).current
+  end
+
+  def current_session_response
+    session = current_session
+    render json: session, serializer: SessionSerializer
   end
 
   private

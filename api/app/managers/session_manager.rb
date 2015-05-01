@@ -1,12 +1,12 @@
 class SessionManager
 
-  def initialize(controller, current_session, current_person)
+  def initialize(current_session, current_person)
     @controller = controller
     @current_session = current_session
     @current_person = current_person
   end
 
-  def current_session
+  def current
     if @current_session
       @current_session.update()
       @current_session

@@ -5,6 +5,10 @@ class ApplicationController < ActionController::API
 
   respond_to :json
 
+  def authenticate_user!
+    unauthorized_response unless person_signed_in?
+  end
+
   def current_person
     current_api_person
   end
@@ -17,10 +21,13 @@ class ApplicationController < ActionController::API
     @current_ability ||= Ability.new(current_person)
   end
 
-  def authenticate_user!
-    unauthorized_response unless person_signed_in?
+  def current_session
+    puts @current_session
   end
 
+  ##################################################
+  # Responses
+  ##################################################
   def api_error_response(object=nil, message=nil, status=400)
     render json: ApiError.new(object, message), status: status
   end
@@ -33,6 +40,9 @@ class ApplicationController < ActionController::API
     api_error_response(message: "Not found", status: 404)
   end
 
+  ##################################################
+  # Rescues
+  ##################################################
   rescue_from CanCan::AccessDenied do |exception|
     unauthorized_response
   end

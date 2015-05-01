@@ -31,5 +31,31 @@ class Session < ActiveRecord::Base
   before_validation :set_properties, on: :create
   before_validation :update_properties, except: :create
 
+  ##################################################
+  # Methods
+  ##################################################
+  def self.create_for_person(person)
+    session = Session.create(person: person)
+    session
+  end
+
+  def generate_uuid
+    loop do
+      token = Devise.friendly_token
+      break token unless self.class.unscoped.where(uuid: token).first
+    end
+  end
+
+  private
+
+  def set_properties
+    self.uuid           = generate_uuid
+    self.last_active_at = Time.now
+    self.is_logged_in   = !person.nil?
+  end
+
+  def update_properties
+    self.last_active_at = Time.now
+  end
 
 end

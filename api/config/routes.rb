@@ -23,6 +23,12 @@ Rails.application.routes.draw do
         get "search"
       end
     end
+
+    resources :sessions, only: [] do
+      member do
+        get "me"
+      end
+    end
   end
 
 end

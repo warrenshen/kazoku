@@ -10,8 +10,10 @@ class Session extends Model {
   get defaults() {
     return {
       id: null,
-      uuid: "",
+      auth_email: "",
+      auth_token: "",
       last_active_at: "",
+      uuid: "",
     }
   }
 

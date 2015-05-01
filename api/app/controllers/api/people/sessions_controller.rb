@@ -1,6 +1,6 @@
 class Api::People::SessionsController < Api::BaseController
   # load_and_authorize_resource param_method: :session_params
-  skip_before_filter :authenticate_user!, only: [:create]
+  skip_before_filter :authenticate_person!, only: [:create]
 
   def create
     @person = Person.find_by(email: params[:session][:email])

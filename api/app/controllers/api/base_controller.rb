@@ -1,16 +1,21 @@
 class Api::BaseController < ApplicationController
+  # Parses request headers into params
   before_filter :parse_headers
-  before_filter :authenticate_user!
+  # Authenticates person from auth_email and auth_token
+  before_filter :authenticate_person_from_credentials
+  # Authenticates session from auth_session_uuid
   before_filter :authenticate_session_from_uuid
+  # Prevents actions by unauthenticated people (skip when necessary)
+  before_filter :authenticate_person!
 
   respond_to :json
 
-  def authenticate_user!
-    unauthorized_response unless person_signed_in?
-  end
-
   def current_person
     current_api_person
+  end
+
+  def authenticate_person!
+    unauthorized_response unless person_signed_in?
   end
 
   def person_signed_in?
@@ -20,6 +25,8 @@ class Api::BaseController < ApplicationController
   def authenticate_person_from_credentials
     auth_email = params[:auth_email].presence
     auth_token = params[:auth_token].presence
+    puts auth_email
+    puts auth_token
     person = Person.find_by(email: auth_email)
     # Devise.secure_compare mitigates timing attacks.
     if person && Devise.secure_compare(person.auth_token, auth_token)

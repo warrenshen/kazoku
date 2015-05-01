@@ -1,6 +1,6 @@
 class Api::EventsController < Api::BaseController
   load_and_authorize_resource param_method: :event_params
-  skip_before_filter :authenticate_user!
+  skip_before_filter :authenticate_person!
 
   def create
 

@@ -48,6 +48,14 @@ class Session < ActiveRecord::Base
     !is_expired
   end
 
+  def auth_email
+    person.try(:email)
+  end
+
+  def auth_token
+    person.try(:auth_token)
+  end
+
   private
 
   def set_properties

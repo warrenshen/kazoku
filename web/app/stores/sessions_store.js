@@ -4,6 +4,8 @@ import Store from "../templates/store.js";
 
 import Session from "../models/session.js";
 
+import Routes from "../constants/routes.js";
+
 
 var CHANGE_EVENT = "change";
 
@@ -46,8 +48,8 @@ class SessionsStore extends Store {
     Cookies.set("auth_email", model.get("auth_email"));
     Cookies.set("auth_token", model.get("auth_token"));
     Cookies.set("session_uuid", model.get("uuid"));
-    console.log(Cookies.get("session_uuid"));
     this._current = model;
+    Kazoku.Router.navigate(Routes.pages.home, true);
     return this._current;
   }
 }

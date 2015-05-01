@@ -35,16 +35,18 @@ class Session extends Model {
     return ApiRoutes.sessions.me;
   }
 
+  createUrl() {
+    return ApiRoutes.sessions.login;
+  }
+
   parse(response, options) {
     var session = response.session;
-    debugger
     return session;
   }
 
   request(options={}) {
     var self = this;
     options.success = function(model, response, options) {
-      debugger
       if (response.session !== null) {
         self.store.add(model);
         self.store.emitChange();
@@ -72,10 +74,6 @@ class Session extends Model {
     options.url = this.createUrl();
     var response = this.sync("create", this, options);
     return response;
-  }
-
-  createUrl() {
-    return ApiRoutes.sessions.login;
   }
 }
 

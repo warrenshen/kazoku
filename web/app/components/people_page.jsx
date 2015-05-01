@@ -23,7 +23,7 @@ class PeoplePage extends ListeningComponent {
   getStoreState() {
     return {
       people: PeopleStore.getPeople(),
-      session: SessionStore.getSession(),
+      session: SessionsStore.getCurrent(),
     }
   }
 

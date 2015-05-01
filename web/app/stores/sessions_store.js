@@ -34,8 +34,8 @@ class SessionsStore extends Store {
     return session.create(options);
   }
 
-  add(object, options={}) {
-    this._current = object;
+  add(model, options={}) {
+    this._current = model;
     return this._current;
   }
 }

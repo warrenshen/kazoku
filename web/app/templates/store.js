@@ -37,6 +37,24 @@ class Store extends Events.EventEmitter {
     });
   }
 
+  add(model, options={}) {
+    var key = model.key;
+    var existingObject = this._all[key];
+    var shouldEmitChange = options.shouldEmitChange;
+
+    if (existingObject === undefined) {
+      this._all[key] = model;
+    } else {
+      // merge
+    }
+
+    if (shouldEmitChange) {
+      this.emitChange();
+    }
+
+    return this._all[key];
+  }
+
   addChangeListener(callback) {
     this.on(CHANGE_EVENT, callback);
   }

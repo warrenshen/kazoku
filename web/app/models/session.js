@@ -10,8 +10,8 @@ class Session extends Model {
   get defaults() {
     return {
       id: null,
-      email: "",
-      password: "",
+      uuid: "",
+      last_active_at: "",
     }
   }
 
@@ -56,18 +56,16 @@ class Session extends Model {
 
   create(options={}) {
     var self = this;
-    options.success = function(model, response, options) {
-      self.set(model.session);
-      debugger
+    options.success = function(response, status, options) {
+      self.set(response.session);
       self.store.add(self);
       self.store.emitChange();
     }
-    options.error = function(model, response, options) {
+    options.error = function(response, status, options) {
       console.log("request error:");
-      console.log(model);
+      console.log(response);
     }
     options.url = this.createUrl();
-    console.log(options);
     var response = this.sync("create", this, options);
     return response;
   }

@@ -21,7 +21,7 @@ class FamiliesPage extends ListeningComponent {
   getStoreState() {
     return {
       families: FamiliesStore.getFamilies(),
-      session: SessionStore.getSession(),
+      session: SessionsStore.getCurrent(),
     }
   }
 

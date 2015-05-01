@@ -1,5 +1,7 @@
 import Model from "../templates/model.js";
 
+import Person from "./person.js";
+
 import ApiRoutes from "../constants/api_routes.js";
 
 
@@ -11,6 +13,16 @@ class Session extends Model {
       email: "",
       password: "",
     }
+  }
+
+  get relations() {
+    return [
+      {
+        type: "HasOne",
+        key: "person",
+        relatedModel: Person,
+      }
+    ];
   }
 
   get name() {
@@ -45,30 +57,19 @@ class Session extends Model {
   create(options={}) {
     var self = this;
     options.success = function(model, response, options) {
-      // TODO: Figure out a way to do this without
-      // instantiating a new session instance.
-      var session = new Session(model.session);
-      self.store.add(session);
+      self.set(model.session);
+      debugger
+      self.store.add(self);
       self.store.emitChange();
     }
     options.error = function(model, response, options) {
       console.log("request error:");
       console.log(model);
     }
-    options.attrs = this.createAttributes();
     options.url = this.createUrl();
+    console.log(options);
     var response = this.sync("create", this, options);
     return response;
-  }
-
-  createAttributes() {
-    return {
-      session: {
-        id: this.get("id"),
-        email: this.get("email"),
-        password: this.get("password"),
-      }
-    };
   }
 
   createUrl() {

@@ -24,6 +24,10 @@ class Family extends Model {
     ];
   }
 
+  get name() {
+    return "Family";
+  }
+
   get urlRoot() {
     return "/families/";
   }

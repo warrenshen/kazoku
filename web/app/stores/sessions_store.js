@@ -27,9 +27,11 @@ class SessionsStore extends Store {
     return session.request();
   }
 
-  createSession(attributes) {
-    var session = new Session(attributes);
-    return session.create();
+  createSession(credentials) {
+    var session = new Session();
+    var options = {};
+    options.attrs = {session: credentials};
+    return session.create(options);
   }
 
   add(object, options={}) {

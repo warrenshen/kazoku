@@ -14,7 +14,7 @@ class LoginPage extends Component {
   attemptLogin(event) {
     var email = React.findDOMNode(this.refs.email).value;
     var password = React.findDOMNode(this.refs.password).value;
-    SessionStore.createSession({
+    SessionsStore.createSession({
       email: email,
       password: password,
     });
@@ -47,13 +47,15 @@ class LoginPage extends Component {
             ref="email"
             type="text"
             autoFocus="true"
-            placeholder="Email">
+            placeholder="Email"
+            value="warrensterling@berkeley.edu">
           </input>
           <input
             className="general-form-input"
             ref="password"
             type="password"
-            placeholder="Password">
+            placeholder="Password"
+            value="password">
           </input>
           <Clickable
             action={this.attemptLogin.bind(this)}

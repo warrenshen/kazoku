@@ -59,7 +59,6 @@ class Api::BaseController < ApplicationController
   def parse_header(header_param, header_name)
     current = params[header_param]
     if current.blank?
-      puts request.headers[header_name]
       params[header_param] = request.headers[header_name]
     end
   end

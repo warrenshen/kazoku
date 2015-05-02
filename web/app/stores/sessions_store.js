@@ -23,7 +23,8 @@ class SessionsStore extends Store {
     return [];
   }
 
-  requestSession() {
+  // Only request session from server if current is a placeholder.
+  getCurrent() {
     if (!this._current.has("id")) {
       var options = {};
       options.headers = {
@@ -31,8 +32,9 @@ class SessionsStore extends Store {
         "X-AUTH-TOKEN": Cookies.get("auth_token"),
         "X-SESSION-UUID": Cookies.get("session_uuid"),
       };
-      return this._current.request(options);
+      this._current.request(options);
     }
+    return this._current;
   }
 
   login(credentials) {

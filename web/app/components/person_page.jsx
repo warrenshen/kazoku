@@ -5,12 +5,13 @@ import Header from "./header.jsx";
 import PersonProfile from "./person_profile.jsx";
 
 import PeopleStore from "../stores/people_store.js";
+import SessionsStore from "../stores/sessions_store.js";
 
 
 class PersonPage extends ListeningComponent {
 
   stores() {
-    return [PeopleStore];
+    return [PeopleStore, SessionsStore];
   }
 
   getDefaultState() {
@@ -20,6 +21,7 @@ class PersonPage extends ListeningComponent {
   getStoreState() {
     return {
       person: PeopleStore.getById(this.props.id),
+      session: SessionsStore.getCurrent(),
     }
   }
 

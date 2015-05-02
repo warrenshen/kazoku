@@ -16,10 +16,6 @@ class PeoplePage extends ListeningComponent {
     return [PeopleStore, SessionsStore];
   }
 
-  requestFromStore() {
-    PeopleStore.requestPeople();
-  }
-
   getStoreState() {
     return {
       people: PeopleStore.getPeople(),

@@ -1,5 +1,5 @@
 import React from "react";
-import Component from "../templates/component.jsx";
+import ListeningComponent from "../templates/listening_component.jsx";
 
 import Clickable from "./clickable.jsx";
 import Header from "./header.jsx";
@@ -9,7 +9,17 @@ import Routes from "../constants/routes.js";
 import SessionsStore from "../stores/sessions_store.js";
 
 
-class LoginPage extends Component {
+class LoginPage extends ListeningComponent {
+
+  stores() {
+    return [SessionsStore];
+  }
+
+  getStoreState() {
+    return {
+      session: SessionsStore.getCurrent(),
+    }
+  }
 
   attemptLogin(event) {
     var email = React.findDOMNode(this.refs.email).value;
@@ -78,7 +88,7 @@ class LoginPage extends Component {
   render() {
     return (
       <div className="general-page">
-        <Header user={null} isColored={true} />
+        <Header session={this.state.session} isColored={true} />
         {this.renderBanner()}
         {this.renderForm()}
       </div>

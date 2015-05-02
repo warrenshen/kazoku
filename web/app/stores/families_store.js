@@ -27,10 +27,6 @@ class FamiliesStore extends Store {
     }
   }
 
-  getFamily(id) {
-    return this._all[id];
-  }
-
   requestFamilies() {
     return this._collections["FamiliesCollection"].request();
   }

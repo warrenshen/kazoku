@@ -27,8 +27,8 @@ class Store extends Events.EventEmitter {
   initialize() {
     var self = this;
     StoreDirectory.add(this);
-    this.collections().map(function(Template) {
-      var collection = new Template([], {}, self);
+    this.collections().map(function(collectionClass) {
+      var collection = new collectionClass([], {}, self);
       self._collections[collection.name] = collection;
     });
   }
@@ -44,9 +44,8 @@ class Store extends Events.EventEmitter {
   getById(id) {
     var model = this._all[id];
     if (model === undefined) {
-      var Template = this.model();
-      var model = new Template({id: id});
-      debugger
+      var modelClass = this.modelClass();
+      var model = new modelClass({ id: id });
       model.request();
     } else {
       return model;
@@ -81,6 +80,27 @@ class Store extends Events.EventEmitter {
     this.emit(CHANGE_EVENT);
   }
 }
+
+// var store = new Store();
+// Dispatcher.register(function(payload) {
+//   var action = payload.action;
+//   var attributes = action.attributes;
+
+//   switch(action.type) {
+//     case "create":
+//       store.create(attributes);
+//       store.emitChange();
+//       break;
+
+//     case "destroy":
+//       store.destroy(action.id);
+//       store.emitChange();
+//       break;
+//   }
+
+//   // Needed by promise in Dispatcher.
+//   return true;
+// });
 
 
 module.exports = Store;

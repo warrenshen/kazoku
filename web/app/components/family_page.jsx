@@ -15,6 +15,10 @@ class FamilyPage extends ListeningComponent {
     return [FamiliesStore, SessionsStore];
   }
 
+  requestFromStore() {
+    SessionsStore.requestCurrent();
+  }
+
   getStoreState() {
     return {
       family: FamiliesStore.getFamily(this.props.id),

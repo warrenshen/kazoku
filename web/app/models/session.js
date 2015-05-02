@@ -47,7 +47,6 @@ class Session extends Model {
   // @returns - attributes hash to be `set` to model.
   parse(response, options) {
     var attributes = response.session;
-    debugger
     return attributes;
   }
 

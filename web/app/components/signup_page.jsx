@@ -13,6 +13,10 @@ class SignupPage extends ListeningComponent {
     return [SessionsStore];
   }
 
+  requestFromStore() {
+    SessionsStore.requestCurrent();
+  }
+
   getStoreState() {
     return {
       session: SessionsStore.getCurrent(),

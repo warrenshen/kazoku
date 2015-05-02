@@ -55,8 +55,7 @@ class SessionsStore extends Store {
       Cookies.set("auth_email", "");
       Cookies.set("auth_token", "");
       Cookies.set("session_uuid", "");
-      debugger
-      self._current = new Session();
+      self._current.set(self._current.defaults);
       self.emitChange();
       Kazoku.Router.navigate(Routes.pages.home, true);
     };

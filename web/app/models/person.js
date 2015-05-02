@@ -1,3 +1,5 @@
+import Cookies from "cookies-js";
+
 import Model from "../templates/model.js";
 
 import Family from "./family.js";
@@ -50,15 +52,23 @@ class Person extends Model {
 
   create(options={}) {
     var self = this;
-    options.success = function(model, response, options) {
+    options.success = function(response, status, options) {
+      // Maybe should abstract this into a parse method.
+      var attributes = response.person;
+      self.set(attributes);
+      Cookies.set("auth_email", self.get("email"));
+      Cookies.set("auth_token", self.get("auth_token"));
+      debugger
+      self.unset("auth_token", { silent: true });
+      debugger
       self.store.add(self);
       self.store.emitChange();
     };
-    options.error = function(model, response, options) {
+    options.error = function(response, status, options) {
       console.log("Create person error!");
     };
     options.url = this.createUrl;
-    options.attrs = this.createAttributes()
+    options.attrs = this.createAttributes();
     return this.sync("create", this, options);
   }
 }

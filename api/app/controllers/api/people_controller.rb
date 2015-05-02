@@ -5,7 +5,7 @@ class Api::PeopleController < Api::BaseController
   def create
     if @person.save
       sign_in(@person)
-      render json: @person, serializer: PersonSerializer
+      render json: @person, serializer: AuthorizedSerializer
     else
       api_error_response(@person)
     end

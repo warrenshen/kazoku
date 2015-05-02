@@ -17,7 +17,7 @@ class Api::People::SessionsController < Api::BaseController
       @current_session.update(is_expired: true)
       current_session_response
     else
-      api_error_response(person)
+      api_error_response()
     end
   end
 

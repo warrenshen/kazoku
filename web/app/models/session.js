@@ -54,6 +54,7 @@ class Session extends Model {
     var self = this;
     // Emit change indicating that the current session has been updated.
     options.success = function(model, response, options) {
+      self.store.add(self);
       self.store.emitChange();
     };
     options.error = function(model, response, options) {

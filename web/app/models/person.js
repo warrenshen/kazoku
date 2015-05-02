@@ -58,11 +58,11 @@ class Person extends Model {
       self.set(attributes);
       Cookies.set("auth_email", self.get("email"));
       Cookies.set("auth_token", self.get("auth_token"));
-      debugger
       self.unset("auth_token", { silent: true });
-      debugger
+      self.unset("password", { silent: true });
       self.store.add(self);
       self.store.emitChange();
+
     };
     options.error = function(response, status, options) {
       console.log("Create person error!");

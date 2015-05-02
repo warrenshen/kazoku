@@ -26,7 +26,6 @@ class Api::BaseController < ApplicationController
     auth_email = params[:auth_email].presence
     auth_token = params[:auth_token].presence
     person = Person.find_by(email: auth_email)
-    puts auth_token
     # Devise.secure_compare mitigates timing attacks.
     if person && Devise.secure_compare(person.auth_token, auth_token)
       # Authentication required every request due to `store:false`.

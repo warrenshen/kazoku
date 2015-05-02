@@ -35,13 +35,19 @@ class Session extends Model {
     return ApiRoutes.sessions.me;
   }
 
-  createUrl() {
+  get createUrl() {
     return ApiRoutes.sessions.login;
   }
 
+  get destroyUrl() {
+    return ApiRoutes.sessions.logout;
+  }
+
+  // @param response - raw json response from server.
+  // @returns - attributes hash to be `set` to model.
   parse(response, options) {
-    var session = response.session;
-    return session;
+    var attributes = response.session;
+    return attributes;
   }
 
   request(options={}) {
@@ -51,7 +57,7 @@ class Session extends Model {
         self.store.add(model);
         self.store.emitChange();
       }
-    }
+    };
     options.error = function(model, response, options) {
       console.log("request error:");
       console.log(model);
@@ -62,17 +68,29 @@ class Session extends Model {
 
   create(options={}) {
     var self = this;
-    options.success = function(response, status, options) {
-      self.set(response.session);
+    options.success = function(model, response, options) {
       self.store.add(self);
       self.store.emitChange();
-    }
-    options.error = function(response, status, options) {
-      console.log("request error:");
+    };
+    options.error = function(model, response, options) {
+      console.log("create session error:");
       console.log(response);
-    }
-    options.url = this.createUrl();
-    var response = this.sync("create", this, options);
+    };
+    options.url = this.createUrl;
+    var attributes = options.attrs
+    delete options.attrs
+    var response = this.save(attributes, options);
+    return response;
+  }
+
+  expire(options={}) {
+    var self = this;
+    options.error = function(model, response, options) {
+      console.log("destroy session error:");
+      console.log(response);
+    };
+    options.url = this.destroyUrl;
+    var response = this.destroy(options);
     return response;
   }
 }

@@ -15,10 +15,6 @@ class HomePage extends ListeningComponent {
     return [SessionsStore];
   }
 
-  requestFromStore() {
-    SessionsStore.requestSession();
-  }
-
   getStoreState() {
     return {
       session: SessionsStore.getCurrent(),

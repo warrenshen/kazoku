@@ -19,35 +19,56 @@ class SessionsStore extends Store {
     return "SessionsStore";
   }
 
-  getCurrent() {
-    return this._current;
+  collections() {
+    return [];
   }
 
-  requestSession() {
-    if (this._current.get("id") === null) {
+  // Only request session from server if current is a placeholder.
+  getCurrent() {
+    if (!this._current.has("id")) {
       var options = {};
       options.headers = {
         "X-AUTH-EMAIL": Cookies.get("auth_email"),
         "X-AUTH-TOKEN": Cookies.get("auth_token"),
         "X-SESSION-UUID": Cookies.get("session_uuid"),
       };
-      return this._current.request(options);
+      this._current.request(options);
     }
+    return this._current;
   }
 
-  createSession(credentials) {
+  login(credentials) {
     var session = new Session();
     var options = {};
     options.attrs = {session: credentials};
     return session.create(options);
   }
 
+  logout() {
+    var self = this;
+    var options = {};
+    options.headers = {
+      "X-AUTH-EMAIL": Cookies.get("auth_email"),
+      "X-AUTH-TOKEN": Cookies.get("auth_token"),
+      "X-SESSION-UUID": Cookies.get("session_uuid"),
+    };
+    options.success = function(model, response, options) {
+      Cookies.set("auth_email", "");
+      Cookies.set("auth_token", "");
+      Cookies.set("session_uuid", "");
+      self._current = new Session();
+      self.emitChange();
+      Kazoku.Router.navigate(Routes.pages.home, true);
+    };
+    return this._current.expire(options);
+  }
+
   add(model, options={}) {
     Cookies.set("auth_email", model.get("auth_email"));
     Cookies.set("auth_token", model.get("auth_token"));
     Cookies.set("session_uuid", model.get("uuid"));
-    this._current = model;
     Kazoku.Router.navigate(Routes.pages.home, true);
+    this._current = model;
     return this._current;
   }
 }

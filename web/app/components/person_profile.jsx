@@ -40,7 +40,7 @@ class PersonProfile extends Component {
   }
 
   renderFamilyButton() {
-    if (this.props.person.get("family_id") === null) {
+    if (!this.props.person.has("family_id")) {
       return (
         <Clickable
           route={Routes.families.new}

@@ -15,7 +15,6 @@ class FamilyMembers extends Component {
   }
 
   render() {
-    console.log(this.props.family.get("people"));
     return (
       <PeopleList
         session={this.props.session}

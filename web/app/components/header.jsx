@@ -8,22 +8,21 @@ import Routes from "../constants/routes.js";
 
 import Session from "../models/session.js";
 
+import SessionsStore from "../stores/sessions_store.js";
+
 
 class Header extends Component {
 
   attemptLogout(event) {
-    // var email = this.props.currentUser.email;
-    // var request = Requester.send("delete", ApiRoutes.users.logout, {
-    //   id: this.props.currentUser.id,
-    // });
+    SessionsStore.logout();
   }
 
   renderLogout() {
     var session = this.props.session;
-    if (session.get("id") !== null) {
+    if (session.has("id")) {
       return (
         <Clickable
-          action={this.attemptLogout}
+          action={this.attemptLogout.bind(this)}
           style={"general-button"}
           content={"Logout"} />
       );
@@ -32,7 +31,7 @@ class Header extends Component {
 
   renderProfile() {
     var session = this.props.session;
-    if (session.get("id") === null) {
+    if (!session.has("id")) {
       return (
         <Clickable
           route={Routes.pages.login}

@@ -5,9 +5,11 @@ import Family from "../models/family.js";
 import FamiliesCollection from "../collections/families_collection.js";
 
 
-var CHANGE_EVENT = "change";
-
 class FamiliesStore extends Store {
+
+  get name() {
+    return "FamiliesStore";
+  }
 
   collections() {
     return [
@@ -23,10 +25,6 @@ class FamiliesStore extends Store {
     } else {
       return existingObject;
     }
-  }
-
-  getFamily(id) {
-    return this._all[id];
   }
 
   requestFamilies() {

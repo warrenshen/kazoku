@@ -8,9 +8,9 @@ class ListeningComponent extends Component {
     return [];
   }
 
-  requestFromStore() {
+  // requestFromStore() {
 
-  }
+  // }
 
   getDefaultState() {
     return this.getStoreState();
@@ -26,7 +26,7 @@ class ListeningComponent extends Component {
     this.stores().map(function(store) {
       store.addChangeListener(self._onChange.bind(self));
     });
-    this.requestFromStore();
+    // this.requestFromStore();
   }
 
   componentWillUnmount() {

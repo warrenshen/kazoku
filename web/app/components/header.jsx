@@ -19,7 +19,7 @@ class Header extends Component {
 
   renderLogout() {
     var session = this.props.session;
-    if (session.get("id") !== null) {
+    if (session.has("id")) {
       return (
         <Clickable
           action={this.attemptLogout.bind(this)}
@@ -31,7 +31,7 @@ class Header extends Component {
 
   renderProfile() {
     var session = this.props.session;
-    if (session.get("id") === null) {
+    if (!session.has("id")) {
       return (
         <Clickable
           route={Routes.pages.login}

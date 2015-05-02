@@ -24,7 +24,7 @@ class SessionsStore extends Store {
   }
 
   requestSession() {
-    if (this._current.get("id") === null) {
+    if (!this._current.has("id")) {
       var options = {};
       options.headers = {
         "X-AUTH-EMAIL": Cookies.get("auth_email"),

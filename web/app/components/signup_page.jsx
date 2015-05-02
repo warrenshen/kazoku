@@ -6,6 +6,9 @@ import Header from "./header.jsx";
 
 import Routes from "../constants/routes.js";
 
+import PeopleStore from "../stores/people_store.js";
+import SessionsStore from "../stores/sessions_store.js";
+
 
 class SignupPage extends ListeningComponent {
 
@@ -26,13 +29,15 @@ class SignupPage extends ListeningComponent {
   attemptCreate(event) {
     var firstName = React.findDOMNode(this.refs.first_name).value;
     var lastName = React.findDOMNode(this.refs.last_name).value;
-    // var email = React.findDOMNode(this.refs.email).value;
-    // var password = React.findDOMNode(this.refs.password).value;
-    // var image_url = React.findDOMNode(this.refs.image_url).value;
-    Actions.create({
-      id: 1,
+    var email = React.findDOMNode(this.refs.email).value;
+    var password = React.findDOMNode(this.refs.password).value;
+    var imageUrl = React.findDOMNode(this.refs.image_url).value;
+    PeopleStore.create({
       first_name: firstName,
       last_name: lastName,
+      email: email,
+      password: password,
+      image_url: imageUrl,
     });
   }
 
@@ -63,31 +68,36 @@ class SignupPage extends ListeningComponent {
             ref="first_name"
             type="text"
             autoFocus="true"
-            placeholder="First name">
+            placeholder="First name"
+            value="Nicholas">
           </input>
           <input
             className="general-form-input"
             ref="last_name"
             type="text"
-            placeholder="Last name">
+            placeholder="Last name"
+            value="Sterling">
           </input>
           <input
             className="general-form-input"
             ref="email"
             type="text"
-            placeholder="Email">
+            placeholder="Email"
+            value="nicholassterling@berkeley.edu">
           </input>
           <input
             className="general-form-input"
             ref="password"
             type="password"
-            placeholder="Password">
+            placeholder="Password"
+            value="password">
           </input>
           <input
             className="general-form-input"
             ref="image_url"
             type="text"
-            placeholder="Image link">
+            placeholder="Image link"
+            value="https://avatars1.githubusercontent.com/u/9123187">
           </input>
           <Clickable
             action={this.attemptCreate.bind(this)}

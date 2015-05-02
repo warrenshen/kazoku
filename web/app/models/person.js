@@ -2,6 +2,8 @@ import Model from "../templates/model.js";
 
 import Family from "./family.js";
 
+import ApiRoutes from "../constants/api_routes.js";
+
 
 class Person extends Model {
 
@@ -14,6 +16,7 @@ class Person extends Model {
       id: null,
       first_name: "",
       last_name: "",
+      email: "",
       image_url: "",
       family_name: "",
       family_id: null,
@@ -28,8 +31,35 @@ class Person extends Model {
     return [];
   }
 
-  get urlRoot() {
-    return "/people/";
+  get createUrl() {
+    return ApiRoutes.people.index;
+  }
+
+  createAttributes() {
+    return {
+      person: {
+        id: this.get("id"),
+        first_name: this.get("first_name"),
+        last_name: this.get("last_name"),
+        email: this.get("email"),
+        password: this.get("password"),
+        image_url: this.get("image_url"),
+      }
+    };
+  }
+
+  create(options={}) {
+    var self = this;
+    options.success = function(model, response, options) {
+      self.store.add(self);
+      self.store.emitChange();
+    };
+    options.error = function(model, response, options) {
+      console.log("Create person error!");
+    };
+    options.url = this.createUrl;
+    options.attrs = this.createAttributes()
+    return this.sync("create", this, options);
   }
 }
 

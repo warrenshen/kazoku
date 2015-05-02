@@ -69,12 +69,10 @@ class Store extends Events.EventEmitter {
   }
 
   addChangeListener(callback) {
-    console.log("adding listener");
     this.addListener(CHANGE_EVENT, callback);
   }
 
   removeChangeListener(callback) {
-    console.log("removing listener");
     this.removeListener(CHANGE_EVENT, callback);
   }
 

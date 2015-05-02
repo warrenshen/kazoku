@@ -31,7 +31,7 @@ class Session extends Model {
     return "Session";
   }
 
-  get urlRoot() {
+  get meUrl() {
     return ApiRoutes.sessions.me;
   }
 
@@ -59,8 +59,8 @@ class Session extends Model {
     options.error = function(model, response, options) {
       console.log("Session request error!");
     };
-    var response = this.fetch(options);
-    return response;
+    options.url = this.meUrl;
+    return this.fetch(options);
   }
 
   create(options={}) {
@@ -74,26 +74,22 @@ class Session extends Model {
       self.store.emitChange();
     };
     options.error = function(model, response, options) {
-      console.log("create session error:");
-      console.log(response);
+      console.log("Create session error!");
     };
     options.url = this.createUrl;
     // Remove `attrs` from options for account credentials security.
     var attributes = options.attrs;
     delete options.attrs;
-    var response = this.save(attributes, options);
-    return response;
+    return this.save(attributes, options);
   }
 
   expire(options={}) {
     var self = this;
     options.error = function(model, response, options) {
-      console.log("destroy session error:");
-      console.log(response);
+      console.log("Destroy session error!");
     };
     options.url = this.destroyUrl;
-    var response = this.destroy(options);
-    return response;
+    return this.destroy(options);
   }
 }
 

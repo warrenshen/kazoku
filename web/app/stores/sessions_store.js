@@ -7,15 +7,13 @@ import Session from "../models/session.js";
 import Routes from "../constants/routes.js";
 
 
-var CHANGE_EVENT = "change";
-
 class SessionsStore extends Store {
 
   constructor() {
     super(new Session());
   }
 
-  get name(){
+  get name() {
     return "SessionsStore";
   }
 

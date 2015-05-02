@@ -39,7 +39,6 @@ class ListeningComponent extends Component {
   }
 
   _onChange() {
-    console.log("on change!")
     this.setState(this.getStoreState());
   }
 }

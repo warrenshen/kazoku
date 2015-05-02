@@ -68,7 +68,7 @@ class Person < ActiveRecord::Base
   end
 
   def set_family_name
-    self.family_name = family.try(:name)
+    self.family_name = family.try(:name) || ""
   end
 
   def generate_auth_token

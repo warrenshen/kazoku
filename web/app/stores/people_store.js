@@ -11,26 +11,15 @@ class PeopleStore extends Store {
     return "PeopleStore";
   }
 
+  get modelClass() {
+    return Person;
+  }
+
   collections() {
     return [
       PeopleCollection,
     ];
   }
-
-  create(attributes, options={}) {
-    var person = new Person(attributes);
-    return person.create(options);
-  }
-
-  // requestPerson(id) {
-  //   var existingObject = this._all[id];
-  //   if (existingObject === undefined) {
-  //     // var person = new Person({id: id});
-  //     // person.request();
-  //   } else {
-  //     return existingObject;
-  //   }
-  // }
 
   requestPeople() {
     return this._collections["PeopleCollection"].request();

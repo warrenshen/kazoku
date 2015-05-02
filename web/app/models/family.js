@@ -14,6 +14,10 @@ class Family extends Model {
     }
   }
 
+  get name() {
+    return "Family";
+  }
+
   get relations() {
     return [
       {
@@ -22,14 +26,6 @@ class Family extends Model {
         relatedModel: Person,
       }
     ];
-  }
-
-  get name() {
-    return "Family";
-  }
-
-  get urlRoot() {
-    return "/families/";
   }
 }
 

@@ -17,6 +17,10 @@ class SessionsStore extends Store {
     return "SessionsStore";
   }
 
+  get modelClass() {
+    return Session;
+  }
+
   collections() {
     return [];
   }
@@ -49,7 +53,7 @@ class SessionsStore extends Store {
       "X-AUTH-TOKEN": Cookies.get("auth_token"),
       "X-SESSION-UUID": Cookies.get("session_uuid"),
     };
-    options.success = function(model, response, options) {
+    options.success = function(model, response, request) {
       Cookies.set("auth_email", "");
       Cookies.set("auth_token", "");
       Cookies.set("session_uuid", "");
@@ -64,7 +68,9 @@ class SessionsStore extends Store {
     Cookies.set("auth_email", model.get("auth_email"));
     Cookies.set("auth_token", model.get("auth_token"));
     Cookies.set("session_uuid", model.get("uuid"));
-    Kazoku.Router.navigate(Routes.pages.home, true);
+    if (options.shouldNavigate) {
+      Kazoku.Router.navigate(Routes.pages.home, true);
+    }
     this._current = model;
     return this._current;
   }

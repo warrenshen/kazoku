@@ -16,14 +16,6 @@ class Store extends Events.EventEmitter {
     this._collections = {};
   }
 
-  get name() {
-    return "Store";
-  }
-
-  collections() {
-    return [];
-  }
-
   initialize() {
     var self = this;
     StoreDirectory.add(this);
@@ -31,6 +23,18 @@ class Store extends Events.EventEmitter {
       var collection = new collectionClass([], {}, self);
       self._collections[collection.name] = collection;
     });
+  }
+
+  get name() {
+    console.log("Store definition must include store name!");
+  }
+
+  get modelClass() {
+    console.log("Store definition must include associated model class!");
+  }
+
+  collections() {
+    return [];
   }
 
   getAll() {
@@ -44,21 +48,21 @@ class Store extends Events.EventEmitter {
   getById(id) {
     var model = this._all[id];
     if (model === undefined) {
-      var modelClass = this.modelClass();
+      var modelClass = this.modelClass;
       var model = new modelClass({ id: id });
-      model.request();
+      return model.request();
     } else {
       return model;
     }
   }
 
   add(model, options={}) {
-    var key = model.key;
-    var existingModel = this._all[key];
+    var id = model.storeKey;
+    var existingModel = this._all[id];
     var shouldEmitChange = options.shouldEmitChange;
 
     if (existingModel === undefined) {
-      this._all[key] = model;
+      this._all[id] = model;
     } else {
       existingModel.set(model.attributes)
     }
@@ -66,6 +70,12 @@ class Store extends Events.EventEmitter {
     if (shouldEmitChange) {
       this.emitChange();
     }
+  }
+
+  create(attributes, options={}) {
+    var modelClass = this.modelClass;
+    var model = new modelClass(attributes);
+    return model.create(options);
   }
 
   addChangeListener(callback) {

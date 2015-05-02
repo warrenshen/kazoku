@@ -10,7 +10,6 @@ class SessionManager
       @current_session.update(person: @current_person)
       @current_session
     elsif @current_person
-      puts "creating session for person"
       Session.create_for_person(@current_person)
     end
   end

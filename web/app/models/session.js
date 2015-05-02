@@ -17,6 +17,10 @@ class Session extends Model {
     }
   }
 
+  get name() {
+    return "Session";
+  }
+
   get relations() {
     return [
       {
@@ -27,14 +31,6 @@ class Session extends Model {
     ];
   }
 
-  get name() {
-    return "Session";
-  }
-
-  get meUrl() {
-    return ApiRoutes.sessions.me;
-  }
-
   get createUrl() {
     return ApiRoutes.sessions.login;
   }
@@ -43,25 +39,8 @@ class Session extends Model {
     return ApiRoutes.sessions.logout;
   }
 
-  // @param response - raw json response from server.
-  // @returns - attributes hash to be `set` to model.
-  parse(response, options) {
-    var attributes = response.session;
-    return attributes;
-  }
-
-  request(options={}) {
-    var self = this;
-    // Emit change indicating that the current session has been updated.
-    options.success = function(model, response, options) {
-      self.store.add(self);
-      self.store.emitChange();
-    };
-    options.error = function(model, response, options) {
-      console.log("Session request error!");
-    };
-    options.url = this.meUrl;
-    return this.fetch(options);
+  get requestUrl() {
+    return ApiRoutes.sessions.me;
   }
 
   create(options={}) {
@@ -69,12 +48,14 @@ class Session extends Model {
     // Emit change indicating that current session has been replaced;
     // note that the `session` attribute of the model which was added
     // by Backbone's save implementation must be unset for security.
-    options.success = function(model, response, options) {
+    options.success = function(model, response, request) {
       self.unset("session", { silent: true });
-      self.store.add(self);
+      var options = {};
+      options.shouldNavigate = true;
+      self.store.add(self, options);
       self.store.emitChange();
     };
-    options.error = function(model, response, options) {
+    options.error = function(model, response, request) {
       console.log("Create session error!");
     };
     options.url = this.createUrl;
@@ -86,7 +67,7 @@ class Session extends Model {
 
   expire(options={}) {
     var self = this;
-    options.error = function(model, response, options) {
+    options.error = function(model, response, request) {
       console.log("Destroy session error!");
     };
     options.url = this.destroyUrl;

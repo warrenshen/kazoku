@@ -9,10 +9,6 @@ import ApiRoutes from "../constants/api_routes.js";
 
 class Person extends Model {
 
-  constructor(attributes={}, options={}, store) {
-    super(attributes, options);
-  }
-
   get defaults() {
     return {
       id: null,
@@ -33,7 +29,7 @@ class Person extends Model {
     return [];
   }
 
-  get createUrl() {
+  createUrl() {
     return ApiRoutes.people.index;
   }
 
@@ -62,13 +58,12 @@ class Person extends Model {
       self.unset("password", { silent: true });
       self.store.add(self);
       self.store.emitChange();
-
     };
     options.error = function(response, status, options) {
       console.log("Create person error!");
     };
-    options.url = this.createUrl;
     options.attrs = this.createAttributes();
+    options.url = this.createUrl();
     return this.sync("create", this, options);
   }
 }

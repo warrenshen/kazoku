@@ -5,6 +5,7 @@ class Api::PeopleController < Api::BaseController
   def create
     if @person.save
       sign_in(@person)
+      # Special serializer that includes the person's auth_token.
       render json: @person, serializer: AuthorizedSerializer
     else
       api_error_response(@person)

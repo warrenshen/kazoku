@@ -11,20 +11,14 @@ class FamiliesStore extends Store {
     return "FamiliesStore";
   }
 
+  get modelClass() {
+    return Family;
+  }
+
   collections() {
     return [
       FamiliesCollection,
     ];
-  }
-
-  requestFamily(id) {
-    var existingObject = this._all[id];
-    if (existingObject === undefined) {
-      // var family = new Family({id: id});
-      // person.request();
-    } else {
-      return existingObject;
-    }
   }
 
   requestFamilies() {

@@ -6,6 +6,8 @@ class StoreDirectory {
 
   get(name) {
     switch(name) {
+      case "Family":
+        return this._stores["FamiliesStore"];
       case "Person":
         return this._stores["PeopleStore"];
       case "Session":

@@ -25,6 +25,10 @@ class Model extends Backbone.RelationalModel {
     return [];
   }
 
+  get responseKey() {
+    console.log("Model definition must include response key!");
+  }
+
   get storeKey() {
     return this.get("id");
   }
@@ -37,15 +41,15 @@ class Model extends Backbone.RelationalModel {
   // Endpoints
   // --------------------------------------------------
   get createUrl() {
-    return ApiRoutes.sessions.login;
+    console.log("Model definition must include create url!")
   }
 
   get destroyUrl() {
-    return ApiRoutes.sessions.logout;
+    console.log("Model definition must include destroy url!")
   }
 
   get requestUrl() {
-    return ApiRoutes.sessions.me;
+    console.log("Model definition must include request url!")
   }
 
 
@@ -56,7 +60,7 @@ class Model extends Backbone.RelationalModel {
   // @param response - raw json response from server.
   // @returns - attributes hash to be `set` to model.
   parse(response, options) {
-    var attributes = response[this.name];
+    var attributes = response[this.responseKey];
     return attributes;
   }
 

@@ -29,7 +29,7 @@ class Person extends Model {
     return [];
   }
 
-  createUrl() {
+  get createUrl() {
     return ApiRoutes.people.index;
   }
 
@@ -48,7 +48,7 @@ class Person extends Model {
 
   create(options={}) {
     var self = this;
-    options.success = function(response, status, options) {
+    options.success = function(response, status, request) {
       // Maybe should abstract this into a parse method.
       var attributes = response.person;
       self.set(attributes);
@@ -59,7 +59,7 @@ class Person extends Model {
       self.store.add(self);
       self.store.emitChange();
     };
-    options.error = function(response, status, options) {
+    options.error = function(response, status, request) {
       console.log("Create person error!");
     };
     options.attrs = this.createAttributes();

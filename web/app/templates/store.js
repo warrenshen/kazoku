@@ -57,17 +57,14 @@ class Store extends Events.EventEmitter {
   }
 
   add(model, options={}) {
-    var id = model.storeKey;
-    var existingModel = this._all[id];
-    var shouldEmitChange = options.shouldEmitChange;
-
+    var storeKey = model.storeKey;
+    var existingModel = this._all[storeKey];
     if (existingModel === undefined) {
-      this._all[id] = model;
+      this._all[storeKey] = model;
     } else {
       existingModel.set(model.attributes)
     }
-
-    if (shouldEmitChange) {
+    if (options.shouldEmitChange) {
       this.emitChange();
     }
   }
@@ -75,7 +72,7 @@ class Store extends Events.EventEmitter {
   create(attributes, options={}) {
     var modelClass = this.modelClass;
     var model = new modelClass(attributes);
-    return model.create(options);
+    model.create(options);
   }
 
   addChangeListener(callback) {

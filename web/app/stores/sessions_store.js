@@ -34,7 +34,7 @@ class SessionsStore extends Store {
         "X-AUTH-TOKEN": Cookies.get("auth_token"),
         "X-SESSION-UUID": Cookies.get("session_uuid"),
       };
-      return this._current.request(options);
+      this._current.request(options);
     }
   }
 
@@ -42,7 +42,7 @@ class SessionsStore extends Store {
     var session = new Session();
     var options = {};
     options.attrs = {session: credentials};
-    return session.create(options);
+    session.create(options);
   }
 
   logout() {
@@ -61,18 +61,21 @@ class SessionsStore extends Store {
       self.emitChange();
       Kazoku.Router.navigate(Routes.pages.home, true);
     };
-    return this._current.expire(options);
+    this._current.expire(options);
   }
 
   add(model, options={}) {
-    Cookies.set("auth_email", model.get("auth_email"));
-    Cookies.set("auth_token", model.get("auth_token"));
-    Cookies.set("session_uuid", model.get("uuid"));
+    // If conditional indicates that the client has created a
+    // new session and therefore browser cookies should be set.
     if (options.shouldNavigate) {
+      Cookies.set("auth_email", model.get("auth_email"));
+      Cookies.set("auth_token", model.get("auth_token"));
+      Cookies.set("session_uuid", model.get("uuid"));
+      this._current = model;
       Kazoku.Router.navigate(Routes.pages.home, true);
+    } else {
+      this._current = model;
     }
-    this._current = model;
-    return this._current;
   }
 }
 

@@ -7,6 +7,9 @@ import ApiRoutes from "../constants/api_routes.js";
 
 class Session extends Model {
 
+  // --------------------------------------------------
+  // Defaults
+  // --------------------------------------------------
   get defaults() {
     return {
       id: null,
@@ -31,6 +34,13 @@ class Session extends Model {
     ];
   }
 
+  get responseKey() {
+    return "session";
+  }
+
+  // --------------------------------------------------
+  // Endpoints
+  // --------------------------------------------------
   get createUrl() {
     return ApiRoutes.sessions.login;
   }
@@ -48,21 +58,18 @@ class Session extends Model {
     // Emit change indicating that current session has been replaced;
     // note that the `session` attribute of the model which was added
     // by Backbone's save implementation must be unset for security.
-    options.success = function(model, response, request) {
+    options.success = function(response, status, request) {
+      var attributes = response.session;
+      self.set(attributes);
       self.unset("session", { silent: true });
-      var options = {};
-      options.shouldNavigate = true;
-      self.store.add(self, options);
+      self.store.add(self, { shouldNavigate: true });
       self.store.emitChange();
     };
-    options.error = function(model, response, request) {
+    options.error = function(response, status, request) {
       console.log("Create session error!");
     };
     options.url = this.createUrl;
-    // Remove `attrs` from options for account credentials security.
-    var attributes = options.attrs;
-    delete options.attrs;
-    return this.save(attributes, options);
+    return this.sync("create", this, options);
   }
 
   expire(options={}) {

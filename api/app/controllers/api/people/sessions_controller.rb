@@ -4,7 +4,7 @@ class Api::People::SessionsController < Api::BaseController
   def create
     person = Person.find_by(email: params[:session][:email])
     if !person.nil? && person.valid_password?(params[:session][:password])
-      sign_in(person, store: false)
+      sign_in(person)
       current_session_response
     else
       api_error_response(person)
@@ -12,9 +12,9 @@ class Api::People::SessionsController < Api::BaseController
   end
 
   def destroy
-    person = Person.find(params[:id])
-    if !person.nil?
-      @current.session.update(is_expired: true)
+    if !@current_session.nil?
+      sign_out(@current_session.person)
+      @current_session.update(is_expired: true)
       current_session_response
     else
       api_error_response(person)

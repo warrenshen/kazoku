@@ -83,15 +83,14 @@ class Session extends Model {
     return response;
   }
 
-  destroy(options={}) {
-    debugger
+  expire(options={}) {
     var self = this;
     options.error = function(model, response, options) {
       console.log("destroy session error:");
       console.log(response);
     };
     options.url = this.destroyUrl;
-    var response = this.sync("delete", this, options);
+    var response = this.destroy(options);
     return response;
   }
 }

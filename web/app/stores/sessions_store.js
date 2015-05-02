@@ -45,12 +45,18 @@ class SessionsStore extends Store {
   logout() {
     var self = this;
     var options = {};
+    options.headers = {
+      "X-AUTH-EMAIL": Cookies.get("auth_email"),
+      "X-AUTH-TOKEN": Cookies.get("auth_token"),
+      "X-SESSION-UUID": Cookies.get("session_uuid"),
+    };
     options.success = function(model, response, options) {
-      debugger
-      // Cookies.set("auth_email", "");
-      // Cookies.set("auth_token", "");
-      // Cookies.set("session_uuid", "");
+      Cookies.set("auth_email", "");
+      Cookies.set("auth_token", "");
+      Cookies.set("session_uuid", "");
+      self._current = new Session();
       self.emitChange();
+      Kazoku.Router.navigate(Routes.pages.home, true);
     };
     return this._current.expire(options);
   }
@@ -59,8 +65,8 @@ class SessionsStore extends Store {
     Cookies.set("auth_email", model.get("auth_email"));
     Cookies.set("auth_token", model.get("auth_token"));
     Cookies.set("session_uuid", model.get("uuid"));
-    this._current = model;
     Kazoku.Router.navigate(Routes.pages.home, true);
+    this._current = model;
     return this._current;
   }
 }

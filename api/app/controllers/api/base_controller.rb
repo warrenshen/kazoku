@@ -25,10 +25,7 @@ class Api::BaseController < ApplicationController
   def authenticate_person_from_credentials
     auth_email = params[:auth_email].presence
     auth_token = params[:auth_token].presence
-    puts auth_email
-    puts auth_token
     person = Person.find_by(email: auth_email)
-    puts person
     # Devise.secure_compare mitigates timing attacks.
     if person && Devise.secure_compare(person.auth_token, auth_token)
       # Authentication required every request due to `store:false`.
@@ -62,6 +59,7 @@ class Api::BaseController < ApplicationController
   def parse_header(header_param, header_name)
     current = params[header_param]
     if current.blank?
+      puts request.headers[header_name]
       params[header_param] = request.headers[header_name]
     end
   end

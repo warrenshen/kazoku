@@ -7,11 +7,9 @@ class SessionManager
 
   def current
     if @current_session && @current_session.is_valid?
-      puts "hello"
       @current_session.update(person: @current_person)
       @current_session
     elsif @current_person
-      puts "bye"
       Session.create_for_person(@current_person)
     end
   end

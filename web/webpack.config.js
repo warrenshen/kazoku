@@ -7,7 +7,7 @@ module.exports = {
     __dirname + "/app/kazoku.js"
   ],
   output: {
-    path: "./build",
+    path: __dirname + "/build",
     filename: "bundle.js",
   },
   plugins: [

@@ -24,7 +24,7 @@ class SessionsStore extends Store {
   }
 
   // Only request session from server if current is a placeholder.
-  getCurrent() {
+  requestCurrent() {
     if (!this._current.has("id")) {
       var options = {};
       options.headers = {
@@ -32,9 +32,8 @@ class SessionsStore extends Store {
         "X-AUTH-TOKEN": Cookies.get("auth_token"),
         "X-SESSION-UUID": Cookies.get("session_uuid"),
       };
-      this._current.request(options);
+      return this._current.request(options);
     }
-    return this._current;
   }
 
   login(credentials) {
@@ -56,6 +55,7 @@ class SessionsStore extends Store {
       Cookies.set("auth_email", "");
       Cookies.set("auth_token", "");
       Cookies.set("session_uuid", "");
+      debugger
       self._current = new Session();
       self.emitChange();
       Kazoku.Router.navigate(Routes.pages.home, true);

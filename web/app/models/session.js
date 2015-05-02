@@ -47,28 +47,30 @@ class Session extends Model {
   // @returns - attributes hash to be `set` to model.
   parse(response, options) {
     var attributes = response.session;
+    debugger
     return attributes;
   }
 
   request(options={}) {
     var self = this;
+    // Emit change indicating that the current session has been updated.
     options.success = function(model, response, options) {
-      if (response.session !== null) {
-        self.store.add(model);
-        self.store.emitChange();
-      }
+      self.store.emitChange();
     };
     options.error = function(model, response, options) {
-      console.log("request error:");
-      console.log(model);
-    }
+      console.log("Session request error!");
+    };
     var response = this.fetch(options);
     return response;
   }
 
   create(options={}) {
     var self = this;
+    // Emit change indicating that current session has been replaced;
+    // note that the `session` attribute of the model which was added
+    // by Backbone's save implementation must be unset for security.
     options.success = function(model, response, options) {
+      self.unset("session", { silent: true });
       self.store.add(self);
       self.store.emitChange();
     };
@@ -77,8 +79,9 @@ class Session extends Model {
       console.log(response);
     };
     options.url = this.createUrl;
-    var attributes = options.attrs
-    delete options.attrs
+    // Remove `attrs` from options for account credentials security.
+    var attributes = options.attrs;
+    delete options.attrs;
     var response = this.save(attributes, options);
     return response;
   }

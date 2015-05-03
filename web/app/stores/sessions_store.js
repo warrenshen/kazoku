@@ -30,7 +30,7 @@ class SessionsStore extends Store {
   }
 
   // --------------------------------------------------
-  // Requesters
+  // Requests
   // --------------------------------------------------
   // Only request session from server if current is a placeholder.
   requestCurrent() {
@@ -48,6 +48,7 @@ class SessionsStore extends Store {
   // --------------------------------------------------
   // Actions
   // --------------------------------------------------
+  // Custom method to handle successful login redirection.
   add(model, options={}) {
     if (Cookies.get("session_uuid") === "") {
       Cookies.set("session_uuid", model.get("uuid"));

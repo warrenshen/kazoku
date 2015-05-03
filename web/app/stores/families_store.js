@@ -26,19 +26,18 @@ class FamiliesStore extends Store {
   }
 
   // --------------------------------------------------
-  // Getters
+  // Gets
   // --------------------------------------------------
   getFamilies() {
     return this._collections["FamiliesCollection"].models;
   }
 
   // --------------------------------------------------
-  // Requesters
+  // Requests
   // --------------------------------------------------
   requestFamilies() {
     return this._collections["FamiliesCollection"].request();
   }
-
 }
 
 

@@ -41,7 +41,7 @@ class Store extends Events.EventEmitter {
   }
 
   // --------------------------------------------------
-  // Getters
+  // Gets
   // --------------------------------------------------
   getAll() {
     return this._all;
@@ -63,7 +63,7 @@ class Store extends Events.EventEmitter {
   }
 
   // --------------------------------------------------
-  // Requesters
+  // Requests
   // --------------------------------------------------
 
 

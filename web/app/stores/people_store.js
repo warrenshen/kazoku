@@ -25,14 +25,14 @@ class PeopleStore extends Store {
   }
 
   // --------------------------------------------------
-  // Getters
+  // Gets
   // --------------------------------------------------
   getPeople() {
     return this._collections["PeopleCollection"].models;
   }
 
   // --------------------------------------------------
-  // Requesters
+  // Requests
   // --------------------------------------------------
   requestPeople() {
     return this._collections["PeopleCollection"].request();
@@ -41,7 +41,6 @@ class PeopleStore extends Store {
   // --------------------------------------------------
   // Actions
   // --------------------------------------------------
-
   // Custom create that calls `register` instead of default 'create'.
   create(attributes, options={}) {
     var person = new Person(attributes);

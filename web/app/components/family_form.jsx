@@ -1,9 +1,9 @@
 import React from "react";
-import Component from "app/templates/component.jsx";
+import Component from "app/templates/component";
 
-import Clickable from "app/components/clickable.jsx";
+import Clickable from "app/components/clickable";
 
-import Routes from "app/constants/routes.js";
+import Routes from "app/constants/routes";
 
 
 class FamilyForm extends Component {

@@ -1,7 +1,7 @@
 import React from "react";
-import Component from "app/templates/component.jsx";
+import Component from "app/templates/component";
 
-import Event from "app/components/event.jsx";
+import Event from "app/components/event";
 
 
 class EventsList extends Component {

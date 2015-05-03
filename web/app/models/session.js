@@ -49,23 +49,20 @@ class Session extends Model {
     return ApiRoutes.sessions.me;
   }
 
-  create(options={}) {
+  // --------------------------------------------------
+  // Requests
+  // --------------------------------------------------
+  establish(options={}) {
     var self = this;
-    // Emit change indicating that current session has been replaced;
-    // note that the `session` attribute of the model which was added
-    // by Backbone's save implementation must be unset for security.
+    // Emit change indicating that current session has been replaced.
     options.success = function(response, status, request) {
-      var attributes = response.session;
+      var attributes = self.parse(response);
       self.set(attributes);
       self.unset("session", { silent: true });
       self.store.add(self, { shouldNavigate: true });
       self.store.emitChange();
     };
-    options.error = function(response, status, request) {
-      console.log("Create session error!");
-    };
-    options.url = this.createUrl;
-    return this.sync("create", this, options);
+    this.create(options);
   }
 
   expire(options={}) {

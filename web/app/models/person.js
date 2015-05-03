@@ -5,6 +5,7 @@ import Model from "../templates/model.js";
 import Family from "./family.js";
 
 import ApiRoutes from "../constants/api_routes.js";
+import Routes from "../constants/routes.js";
 
 
 class Person extends Model {
@@ -33,7 +34,7 @@ class Person extends Model {
     return ApiRoutes.people.index;
   }
 
-  createAttributes() {
+  get createAttributes() {
     return {
       person: {
         id: this.get("id"),
@@ -46,25 +47,20 @@ class Person extends Model {
     };
   }
 
-  create(options={}) {
+  register(options={}) {
     var self = this;
     options.success = function(response, status, request) {
-      // Maybe should abstract this into a parse method.
-      var attributes = response.person;
+      var attributes = self.parse(response);
       self.set(attributes);
       Cookies.set("auth_email", self.get("email"));
       Cookies.set("auth_token", self.get("auth_token"));
       self.unset("auth_token", { silent: true });
       self.unset("password", { silent: true });
       self.store.add(self);
+      Kazoku.Router.navigate(Routes.pages.home, true);
       self.store.emitChange();
     };
-    options.error = function(response, status, request) {
-      console.log("Create person error!");
-    };
-    options.attrs = this.createAttributes();
-    options.url = this.createUrl;
-    return this.sync("create", this, options);
+    return this.create(options);
   }
 }
 

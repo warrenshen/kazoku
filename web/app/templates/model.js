@@ -38,6 +38,13 @@ class Model extends Backbone.RelationalModel {
   }
 
   // --------------------------------------------------
+  // Attributers
+  // --------------------------------------------------
+  get createAttributes() {
+    console.log("Model definition must include create attributes!")
+  }
+
+  // --------------------------------------------------
   // Endpoints
   // --------------------------------------------------
   get createUrl() {
@@ -56,6 +63,7 @@ class Model extends Backbone.RelationalModel {
   // Requests
   // --------------------------------------------------
 
+  // Called by fetch automatically and by custom create explicitly.
   // @param response - raw json response from server.
   // @returns - attributes hash to be `set` to model.
   parse(response, options={}) {
@@ -77,6 +85,9 @@ class Model extends Backbone.RelationalModel {
       options.error = function(response, status, request) {
         console.log(self.name + " create error!");
       };
+    }
+    if (options.attrs === undefined) {
+      options.attrs = this.createAttributes;
     }
     options.url = this.createUrl;
     this.sync("create", this, options);

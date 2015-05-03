@@ -70,12 +70,14 @@ class SessionsStore extends Store {
   }
 
   add(model, options={}) {
-    // If conditional indicates that the client has created a
-    // new session and therefore browser cookies should be set.
+    if (Cookies.get("session_uuid") === "") {
+      Cookies.set("session_uuid", model.get("uuid"));
+    }
+    // If conditional indicates that the client has created a new
+    // session so browser authorization cookies should be set.
     if (options.shouldNavigate) {
       Cookies.set("auth_email", model.get("auth_email"));
       Cookies.set("auth_token", model.get("auth_token"));
-      Cookies.set("session_uuid", model.get("uuid"));
       this._current = model;
       Kazoku.Router.navigate(Routes.pages.home, true);
     } else {

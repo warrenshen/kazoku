@@ -21,6 +21,12 @@ class PeopleStore extends Store {
     ];
   }
 
+  // Custom create that calls `register` instead of default 'create'.
+  create(attributes, options={}) {
+    var person = new Person(attributes);
+    person.register(options);
+  }
+
   requestPeople() {
     return this._collections["PeopleCollection"].request();
   }

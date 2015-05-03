@@ -1,7 +1,7 @@
 import React from "react";
-import Component from "../templates/component.jsx";
+import Component from "app/templates/component.jsx";
 
-import Person from "./person.jsx";
+import Person from "app/components/person.jsx";
 
 
 class PeopleList extends Component {

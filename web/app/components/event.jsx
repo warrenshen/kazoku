@@ -1,9 +1,9 @@
 import React from "react";
-import Component from "../templates/component.jsx";
+import Component from "app/templates/component.jsx";
 
-import Clickable from "./clickable.jsx";
+import Clickable from "app/components/clickable.jsx";
 
-import Routes from "../constants/routes.js";
+import Routes from "app/constants/routes.js";
 
 
 class Event extends Component {

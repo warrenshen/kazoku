@@ -1,9 +1,9 @@
 import React from "react";
-import Component from "../templates/component.jsx";
+import Component from "app/templates/component.jsx";
 
-import PeopleList from "./people_list.jsx";
+import PeopleList from "app/components/people_list.jsx";
 
-import Person from "../models/person.js";
+import Person from "app/models/person.js";
 
 
 class FamilyMembers extends Component {

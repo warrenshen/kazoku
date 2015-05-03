@@ -1,11 +1,11 @@
 import React from "react";
-import ListeningComponent from "../templates/listening_component.jsx";
+import ListeningComponent from "app/templates/listening_component.jsx";
 
-import Header from "./header.jsx";
-import PersonProfile from "./person_profile.jsx";
+import Header from "app/components/header.jsx";
+import PersonProfile from "app/components/person_profile.jsx";
 
-import PeopleStore from "../stores/people_store.js";
-import SessionsStore from "../stores/sessions_store.js";
+import PeopleStore from "app/stores/people_store.js";
+import SessionsStore from "app/stores/sessions_store.js";
 
 
 class PersonPage extends ListeningComponent {

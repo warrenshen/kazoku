@@ -1,5 +1,5 @@
 import React from "react";
-import Component from "../templates/component.jsx";
+import Component from "app/templates/component";
 
 
 class Clickable extends Component {

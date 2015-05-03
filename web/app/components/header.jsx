@@ -1,14 +1,14 @@
 import React from "react";
 import Classer from "classnames";
-import Component from "../templates/component.jsx";
+import Component from "app/templates/component.jsx";
 
-import Clickable from "./clickable.jsx";
+import Clickable from "app/components/clickable.jsx";
 
-import Routes from "../constants/routes.js";
+import Routes from "app/constants/routes.js";
 
-import Session from "../models/session.js";
+import Session from "app/models/session.js";
 
-import SessionsStore from "../stores/sessions_store.js";
+import SessionsStore from "app/stores/sessions_store.js";
 
 
 class Header extends Component {

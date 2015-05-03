@@ -41,8 +41,10 @@ class SessionsStore extends Store {
   login(credentials) {
     var session = new Session();
     var options = {};
+    // Credentials hash scoped under session in attributes to mimic
+    // `createAttributes` method and send json in desired format.
     options.attrs = {session: credentials};
-    session.create(options);
+    session.establish(options);
   }
 
   logout() {

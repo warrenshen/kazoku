@@ -60,7 +60,6 @@ class Model extends Backbone.RelationalModel {
   // @returns - attributes hash to be `set` to model.
   parse(response, options={}) {
     var attributes = response[this.responseKey];
-    debugger
     return attributes;
   }
 

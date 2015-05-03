@@ -17,8 +17,7 @@ class Collection extends Backbone.Collection {
   }
 
   get responseKey() {
-    // TODO: Set this by pluralizing collection's associated model name.
-    console.log("Collection definition must include response key!");
+    return this.name.substring(0, this.name.length - 10).toLowerCase();
   }
 
   get url() {
@@ -36,7 +35,21 @@ class Collection extends Backbone.Collection {
   }
 
   request(options={}) {
-
+    var self = this;
+    var success = options.success;
+    options.success = function(collection, response, request) {
+      var models = collection.models;
+      debugger
+      models.map(function(model) {
+        self.store.add(model);
+      });
+      self.store.emitChange();
+    };
+    options.error = function(collection, response, request) {
+      console.log("collection error");
+    };
+    var response = this.fetch(options);
+    return response;
   }
 }
 

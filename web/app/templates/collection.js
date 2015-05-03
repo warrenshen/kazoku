@@ -27,7 +27,7 @@ class Collection extends Backbone.Collection {
 
   parse(response, options) {
     var objects = response[this.responseKey];
-    var modelClass = this.modelClass;
+    var modelClass = this.model;
     var models = objects.map(function(attributes) {
       var model = new modelClass(attributes);
       return model;

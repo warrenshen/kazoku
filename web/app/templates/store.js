@@ -32,8 +32,8 @@ class Store extends Events.EventEmitter {
     console.log("Store definition must include store name!");
   }
 
-  get modelClass() {
-    console.log("Store definition must include associated model class!");
+  get model() {
+    console.log("Store definition must include associated model!");
   }
 
   get collections() {
@@ -54,7 +54,7 @@ class Store extends Events.EventEmitter {
   getById(id) {
     var model = this._all[id];
     if (model === undefined) {
-      var modelClass = this.modelClass;
+      var modelClass = this.model;
       var model = new modelClass({ id: id });
       model.request();
       return model;
@@ -86,7 +86,7 @@ class Store extends Events.EventEmitter {
   }
 
   create(attributes, options={}) {
-    var modelClass = this.modelClass;
+    var modelClass = this.model;
     var model = new modelClass(attributes);
     model.create(options);
   }

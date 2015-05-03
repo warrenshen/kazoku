@@ -15,7 +15,7 @@ class FamiliesStore extends Store {
     return "FamiliesStore";
   }
 
-  get modelClass() {
+  get model() {
     return Family;
   }
 

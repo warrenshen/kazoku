@@ -21,7 +21,7 @@ class SessionsStore extends Store {
     return "SessionsStore";
   }
 
-  get modelClass() {
+  get model() {
     return Session;
   }
 

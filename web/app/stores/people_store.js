@@ -14,7 +14,7 @@ class PeopleStore extends Store {
     return "PeopleStore";
   }
 
-  get modelClass() {
+  get model() {
     return Person;
   }
 

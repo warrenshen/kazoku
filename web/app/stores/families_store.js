@@ -1,8 +1,8 @@
-import Store from "../templates/store.js";
+import Store from "app/templates/store";
 
-import Family from "../models/family.js";
+import Family from "app/models/family";
 // var TodoConstants = require('../constants/TodoConstants');
-import FamiliesCollection from "../collections/families_collection.js";
+import FamiliesCollection from "app/collections/families_collection";
 
 
 class FamiliesStore extends Store {

@@ -1,8 +1,8 @@
 import Backbone from "backbone";
 
-import Family from "../models/family.js";
+import Family from "app/models/family";
 
-import ApiRoutes from "../constants/api_routes.js";
+import ApiRoutes from "app/constants/api_routes";
 
 
 class FamiliesCollection extends Backbone.Collection {

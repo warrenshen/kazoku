@@ -1,13 +1,13 @@
 import React from "react";
-import ListeningComponent from "../templates/listening_component.jsx";
+import ListeningComponent from "app/templates/listening_component";
 
-import Clickable from "./clickable.jsx";
-import Header from "./header.jsx";
+import Clickable from "app/components/clickable";
+import Header from "app/components/header";
 
-import Routes from "../constants/routes.js";
+import Routes from "app/constants/routes";
 
-import PeopleStore from "../stores/people_store.js";
-import SessionsStore from "../stores/sessions_store.js";
+import PeopleStore from "app/stores/people_store";
+import SessionsStore from "app/stores/sessions_store";
 
 
 class SignupPage extends ListeningComponent {

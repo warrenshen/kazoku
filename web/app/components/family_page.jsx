@@ -1,12 +1,12 @@
 import React from "react";
-import ListeningComponent from "../templates/listening_component.jsx";
+import ListeningComponent from "app/templates/listening_component";
 
-import Header from "./header.jsx";
-import FamilyProfile from "./family_profile.jsx";
-import FamilyMembers from "./family_members.jsx";
+import Header from "app/components/header";
+import FamilyProfile from "app/components/family_profile";
+import FamilyMembers from "app/components/family_members";
 
-import FamiliesStore from "../stores/families_store.js";
-import SessionsStore from "../stores/sessions_store.js";
+import FamiliesStore from "app/stores/families_store";
+import SessionsStore from "app/stores/sessions_store";
 
 
 class FamilyPage extends ListeningComponent {

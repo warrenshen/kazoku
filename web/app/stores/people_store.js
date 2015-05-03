@@ -1,8 +1,8 @@
-import Store from "../templates/store.js";
+import Store from "app/templates/store";
 
-import Person from "../models/person.js";
+import Person from "app/models/person";
 // var TodoConstants = require('../constants/TodoConstants');
-import PeopleCollection from "../collections/people_collection.js";
+import PeopleCollection from "app/collections/people_collection";
 
 
 class PeopleStore extends Store {

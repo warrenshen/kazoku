@@ -1,5 +1,5 @@
 import React from "react";
-import Component from "./component.jsx";
+import Component from "app/templates/component";
 
 
 class ListeningComponent extends Component {

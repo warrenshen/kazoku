@@ -1,11 +1,11 @@
 import React from "react";
-import Component from "../templates/component.jsx";
+import Component from "app/templates/component";
 
-import Clickable from "./clickable.jsx";
+import Clickable from "app/components/clickable";
 
-import Routes from "../constants/routes.js";
+import Routes from "app/constants/routes";
 
-import Session from "../models/session.js";
+import Session from "app/models/session";
 
 
 class Family extends Component {

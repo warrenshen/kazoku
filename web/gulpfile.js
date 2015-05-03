@@ -5,9 +5,10 @@ var config = require("./webpack.config");
 
 gulp.task("serve", function() {
   new server(webpack(config), {
+    publicPath: config.output.publicPath,
+    historyApiFallback: true,
     hot: true,
     quiet: false,
-    historyApiFallback: true,
     stats: { colors: true, progress: true },
   }).listen(3333, "localhost", function (err, result) {
     if (err) {

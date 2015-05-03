@@ -1,9 +1,9 @@
 import React from "react";
-import Component from "../templates/component.jsx";
+import Component from "app/templates/component";
 
-import Family from "./family.jsx";
+import Family from "app/components/family";
 
-import Session from "../models/session.js";
+import Session from "app/models/session";
 
 
 class FamiliesList extends Component {

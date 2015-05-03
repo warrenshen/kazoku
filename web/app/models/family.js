@@ -1,6 +1,6 @@
-import Model from "../templates/model.js";
+import Model from "app/templates/model";
 
-import Person from "./person.js";
+import Person from "app/models/person";
 
 
 class Family extends Model {

@@ -1,7 +1,7 @@
 import Backbone from "backbone";
 import "backbone-relational";
 
-import StoreDirectory from "../store_directory.js";
+import StoreDirectory from "app/store_directory";
 
 
 class Model extends Backbone.RelationalModel {

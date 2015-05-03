@@ -1,8 +1,8 @@
 import Backbone from "backbone";
 
-import Person from "../models/person.js";
+import Person from "app/models/person";
 
-import ApiRoutes from "../constants/api_routes.js";
+import ApiRoutes from "app/constants/api_routes";
 
 
 class PeopleCollection extends Backbone.Collection {

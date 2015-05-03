@@ -1,13 +1,13 @@
 import React from "react";
-import ListeningComponent from "../templates/listening_component.jsx";
+import ListeningComponent from "app/templates/listening_component";
 
-import Header from "./header.jsx";
-import PeopleList from "./people_list.jsx";
+import Header from "app/components/header";
+import PeopleList from "app/components/people_list";
 
-import PeopleCollection from "../collections/people_collection.js";
+import PeopleCollection from "app/collections/people_collection";
 
-import PeopleStore from "../stores/people_store.js";
-import SessionsStore from "../stores/sessions_store.js";
+import PeopleStore from "app/stores/people_store";
+import SessionsStore from "app/stores/sessions_store";
 
 
 class PeoplePage extends ListeningComponent {

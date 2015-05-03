@@ -63,7 +63,7 @@ class Person extends Model {
       console.log("Create person error!");
     };
     options.attrs = this.createAttributes();
-    options.url = this.createUrl();
+    options.url = this.createUrl;
     return this.sync("create", this, options);
   }
 }

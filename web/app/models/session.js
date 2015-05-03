@@ -69,12 +69,7 @@ class Session extends Model {
   }
 
   expire(options={}) {
-    var self = this;
-    options.error = function(model, response, request) {
-      console.log("Destroy session error!");
-    };
-    options.url = this.destroyUrl;
-    return this.destroy(options);
+    this.destroy(options);
   }
 }
 

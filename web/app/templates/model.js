@@ -52,7 +52,6 @@ class Model extends Backbone.RelationalModel {
     console.log("Model definition must include request url!")
   }
 
-
   // --------------------------------------------------
   // Requests
   // --------------------------------------------------
@@ -60,8 +59,8 @@ class Model extends Backbone.RelationalModel {
   // @param response - raw json response from server.
   // @returns - attributes hash to be `set` to model.
   parse(response, options) {
-    console.log(this.responseKey);
     var attributes = response[this.responseKey];
+    debugger
     return attributes;
   }
 
@@ -81,6 +80,22 @@ class Model extends Backbone.RelationalModel {
     };
     options.url = this.requestUrl;
     this.fetch(options);
+  }
+
+  destroy(options={}) {
+    var self = this;
+    if (options.success === undefined) {
+      options.success = function(response, status, request) {
+        console.log("Destroy session success!");
+      };
+    }
+    if (options.error === undefined) {
+      options.error = function(response, status, request) {
+        console.log("Destroy session error!");
+      };
+    }
+    options.url = this.destroyUrl;
+    this.sync("delete", this, options);
   }
 }
 

@@ -53,13 +53,16 @@ class SessionsStore extends Store {
       "X-AUTH-TOKEN": Cookies.get("auth_token"),
       "X-SESSION-UUID": Cookies.get("session_uuid"),
     };
-    options.success = function(model, response, request) {
+    // Success callback resets everything authentication related,
+    // resetting browser cookies and defaulting the current session.
+    options.success = function(response, status, request) {
       Cookies.set("auth_email", "");
       Cookies.set("auth_token", "");
       Cookies.set("session_uuid", "");
       self._current.set(self._current.defaults);
-      self.emitChange();
+      self._current.unset("person");
       Kazoku.Router.navigate(Routes.pages.home, true);
+      self.emitChange();
     };
     this._current.expire(options);
   }

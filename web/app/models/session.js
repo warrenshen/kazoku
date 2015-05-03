@@ -34,10 +34,6 @@ class Session extends Model {
     ];
   }
 
-  get responseKey() {
-    return "session";
-  }
-
   // --------------------------------------------------
   // Endpoints
   // --------------------------------------------------

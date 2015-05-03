@@ -26,7 +26,7 @@ class Model extends Backbone.RelationalModel {
   }
 
   get responseKey() {
-    console.log("Model definition must include response key!");
+    return this.name.replace(/([a-z])([A-Z])/g, "$1_$2").toLowerCase();
   }
 
   get storeKey() {
@@ -60,6 +60,7 @@ class Model extends Backbone.RelationalModel {
   // @param response - raw json response from server.
   // @returns - attributes hash to be `set` to model.
   parse(response, options) {
+    console.log(this.responseKey);
     var attributes = response[this.responseKey];
     return attributes;
   }

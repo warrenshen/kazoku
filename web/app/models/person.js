@@ -10,6 +10,9 @@ import Routes from "../constants/routes.js";
 
 class Person extends Model {
 
+  // --------------------------------------------------
+  // Defaults
+  // --------------------------------------------------
   get defaults() {
     return {
       id: null,
@@ -19,7 +22,7 @@ class Person extends Model {
       image_url: "",
       family_name: "",
       family_id: null,
-    }
+    };
   }
 
   get name() {
@@ -30,10 +33,16 @@ class Person extends Model {
     return [];
   }
 
+  // --------------------------------------------------
+  // Endpoints
+  // --------------------------------------------------
   get createUrl() {
     return ApiRoutes.people.index;
   }
 
+  // --------------------------------------------------
+  // Attributes
+  // --------------------------------------------------
   get createAttributes() {
     return {
       person: {
@@ -47,6 +56,9 @@ class Person extends Model {
     };
   }
 
+  // --------------------------------------------------
+  // Requests
+  // --------------------------------------------------
   register(options={}) {
     var self = this;
     options.success = function(response, status, request) {

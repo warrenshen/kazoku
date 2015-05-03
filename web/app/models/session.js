@@ -17,7 +17,7 @@ class Session extends Model {
       auth_token: "",
       last_active_at: "",
       uuid: "",
-    }
+    };
   }
 
   get name() {
@@ -30,7 +30,7 @@ class Session extends Model {
         type: "HasOne",
         key: "person",
         relatedModel: Person,
-      }
+      },
     ];
   }
 

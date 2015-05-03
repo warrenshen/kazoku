@@ -38,13 +38,6 @@ class Model extends Backbone.RelationalModel {
   }
 
   // --------------------------------------------------
-  // Attributers
-  // --------------------------------------------------
-  get createAttributes() {
-    console.log("Model definition must include create attributes!")
-  }
-
-  // --------------------------------------------------
   // Endpoints
   // --------------------------------------------------
   get createUrl() {
@@ -57,6 +50,13 @@ class Model extends Backbone.RelationalModel {
 
   get requestUrl() {
     console.log("Model definition must include request url!")
+  }
+
+  // --------------------------------------------------
+  // Attributes
+  // --------------------------------------------------
+  get createAttributes() {
+    console.log("Model definition must include create attributes!")
   }
 
   // --------------------------------------------------

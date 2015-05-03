@@ -5,13 +5,16 @@ import Person from "./person.js";
 
 class Family extends Model {
 
+  // --------------------------------------------------
+  // Defaults
+  // --------------------------------------------------
   get defaults() {
     return {
       id: null,
       name: "",
       size: 0,
       events_count: 0,
-    }
+    };
   }
 
   get name() {
@@ -24,7 +27,7 @@ class Family extends Model {
         type: "HasMany",
         key: "people",
         relatedModel: Person,
-      }
+      },
     ];
   }
 }

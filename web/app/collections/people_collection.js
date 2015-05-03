@@ -1,16 +1,11 @@
-import Backbone from "backbone";
+import Collection from "app/templates/collection";
 
 import Person from "app/models/person";
 
 import ApiRoutes from "app/constants/api_routes";
 
 
-class PeopleCollection extends Backbone.Collection {
-
-  constructor(models=[], options={}, store) {
-    super(models, options);
-    this.store = store;
-  }
+class PeopleCollection extends Collection {
 
   get name() {
     return "PeopleCollection";
@@ -18,6 +13,10 @@ class PeopleCollection extends Backbone.Collection {
 
   get model() {
     return Person;
+  }
+
+  get responseKey() {
+
   }
 
   get url() {
@@ -35,14 +34,15 @@ class PeopleCollection extends Backbone.Collection {
   request(options={}) {
     var self = this;
     var success = options.success;
-    options.success = function(collection, response, options) {
+    options.success = function(collection, response, request) {
       var models = collection.models;
+      debugger
       models.map(function(model) {
         self.store.add(model);
       });
       self.store.emitChange();
     };
-    options.error = function(collection, response, options) {
+    options.error = function(collection, response, request) {
       console.log("collection error");
     };
     var response = this.fetch(options);

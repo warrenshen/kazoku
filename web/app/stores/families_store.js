@@ -7,6 +7,10 @@ import FamiliesCollection from "../collections/families_collection.js";
 
 class FamiliesStore extends Store {
 
+
+  // --------------------------------------------------
+  // Defaults
+  // --------------------------------------------------
   get name() {
     return "FamiliesStore";
   }
@@ -15,19 +19,26 @@ class FamiliesStore extends Store {
     return Family;
   }
 
-  collections() {
+  get collections() {
     return [
       FamiliesCollection,
     ];
   }
 
+  // --------------------------------------------------
+  // Getters
+  // --------------------------------------------------
+  getFamilies() {
+    return this._collections["FamiliesCollection"].models;
+  }
+
+  // --------------------------------------------------
+  // Requesters
+  // --------------------------------------------------
   requestFamilies() {
     return this._collections["FamiliesCollection"].request();
   }
 
-  getFamilies() {
-    return this._collections["FamiliesCollection"].models;
-  }
 }
 
 

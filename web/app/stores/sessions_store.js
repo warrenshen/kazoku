@@ -9,10 +9,14 @@ import Routes from "../constants/routes.js";
 
 class SessionsStore extends Store {
 
+  // Custom constructor to set `_current` to placeholder model.
   constructor() {
     super(new Session());
   }
 
+  // --------------------------------------------------
+  // Defaults
+  // --------------------------------------------------
   get name() {
     return "SessionsStore";
   }
@@ -21,10 +25,13 @@ class SessionsStore extends Store {
     return Session;
   }
 
-  collections() {
+  get collections() {
     return [];
   }
 
+  // --------------------------------------------------
+  // Requesters
+  // --------------------------------------------------
   // Only request session from server if current is a placeholder.
   requestCurrent() {
     if (!this._current.has("id")) {
@@ -35,6 +42,25 @@ class SessionsStore extends Store {
         "X-SESSION-UUID": Cookies.get("session_uuid"),
       };
       this._current.request(options);
+    }
+  }
+
+  // --------------------------------------------------
+  // Actions
+  // --------------------------------------------------
+  add(model, options={}) {
+    if (Cookies.get("session_uuid") === "") {
+      Cookies.set("session_uuid", model.get("uuid"));
+    }
+    // If conditional indicates that the client has created a new
+    // session so browser authorization cookies should be set.
+    if (options.shouldNavigate) {
+      Cookies.set("auth_email", model.get("auth_email"));
+      Cookies.set("auth_token", model.get("auth_token"));
+      this._current = model;
+      Kazoku.Router.navigate(Routes.pages.home, true);
+    } else {
+      this._current = model;
     }
   }
 
@@ -67,22 +93,6 @@ class SessionsStore extends Store {
       self.emitChange();
     };
     this._current.expire(options);
-  }
-
-  add(model, options={}) {
-    if (Cookies.get("session_uuid") === "") {
-      Cookies.set("session_uuid", model.get("uuid"));
-    }
-    // If conditional indicates that the client has created a new
-    // session so browser authorization cookies should be set.
-    if (options.shouldNavigate) {
-      Cookies.set("auth_email", model.get("auth_email"));
-      Cookies.set("auth_token", model.get("auth_token"));
-      this._current = model;
-      Kazoku.Router.navigate(Routes.pages.home, true);
-    } else {
-      this._current = model;
-    }
   }
 }
 

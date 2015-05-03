@@ -2,7 +2,8 @@ import Cookies from "cookies-js";
 
 import Model from "app/templates/model";
 
-import Family from "app/models/family";
+// import Family from "app/models/family";
+import Session from "app/models/session";
 
 import ApiRoutes from "app/constants/api_routes";
 import Routes from "app/constants/routes";
@@ -30,7 +31,18 @@ class Person extends Model {
   }
 
   get relations() {
-    return [];
+    return [
+      // {
+      //   type: "HasOne",
+      //   key: "family",
+      //   relatedModel: Family,
+      // },
+      {
+        type: "HasOne",
+        key: "session",
+        relatedModel: Session,
+      }
+    ];
   }
 
   // --------------------------------------------------

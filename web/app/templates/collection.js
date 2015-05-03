@@ -27,12 +27,8 @@ class Collection extends Backbone.Collection {
 
   parse(response, options) {
     var objects = response[this.responseKey];
-    var modelClass = this.model;
-    var models = objects.map(function(attributes) {
-      var model = new modelClass(attributes);
-      return model;
-    });
-    return models;
+    debugger
+    return objects;
   }
 
   request(options={}) {
@@ -43,7 +39,11 @@ class Collection extends Backbone.Collection {
     // @param response - unparse response from server.
     // @request - xhr object from ajax request.
     options.success = function(collection, response, request) {
-      var models = collection.models;
+      debugger
+      self.set(response[self.responseKey]);
+      debugger
+      var models = self.models;
+      debugger
       models.map(function(model) {
         self.store.add(model);
       });

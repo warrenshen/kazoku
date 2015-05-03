@@ -22,6 +22,8 @@ class Family extends Model {
   }
 
   get relations() {
+    var model = Person;
+    console.log(model);
     return [
       {
         type: "HasMany",

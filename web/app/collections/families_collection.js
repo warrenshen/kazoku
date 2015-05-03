@@ -5,7 +5,7 @@ import Family from "app/models/family";
 import ApiRoutes from "app/constants/api_routes";
 
 
-class FamiliesCollection extends Backbone.Collection {
+class FamiliesCollection extends Collection {
 
   get name() {
     return "FamiliesCollection";

@@ -15,6 +15,7 @@ class FamiliesPage extends ListeningComponent {
   }
 
   requestFromStore() {
+    FamiliesStore.requestFamilies();
     SessionsStore.requestCurrent();
   }
 

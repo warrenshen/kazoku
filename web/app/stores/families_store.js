@@ -7,7 +7,6 @@ import FamiliesCollection from "app/collections/families_collection";
 
 class FamiliesStore extends Store {
 
-
   // --------------------------------------------------
   // Defaults
   // --------------------------------------------------

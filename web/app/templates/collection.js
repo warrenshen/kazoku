@@ -17,6 +17,7 @@ class Collection extends Backbone.Collection {
   }
 
   get responseKey() {
+    // TODO: Should base this off plural form of model name.
     return this.name.substring(0, this.name.length - 10).toLowerCase();
   }
 
@@ -37,19 +38,21 @@ class Collection extends Backbone.Collection {
   request(options={}) {
     var self = this;
     var success = options.success;
+    // Adds all models in collection to associated store.
+    // @param collection - updated collection with fetched response (same as self).
+    // @param response - unparse response from server.
+    // @request - xhr object from ajax request.
     options.success = function(collection, response, request) {
       var models = collection.models;
-      debugger
       models.map(function(model) {
         self.store.add(model);
       });
       self.store.emitChange();
     };
     options.error = function(collection, response, request) {
-      console.log("collection error");
+      console.log(this.name + " request error!");
     };
-    var response = this.fetch(options);
-    return response;
+    this.fetch(options);
   }
 }
 

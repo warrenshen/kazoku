@@ -56,7 +56,8 @@ class Store extends Events.EventEmitter {
     if (model === undefined) {
       var modelClass = this.modelClass;
       var model = new modelClass({ id: id });
-      return model.request();
+      model.request();
+      return model;
     } else {
       return model;
     }
@@ -78,6 +79,7 @@ class Store extends Events.EventEmitter {
     } else {
       existingModel.set(model.attributes)
     }
+    // TODO: Decide if this conditional should be discontinued.
     if (options.shouldEmitChange) {
       this.emitChange();
     }

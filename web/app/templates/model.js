@@ -74,6 +74,11 @@ class Model extends Backbone.RelationalModel {
   create(options={}) {
     var self = this;
     if (options.success === undefined) {
+      // Parses response by calling `parse` method and sets
+      // the attributes of placeholder self accordingly.
+      // @param response - unparsed json response from server.
+      // @param status - string indicated success or error.
+      // @request - xhr object from ajax request.
       options.success = function(response, status, request) {
         var attributes = self.parse(response);
         self.set(attributes);
@@ -96,6 +101,7 @@ class Model extends Backbone.RelationalModel {
   destroy(options={}) {
     var self = this;
     if (options.success === undefined) {
+      // Success params parallel that of the `create` method above.
       options.success = function(response, status, request) {
         console.log(self.name + " destroy success!");
       };
@@ -114,13 +120,13 @@ class Model extends Backbone.RelationalModel {
     // Emit change indicating that the a newly fetched model
     // has been added to the store associated with this model.
     // @param model - updated model with fetched response (same as self).
-    // @param response - string indicated success or error.
+    // @param status - string indicated success or error.
     // @request - xhr object from ajax request.
-    options.success = function(model, response, request) {
+    options.success = function(model, status, request) {
       self.store.add(self);
       self.store.emitChange();
     };
-    options.error = function(model, response, request) {
+    options.error = function(model, status, request) {
       console.log(self.name + " request error!");
     };
     options.url = this.requestUrl;

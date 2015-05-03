@@ -2,14 +2,14 @@ var webpack = require("webpack");
 
 module.exports = {
   entry: [
-    "webpack-dev-server/client?http://localhost:3333/",
+    __dirname + "/app/kazoku.js",
     "webpack/hot/dev-server",
-    __dirname + "/app/kazoku.js"
+    "webpack-dev-server/client?http://localhost:3333/",
   ],
   output: {
     path: __dirname + "/build",
     filename: "bundle.js",
-    publicPath: "http://localhost:3333",
+    publicPath: "http://localhost:3333/",
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

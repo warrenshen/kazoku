@@ -1,6 +1,6 @@
 import Model from "app/templates/model";
 
-import Person from "app/person";
+import Person from "app/models/person";
 
 
 class Family extends Model {

@@ -2,7 +2,7 @@ import Cookies from "cookies-js";
 
 import Model from "app/templates/model";
 
-import Family from "app/family";
+import Family from "app/models/family";
 
 import ApiRoutes from "app/constants/api_routes";
 import Routes from "app/constants/routes";

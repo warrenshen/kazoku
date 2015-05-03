@@ -1,8 +1,8 @@
 import Events from "events";
 
-import Dispatcher from "../dispatcher.js";
+import Dispatcher from "app/dispatcher";
 
-import StoreDirectory from "../store_directory.js";
+import StoreDirectory from "app/store_directory";
 
 
 var CHANGE_EVENT = "change";

@@ -1,10 +1,10 @@
 import Cookies from "cookies-js";
 
-import Store from "../templates/store.js";
+import Store from "app/templates/store";
 
-import Session from "../models/session.js";
+import Session from "app/models/session";
 
-import Routes from "../constants/routes.js";
+import Routes from "app/constants/routes";
 
 
 class SessionsStore extends Store {

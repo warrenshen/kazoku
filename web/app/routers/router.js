@@ -1,13 +1,13 @@
 import Backbone from "backbone";
 import React from "react";
 
-import HomePage from "../components/home_page.jsx";
-import LoginPage from "../components/login_page.jsx";
-import SignupPage from "../components/signup_page.jsx";
-import PeoplePage from "../components/people_page.jsx";
-import PersonPage from "../components/person_page.jsx";
-import FamiliesPage from "../components/families_page.jsx";
-import FamilyPage from "../components/family_page.jsx";
+import HomePage from "app/components/home_page";
+import LoginPage from "app/components/login_page";
+import SignupPage from "app/components/signup_page";
+import PeoplePage from "app/components/people_page";
+import PersonPage from "app/components/person_page";
+import FamiliesPage from "app/components/families_page";
+import FamilyPage from "app/components/family_page";
 
 
 class Router extends Backbone.Router {

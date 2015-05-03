@@ -1,6 +1,6 @@
-import FamiliesStore from "./stores/families_store";
-import PeopleStore from "./stores/people_store";
-import SessionsStore from "./stores/sessions_store";
+import FamiliesStore from "app/stores/families_store";
+import PeopleStore from "app/stores/people_store";
+import SessionsStore from "app/stores/sessions_store";
 
 
 module.exports = [FamiliesStore, PeopleStore, SessionsStore];

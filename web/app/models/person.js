@@ -1,11 +1,11 @@
 import Cookies from "cookies-js";
 
-import Model from "../templates/model.js";
+import Model from "app/templates/model";
 
-import Family from "./family.js";
+import Family from "app/family";
 
-import ApiRoutes from "../constants/api_routes.js";
-import Routes from "../constants/routes.js";
+import ApiRoutes from "app/constants/api_routes";
+import Routes from "app/constants/routes";
 
 
 class Person extends Model {

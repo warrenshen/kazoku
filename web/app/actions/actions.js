@@ -1,4 +1,4 @@
-import Dispatcher from "../dispatcher.js";
+import Dispatcher from "app/dispatcher";
 
 
 class Actions {

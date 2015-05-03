@@ -1,12 +1,12 @@
 import Backbone from "backbone";
-import Router from "./routers/router.js";
+import Router from "app/routers/router";
 
-import Stores from "./stores.js";
+import Stores from "app/stores";
 
-import "./styles/main.scss";
-import "./styles/general.scss";
-import "./styles/specific.scss";
-import "./styles/pages.scss";
+import "app/styles/main.scss";
+import "app/styles/general.scss";
+import "app/styles/specific.scss";
+import "app/styles/pages.scss";
 
 
 class Kazoku {

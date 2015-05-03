@@ -1,8 +1,8 @@
-import Model from "../templates/model.js";
+import Model from "app/templates/model";
 
-import Person from "./person.js";
+import Person from "app/person";
 
-import ApiRoutes from "../constants/api_routes.js";
+import ApiRoutes from "app/constants/api_routes";
 
 
 class Session extends Model {

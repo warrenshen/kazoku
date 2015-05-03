@@ -1,4 +1,4 @@
-class PersonSerializer < ActiveModel::Serializer
-  attributes :id, :first_name, :last_name, :image_url,
-             :family_name, :family_id
+class PersonSerializer < BaseSerializer
+  attributes :id, :first_name, :last_name, :email,
+             :image_url, :family_name, :family_id
 end

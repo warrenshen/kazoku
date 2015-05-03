@@ -14,6 +14,10 @@ class FamiliesPage extends ListeningComponent {
     return [FamiliesStore, SessionsStore];
   }
 
+  requestFromStore() {
+    SessionsStore.requestCurrent();
+  }
+
   getStoreState() {
     return {
       families: FamiliesStore.getFamilies(),

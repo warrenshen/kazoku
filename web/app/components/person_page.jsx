@@ -14,8 +14,8 @@ class PersonPage extends ListeningComponent {
     return [PeopleStore, SessionsStore];
   }
 
-  getDefaultState() {
-    return this.getStoreState();
+  requestFromStore() {
+    SessionsStore.requestCurrent();
   }
 
   getStoreState() {
@@ -23,19 +23,6 @@ class PersonPage extends ListeningComponent {
       person: PeopleStore.getById(this.props.id),
       session: SessionsStore.getCurrent(),
     }
-  }
-
-  componentDidMount() {
-    PeopleStore.addChangeListener(this._onChange.bind(this));
-    PeopleStore.requestPerson(this.props.id);
-  }
-
-  componentWillUnmount() {
-    PeopleStore.removeChangeListener(this._onChange.bind(this));
-  }
-
-  _onChange() {
-    this.setState(this.getStoreState());
   }
 
   render() {

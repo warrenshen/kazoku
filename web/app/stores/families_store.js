@@ -7,32 +7,36 @@ import FamiliesCollection from "../collections/families_collection.js";
 
 class FamiliesStore extends Store {
 
+
+  // --------------------------------------------------
+  // Defaults
+  // --------------------------------------------------
   get name() {
     return "FamiliesStore";
   }
 
-  collections() {
+  get modelClass() {
+    return Family;
+  }
+
+  get collections() {
     return [
       FamiliesCollection,
     ];
   }
 
-  requestFamily(id) {
-    var existingObject = this._all[id];
-    if (existingObject === undefined) {
-      // var family = new Family({id: id});
-      // person.request();
-    } else {
-      return existingObject;
-    }
-  }
-
-  requestFamilies() {
-    return this._collections["FamiliesCollection"].request();
-  }
-
+  // --------------------------------------------------
+  // Gets
+  // --------------------------------------------------
   getFamilies() {
     return this._collections["FamiliesCollection"].models;
+  }
+
+  // --------------------------------------------------
+  // Requests
+  // --------------------------------------------------
+  requestFamilies() {
+    return this._collections["FamiliesCollection"].request();
   }
 }
 

@@ -1,11 +1,12 @@
 class Api::PeopleController < Api::BaseController
-  load_and_authorize_resource param_method: :person_params, except: [:me, :search]
+  load_and_authorize_resource param_method: :person_params, except: [:search]
   skip_before_filter :authenticate_person!, except: [:update]
 
   def create
     if @person.save
       sign_in(@person)
-      render json: @person, serializer: PersonSerializer
+      # Special serializer that includes the person's auth_token.
+      render json: @person, serializer: AuthorizedSerializer
     else
       api_error_response(@person)
     end

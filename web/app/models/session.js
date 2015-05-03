@@ -7,6 +7,9 @@ import ApiRoutes from "../constants/api_routes.js";
 
 class Session extends Model {
 
+  // --------------------------------------------------
+  // Defaults
+  // --------------------------------------------------
   get defaults() {
     return {
       id: null,
@@ -14,7 +17,11 @@ class Session extends Model {
       auth_token: "",
       last_active_at: "",
       uuid: "",
-    }
+    };
+  }
+
+  get name() {
+    return "Session";
   }
 
   get relations() {
@@ -23,18 +30,13 @@ class Session extends Model {
         type: "HasOne",
         key: "person",
         relatedModel: Person,
-      }
+      },
     ];
   }
 
-  get name() {
-    return "Session";
-  }
-
-  get urlRoot() {
-    return ApiRoutes.sessions.me;
-  }
-
+  // --------------------------------------------------
+  // Endpoints
+  // --------------------------------------------------
   get createUrl() {
     return ApiRoutes.sessions.login;
   }
@@ -43,55 +45,28 @@ class Session extends Model {
     return ApiRoutes.sessions.logout;
   }
 
-  // @param response - raw json response from server.
-  // @returns - attributes hash to be `set` to model.
-  parse(response, options) {
-    var attributes = response.session;
-    return attributes;
+  get requestUrl() {
+    return ApiRoutes.sessions.me;
   }
 
-  request(options={}) {
+  // --------------------------------------------------
+  // Requests
+  // --------------------------------------------------
+  establish(options={}) {
     var self = this;
-    options.success = function(model, response, options) {
-      if (response.session !== null) {
-        self.store.add(model);
-        self.store.emitChange();
-      }
-    };
-    options.error = function(model, response, options) {
-      console.log("request error:");
-      console.log(model);
-    }
-    var response = this.fetch(options);
-    return response;
-  }
-
-  create(options={}) {
-    var self = this;
-    options.success = function(model, response, options) {
-      self.store.add(self);
+    // Emit change indicating that current session has been replaced.
+    options.success = function(response, status, request) {
+      var attributes = self.parse(response);
+      self.set(attributes);
+      self.unset("session", { silent: true });
+      self.store.add(self, { shouldNavigate: true });
       self.store.emitChange();
     };
-    options.error = function(model, response, options) {
-      console.log("create session error:");
-      console.log(response);
-    };
-    options.url = this.createUrl;
-    var attributes = options.attrs
-    delete options.attrs
-    var response = this.save(attributes, options);
-    return response;
+    this.create(options);
   }
 
   expire(options={}) {
-    var self = this;
-    options.error = function(model, response, options) {
-      console.log("destroy session error:");
-      console.log(response);
-    };
-    options.url = this.destroyUrl;
-    var response = this.destroy(options);
-    return response;
+    this.destroy(options);
   }
 }
 

@@ -16,23 +16,33 @@ class Store extends Events.EventEmitter {
     this._collections = {};
   }
 
-  get name() {
-    return "Store";
-  }
-
-  collections() {
-    return [];
-  }
-
   initialize() {
     var self = this;
     StoreDirectory.add(this);
-    this.collections().map(function(collectionClass) {
+    this.collections.map(function(collectionClass) {
       var collection = new collectionClass([], {}, self);
       self._collections[collection.name] = collection;
     });
   }
 
+  // --------------------------------------------------
+  // Defaults
+  // --------------------------------------------------
+  get name() {
+    console.log("Store definition must include store name!");
+  }
+
+  get modelClass() {
+    console.log("Store definition must include associated model class!");
+  }
+
+  get collections() {
+    return [];
+  }
+
+  // --------------------------------------------------
+  // Gets
+  // --------------------------------------------------
   getAll() {
     return this._all;
   }
@@ -44,32 +54,48 @@ class Store extends Events.EventEmitter {
   getById(id) {
     var model = this._all[id];
     if (model === undefined) {
-      var modelClass = this.modelClass();
+      var modelClass = this.modelClass;
       var model = new modelClass({ id: id });
       model.request();
+      return model;
     } else {
       return model;
     }
   }
 
-  add(model, options={}) {
-    var key = model.key;
-    var existingModel = this._all[key];
-    var shouldEmitChange = options.shouldEmitChange;
+  // --------------------------------------------------
+  // Requests
+  // --------------------------------------------------
 
+
+  // --------------------------------------------------
+  // Actions
+  // --------------------------------------------------
+  add(model, options={}) {
+    var storeKey = model.storeKey;
+    var existingModel = this._all[storeKey];
     if (existingModel === undefined) {
-      this._all[key] = model;
+      this._all[storeKey] = model;
     } else {
       existingModel.set(model.attributes)
     }
-
-    if (shouldEmitChange) {
+    // TODO: Decide if this conditional should be discontinued.
+    if (options.shouldEmitChange) {
       this.emitChange();
     }
   }
 
+  create(attributes, options={}) {
+    var modelClass = this.modelClass;
+    var model = new modelClass(attributes);
+    model.create(options);
+  }
+
+  // --------------------------------------------------
+  // Events
+  // --------------------------------------------------
   addChangeListener(callback) {
-    this.on(CHANGE_EVENT, callback);
+    this.addListener(CHANGE_EVENT, callback);
   }
 
   removeChangeListener(callback) {

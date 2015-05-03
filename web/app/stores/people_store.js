@@ -7,32 +7,44 @@ import PeopleCollection from "../collections/people_collection.js";
 
 class PeopleStore extends Store {
 
+  // --------------------------------------------------
+  // Defaults
+  // --------------------------------------------------
   get name() {
     return "PeopleStore";
   }
 
-  collections() {
+  get modelClass() {
+    return Person;
+  }
+
+  get collections() {
     return [
       PeopleCollection,
     ];
   }
 
-  // requestPerson(id) {
-  //   var existingObject = this._all[id];
-  //   if (existingObject === undefined) {
-  //     // var person = new Person({id: id});
-  //     // person.request();
-  //   } else {
-  //     return existingObject;
-  //   }
-  // }
+  // --------------------------------------------------
+  // Gets
+  // --------------------------------------------------
+  getPeople() {
+    return this._collections["PeopleCollection"].models;
+  }
 
+  // --------------------------------------------------
+  // Requests
+  // --------------------------------------------------
   requestPeople() {
     return this._collections["PeopleCollection"].request();
   }
 
-  getPeople() {
-    return this._collections["PeopleCollection"].models;
+  // --------------------------------------------------
+  // Actions
+  // --------------------------------------------------
+  // Custom create that calls `register` instead of default 'create'.
+  create(attributes, options={}) {
+    var person = new Person(attributes);
+    person.register(options);
   }
 }
 

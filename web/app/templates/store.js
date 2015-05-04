@@ -80,7 +80,6 @@ class Store extends Events.EventEmitter {
       // TODO: Maybe shouldn't always reset attributes?
       existingModel.set(model.attributes)
     }
-    // TODO: Decide if this conditional should be discontinued.
     if (options.shouldEmitChange) {
       this.emitChange();
     }

@@ -82,9 +82,8 @@ class Person extends Model {
       Cookies.set("auth_token", self.get("auth_token"));
       self.unset("auth_token", { silent: true });
       self.unset("password", { silent: true });
-      self.store.add(self);
+      self.store.add(self, { shouldEmitChange: true });
       Kazoku.Router.navigate(Routes.pages.home, true);
-      self.store.emitChange();
     };
     return this.create(options);
   }

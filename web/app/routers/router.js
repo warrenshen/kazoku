@@ -12,6 +12,10 @@ import FamilyPage from "app/components/family_page";
 
 class Router extends Backbone.Router {
 
+  get name() {
+    return "Router";
+  }
+
   routes() {
     return {
       "": "home",
@@ -75,4 +79,4 @@ class Router extends Backbone.Router {
 }
 
 
-module.exports = Router;
+module.exports = new Router();

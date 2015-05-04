@@ -12,7 +12,6 @@ class Store extends Events.EventEmitter {
     this._all = {};
     this._current = null;
     this._collections = {};
-    this.initialize();
   }
 
   initialize() {

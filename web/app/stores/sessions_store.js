@@ -11,10 +11,14 @@ import Routes from "app/constants/routes";
 
 class SessionsStore extends Store {
 
-  // Custom constructor to set `_current` to placeholder model.
-  constructor() {
-    super();
-    // this._current = new Session();
+  initialize() {
+    var self = this;
+    this.collections.map(function(collectionClass) {
+      var collection = new collectionClass();
+      self._collections[collection.name] = collection;
+    });
+    // Custom initialize to set `this._current` to a placeholder session.
+    this._current = new Session();
   }
 
   // --------------------------------------------------

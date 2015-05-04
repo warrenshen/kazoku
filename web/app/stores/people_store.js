@@ -14,7 +14,7 @@ class PeopleStore extends Store {
     return "PeopleStore";
   }
 
-  get modelClass() {
+  get model() {
     return Person;
   }
 
@@ -25,17 +25,17 @@ class PeopleStore extends Store {
   }
 
   // --------------------------------------------------
-  // Gets
-  // --------------------------------------------------
-  getPeople() {
-    return this._collections["PeopleCollection"].models;
-  }
-
-  // --------------------------------------------------
   // Requests
   // --------------------------------------------------
   requestPeople() {
     return this._collections["PeopleCollection"].request();
+  }
+
+  // --------------------------------------------------
+  // Gets
+  // --------------------------------------------------
+  getPeople() {
+    return this._collections["PeopleCollection"].models;
   }
 
   // --------------------------------------------------

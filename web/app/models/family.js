@@ -1,6 +1,5 @@
 import Model from "app/templates/model";
-
-import Person from "app/models/person";
+import ModelDirectory from "app/model_directory";
 
 
 class Family extends Model {
@@ -26,7 +25,7 @@ class Family extends Model {
       {
         type: "HasMany",
         key: "people",
-        relatedModel: Person,
+        relatedModel: ModelDirectory.get("Person"),
       },
     ];
   }

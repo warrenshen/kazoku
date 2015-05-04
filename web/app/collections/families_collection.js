@@ -1,16 +1,11 @@
-import Backbone from "backbone";
+import Collection from "app/templates/collection";
 
 import Family from "app/models/family";
 
 import ApiRoutes from "app/constants/api_routes";
 
 
-class FamiliesCollection extends Backbone.Collection {
-
-  constructor(models=[], options={}, store) {
-    super(models, options);
-    this.store = store;
-  }
+class FamiliesCollection extends Collection {
 
   get name() {
     return "FamiliesCollection";
@@ -20,31 +15,8 @@ class FamiliesCollection extends Backbone.Collection {
     return Family;
   }
 
-  get url() {
+  get requestUrl() {
     return ApiRoutes.families.index;
-  }
-
-  get key() {
-    return "families";
-  }
-
-  parse(response, options) {
-    return response[this.key];
-  }
-
-  request(options={}) {
-    var self = this;
-    var success = options.success;
-    options.success = function(collection, response, options) {
-      var models = collection.models;
-      models.map(function(model) { self.store.add(model); });
-      self.store.emitChange();
-    };
-    options.error = function(collection, response, options) {
-      console.log("collection error");
-    };
-    var response = this.fetch(options);
-    return response;
   }
 }
 

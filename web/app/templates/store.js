@@ -2,8 +2,6 @@ import Events from "events";
 
 import Dispatcher from "app/dispatcher";
 
-import StoreDirectory from "app/store_directory";
-
 
 var CHANGE_EVENT = "change";
 
@@ -14,13 +12,13 @@ class Store extends Events.EventEmitter {
     this._all = {};
     this._current = current;
     this._collections = {};
+    this.initialize();
   }
 
   initialize() {
     var self = this;
-    StoreDirectory.add(this);
     this.collections.map(function(collectionClass) {
-      var collection = new collectionClass([], {}, self);
+      var collection = new collectionClass();
       self._collections[collection.name] = collection;
     });
   }
@@ -32,12 +30,19 @@ class Store extends Events.EventEmitter {
     console.log("Store definition must include store name!");
   }
 
-  get modelClass() {
-    console.log("Store definition must include associated model class!");
+  get model() {
+    console.log("Store definition must include associated model!");
   }
 
   get collections() {
     return [];
+  }
+
+  // --------------------------------------------------
+  // Requests
+  // --------------------------------------------------
+  requestById(id) {
+    console.log("requesting by id!");
   }
 
   // --------------------------------------------------
@@ -53,8 +58,9 @@ class Store extends Events.EventEmitter {
 
   getById(id) {
     var model = this._all[id];
+    debugger
     if (model === undefined) {
-      var modelClass = this.modelClass;
+      var modelClass = this.model;
       var model = new modelClass({ id: id });
       model.request();
       return model;
@@ -62,11 +68,6 @@ class Store extends Events.EventEmitter {
       return model;
     }
   }
-
-  // --------------------------------------------------
-  // Requests
-  // --------------------------------------------------
-
 
   // --------------------------------------------------
   // Actions
@@ -86,7 +87,7 @@ class Store extends Events.EventEmitter {
   }
 
   create(attributes, options={}) {
-    var modelClass = this.modelClass;
+    var modelClass = this.model;
     var model = new modelClass(attributes);
     model.create(options);
   }

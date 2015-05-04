@@ -1,9 +1,7 @@
 import Cookies from "cookies-js";
 
 import Model from "app/templates/model";
-
-import Family from "app/models/family";
-
+import ModelDirectory from "app/model_directory";
 import ApiRoutes from "app/constants/api_routes";
 import Routes from "app/constants/routes";
 
@@ -30,7 +28,18 @@ class Person extends Model {
   }
 
   get relations() {
-    return [];
+    return [
+      {
+        type: "HasOne",
+        key: "family",
+        relatedModel: ModelDirectory.get("Family"),
+      },
+      {
+        type: "HasOne",
+        key: "session",
+        relatedModel: ModelDirectory.get("Session"),
+      }
+    ];
   }
 
   // --------------------------------------------------
@@ -64,6 +73,7 @@ class Person extends Model {
     options.success = function(response, status, request) {
       var attributes = self.parse(response);
       self.set(attributes);
+      // TODO: Set cookies and navigate in session store.
       Cookies.set("auth_email", self.get("email"));
       Cookies.set("auth_token", self.get("auth_token"));
       self.unset("auth_token", { silent: true });

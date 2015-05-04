@@ -8,23 +8,17 @@ import Person from "app/models/person";
 
 class FamilyMembers extends Component {
 
-  getMembers() {
-    return this.props.family.get("people").map(function(attributes) {
-      return new Person(attributes);
-    });
-  }
-
   render() {
     return (
       <PeopleList
         session={this.props.session}
-        people={this.getMembers()} />
+        people={this.props.family.get("people")} />
     );
   }
 }
 
 FamilyMembers.propTypes = {
-  family:  React.PropTypes.object.isRequired,
+  family: React.PropTypes.object.isRequired,
 }
 
 FamilyMembers.defaultProps = {

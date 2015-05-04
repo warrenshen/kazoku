@@ -16,12 +16,13 @@ class FamilyPage extends ListeningComponent {
   }
 
   requestFromStore() {
+    // FamiliesStore.requestById(this.props.id);
     SessionsStore.requestCurrent();
   }
 
   getStoreState() {
     return {
-      family: FamiliesStore.getFamily(this.props.id),
+      family: FamiliesStore.getById(this.props.id),
       session: SessionsStore.getCurrent(),
     }
   }

@@ -55,24 +55,15 @@ class SessionsStore extends Store {
   // --------------------------------------------------
   // Actions
   // --------------------------------------------------
-  // Custom method to handle successful login redirection.
-  add(model, options={}) {
-    if (Cookies.get("session_uuid") === "") {
-      Cookies.set("session_uuid", model.get("uuid"));
-    }
-    // If conditional indicates that the client has created a new
-    // session so browser authorization cookies should be set.
-    if (options.shouldNavigate) {
-      Cookies.set("auth_email", model.get("auth_email"));
-      Cookies.set("auth_token", model.get("auth_token"));
-      this._current = model;
-      RouterDirectory.get("Router").navigate(Routes.pages.home, true);
-    } else {
-      this._current = model;
-    }
-    if (options.shouldEmitChange) {
-      this.emitChange();
-    }
+  // Establishes a new session, setting cookies, navigating home,
+  // and setting `this._current` to the given session.
+  establish(session) {
+    Cookies.set("session_uuid", session.get("uuid"));
+    Cookies.set("auth_email", session.get("auth_email"));
+    Cookies.set("auth_token", session.get("auth_token"));
+    this._current = session;
+    this.emitChange();
+    RouterDirectory.get("Router").navigate(Routes.pages.home, true);
   }
 
   login(credentials) {

@@ -57,7 +57,9 @@ class Session extends Model {
       var attributes = self.parse(response);
       self.set(attributes);
       self.unset("session", { silent: true });
-      self.store.add(self, { shouldEmitChange: true, shouldNavigate: true });
+      // Don't need to explicitly call `self.store.emitChange`
+      // because `self.store.establish` handles that already.
+      self.store.establish(self);
     };
     this.create(options);
   }

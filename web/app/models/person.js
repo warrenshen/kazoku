@@ -83,7 +83,7 @@ class Person extends Model {
       Cookies.set("auth_token", self.get("auth_token"));
       self.unset("auth_token", { silent: true });
       self.unset("password", { silent: true });
-      self.store.add(self, { shouldEmitChange: true });
+      self.store.emitChange();
       RouterDirectory.get("Router").navigate(Routes.pages.home, true);
     };
     return this.create(options);

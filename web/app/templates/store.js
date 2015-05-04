@@ -79,9 +79,6 @@ class Store extends Events.EventEmitter {
       // TODO: Maybe shouldn't always reset attributes?
       existingModel.set(model.attributes)
     }
-    if (options.shouldEmitChange) {
-      this.emitChange();
-    }
   }
 
   create(attributes, options={}) {

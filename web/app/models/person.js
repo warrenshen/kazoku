@@ -2,6 +2,7 @@ import Cookies from "cookies-js";
 
 import Model from "app/templates/model";
 import ModelDirectory from "app/model_directory";
+import RouterDirectory from "app/router_directory";
 import ApiRoutes from "app/constants/api_routes";
 import Routes from "app/constants/routes";
 
@@ -83,7 +84,7 @@ class Person extends Model {
       self.unset("auth_token", { silent: true });
       self.unset("password", { silent: true });
       self.store.add(self, { shouldEmitChange: true });
-      Kazoku.Router.navigate(Routes.pages.home, true);
+      RouterDirectory.get("Router").navigate(Routes.pages.home, true);
     };
     return this.create(options);
   }

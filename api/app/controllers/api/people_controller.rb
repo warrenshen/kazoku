@@ -3,7 +3,7 @@ class Api::PeopleController < Api::BaseController
   skip_before_filter :authenticate_person!, except: [:update]
 
   def create
-    if @person.save
+    if @person.save!
       sign_in(@person)
       # Special serializer that includes the person's auth_token.
       render json: @person, serializer: AuthorizedSerializer

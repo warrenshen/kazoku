@@ -14,7 +14,7 @@ class Api::People::SessionsController < Api::BaseController
   def destroy
     if !@current_session.nil?
       sign_out(@current_session.person)
-      @current_session.update(is_expired: true)
+      @current_session.expire
       current_session_response
     else
       api_error_response

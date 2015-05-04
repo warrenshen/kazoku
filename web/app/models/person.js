@@ -49,6 +49,10 @@ class Person extends Model {
     return ApiRoutes.people.index;
   }
 
+  get requestUrl() {
+    return ApiRoutes.people.index + "/" + this.get("id");
+  }
+
   // --------------------------------------------------
   // Attributes
   // --------------------------------------------------

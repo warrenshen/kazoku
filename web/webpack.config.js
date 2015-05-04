@@ -9,11 +9,11 @@ module.exports = {
   output: {
     path: __dirname + "/build",
     filename: "bundle.js",
-    publicPath: "http://localhost:3333/",
+    publicPath: "/",
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
   ],
   module: {
     loaders: [

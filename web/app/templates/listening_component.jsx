@@ -13,6 +13,8 @@ class ListeningComponent extends Component {
   }
 
   getDefaultState() {
+    // TODO: Move this request call to a different lifecycle method.
+    this.requestFromStore();
     return this.getStoreState();
   }
 
@@ -26,8 +28,6 @@ class ListeningComponent extends Component {
     this.stores().map(function(store) {
       store.addChangeListener(self._onChange.bind(self));
     });
-    // TODO: Move this request call to a different lifecycle method.
-    this.requestFromStore();
   }
 
   componentWillUnmount() {

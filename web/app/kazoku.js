@@ -16,6 +16,7 @@ import "app/styles/pages.scss";
 class Kazoku {
 
   constructor(models, stores) {
+    console.log("starting up!");
     this.Router = new Router();
     this.initialize(models, stores);
     Backbone.history.start({ pushState: true });

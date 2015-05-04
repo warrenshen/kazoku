@@ -41,6 +41,7 @@ class SessionsStore extends Store {
   // --------------------------------------------------
   // Only request session from server if current is a placeholder.
   requestCurrent() {
+    debugger
     if (!this._current.has("id")) {
       var options = {};
       options.headers = {

@@ -1,5 +1,6 @@
 import Model from "app/templates/model";
 import ModelDirectory from "app/model_directory";
+import ApiRoutes from "app/constants/api_routes";
 
 
 class Family extends Model {
@@ -28,6 +29,13 @@ class Family extends Model {
         relatedModel: ModelDirectory.get("Person"),
       },
     ];
+  }
+
+  // --------------------------------------------------
+  // Endpoints
+  // --------------------------------------------------
+  get requestUrl() {
+    return ApiRoutes.families.index + "/" + this.get("id");
   }
 }
 

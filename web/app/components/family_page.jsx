@@ -16,7 +16,7 @@ class FamilyPage extends ListeningComponent {
   }
 
   requestFromStore() {
-    // FamiliesStore.requestById(this.props.id);
+    FamiliesStore.requestById(this.props.id);
     SessionsStore.requestCurrent();
   }
 
@@ -42,7 +42,7 @@ class FamilyPage extends ListeningComponent {
   render() {
     return (
       <div className="general-page">
-        <Header session={this.props.session} isColored={true} />
+        <Header session={this.state.session} isColored={true} />
         <section className="general-banner">
           <FamilyProfile
             session={this.state.session}

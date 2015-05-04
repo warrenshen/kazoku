@@ -20,6 +20,7 @@ class PersonPage extends ListeningComponent {
   }
 
   getStoreState() {
+    debugger
     return {
       person: PeopleStore.getById(this.props.id),
       session: SessionsStore.getCurrent(),

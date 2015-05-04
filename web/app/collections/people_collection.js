@@ -15,7 +15,7 @@ class PeopleCollection extends Collection {
     return Person;
   }
 
-  get url() {
+  get requestUrl() {
     return ApiRoutes.people.index;
   }
 }

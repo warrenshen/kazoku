@@ -15,7 +15,7 @@ class FamiliesCollection extends Collection {
     return Family;
   }
 
-  get url() {
+  get requestUrl() {
     return ApiRoutes.families.index;
   }
 }

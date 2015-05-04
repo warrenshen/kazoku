@@ -66,13 +66,11 @@ class Model extends Backbone.RelationalModel {
   // --------------------------------------------------
   // Requests
   // --------------------------------------------------
-
   // Called by custom create and request explicitly.
   // @param response - raw json response from server.
   // @returns - attributes hash to be `set` to model.
   parse(response, options={}) {
     var attributes = response[this.responseKey];
-    debugger
     return attributes;
   }
 
@@ -124,12 +122,12 @@ class Model extends Backbone.RelationalModel {
 
   request(options={}) {
     var self = this;
-    // Emit change indicating that the a newly fetched model
-    // has been added to the store associated with this model.
-    // @param response - unparsed response from server.
-    // @param status - string indicated success or error.
-    // @request - xhr object from ajax request.
     if (options.success === undefined) {
+      // Emit change indicating that the a newly fetched model
+      // has been added to the store associated with this model.
+      // @param response - unparsed response from server.
+      // @param status - string indicated success or error.
+      // @request - xhr object from ajax request.
       options.success = function(response, status, request) {
         var attributes = self.parse(response);
         if (attributes !== undefined) {

@@ -57,9 +57,7 @@ class Collection extends Backbone.Collection {
           self.set(objects);
           var models = self.models;
           // TODO: Try setting up models to add self to store.
-          models.map(function(model) {
-            self.store.add(model);
-          });
+          models.map(function(model) { self.store.add(model); });
           self.store.emitChange();
         }
       };

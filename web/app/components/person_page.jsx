@@ -15,6 +15,7 @@ class PersonPage extends ListeningComponent {
   }
 
   requestFromStore() {
+    PeopleStore.requestById(this.props.id);
     SessionsStore.requestCurrent();
   }
 

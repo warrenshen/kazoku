@@ -42,7 +42,15 @@ class Store extends Events.EventEmitter {
   // Requests
   // --------------------------------------------------
   requestById(id) {
-    console.log("requesting by id!");
+    var model = this._all[id];
+    if (model === undefined) {
+      // Instantiate a placeholder model to return while
+      // asynchronously waiting for the request response.
+      var modelClass = this.model;
+      var model = new modelClass({ id: id });
+      this._all[id] = model;
+      model.request();
+    }
   }
 
   // --------------------------------------------------
@@ -57,16 +65,7 @@ class Store extends Events.EventEmitter {
   }
 
   getById(id) {
-    var model = this._all[id];
-    debugger
-    if (model === undefined) {
-      var modelClass = this.model;
-      var model = new modelClass({ id: id });
-      model.request();
-      return model;
-    } else {
-      return model;
-    }
+    return this._all[id];
   }
 
   // --------------------------------------------------
@@ -78,9 +77,9 @@ class Store extends Events.EventEmitter {
     if (existingModel === undefined) {
       this._all[storeKey] = model;
     } else {
+      // TODO: Maybe shouldn't always reset attributes?
       existingModel.set(model.attributes)
     }
-    // TODO: Decide if this conditional should be discontinued.
     if (options.shouldEmitChange) {
       this.emitChange();
     }

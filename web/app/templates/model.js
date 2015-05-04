@@ -11,7 +11,7 @@ class Model extends Backbone.RelationalModel {
   }
 
   initialize() {
-    console.log(this.name);
+    console.log("Initializing model: " + this.name);
   }
 
   // --------------------------------------------------
@@ -86,8 +86,7 @@ class Model extends Backbone.RelationalModel {
         var attributes = self.parse(response);
         if (attributes !== undefined) {
           self.set(attributes);
-          self.store.add(self);
-          self.store.emitChange();
+          self.store.add(self, { shouldEmitChange: true });
         }
       };
     }
@@ -132,8 +131,7 @@ class Model extends Backbone.RelationalModel {
         var attributes = self.parse(response);
         if (attributes !== undefined) {
           self.set(attributes);
-          self.store.add(self);
-          self.store.emitChange();
+          self.store.add(self, { shouldEmitChange: true });
         }
       };
     }

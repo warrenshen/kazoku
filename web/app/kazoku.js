@@ -1,7 +1,10 @@
 import Backbone from "backbone";
 import Router from "app/routers/router";
 
+import Models from "app/models";
 import Stores from "app/stores";
+
+import ModelDirectory from "app/model_directory";
 
 import "app/styles/main.scss";
 import "app/styles/general.scss";
@@ -11,14 +14,16 @@ import "app/styles/pages.scss";
 
 class Kazoku {
 
-  constructor(stores) {
-    console.log("starting up");
+  constructor(models, stores) {
     this.Router = new Router();
-    this.initialize(stores);
+    this.initialize(models, stores);
     Backbone.history.start({ pushState: true });
   }
 
-  initialize(stores) {
+  initialize(models, stores) {
+    models.map(function(model) {
+      ModelDirectory.add(model);
+    });
     stores.map(function(store) {
       store.initialize();
     });
@@ -26,7 +31,7 @@ class Kazoku {
 }
 
 // TODO: Remove global scoping (currently for navigation purposes).
-var App = new Kazoku(Stores);
+var App = new Kazoku(Models, Stores);
 window.Kazoku = App;
 
 

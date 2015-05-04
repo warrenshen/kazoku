@@ -5,6 +5,7 @@ import Models from "app/models";
 import Stores from "app/stores";
 
 import ModelDirectory from "app/model_directory";
+import StoreDirectory from "app/store_directory";
 
 import "app/styles/main.scss";
 import "app/styles/general.scss";
@@ -25,7 +26,7 @@ class Kazoku {
       ModelDirectory.add(model);
     });
     stores.map(function(store) {
-      store.initialize();
+      StoreDirectory.add(store);
     });
   }
 }

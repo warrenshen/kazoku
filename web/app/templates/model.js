@@ -10,6 +10,10 @@ class Model extends Backbone.RelationalModel {
     super(attributes, options);
   }
 
+  initialize() {
+    console.log(this.name);
+  }
+
   // --------------------------------------------------
   // Defaults
   // --------------------------------------------------

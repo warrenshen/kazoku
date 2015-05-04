@@ -2,8 +2,6 @@ import Events from "events";
 
 import Dispatcher from "app/dispatcher";
 
-import StoreDirectory from "app/store_directory";
-
 
 var CHANGE_EVENT = "change";
 
@@ -14,11 +12,11 @@ class Store extends Events.EventEmitter {
     this._all = {};
     this._current = current;
     this._collections = {};
+    this.initialize();
   }
 
   initialize() {
     var self = this;
-    StoreDirectory.add(this);
     this.collections.map(function(collectionClass) {
       var collection = new collectionClass([], {}, self);
       self._collections[collection.name] = collection;

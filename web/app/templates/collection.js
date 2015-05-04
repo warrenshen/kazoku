@@ -26,8 +26,8 @@ class Collection extends Backbone.Collection {
   }
 
   parse(response, options) {
+    // TODO: Request calls this but doesn't set anything with it.
     var objects = response[this.responseKey];
-    debugger
     return objects;
   }
 
@@ -35,15 +35,14 @@ class Collection extends Backbone.Collection {
     var self = this;
     var success = options.success;
     // Adds all models in collection to associated store.
-    // @param collection - updated collection with fetched response (same as self).
+    // @param collection - not-updated collection (same as self).
     // @param response - unparse response from server.
     // @request - xhr object from ajax request.
     options.success = function(collection, response, request) {
-      debugger
+      // TODO: This is really just parsing again, maybe fix by using `sync`?
       self.set(response[self.responseKey]);
-      debugger
       var models = self.models;
-      debugger
+      // TODO: Try setting up models to add self to store.
       models.map(function(model) {
         self.store.add(model);
       });

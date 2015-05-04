@@ -9,7 +9,7 @@ module.exports = {
   output: {
     path: __dirname + "/build",
     filename: "bundle.js",
-    publicPath: "/",
+    publicPath: "http://localhost:3333/",
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

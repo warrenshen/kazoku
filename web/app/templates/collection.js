@@ -1,13 +1,12 @@
 import Backbone from "backbone";
 
-import Model from "app/templates/model";
+import StoreDirectory from "app/store_directory";
 
 
 class Collection extends Backbone.Collection {
 
-  constructor(models=[], options={}, store) {
+  constructor(models=[], options={}) {
     super(models, options);
-    this.store = store;
   }
 
   // --------------------------------------------------
@@ -19,12 +18,15 @@ class Collection extends Backbone.Collection {
 
   get model() {
     console.log("Collection definition must include model class!");
-    return Model;
   }
 
   get responseKey() {
     // TODO: Should base this off plural form of model name.
     return this.name.substring(0, this.name.length - 10).toLowerCase();
+  }
+
+  get store() {
+    return StoreDirectory.get(this.model.name);
   }
 
   // --------------------------------------------------
@@ -51,7 +53,7 @@ class Collection extends Backbone.Collection {
       // @request - xhr object from ajax request.
       options.success = function(response, status, request) {
         var objects = self.parse(response);
-        if (object !== undefined) {
+        if (objects !== undefined) {
           self.set(objects);
           var models = self.models;
           // TODO: Try setting up models to add self to store.

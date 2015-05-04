@@ -18,7 +18,7 @@ class Store extends Events.EventEmitter {
   initialize() {
     var self = this;
     this.collections.map(function(collectionClass) {
-      var collection = new collectionClass([], {}, self);
+      var collection = new collectionClass();
       self._collections[collection.name] = collection;
     });
   }

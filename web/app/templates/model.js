@@ -67,11 +67,12 @@ class Model extends Backbone.RelationalModel {
   // Requests
   // --------------------------------------------------
 
-  // Called by fetch automatically and by custom create explicitly.
+  // Called by custom create and request explicitly.
   // @param response - raw json response from server.
   // @returns - attributes hash to be `set` to model.
   parse(response, options={}) {
     var attributes = response[this.responseKey];
+    debugger
     return attributes;
   }
 
@@ -85,9 +86,11 @@ class Model extends Backbone.RelationalModel {
       // @request - xhr object from ajax request.
       options.success = function(response, status, request) {
         var attributes = self.parse(response);
-        self.set(attributes);
-        self.store.add(self);
-        self.store.emitChange();
+        if (attributes !== undefined) {
+          self.set(attributes);
+          self.store.add(self);
+          self.store.emitChange();
+        }
       };
     }
     if (options.error === undefined) {
@@ -123,18 +126,26 @@ class Model extends Backbone.RelationalModel {
     var self = this;
     // Emit change indicating that the a newly fetched model
     // has been added to the store associated with this model.
-    // @param model - updated model with fetched response (same as self).
+    // @param response - unparsed response from server.
     // @param status - string indicated success or error.
     // @request - xhr object from ajax request.
-    options.success = function(model, status, request) {
-      self.store.add(self);
-      self.store.emitChange();
-    };
-    options.error = function(model, status, request) {
-      console.log(self.name + " request error!");
-    };
+    if (options.success === undefined) {
+      options.success = function(response, status, request) {
+        var attributes = self.parse(response);
+        if (attributes !== undefined) {
+          self.set(attributes);
+          self.store.add(self);
+          self.store.emitChange();
+        }
+      };
+    }
+    if (options.error === undefined) {
+      options.error = function(response, status, request) {
+        console.log(self.name + " request error!");
+      };
+    }
     options.url = this.requestUrl;
-    this.fetch(options);
+    this.sync("read", this, options);
   }
 }
 

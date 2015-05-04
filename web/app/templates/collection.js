@@ -1,5 +1,7 @@
 import Backbone from "backbone";
 
+import Model from "app/templates/model";
+
 
 class Collection extends Backbone.Collection {
 
@@ -14,6 +16,7 @@ class Collection extends Backbone.Collection {
 
   get model() {
     console.log("Collection definition must include model class!");
+    return Model;
   }
 
   get responseKey() {

@@ -41,6 +41,9 @@ class Store extends Events.EventEmitter {
   // --------------------------------------------------
   // Requests
   // --------------------------------------------------
+  requestById(id) {
+    console.log("requesting by id!");
+  }
 
   // --------------------------------------------------
   // Gets
@@ -55,6 +58,7 @@ class Store extends Events.EventEmitter {
 
   getById(id) {
     var model = this._all[id];
+    debugger
     if (model === undefined) {
       var modelClass = this.model;
       var model = new modelClass({ id: id });

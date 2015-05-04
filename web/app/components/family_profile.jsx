@@ -13,7 +13,7 @@ class FamilyProfile extends Component {
   renderOptions() {
     var session = this.props.session;
     var family = this.props.family;
-    if (session.get("id") === family.get("id")) {
+    if (session.has("id") && session.get("person").get("family_id") === family.get("id")) {
       return (
         <div className="general-banner-actions">
           <Clickable

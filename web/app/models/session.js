@@ -1,7 +1,5 @@
 import Model from "app/templates/model";
-
-import Person from "app/models/person";
-
+import ModelDirectory from "app/model_directory";
 import ApiRoutes from "app/constants/api_routes";
 
 
@@ -29,7 +27,7 @@ class Session extends Model {
       {
         type: "HasOne",
         key: "person",
-        relatedModel: Person,
+        relatedModel: ModelDirectory.get("Person"),
       },
     ];
   }

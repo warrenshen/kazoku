@@ -1,5 +1,4 @@
 import Model from "app/templates/model";
-
 import ModelDirectory from "app/model_directory";
 
 

@@ -82,7 +82,8 @@ Header.propTypes = {
 }
 
 Header.defaultProps = {
-  session:   new Session(),
+  // session:  new Session(),
+  session:  null,
   isColored: true,
 }
 

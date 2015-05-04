@@ -13,7 +13,8 @@ class SessionsStore extends Store {
 
   // Custom constructor to set `_current` to placeholder model.
   constructor() {
-    super(new Session());
+    super();
+    // this._current = new Session();
   }
 
   // --------------------------------------------------

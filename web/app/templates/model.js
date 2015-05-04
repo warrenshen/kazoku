@@ -11,7 +11,9 @@ class Model extends Backbone.RelationalModel {
   }
 
   initialize() {
-    console.log("Initializing model: " + this.name);
+    debugger
+    // this.store.add(this);
+    console.log("Initializing and adding model: " + this.name);
   }
 
   // --------------------------------------------------

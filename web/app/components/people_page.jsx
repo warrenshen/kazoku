@@ -17,7 +17,8 @@ class PeoplePage extends ListeningComponent {
   }
 
   requestFromStore() {
-    PeopleStore.requestPeople();
+    console.log(PeopleStore.getAll());
+    // PeopleStore.requestPeople();
     SessionsStore.requestCurrent();
   }
 

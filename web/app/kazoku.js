@@ -18,9 +18,7 @@ class Kazoku {
 
   constructor(models, stores) {
     this.Router = Router;
-    RouterDirectory.add(Router);
     this.initialize(models, stores);
-    Backbone.history.start({ pushState: true });
   }
 
   initialize(models, stores) {
@@ -28,8 +26,12 @@ class Kazoku {
       ModelDirectory.add(model);
     });
     stores.map(function(store) {
+      debugger
       StoreDirectory.add(store);
     });
+    debugger
+    RouterDirectory.add(Router);
+    Backbone.history.start({ pushState: true });
   }
 }
 

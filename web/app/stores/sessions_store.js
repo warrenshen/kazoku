@@ -2,6 +2,8 @@ import Cookies from "cookies-js";
 
 import Store from "app/templates/store";
 
+import RouterDirectory from "app/router_directory";
+
 import Session from "app/models/session";
 
 import Routes from "app/constants/routes";
@@ -59,9 +61,12 @@ class SessionsStore extends Store {
       Cookies.set("auth_email", model.get("auth_email"));
       Cookies.set("auth_token", model.get("auth_token"));
       this._current = model;
-      Kazoku.Router.navigate(Routes.pages.home, true);
+      RouterDirectory.get("Router").navigate(Routes.pages.home, true);
     } else {
       this._current = model;
+    }
+    if (options.shouldEmitChange) {
+      this.emitChange();
     }
   }
 
@@ -90,8 +95,8 @@ class SessionsStore extends Store {
       Cookies.set("session_uuid", "");
       self._current.set(self._current.defaults);
       self._current.unset("person");
-      Kazoku.Router.navigate(Routes.pages.home, true);
       self.emitChange();
+      RouterDirectory.get("Router").navigate(Routes.pages.home, true);
     };
     this._current.expire(options);
   }

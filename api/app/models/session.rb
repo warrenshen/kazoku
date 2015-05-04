@@ -24,6 +24,7 @@ class Session < ActiveRecord::Base
   ##################################################
   validates :uuid,           presence: true
   validates :last_active_at, presence: true
+  validate  :check_booleans
 
   ##################################################
   # Callbacks
@@ -51,7 +52,18 @@ class Session < ActiveRecord::Base
     person.try(:auth_token)
   end
 
+  def expire
+    self.update(is_expired: true, is_logged_in: false)
+  end
+
   private
+
+  def check_booleans
+    if is_expired == is_logged_in
+      errors.add(:is_expired, "can't be the same as is_logged_in")
+      errors.add(:is_logged_in, "can't be the same as is_expired")
+    end
+  end
 
   def set_properties
     self.uuid           = generate_uuid

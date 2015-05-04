@@ -134,7 +134,8 @@ class Model extends Backbone.RelationalModel {
         var attributes = self.parse(response);
         if (attributes !== undefined) {
           self.set(attributes);
-          self.store.add(self, { shouldEmitChange: true });
+          self.store.emitChange();
+          // self.store.add(self, { shouldEmitChange: true });
         }
       };
     }

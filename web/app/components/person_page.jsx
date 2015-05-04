@@ -15,12 +15,11 @@ class PersonPage extends ListeningComponent {
   }
 
   requestFromStore() {
-    // PeopleStore.requestById(this.props.id);
+    PeopleStore.requestById(this.props.id);
     SessionsStore.requestCurrent();
   }
 
   getStoreState() {
-    debugger
     return {
       person: PeopleStore.getById(this.props.id),
       session: SessionsStore.getCurrent(),

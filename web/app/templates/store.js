@@ -47,7 +47,7 @@ class Store extends Events.EventEmitter {
       // asynchronously waiting for the request response.
       var modelClass = this.model;
       var model = new modelClass({ id: id });
-      this._all[id] = model;
+      // this._all[id] = model;
       model.request();
     }
   }

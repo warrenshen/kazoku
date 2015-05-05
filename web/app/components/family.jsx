@@ -86,8 +86,7 @@ Family.propTypes = {
 }
 
 Family.defaultProps = {
-  // session:  new Session(),
-  session:  null,
+  session: new Session(),
   family:  null,
 }
 

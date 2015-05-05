@@ -44,10 +44,11 @@ class Store extends Events.EventEmitter {
     var model = this._all[id];
     if (model === undefined) {
       // Instantiate a placeholder model to return while
-      // asynchronously waiting for the request response.
+      // asynchronously waiting for the request response;
+      // don't need to add it to the store because model
+      // instantiation already handles that automatically.
       var modelClass = this.model;
       var model = new modelClass({ id: id });
-      // this._all[id] = model;
       model.request();
     }
   }

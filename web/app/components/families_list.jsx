@@ -36,8 +36,7 @@ FamiliesList.propTypes = {
 }
 
 FamiliesList.defaultProps = {
-  // session:  new Session(),
-  session:  null,
+  session:  new Session(),
   families: [],
 }
 

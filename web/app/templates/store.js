@@ -7,12 +7,11 @@ var CHANGE_EVENT = "change";
 
 class Store extends Events.EventEmitter {
 
-  constructor(current=null) {
+  constructor() {
     super();
     this._all = {};
-    this._current = current;
+    this._current = null;
     this._collections = {};
-    this.initialize();
   }
 
   initialize() {
@@ -45,10 +44,11 @@ class Store extends Events.EventEmitter {
     var model = this._all[id];
     if (model === undefined) {
       // Instantiate a placeholder model to return while
-      // asynchronously waiting for the request response.
+      // asynchronously waiting for the request response;
+      // don't need to add it to the store because model
+      // instantiation already handles that automatically.
       var modelClass = this.model;
       var model = new modelClass({ id: id });
-      this._all[id] = model;
       model.request();
     }
   }
@@ -79,9 +79,6 @@ class Store extends Events.EventEmitter {
     } else {
       // TODO: Maybe shouldn't always reset attributes?
       existingModel.set(model.attributes)
-    }
-    if (options.shouldEmitChange) {
-      this.emitChange();
     }
   }
 

@@ -11,9 +11,14 @@ import Routes from "app/constants/routes";
 
 class SessionsStore extends Store {
 
-  // Custom constructor to set `_current` to placeholder model.
-  constructor() {
-    super(new Session());
+  initialize() {
+    var self = this;
+    this.collections.map(function(collectionClass) {
+      var collection = new collectionClass();
+      self._collections[collection.name] = collection;
+    });
+    // Custom initialize to set `this._current` to a placeholder session.
+    this._current = new Session();
   }
 
   // --------------------------------------------------
@@ -50,24 +55,15 @@ class SessionsStore extends Store {
   // --------------------------------------------------
   // Actions
   // --------------------------------------------------
-  // Custom method to handle successful login redirection.
-  add(model, options={}) {
-    if (Cookies.get("session_uuid") === "") {
-      Cookies.set("session_uuid", model.get("uuid"));
-    }
-    // If conditional indicates that the client has created a new
-    // session so browser authorization cookies should be set.
-    if (options.shouldNavigate) {
-      Cookies.set("auth_email", model.get("auth_email"));
-      Cookies.set("auth_token", model.get("auth_token"));
-      this._current = model;
-      RouterDirectory.get("Router").navigate(Routes.pages.home, true);
-    } else {
-      this._current = model;
-    }
-    if (options.shouldEmitChange) {
-      this.emitChange();
-    }
+  // Establishes a new session, setting cookies, navigating home,
+  // and setting `this._current` to the given session.
+  establish(session) {
+    Cookies.set("session_uuid", session.get("uuid"));
+    Cookies.set("auth_email", session.get("auth_email"));
+    Cookies.set("auth_token", session.get("auth_token"));
+    this._current = session;
+    this.emitChange();
+    RouterDirectory.get("Router").navigate(Routes.pages.home, true);
   }
 
   login(credentials) {

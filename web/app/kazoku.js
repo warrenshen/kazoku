@@ -29,6 +29,10 @@ class Kazoku {
     });
     stores.map(function(store) {
       StoreDirectory.add(store);
+      // Call store's initialize method here instead of in the store's
+      // constructor because we only want to initialize once the store
+      // has already been registered with the store directory.
+      store.initialize();
     });
   }
 }

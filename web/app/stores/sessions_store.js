@@ -11,13 +11,7 @@ import Routes from "app/constants/routes";
 
 class SessionsStore extends Store {
 
-  initialize() {
-    var self = this;
-    this.collections.map(function(collectionClass) {
-      var collection = new collectionClass();
-      self._collections[collection.name] = collection;
-    });
-    // Custom initialize to set `this._current` to a placeholder session.
+  setDefaults() {
     this._current = new Session();
   }
 

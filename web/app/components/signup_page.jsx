@@ -9,6 +9,8 @@ import Routes from "app/constants/routes";
 import PeopleStore from "app/stores/people_store";
 import SessionsStore from "app/stores/sessions_store";
 
+import Actions from "app/actions/actions";
+
 
 class SignupPage extends ListeningComponent {
 
@@ -32,7 +34,8 @@ class SignupPage extends ListeningComponent {
     var email = React.findDOMNode(this.refs.email).value;
     var password = React.findDOMNode(this.refs.password).value;
     var imageUrl = React.findDOMNode(this.refs.image_url).value;
-    PeopleStore.create({
+    // PeopleStore.create({
+    Actions.create({
       first_name: firstName,
       last_name: lastName,
       email: email,

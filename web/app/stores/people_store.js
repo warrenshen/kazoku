@@ -46,6 +46,13 @@ class PeopleStore extends Store {
     var person = new Person(attributes);
     person.register(options);
   }
+
+  // --------------------------------------------------
+  // Dispatch
+  // --------------------------------------------------
+  handleDispatch(payload) {
+    console.log(payload);
+  }
 }
 
 

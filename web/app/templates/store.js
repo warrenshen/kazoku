@@ -16,10 +16,14 @@ class Store extends Events.EventEmitter {
 
   initialize() {
     var self = this;
+    Dispatcher.register(this.handleDispatch.bind(this));
     this.collections.map(function(collectionClass) {
       var collection = new collectionClass();
       self._collections[collection.name] = collection;
     });
+    if (this.setDefaults) {
+      this.setDefaults();
+    }
   }
 
   // --------------------------------------------------
@@ -87,6 +91,11 @@ class Store extends Events.EventEmitter {
     var model = new modelClass(attributes);
     model.create(options);
   }
+
+  // --------------------------------------------------
+  // Dispatch
+  // --------------------------------------------------
+  handleDispatch(payload) {}
 
   // --------------------------------------------------
   // Events

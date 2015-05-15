@@ -95,6 +95,7 @@ class Store extends Events.EventEmitter {
   // --------------------------------------------------
   // Dispatch
   // --------------------------------------------------
+  // Stores that listen for dispatches must override this method.
   handleDispatch(payload) {}
 
   // --------------------------------------------------
@@ -112,27 +113,6 @@ class Store extends Events.EventEmitter {
     this.emit(CHANGE_EVENT);
   }
 }
-
-// var store = new Store();
-// Dispatcher.register(function(payload) {
-//   var action = payload.action;
-//   var attributes = action.attributes;
-
-//   switch(action.type) {
-//     case "create":
-//       store.create(attributes);
-//       store.emitChange();
-//       break;
-
-//     case "destroy":
-//       store.destroy(action.id);
-//       store.emitChange();
-//       break;
-//   }
-
-//   // Needed by promise in Dispatcher.
-//   return true;
-// });
 
 
 module.exports = Store;

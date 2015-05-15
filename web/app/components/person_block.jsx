@@ -6,7 +6,7 @@ import Clickable from "app/components/clickable";
 import Routes from "app/constants/routes";
 
 
-class Person extends Component {
+class PersonBlock extends Component {
 
   renderName() {
     var person = this.props.person;
@@ -39,13 +39,13 @@ class Person extends Component {
   }
 }
 
-Person.propTypes = {
+PersonBlock.propTypes = {
   person: React.PropTypes.object.isRequired,
 }
 
-Person.defaultProps = {
+PersonBlock.defaultProps = {
   person: null,
 }
 
 
-module.exports = Person;
+module.exports = PersonBlock;

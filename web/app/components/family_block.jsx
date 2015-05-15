@@ -5,10 +5,11 @@ import Clickable from "app/components/clickable";
 
 import Routes from "app/constants/routes";
 
+import Family from "app/models/family";
 import Session from "app/models/session";
 
 
-class Family extends Component {
+class FamilyBlock extends Component {
 
   attemptJoin(event) {
     // var path = Routes.people.index + "/" + this.props.currentUser.id;
@@ -30,8 +31,8 @@ class Family extends Component {
     // });
   }
 
-  renderJoinButton() {
-    if (this.props.user.family_id !== this.props.family.id) {
+  renderJoinButton(person) {
+    if (person.get("family_id") !== this.props.family.id) {
       return (
         <Clickable
           action={this.attemptJoin.bind(this)}
@@ -41,8 +42,8 @@ class Family extends Component {
     }
   }
 
-  renderLeaveButton() {
-    if (this.props.user.family_id === this.props.family.id) {
+  renderLeaveButton(person) {
+    if (person.get("family_id") === this.props.family.id) {
       return (
         <Clickable
           action={this.attemptLeave.bind(this)}
@@ -53,17 +54,17 @@ class Family extends Component {
   }
 
   renderActions() {
-    if (this.props.user !== null) {
+    var session = this.props.session;
+    if (session.has("id")) {
       return (
         <div className="general-block-options">
-          {this.renderJoinButton()}
+          {this.renderJoinButton(session.get("person"))}
           {this.renderLeaveButton()}
         </div>
       );
     }
   }
 
-  // {this.renderActions()}
   render() {
     return (
       <div className="general-block">
@@ -74,21 +75,21 @@ class Family extends Component {
         <h5 className="family-block-size">
           {"Member count: " + this.props.family.get("size")}
         </h5>
-
+        {this.renderActions()}
       </div>
     );
   }
 }
 
-Family.propTypes = {
+FamilyBlock.propTypes = {
   session: React.PropTypes.object.isRequired,
   family:  React.PropTypes.object.isRequired,
 }
 
-Family.defaultProps = {
+FamilyBlock.defaultProps = {
   session: new Session(),
-  family:  null,
+  family:  new Family(),
 }
 
 
-module.exports = Family;
+module.exports = FamilyBlock;

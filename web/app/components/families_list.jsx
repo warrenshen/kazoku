@@ -1,7 +1,7 @@
 import React from "react";
 import Component from "app/templates/component";
 
-import Family from "app/components/family";
+import FamilyBlock from "app/components/family_block";
 
 import Session from "app/models/session";
 
@@ -10,7 +10,7 @@ class FamiliesList extends Component {
 
   renderFamily(family) {
     return (
-      <Family
+      <FamilyBlock
         key={family.id}
         session={this.props.session}
         family={family} />

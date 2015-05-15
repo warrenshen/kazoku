@@ -5,6 +5,7 @@ import Clickable from "app/components/clickable";
 
 import Routes from "app/constants/routes";
 
+import Person from "app/models/person";
 import Session from "app/models/session";
 
 
@@ -94,7 +95,7 @@ PersonProfile.propTypes = {
 
 PersonProfile.defaultProps = {
   session: new Session(),
-  person:  null,
+  person:  new Person(),
 }
 
 

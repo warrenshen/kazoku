@@ -51,7 +51,12 @@ class PeopleStore extends Store {
   // Dispatch
   // --------------------------------------------------
   handleDispatch(payload) {
-    console.log(payload);
+    var action = payload.action;
+    switch (action.type) {
+      case "create":
+        this.create(action.attributes);
+        break;
+    }
   }
 }
 

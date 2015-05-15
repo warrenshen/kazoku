@@ -3,6 +3,7 @@ import Component from "app/templates/component";
 
 import PeopleList from "app/components/people_list";
 
+import Family from "app/models/family";
 import Person from "app/models/person";
 
 
@@ -22,7 +23,7 @@ FamilyMembers.propTypes = {
 }
 
 FamilyMembers.defaultProps = {
-  family: null,
+  family: new Family(),
 }
 
 

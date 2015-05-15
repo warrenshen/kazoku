@@ -3,6 +3,8 @@ import Component from "app/templates/component";
 
 import Clickable from "app/components/clickable";
 
+import Person from "app/models/person";
+
 import Routes from "app/constants/routes";
 
 
@@ -44,7 +46,7 @@ PersonBlock.propTypes = {
 }
 
 PersonBlock.defaultProps = {
-  person: null,
+  person: new Person(),
 }
 
 

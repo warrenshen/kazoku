@@ -3,9 +3,10 @@ import Component from "app/templates/component";
 
 import Clickable from "app/components/clickable";
 
-import Routes from "app/constants/routes";
-
+import Family from "app/models/family";
 import Session from "app/models/session";
+
+import Routes from "app/constants/routes";
 
 
 class FamilyProfile extends Component {
@@ -50,7 +51,7 @@ FamilyProfile.propTypes = {
 
 FamilyProfile.defaultProps = {
   session: new Session(),
-  family:  null,
+  family:  new Family(),
 }
 
 

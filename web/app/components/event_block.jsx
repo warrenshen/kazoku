@@ -6,7 +6,7 @@ import Clickable from "app/components/clickable";
 import Routes from "app/constants/routes";
 
 
-class Event extends Component {
+class EventBlock extends Component {
 
   attemptCreate() {
     var path = Routes.familyEvents.index;
@@ -80,15 +80,15 @@ class Event extends Component {
 }
 
 
-Event.propTypes = {
+EventBlock.propTypes = {
   user:  React.PropTypes.object.isRequired,
   event: React.PropTypes.object.isRequired,
 }
 
-Event.defaultProps = {
+EventBlock.defaultProps = {
   user:  null,
   event: null,
 }
 
 
-module.exports = Event;
+module.exports = EventBlock;

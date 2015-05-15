@@ -4,9 +4,9 @@ import ListeningComponent from "app/templates/listening_component";
 import Clickable from "app/components/clickable";
 import Header from "app/components/header";
 
-import Routes from "app/constants/routes";
-
 import SessionsStore from "app/stores/sessions_store";
+
+import Routes from "app/constants/routes";
 
 
 class HomePage extends ListeningComponent {

@@ -4,12 +4,12 @@ import ListeningComponent from "app/templates/listening_component";
 import Clickable from "app/components/clickable";
 import Header from "app/components/header";
 
-import Routes from "app/constants/routes";
-
 import PeopleStore from "app/stores/people_store";
 import SessionsStore from "app/stores/sessions_store";
 
 import Actions from "app/actions/actions";
+
+import Routes from "app/constants/routes";
 
 
 class SignupPage extends ListeningComponent {

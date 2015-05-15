@@ -1,14 +1,14 @@
 import React from "react";
 import Component from "app/templates/component";
 
-import Event from "app/components/event";
+import EventBlock from "app/components/event_block";
 
 
 class EventsList extends Component {
 
   renderEvent(event) {
     return (
-      <Event
+      <EventBlock
         key={event.id}
         user={this.props.user}
         event={event} />

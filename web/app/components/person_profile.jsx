@@ -3,10 +3,10 @@ import Component from "app/templates/component";
 
 import Clickable from "app/components/clickable";
 
-import Routes from "app/constants/routes";
-
 import Person from "app/models/person";
 import Session from "app/models/session";
+
+import Routes from "app/constants/routes";
 
 
 class PersonProfile extends Component {

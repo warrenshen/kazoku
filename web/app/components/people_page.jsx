@@ -4,8 +4,6 @@ import ListeningComponent from "app/templates/listening_component";
 import Header from "app/components/header";
 import PeopleList from "app/components/people_list";
 
-import PeopleCollection from "app/collections/people_collection";
-
 import PeopleStore from "app/stores/people_store";
 import SessionsStore from "app/stores/sessions_store";
 

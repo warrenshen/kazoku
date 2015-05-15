@@ -3,10 +3,10 @@ import Component from "app/templates/component";
 
 import Clickable from "app/components/clickable";
 
-import Routes from "app/constants/routes";
-
 import Family from "app/models/family";
 import Session from "app/models/session";
+
+import Routes from "app/constants/routes";
 
 
 class FamilyBlock extends Component {

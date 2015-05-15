@@ -3,6 +3,9 @@ import Component from "app/templates/component";
 
 import Clickable from "app/components/clickable";
 
+import Person from "app/models/person";
+import Session from "app/models/session";
+
 import Routes from "app/constants/routes";
 
 
@@ -52,7 +55,8 @@ class PersonProfile extends Component {
 
   renderActions() {
     var session = this.props.session;
-    if (session !== null && session.get("id") === this.props.person.get("id")) {
+    var person = this.props.person;
+    if (session.has("id") && session.get("person").get("id") === person.get("id")) {
       return (
         <div className="general-banner-actions">
           {this.renderFamilyButton()}
@@ -90,8 +94,8 @@ PersonProfile.propTypes = {
 }
 
 PersonProfile.defaultProps = {
-  session: null,
-  person:  null,
+  session: new Session(),
+  person:  new Person(),
 }
 
 

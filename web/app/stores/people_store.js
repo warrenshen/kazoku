@@ -1,8 +1,10 @@
 import Store from "app/templates/store";
 
 import Person from "app/models/person";
-// var TodoConstants = require('../constants/TodoConstants');
+
 import PeopleCollection from "app/collections/people_collection";
+
+import ActionConstants from "app/constants/action_constants";
 
 
 class PeopleStore extends Store {
@@ -45,6 +47,18 @@ class PeopleStore extends Store {
   create(attributes, options={}) {
     var person = new Person(attributes);
     person.register(options);
+  }
+
+  // --------------------------------------------------
+  // Dispatch
+  // --------------------------------------------------
+  handleDispatch(payload) {
+    var action = payload.action;
+    switch (action.type) {
+      case ActionConstants.people.create:
+        this.create(action.attributes);
+        break;
+    }
   }
 }
 

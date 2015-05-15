@@ -1,19 +1,14 @@
 import Dispatcher from "app/dispatcher";
 
+import ActionConstants from "app/constants/action_constants";
+
 
 class Actions {
 
   create(attributes) {
     Dispatcher.handleViewAction({
-      type: "create",
+      type: ActionConstants.people.create,
       attributes: attributes,
-    });
-  }
-
-  destroy(id) {
-    Dispatcher.handleViewAction({
-      type: "destroy",
-      id: id,
     });
   }
 }

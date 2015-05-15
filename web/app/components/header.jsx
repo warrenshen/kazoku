@@ -4,11 +4,11 @@ import Component from "app/templates/component";
 
 import Clickable from "app/components/clickable";
 
-import Routes from "app/constants/routes";
-
 import Session from "app/models/session";
 
 import SessionsStore from "app/stores/sessions_store";
+
+import Routes from "app/constants/routes";
 
 
 class Header extends Component {
@@ -31,19 +31,20 @@ class Header extends Component {
 
   renderProfile() {
     var session = this.props.session;
-    if (!session.has("id")) {
+    if (session.has("id")) {
+      var person = this.props.session.get("person");
+      return (
+        <Clickable
+          route={Routes.people.index + "/" + person.get("id")}
+          style={"general-button"}
+          content={"Your Profile"} />
+      );
+    } else {
       return (
         <Clickable
           route={Routes.pages.login}
           style={"general-button"}
           content={"Login/Signup"} />
-      );
-    } else {
-      return (
-        <Clickable
-          route={Routes.people.index + "/" + this.props.session.get("id")}
-          style={"general-button"}
-          content={"Your Profile"} />
       );
     }
   }

@@ -1,3 +1,9 @@
+// --------------------------------------------------
+// Import Style Guide
+// --------------------------------------------------
+// Order: react + super component, components, models,
+// stores, actions, and any other imports (such as constants).
+
 import React from "react";
 
 

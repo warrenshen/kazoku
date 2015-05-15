@@ -1,7 +1,7 @@
 import React from "react";
 import Component from "app/templates/component";
 
-import Person from "app/components/person";
+import PersonBlock from "app/components/person_block";
 
 
 class PeopleList extends Component {
@@ -23,7 +23,9 @@ class PeopleList extends Component {
 
   renderPerson(person) {
     return (
-      <Person key={person.get("id")} person={person} />
+      <PersonBlock
+        key={person.get("id")}
+        person={person} />
     );
   }
 

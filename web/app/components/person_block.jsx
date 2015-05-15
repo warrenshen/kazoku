@@ -3,10 +3,12 @@ import Component from "app/templates/component";
 
 import Clickable from "app/components/clickable";
 
+import Person from "app/models/person";
+
 import Routes from "app/constants/routes";
 
 
-class Person extends Component {
+class PersonBlock extends Component {
 
   renderName() {
     var person = this.props.person;
@@ -39,13 +41,13 @@ class Person extends Component {
   }
 }
 
-Person.propTypes = {
+PersonBlock.propTypes = {
   person: React.PropTypes.object.isRequired,
 }
 
-Person.defaultProps = {
-  person: null,
+PersonBlock.defaultProps = {
+  person: new Person(),
 }
 
 
-module.exports = Person;
+module.exports = PersonBlock;

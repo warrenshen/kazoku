@@ -74,6 +74,19 @@ class Person extends Model {
     };
   }
 
+  get updateAttributes() {
+    return {
+      person: {
+        id: this.get("id"),
+        first_name: this.get("first_name"),
+        last_name: this.get("last_name"),
+        email: this.get("email"),
+        password: this.get("password"),
+        image_url: this.get("image_url"),
+      }
+    };
+  }
+
   // --------------------------------------------------
   // Requests
   // --------------------------------------------------

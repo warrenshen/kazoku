@@ -32,6 +32,7 @@ class Header extends Component {
   renderProfile() {
     var session = this.props.session;
     if (session.has("id")) {
+      debugger
       var person = this.props.session.get("person");
       return (
         <Clickable

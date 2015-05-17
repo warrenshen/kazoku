@@ -54,10 +54,27 @@ class Person extends Model {
     return ApiRoutes.people.index + "/" + this.get("id");
   }
 
+  get updateUrl() {
+    return ApiRoutes.people.index + "/" + this.get("id");
+  }
+
   // --------------------------------------------------
   // Attributes
   // --------------------------------------------------
   get createAttributes() {
+    return {
+      person: {
+        id: this.get("id"),
+        first_name: this.get("first_name"),
+        last_name: this.get("last_name"),
+        email: this.get("email"),
+        password: this.get("password"),
+        image_url: this.get("image_url"),
+      }
+    };
+  }
+
+  get updateAttributes() {
     return {
       person: {
         id: this.get("id"),

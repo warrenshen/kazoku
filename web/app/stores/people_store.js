@@ -58,6 +58,9 @@ class PeopleStore extends Store {
       case ActionConstants.people.create:
         this.create(action.attributes);
         break;
+      case ActionConstants.people.leave:
+        this.update(action.attributes);
+        break;
     }
   }
 }

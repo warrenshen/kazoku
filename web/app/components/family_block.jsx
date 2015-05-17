@@ -6,6 +6,8 @@ import Clickable from "app/components/clickable";
 import Family from "app/models/family";
 import Session from "app/models/session";
 
+import PeopleActions from "app/actions/people_actions";
+
 import Routes from "app/constants/routes";
 
 
@@ -22,13 +24,10 @@ class FamilyBlock extends Component {
   }
 
   attemptLeave(event) {
-    // var path = Routes.people.index + "/" + this.props.currentUser.id;
-    // var request = Requester.send("put", path, {
-    //   user: {
-    //     id: this.props.currentUser.id,
-    //     family_id: null,
-    //   }
-    // });
+    PeopleActions.leave({
+      id: this.props.session.get("person").get("id"),
+      family_id: null,
+    })
   }
 
   renderJoinButton(person) {
@@ -56,10 +55,11 @@ class FamilyBlock extends Component {
   renderActions() {
     var session = this.props.session;
     if (session.has("id")) {
+      var person = session.get("person");
       return (
         <div className="general-block-options">
-          {this.renderJoinButton(session.get("person"))}
-          {this.renderLeaveButton()}
+          {this.renderJoinButton(person)}
+          {this.renderLeaveButton(person)}
         </div>
       );
     }

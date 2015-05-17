@@ -36,13 +36,7 @@ class SessionsStore extends Store {
   // Only request session from server if current is a placeholder.
   requestCurrent() {
     if (!this._current.has("id")) {
-      var options = {};
-      options.headers = {
-        "X-AUTH-EMAIL": Cookies.get("auth_email"),
-        "X-AUTH-TOKEN": Cookies.get("auth_token"),
-        "X-SESSION-UUID": Cookies.get("session_uuid"),
-      };
-      this._current.request(options);
+      this._current.request();
     }
   }
 
@@ -72,11 +66,6 @@ class SessionsStore extends Store {
   logout() {
     var self = this;
     var options = {};
-    options.headers = {
-      "X-AUTH-EMAIL": Cookies.get("auth_email"),
-      "X-AUTH-TOKEN": Cookies.get("auth_token"),
-      "X-SESSION-UUID": Cookies.get("session_uuid"),
-    };
     // Success callback resets everything authentication related,
     // resetting browser cookies and defaulting the current session.
     options.success = function(response, status, request) {

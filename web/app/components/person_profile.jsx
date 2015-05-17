@@ -18,7 +18,7 @@ class PersonProfile extends Component {
 
   renderFamilyName() {
     var person = this.props.person;
-    if (person.get("family_name")) {
+    if (person.get("family_id")) {
       return (
         <Clickable
           route={Routes.families.index + "/" + person.get("family_id")}

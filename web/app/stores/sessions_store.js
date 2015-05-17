@@ -2,7 +2,7 @@ import Cookies from "cookies-js";
 
 import Store from "app/templates/store";
 
-import RouterDirectory from "app/router_directory";
+import RouterDirectory from "app/directories/router_directory";
 
 import Session from "app/models/session";
 
@@ -46,9 +46,9 @@ class SessionsStore extends Store {
   // Establishes a new session, setting cookies, navigating home,
   // and setting `this._current` to the given session.
   establish(session) {
-    Cookies.set("session_uuid", session.get("uuid"));
     Cookies.set("auth_email", session.get("auth_email"));
     Cookies.set("auth_token", session.get("auth_token"));
+    Cookies.set("session_uuid", session.get("uuid"));
     this._current = session;
     this.emitChange();
     RouterDirectory.get("Router").navigate(Routes.pages.home, true);

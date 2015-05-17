@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "description": "kazoku js client",
-  "main": "kazoku.js",
+  "main": "app/kazoku.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

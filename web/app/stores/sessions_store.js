@@ -46,7 +46,6 @@ class SessionsStore extends Store {
   // Establishes a new session, setting cookies, navigating home,
   // and setting `this._current` to the given session.
   establish(session) {
-    console.log(session.get("auth_token"));
     Cookies.set("auth_email", session.get("auth_email"));
     Cookies.set("auth_token", session.get("auth_token"));
     Cookies.set("session_uuid", session.get("uuid"));

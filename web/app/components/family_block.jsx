@@ -56,10 +56,11 @@ class FamilyBlock extends Component {
   renderActions() {
     var session = this.props.session;
     if (session.has("id")) {
+      var person = session.get("person");
       return (
         <div className="general-block-options">
-          {this.renderJoinButton(session.get("person"))}
-          {this.renderLeaveButton()}
+          {this.renderJoinButton(person)}
+          {this.renderLeaveButton(person)}
         </div>
       );
     }

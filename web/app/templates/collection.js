@@ -1,6 +1,6 @@
 import Backbone from "backbone";
 
-import StoreDirectory from "app/store_directory";
+import StoreDirectory from "app/directories/store_directory";
 
 
 class Collection extends Backbone.Collection {

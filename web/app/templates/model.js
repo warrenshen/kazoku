@@ -2,7 +2,7 @@ import Backbone from "backbone";
 import "backbone-relational";
 import Cookies from "cookies-js";
 
-import StoreDirectory from "app/store_directory";
+import StoreDirectory from "app/directories/store_directory";
 
 
 class Model extends Backbone.RelationalModel {

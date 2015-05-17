@@ -4,9 +4,9 @@ import Router from "app/routers/router";
 import Models from "app/models";
 import Stores from "app/stores";
 
-import ModelDirectory from "app/model_directory";
-import RouterDirectory from "app/router_directory";
-import StoreDirectory from "app/store_directory";
+import ModelDirectory from "app/directories/model_directory";
+import RouterDirectory from "app/directories/router_directory";
+import StoreDirectory from "app/directories/store_directory";
 
 import "app/styles/main.scss";
 import "app/styles/general.scss";

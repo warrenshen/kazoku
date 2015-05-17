@@ -14,13 +14,10 @@ import Routes from "app/constants/routes";
 class FamilyBlock extends Component {
 
   attemptJoin(event) {
-    // var path = Routes.people.index + "/" + this.props.currentUser.id;
-    // var request = Requester.send("put", path, {
-    //   user: {
-    //     id: this.props.currentUser.id,
-    //     family_id: this.props.family.id,
-    //   }
-    // });
+    PeopleActions.join({
+      id: this.props.session.get("person").get("id"),
+      family_id: this.props.family.get("id"),
+    });
   }
 
   attemptLeave(event) {

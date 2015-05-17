@@ -47,8 +47,8 @@ class Person < ActiveRecord::Base
   ##################################################
   # Callbacks
   ##################################################
-  before_validation :set_auth_token, only: :create
-  before_validation :set_family_name, only: :update
+  before_validation :set_auth_token, on: :create
+  before_validation :set_family_name, on: :update
 
   ##################################################
   # Search

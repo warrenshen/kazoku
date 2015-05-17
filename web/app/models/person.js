@@ -83,6 +83,8 @@ class Person extends Model {
         email: this.get("email"),
         password: this.get("password"),
         image_url: this.get("image_url"),
+        family_name: this.get("family_name"),
+        family_id: this.get("family_id"),
       }
     };
   }

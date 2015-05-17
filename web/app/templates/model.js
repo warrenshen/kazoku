@@ -34,14 +34,6 @@ class Model extends Backbone.RelationalModel {
     console.log("Model definition must include model name!")
   }
 
-  get headers() {
-    return {
-      "X-AUTH-EMAIL": Cookies.get("auth_email"),
-      "X-AUTH-TOKEN": Cookies.get("auth_token"),
-      "X-SESSION-UUID": Cookies.get("session_uuid"),
-    };
-  }
-
   get relations() {
     return [];
   }
@@ -83,6 +75,14 @@ class Model extends Backbone.RelationalModel {
   // --------------------------------------------------
   // Requests
   // --------------------------------------------------
+  headers() {
+    return {
+      "X-AUTH-EMAIL": Cookies.get("auth_email"),
+      "X-AUTH-TOKEN": Cookies.get("auth_token"),
+      "X-SESSION-UUID": Cookies.get("session_uuid"),
+    };
+  }
+
   // Called by custom create and request explicitly.
   // @param response - raw json response from server.
   // @returns - attributes hash to be `set` to model.
@@ -115,7 +115,7 @@ class Model extends Backbone.RelationalModel {
     if (options.attrs === undefined) {
       options.attrs = this.createAttributes;
     }
-    options.headers = this.headers;
+    options.headers = this.headers();
     options.url = this.createUrl;
     this.sync("create", this, options);
   }
@@ -134,7 +134,7 @@ class Model extends Backbone.RelationalModel {
         console.log(self.name + " destroy error!");
       };
     }
-    options.headers = this.headers;
+    options.headers = this.headers();
     options.url = this.destroyUrl;
     this.sync("delete", this, options);
   }
@@ -157,7 +157,7 @@ class Model extends Backbone.RelationalModel {
         console.log(self.name + " request error!");
       };
     }
-    options.headers = this.headers;
+    options.headers = this.headers();
     options.url = this.requestUrl;
     this.sync("read", this, options);
   }
@@ -182,7 +182,7 @@ class Model extends Backbone.RelationalModel {
     if (options.attrs === undefined) {
       options.attrs = this.updateAttributes;
     }
-    options.headers = this.headers;
+    options.headers = this.headers();
     options.url = this.updateUrl;
     this.sync("update", this, options);
   }

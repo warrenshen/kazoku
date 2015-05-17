@@ -88,8 +88,15 @@ class Store extends Events.EventEmitter {
 
   create(attributes, options={}) {
     var modelClass = this.model;
-    var model = new modelClass(attributes);
-    model.create(options);
+    var newModel = new modelClass(attributes);
+    newModel.create(options);
+  }
+
+  update(attributes, options={}) {
+    var storeKey = attributes.id;
+    var existingModel = this._all[storeKey];
+    existingModel.set(attributes);
+    existingModel.update(options);
   }
 
   // --------------------------------------------------

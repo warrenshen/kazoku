@@ -4,8 +4,6 @@ import Family from "app/models/family";
 
 import FamiliesCollection from "app/collections/families_collection";
 
-import ActionConstants from "app/constants/action_constants";
-
 
 class FamiliesStore extends Store {
 
@@ -38,18 +36,6 @@ class FamiliesStore extends Store {
   // --------------------------------------------------
   getFamilies() {
     return this._collections["FamiliesCollection"].models;
-  }
-
-  // --------------------------------------------------
-  // Dispatch
-  // --------------------------------------------------
-  handleDispatch(payload) {
-    var action = payload.action;
-    switch (action.type) {
-      case ActionConstants.families.leave:
-        // this.leave(action.attributes);
-        break;
-    }
   }
 }
 

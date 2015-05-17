@@ -54,6 +54,10 @@ class Person extends Model {
     return ApiRoutes.people.index + "/" + this.get("id");
   }
 
+  get updateUrl() {
+    return ApiRoutes.people.index + "/" + this.get("id");
+  }
+
   // --------------------------------------------------
   // Attributes
   // --------------------------------------------------

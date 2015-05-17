@@ -6,7 +6,7 @@ import Clickable from "app/components/clickable";
 import Family from "app/models/family";
 import Session from "app/models/session";
 
-import FamilyActions from "app/actions/family_actions";
+import PeopleActions from "app/actions/people_actions";
 
 import Routes from "app/constants/routes";
 
@@ -24,7 +24,7 @@ class FamilyBlock extends Component {
   }
 
   attemptLeave(event) {
-    FamilyActions.leave({
+    PeopleActions.leave({
       id: this.props.session.get("person").get("id"),
       family_id: null,
     })

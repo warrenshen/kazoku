@@ -149,6 +149,30 @@ class Model extends Backbone.RelationalModel {
     options.url = this.requestUrl;
     this.sync("read", this, options);
   }
+
+  update(options={}) {
+    var self = this;
+    if (options.success === undefined) {
+      // Success params parallel that of the `create` method above.
+      options.success = function(response, status, request) {
+        var attributes = self.parse(response);
+        if (attributes !== undefined) {
+          self.set(attributes);
+          self.store.emitChange();
+        }
+      };
+    }
+    if (options.error === undefined) {
+      options.error = function(response, status, request) {
+        console.log(self.name + " update error!");
+      };
+    }
+    if (options.attrs === undefined) {
+      options.attrs = this.updateAttributes;
+    }
+    options.url = this.updateUrl;
+    this.sync("update", this, options);
+  }
 }
 
 

@@ -11,6 +11,13 @@ class PeopleActions extends Actions {
       attributes: attributes,
     });
   }
+
+  leave(attributes) {
+    this.act({
+      type: ActionConstants.people.leave,
+      attributes: attributes,
+    });
+  }
 }
 
 

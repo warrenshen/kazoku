@@ -1,8 +1,10 @@
 import Store from "app/templates/store";
 
 import Family from "app/models/family";
-// var TodoConstants = require('../constants/TodoConstants');
+
 import FamiliesCollection from "app/collections/families_collection";
+
+import ActionConstants from "app/constants/action_constants";
 
 
 class FamiliesStore extends Store {
@@ -25,6 +27,13 @@ class FamiliesStore extends Store {
   }
 
   // --------------------------------------------------
+  // Requests
+  // --------------------------------------------------
+  requestFamilies() {
+    return this._collections["FamiliesCollection"].request();
+  }
+
+  // --------------------------------------------------
   // Gets
   // --------------------------------------------------
   getFamilies() {
@@ -32,10 +41,15 @@ class FamiliesStore extends Store {
   }
 
   // --------------------------------------------------
-  // Requests
+  // Dispatch
   // --------------------------------------------------
-  requestFamilies() {
-    return this._collections["FamiliesCollection"].request();
+  handleDispatch(payload) {
+    var action = payload.action;
+    switch (action.type) {
+      case ActionConstants.families.leave:
+        // this.leave(action.attributes);
+        break;
+    }
   }
 }
 

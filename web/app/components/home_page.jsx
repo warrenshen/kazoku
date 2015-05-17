@@ -104,7 +104,7 @@ class HomePage extends ListeningComponent {
 
   render() {
     return (
-      <div className = "general-page">
+      <div className="general-page">
       <Header session={this.state.session} isColored={false} />
         {this.renderBanner()}
         {this.renderContent()}

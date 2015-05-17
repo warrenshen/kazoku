@@ -1,5 +1,6 @@
 import Backbone from "backbone";
 import "backbone-relational";
+import Cookies from "cookies-js";
 
 import StoreDirectory from "app/store_directory";
 
@@ -31,6 +32,14 @@ class Model extends Backbone.RelationalModel {
 
   get name() {
     console.log("Model definition must include model name!")
+  }
+
+  get headers() {
+    return {
+      "X-AUTH-EMAIL": Cookies.get("auth_email"),
+      "X-AUTH-TOKEN": Cookies.get("auth_token"),
+      "X-SESSION-UUID": Cookies.get("session_uuid"),
+    };
   }
 
   get relations() {
@@ -106,6 +115,7 @@ class Model extends Backbone.RelationalModel {
     if (options.attrs === undefined) {
       options.attrs = this.createAttributes;
     }
+    options.headers = this.headers;
     options.url = this.createUrl;
     this.sync("create", this, options);
   }
@@ -124,6 +134,7 @@ class Model extends Backbone.RelationalModel {
         console.log(self.name + " destroy error!");
       };
     }
+    options.headers = this.headers;
     options.url = this.destroyUrl;
     this.sync("delete", this, options);
   }
@@ -146,6 +157,7 @@ class Model extends Backbone.RelationalModel {
         console.log(self.name + " request error!");
       };
     }
+    options.headers = this.headers;
     options.url = this.requestUrl;
     this.sync("read", this, options);
   }
@@ -170,6 +182,7 @@ class Model extends Backbone.RelationalModel {
     if (options.attrs === undefined) {
       options.attrs = this.updateAttributes;
     }
+    options.headers = this.headers;
     options.url = this.updateUrl;
     this.sync("update", this, options);
   }

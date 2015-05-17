@@ -8,13 +8,6 @@ class Actions {
   act(action) {
     Dispatcher.handleViewAction(action);
   }
-
-  // create(attributes) {
-  //   Dispatcher.handleViewAction({
-  //     type: ActionConstants.people.create,
-  //     attributes: attributes,
-  //   });
-  // }
 }
 
 

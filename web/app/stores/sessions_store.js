@@ -2,7 +2,7 @@ import Cookies from "cookies-js";
 
 import Store from "app/templates/store";
 
-import RouterDirectory from "app/router_directory";
+import RouterDirectory from "app/directories/router_directory";
 
 import Session from "app/models/session";
 

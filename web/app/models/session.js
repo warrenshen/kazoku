@@ -1,5 +1,5 @@
 import Model from "app/templates/model";
-import ModelDirectory from "app/model_directory";
+import ModelDirectory from "app/directories/model_directory";
 import ApiRoutes from "app/constants/api_routes";
 
 

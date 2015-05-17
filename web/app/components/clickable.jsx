@@ -1,7 +1,7 @@
 import React from "react";
 import Component from "app/templates/component";
 
-import RouterDirectory from "app/router_directory";
+import RouterDirectory from "app/directories/router_directory";
 
 
 class Clickable extends Component {

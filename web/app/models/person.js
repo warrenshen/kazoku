@@ -1,8 +1,8 @@
 import Cookies from "cookies-js";
 
 import Model from "app/templates/model";
-import ModelDirectory from "app/model_directory";
-import RouterDirectory from "app/router_directory";
+import ModelDirectory from "app/directories/model_directory";
+import RouterDirectory from "app/directories/router_directory";
 import ApiRoutes from "app/constants/api_routes";
 import Routes from "app/constants/routes";
 
